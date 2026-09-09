@@ -1,0 +1,47 @@
+::PILLAR::
+Operating Model
+::PILLAR_QUESTION_SHORT::
+whether the organization can actually run, sustain, govern, and improve the capability over time.
+::HEADER::
+YOUR JOB TODAY: the Operating Model Market Signals daily briefing
+
+Use the fixed daily schema below. The structure, section names, and order match the other pillar briefs. Only the purpose, scope, selection rules, and Operating Model content differ.
+
+PURPOSE
+
+Surface up to 5 high-value signals that could change how Venkat thinks, advises, creates, or acts around the Operating Model for AI and customer-data capabilities in pharma.
+
+Prioritize signals tied to how these capabilities are actually owned, governed, operated, maintained, monitored, funded, and improved over time.
+
+Do not turn this into a general AI news digest or a list of org-chart changes.
+
+SCOPE
+
+Operating Model asks: who owns what, who makes which decisions, where human judgment sits, how work moves across teams, and how the capability stays reliable and useful over time?
+
+Operating Model is about how the capability is run as an ongoing organizational capability, not just how it is built or deployed.
+
+Scan across: ownership of the capability, data, models, workflows, outcomes, and risks; decision rights, meaning who can approve, change, stop, or override what; human judgment, meaning where people review, interpret, approve, or intervene; roles and responsibilities across business, data, AI, information technology, legal, compliance, agencies, and vendors; workflow integration into day-to-day work; governance, policies, standards, and oversight; maintenance of data, models, prompts, knowledge, rules, and integrations; monitoring and evaluation ownership; exception and escalation handling; change management and adoption; accountability for outcomes; vendor and partner responsibilities; funding and resourcing after launch; continuous improvement from feedback, outcomes, failures, and new requirements; scaling the operating model across brands, markets, teams, and use cases.
+
+The key distinction: Foundation asks whether this capability can work. Operating Model asks whether the organization can actually run it and keep it working.
+
+SELECTION RULES
+
+Choose the highest-value Operating Model signals, up to 5.
+
+Prioritize: recent and credible evidence; changes in ownership, decision rights, governance, or accountability around AI and customer-data capabilities; new roles or team structures that show how companies are organizing around AI; changes in where human judgment, review, or intervention sits; evidence that workflow integration is becoming more important than standalone tools; changes in how capabilities are maintained, monitored, evaluated, or improved after launch; examples of exception handling, escalation, or failure ownership becoming more explicit; changes in how pharma divides responsibility across business, data, AI, information technology, legal, compliance, agencies, and vendors; funding or resourcing changes that show how capabilities are being sustained beyond pilots; operating models designed to support reuse or scale across brands, markets, teams, or use cases; evidence that weak ownership, unclear decision rights, or poor cross-functional handoffs are limiting value; several organizations making similar operating-model moves; signals that strengthen, weaken, or complicate an existing Operating Model belief, problem, hypothesis, or opportunity.
+
+Avoid: duplicates; low-signal hype; generic AI trend stories; job postings that mention AI but reveal nothing meaningful about ownership, workflow, decision rights, governance, or accountability; org changes with no clear connection to how capabilities are actually run; pure Foundation, Use, or Trust stories unless they expose a real Operating Model dependency; unsupported vendor claims; several stories about the same underlying event.
+
+If several stories point to the same Operating Model change, combine them into one signal. If fewer than 5 meet the bar, use fewer. Do not pad the brief.
+::WHY_MATTERS_BULLETS::
+- a decision
+- a workflow
+- a customer outcome
+- business value
+- reliability
+- readiness
+- ownership
+- investment
+- trust
+- scale

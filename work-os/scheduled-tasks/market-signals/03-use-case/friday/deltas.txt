@@ -1,0 +1,149 @@
+::PILLAR::
+Use Case
+::HEADER::
+YOUR JOB TODAY: the Use Case Market Signals Friday Weekly Synthesis
+
+PURPOSE
+
+Review the Use Case Market Signals daily briefings from the current week and determine what the accumulated evidence now tells us.
+
+Do not repeat or summarize the daily briefs. Do not treat every AI deployment, pilot, agent launch, customer-data product, or technology announcement as a weekly Use Case signal.
+
+The goal is to answer: what actually accumulated this week, what changed, which Use Case beliefs strengthened or weakened, and what now deserves Venkat's attention?
+
+Use Case asks: what specific work, decision, behavior, or outcome is the AI or customer-data capability supposed to improve, for whom, and under what conditions?
+
+Having AI, data, models, agents, or a platform does not establish a use case. A real use case connects the capability to a specific problem or need, a real user or actor, a job to be done, a decision or piece of work that changes, a clear workflow and trigger, an output someone can act on, a defined role for AI and for people, clear constraints, exceptions, and boundaries, measurable changes in work, behavior, customer experience, or business outcome, and evidence that the capability is useful enough to become part of real work.
+
+Focus on signals involving: specific AI or customer-data use cases entering real workflows; movement from generic capabilities toward specific jobs; pilots moving into production; pilots being stopped, narrowed, or redesigned; workflow redesign; human and AI roles within specific work; decisions being augmented, automated, or delegated; user adoption or rejection; changes in how customers, healthcare professionals, patients, field teams, marketers, analysts, or other users behave; measurable productivity, quality, speed, customer, revenue, or decision outcomes; budget movement around particular use cases; workarounds and unmet jobs; narrow use cases outperforming broad ambitions; new adjacent use cases emerging through real-world use; use cases working differently under different conditions; buyers becoming more specific about the jobs AI should solve.
+
+Turn individual Use Case observations into a smaller set of evidence-backed patterns, belief updates, and decisions.
+::REVIEW_BULLETS::
+- multiple independent observations pointing toward the same Use Case change
+- an unusually strong individual signal
+- acceleration or deceleration in an existing pattern
+- movement from pilot or demonstration into real workflow use
+- movement from broad AI claims toward specific jobs
+- measurable changes in work or outcomes
+- repeated adoption or rejection
+- specific use cases receiving or losing budget
+- changes in the role of humans within a workflow
+- automation or augmentation of specific decisions
+- use cases expanding across teams or being deliberately narrowed
+- new workarounds
+- unmet jobs becoming visible
+- differences between technically successful pilots and useful capabilities
+- buyers changing how they describe desired outcomes
+- meaningful counterevidence
+::NO_MANUFACTURE::
+Do not manufacture a pattern because several vendors advertise the same use case.
+::NEW_PROBLEM_KINDS::
+problem, need, job, behavior, workflow, constraint, or opportunity
+::UNITS::
+a specific company, pharma companies, a buyer or user, a commercial workflow, a marketing workflow, a field workflow, an analytics workflow, a medical workflow, a customer interaction, a job to be done, a decision, an AI agent use case, a customer-data use case, a vendor category, or market behavior
+::WEIGHT_NOTE::
+Give greater weight to real use, workflow change, repeated adoption, budget, measurable outcomes, and abandonment than to announcements or generic case studies.
+::OTHER_PILLARS::
+Foundation, Meaning and Context, Operating Model, Trust and Control, or Repeatability and Scale
+::HYPOTHESIS_QUESTION::
+what does this change about what we believe AI or customer data can usefully improve, for whom, inside what workflow, and under what conditions?
+::EXTRA_PATTERN_CHECKS::
+; whether the same use case appears across multiple companies or user groups; whether adoption persists after the pilot or novelty stage; whether outcomes survive differences in conditions
+::DO_NOT_CONFUSE::
+- attention with adoption
+- pilot activity with production use
+- usage with value
+- productivity claims with measured outcomes
+- technical success with workflow success
+- a capability with a use case
+::INSIGHT_EXAMPLES::
+- AI improving one task while making the surrounding workflow worse
+- time saved without any meaningful business outcome changing
+- the real user being different from the buyer
+- a use case working because humans quietly compensate for its weaknesses
+- adoption depending on a very specific trigger or workflow
+- AI changing where human judgment is needed rather than eliminating it
+- a narrow use case creating more value than a broad transformation
+- successful adoption exposing a new downstream problem
+- failure being caused by the surrounding conditions rather than the use case itself
+- people creating workarounds that reveal a more important job than the one vendors are selling
+::OUTSIDE_CAUSES::
+- poor data or infrastructure
+- missing business context
+- weak workflow integration
+- unclear ownership
+- weak trust or controls
+- implementation quality
+- organizational incentives
+- scaling conditions
+::EXTRA_CHALLENGE::
+Likewise, check whether apparent success is caused by unusually strong human support, cherry-picked tasks, novelty effects, narrow evaluation conditions, or a highly specific environment that may not travel.
+::TRIGGER_EXAMPLES::
+- additional independent companies put the same use case into production
+- pilots become part of normal workflow
+- repeat usage persists
+- dedicated budgets appear
+- measurable outcomes repeat
+- users voluntarily adopt the capability
+- human roles or workflows materially change
+- the use case expands into adjacent workflows
+- organizations narrow or abandon the use case
+- workarounds repeatedly expose the same unmet job
+- buyers begin asking for the same outcome
+- vendors change products around the workflow
+- evidence shows which conditions determine whether the use case succeeds
+::FAST_VALUE_BULLETS::
+- determine whether they have a real use case
+- identify the actual user and job
+- clarify what decision or work should change
+- identify the trigger and output
+- surface the role of human judgment
+- distinguish capability from usefulness
+- test whether claimed value is measurable
+- make a better decision
+::ASSET_KINDS::
+framework, diagnostic, instrument, skill, workflow, product, or advisory capability
+::LEARNING_TARGETS::
+the Use Case problem, the user, the buyer, the job, the need, the workflow, positioning, the capability, the opportunity, the outcome, or the decision
+::EMERGING_PROBLEMS::
+- unclear jobs to be done
+- pilots disconnected from real workflows
+- low user adoption
+- weak or missing outcomes
+- AI outputs that do not lead to action
+- poor handoffs between AI and people
+- unclear workflow triggers
+- automation applied to the wrong task
+- technically successful capabilities with little practical value
+- workarounds revealing unmet needs
+::OPPORTUNITY_WATCH::
+- spend around specific workflows
+- use-case-specific hiring
+- dedicated product or workflow ownership
+- user workarounds
+- budget moving from platforms toward applications or workflows
+- pilots receiving continued investment
+- pilots being stopped
+- vendor dissatisfaction
+- procurement criteria becoming outcome-specific
+- new workflow products
+- missing use-case solutions
+- services people are assembling themselves
+- capability gaps
+::AUDIENCE_LEARNING::
+the buyer, the actual user, the accountable leader, the job to be done, pain, language, the workflow, the decision, the desired outcome, the objection, the adoption requirement, the trust requirement, and the evidence requirement
+::TERRITORY::
+connecting AI and customer data to actual work, decisions, behavior, and outcomes
+::CROSS_SIGNAL::
+- Is the same unmet job appearing across several use cases?
+- Are multiple technologies converging on the same workflow?
+- Are companies discovering that different use cases depend on the same underlying condition?
+- Are narrow use cases becoming stepping stones toward broader capabilities?
+- Are failures across different use cases caused by the same workflow problem?
+- Does movement in Use Case expose weakness in Foundation, Meaning and Context, Operating Model, Trust and Control, or Repeatability and Scale?
+- Are users solving the same need differently from the way vendors frame it?
+- Are we seeing a larger shift in what organizations expect AI to actually do?
+::MOVE_EXTRA::
+talk with a particular buyer or user, or test an assumption about the job or workflow
+::EXTRA_RULES::
+Look for actual workflow and behavior change, not just language. Do not treat possessing AI, agents, data, models, or platforms as proof of a use case. Do not treat pilots as proof of adoption. Do not treat usage as proof of value. Do not treat technical success as proof of business or user value. Do not automatically interpret implementation failure as evidence that the use case itself is weak.

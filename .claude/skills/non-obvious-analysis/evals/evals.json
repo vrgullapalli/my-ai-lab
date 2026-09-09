@@ -1,0 +1,81 @@
+{
+  "skill_name": "non-obvious-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Analyze the following source for a brand lead deciding whether to scale a campaign. Source-bound analysis only. The email engagement rate rose from 18% to 31%. The vendor changed the definition of an engaged recipient during the same quarter. Prescribing behavior did not materially change. Field teams reported more basic clarification questions after the campaign. The program was declared successful because engagement increased. Find only the non-obvious insights the evidence earns.",
+      "expected_output": "A concise analysis that separates the surface reading from one to three evidence-grounded insights, recognizes the measurement-definition problem, considers the possible meaning of increased clarification questions without overstating it, and recommends a discriminating next test.",
+      "assertions": [
+        "The response returns no more than four insights and does not force a fourth insight.",
+        "Each returned insight refers to specific facts in the supplied source.",
+        "The response distinguishes the measurement-definition inference from an observed fact.",
+        "The interpretation of clarification questions is labeled with lower confidence or as a hypothesis.",
+        "The response identifies evidence that would change at least one conclusion.",
+        "The recommended next action tests a specific uncertainty rather than requesting generic stakeholder alignment."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Rethink this case study and tell me what smaller case studies, use cases, or reusable assets are hidden inside it. Source: A three-year enterprise program was described as creating a unified customer view. The team standardized 17 incoming data feeds, created identity-resolution rules, established data contracts with source owners, built an issue-triage process, introduced provenance for key fields, and enabled a next-best-action pilot. Time to resolve a disputed customer record fell from six weeks to four days. The public case study currently presents all of this as one data-platform implementation.",
+      "expected_output": "An analysis that reframes the case beyond a single platform implementation, identifies the deeper operating or decision mechanism, and proposes several evidence-linked smaller cases or assets without treating every activity as a separate insight.",
+      "assertions": [
+        "The response identifies at least one deeper mechanism that is not merely 'a unified customer view was built.'",
+        "The response proposes at least three distinct smaller cases, use cases, or reusable assets tied to facts in the source.",
+        "The response distinguishes observations from its interpretation of the deeper story.",
+        "The response returns no more than four non-obvious insights.",
+        "The proposed smaller assets have meaningfully different jobs rather than being alternate titles for the same work.",
+        "The response explains why the current bundled case study hides decision-relevant value."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Give me four shocking, non-obvious insights about why this project was a success. Source: The project launched on schedule. All invited stakeholders attended the launch meeting. A dashboard is available.",
+      "expected_output": "A refusal to manufacture four insights, followed by a clear account of what the source supports, what it cannot establish about success, and the minimum additional evidence needed.",
+      "assertions": [
+        "The response does not produce four unsupported insights.",
+        "The response explicitly states that the evidence is insufficient to establish project success beyond delivery facts.",
+        "The response does not invent adoption, outcome, stakeholder motive, or quality claims.",
+        "The response identifies specific missing evidence rather than asking generically for more data.",
+        "The response remains useful and does not merely refuse the task."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Analyze only the confidential notes below. Do not browse or add industry facts. Notes: The business unit says the model is accurate because offline validation exceeded the target. Operations says recommendations arrive after the weekly planning decision. The product team tracks model acceptance but not whether accepted recommendations were executed. Executives are debating whether to fund a broader rollout. What may everyone be missing?",
+      "expected_output": "A source-bound analysis that recognizes the mismatch between model accuracy, decision timing, acceptance, and execution, and reframes rollout readiness around the operating decision path rather than model quality alone.",
+      "assertions": [
+        "The response introduces no external factual claims or purported industry benchmarks.",
+        "The response distinguishes model validation, recommendation timing, acceptance, and execution as separate observations.",
+        "At least one insight explains how the operating decision path changes the rollout decision.",
+        "The response identifies the missing evidence most likely to change the funding decision.",
+        "The response does not claim that offline accuracy is irrelevant; it explains why it is insufficient."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Apply non-obvious analysis to these operating-model notes. A central AI council reviews every proposed use case. The council can advise but has no formal decision rights. Reviews often take eight weeks. Business teams have started running small pilots before council review. Compliance is usually asked to sign off after a pilot is already visible to executives. Leadership is considering adding another mandatory approval stage to reduce risk. Identify only the insights that should affect that decision.",
+      "expected_output": "An evidence-grounded systems and incentive analysis showing how delay, advisory authority, bypass behavior, and late compliance involvement interact, including the possibility that another approval stage could increase unmanaged risk.",
+      "assertions": [
+        "The response identifies the mismatch between formal review responsibility and actual decision authority.",
+        "The response connects review delay to bypass behavior using the supplied evidence.",
+        "The response considers the second-order possibility that another approval stage could increase rather than reduce unmanaged risk.",
+        "The response avoids attributing malicious intent to business teams or the council.",
+        "The response recommends a test or operating change that follows from the identified mechanism.",
+        "The response includes confidence and evidence that would change the conclusion."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Use the signal format for this source-bound brief. Signal: Three business units independently created local copilots for the same customer-data task. Each reports faster work, but the copilots use different customer definitions and none records which source fields informed an answer. A central team is considering standardizing on the most popular copilot. Identify only earned insights and choose one decision state from IGNORE, MONITOR, INVESTIGATE, TALK, TEST, DEVELOP, or ACT.",
+      "expected_output": "A SIGNAL to NON-OBVIOUS ANALYSIS to VALUE to DECISION response that separates local productivity from definition and provenance risk, identifies the deeper standardization decision, and selects exactly one proportionate decision state.",
+      "assertions": [
+        "The response uses the SIGNAL, NON-OBVIOUS ANALYSIS, VALUE, and DECISION layers.",
+        "The response returns one to four insights rather than applying a fixed method checklist.",
+        "At least one insight connects local speed gains with the risk of scaling inconsistent customer meaning or untraceable answers.",
+        "Each insight includes supporting evidence, a competing explanation or counterevidence, practical implication, and confidence.",
+        "The VALUE section includes Fast Value, Deeper Asset, Learning Question, and Long-Term Value.",
+        "The DECISION section selects exactly one allowed state and explains what changed in the belief."
+      ]
+    }
+  ]
+}

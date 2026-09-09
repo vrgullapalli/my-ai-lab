@@ -1,0 +1,89 @@
+::PILLAR::
+Operating Model
+::HEADER::
+YOUR JOB TODAY: the Operating Model Market Signals Wednesday Signal Check
+
+PURPOSE
+
+Review the Operating Model Market Signals daily briefings from the current week so far and identify anything that may be developing into a meaningful pattern before the Friday synthesis.
+
+Do not repeat the daily briefs. Do not produce a full weekly synthesis.
+
+The goal is to answer: what may be emerging fast enough that Venkat should notice, investigate, or respond to before Friday about how AI and customer-data capabilities are actually run inside organizations?
+
+Operating Model asks: who owns what, who makes which decisions, where human judgment sits, how work moves across teams, and how the capability stays reliable and useful over time?
+
+Operating Model is about how a capability is run as an ongoing organizational capability, not just how it is built or launched. Having an AI strategy, a governance committee, a product owner, a center of excellence, or a vendor does not mean the operating model works.
+
+Focus on signals involving: ownership of the capability, data, models, workflows, outcomes, and risks; decision rights, meaning who can approve, change, stop, override, or escalate; where human judgment sits; human review, approval, exception handling, and intervention; roles and responsibilities across business, data, AI, information technology, legal, compliance, privacy, security, agencies, and vendors; workflow integration into day-to-day work; handoffs between people, teams, systems, and vendors; governance becoming operational rather than policy-only; ongoing monitoring and maintenance; model, prompt, data, workflow, and knowledge updates; issue management and escalation; accountability for failures and outcomes; funding and resource ownership; product or capability management; centralized versus distributed operating models; centers of excellence, federated teams, embedded AI teams, and shared services; insourcing, outsourcing, vendor dependence, and agency roles; changes in how organizations support AI after deployment; new roles appearing around AI operations, governance, product ownership, or workflow management; operating models changing as AI becomes more autonomous; evidence that pilots fail to scale because ongoing ownership is unclear.
+
+Do not treat a signal as Operating Model merely because it mentions organizational change, governance, hiring, or AI strategy. The signal must reveal something meaningful about how responsibility, decisions, work, and ongoing operation are actually organized.
+::SCAN_BULLETS::
+- multiple signals pointing toward the same underlying Operating Model change
+- a strong new signal that materially changes an existing belief
+- acceleration in an existing pattern
+- meaningful counterevidence
+- movement from temporary project teams toward ongoing ownership
+- decision rights becoming clearer or changing
+- new human-review or escalation patterns
+- AI governance moving into operational workflows
+- new roles responsible for production AI capabilities
+- changes in centralized versus federated ownership
+- new product-management or capability-management structures
+- changes in vendor, agency, or internal-team responsibilities
+- new monitoring or maintenance responsibilities
+- shifts in funding or budget ownership
+- workflow redesign caused by AI
+- evidence that unclear accountability is blocking deployment or scale
+- something unusually time-sensitive
+::UNITS::
+a specific company, pharma companies, an executive role, an AI team, a commercial organization, a product team, a workflow, a governance structure, a decision process, a human-review model, an agency relationship, a vendor relationship, an operating function, a center of excellence, or an enterprise AI capability
+::OTHER_PILLARS::
+Foundation, Meaning and Context, Use Case, Trust and Control, or Repeatability and Scale
+::HYPOTHESIS_QUESTION::
+what does this evidence change about who must own, decide, review, maintain, or intervene for the capability to keep working?
+::WEIGHT_MORE::
+- explicit ownership changes
+- new decision rights
+- workflow redesign
+- production roles
+- budget ownership
+- new escalation or review mechanisms
+- teams taking responsibility for monitoring and maintenance
+- governance embedded in operating workflows
+- vendor responsibilities being renegotiated
+- structural changes that persist beyond a pilot
+::WEIGHT_LESS::
+- org-chart announcements
+- governance principles
+- committees with unclear authority
+- job postings without evidence of actual responsibility
+- broad claims about being 'AI-first'
+::EXTRA_PATTERN_CHECKS::
+; whether the same operating issue appears across different organizations, use cases, or teams
+::PATTERN_CAUTION::
+Do not turn one reorganization, job posting, governance announcement, or leadership hire into a market trend.
+::OUTSIDE_CAUSES::
+- poor infrastructure
+- missing context
+- a weak use case
+- technical limitations
+- weak trust or controls
+- inability to scale
+::EXTRA_CHALLENGE::
+Do not interpret every organizational problem as an Operating Model failure.
+::WATCH_EXAMPLES::
+- another major company creates the same type of role
+- ownership moves from innovation teams into business operations
+- budgets move with the new ownership
+- decision rights become explicit
+- human-review steps are redesigned
+- AI monitoring becomes an ongoing operational responsibility
+- governance requirements become part of normal workflow
+- vendor contracts change to reflect new responsibilities
+- dedicated product or capability owners appear
+- companies replace temporary pilot teams with permanent operating teams
+- escalation, override, or stop mechanisms become visible
+- performance measures become tied to accountable owners
+::EXTRA_RULES::
+Focus on ownership, decision rights, human judgment, workflows, accountability, maintenance, monitoring, funding, and ongoing operation. Do not treat an org chart, committee, policy, title, or job posting as proof that an operating model works. Do not confuse governance documentation with operational governance. Do not automatically interpret every organizational failure as an Operating Model failure.

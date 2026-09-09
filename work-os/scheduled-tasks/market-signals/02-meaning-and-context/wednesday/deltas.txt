@@ -1,0 +1,81 @@
+::PILLAR::
+Meaning and Context
+::HEADER::
+YOUR JOB TODAY: the Meaning and Context Market Signals Wednesday Signal Check
+
+PURPOSE
+
+Review the Meaning and Context Market Signals daily briefings from the current week so far and identify anything that may be developing into a meaningful pattern before the Friday synthesis.
+
+Do not repeat the daily briefs. Do not produce a full weekly synthesis.
+
+The goal is to answer: what may be emerging fast enough that Venkat should notice, investigate, or respond to before Friday about the Meaning and Context required for AI and customer-data capabilities to work well?
+
+Meaning and Context asks: does the capability have enough shared meaning, business context, assumptions, exceptions, history, and human knowledge to interpret the data and situation correctly?
+
+Having data does not mean the data carries enough meaning. Having documents, metadata, taxonomies, knowledge bases, prompts, or retrieval systems does not mean the system understands the context needed to make a useful or defensible judgment.
+
+Focus on signals involving: shared definitions and business meaning; semantic consistency across systems and teams; metadata, taxonomies, ontologies, and knowledge models; business rules and decision logic; assumptions embedded in data, models, workflows, and reports; exceptions, edge cases, and local variation; provenance and the meaning of where information came from; tacit knowledge held by people rather than systems; institutional knowledge and organizational memory; knowledge capture and maintenance; context supplied to AI systems and agents; retrieval, grounding, and knowledge access; ambiguity in customer, healthcare professional, patient, channel, campaign, or commercial definitions; differences in meaning across brands, markets, teams, vendors, or functions; context loss during handoffs between people, systems, vendors, and AI; situations where the same data supports different interpretations; evidence that AI performance depends on context that is not represented in the underlying systems.
+
+Do not treat a signal as Meaning and Context merely because it mentions knowledge, prompts, documents, retrieval, metadata, or AI. The signal must reveal something meaningful about whether people and systems can interpret information consistently enough to make the capability useful and reliable.
+::SCAN_BULLETS::
+- multiple signals pointing toward the same underlying Meaning and Context change
+- a strong new signal that materially changes an existing belief
+- acceleration in an existing pattern
+- meaningful counterevidence
+- new evidence that context is becoming a bottleneck for AI
+- companies investing in semantic layers, knowledge systems, ontologies, metadata, or grounding
+- failures caused by missing definitions, assumptions, exceptions, or business rules
+- increased attention to enterprise knowledge and organizational memory
+- new approaches to capturing tacit human knowledge
+- evidence that AI agents require richer context than traditional applications
+- changes in how companies manage structured and unstructured knowledge together
+- movement from simple retrieval toward context-rich reasoning
+- differences in definitions or meaning creating operational or analytical problems
+- evidence that local context limits portability across brands, teams, markets, or workflows
+- something unusually time-sensitive
+::UNITS::
+a specific company, pharma companies, a buyer or executive role, a commercial workflow, a knowledge system, a semantic layer, a taxonomy or ontology, an AI agent, a retrieval system, a customer-data model, a business definition, a decision process, a brand, a market, or a vendor category
+::OTHER_PILLARS::
+Foundation, Use Case, Operating Model, Trust and Control, or Repeatability and Scale
+::HYPOTHESIS_QUESTION::
+what does this evidence change about how much shared meaning and context the capability needs in order to interpret information correctly?
+::WEIGHT_MORE::
+- changes in architecture or workflows to provide more context
+- investments in knowledge infrastructure
+- deployment failures caused by missing context
+- new roles responsible for knowledge or semantics
+- repeated definition conflicts
+- documented edge cases
+- measurable improvements from better grounding or context
+- changes in how business rules or tacit knowledge are captured
+- production systems adding semantic or knowledge layers
+::WEIGHT_LESS::
+- broad claims about enterprise knowledge, AI context, or grounding without evidence of actual use
+::EXTRA_PATTERN_CHECKS::
+; whether the same context problem appears across different organizations, workflows, or AI use cases
+::PATTERN_CAUTION::
+Do not turn one hallucination, retrieval failure, taxonomy project, or knowledge-platform announcement into a market trend.
+::OUTSIDE_CAUSES::
+- poor underlying data
+- weak system integration
+- an unclear use case
+- poor ownership
+- weak workflow design
+- insufficient evaluation
+- unreliable model performance
+::EXTRA_CHALLENGE::
+Do not label every AI misunderstanding as a context problem.
+::WATCH_EXAMPLES::
+- another company introduces a semantic or knowledge layer
+- AI deployments add explicit business rules or context stores
+- dedicated knowledge-management or ontology roles appear
+- failures are traced to missing definitions or local context
+- companies begin capturing tacit knowledge systematically
+- retrieval systems evolve toward richer contextual grounding
+- shared definitions become formal enterprise capabilities
+- business teams change workflows to maintain context
+- the same meaning problem appears across brands or markets
+- measurable performance improves when richer context is supplied
+::EXTRA_RULES::
+Focus on shared meaning, assumptions, exceptions, business rules, tacit knowledge, and context. Do not treat having documents, metadata, taxonomies, knowledge bases, or retrieval systems as proof that useful context exists. Do not automatically interpret every AI mistake as a Meaning and Context failure.

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Read this steering committee deck and tell me what everyone is missing, especially the hidden assumption behind the recommendation.",
+    "should_trigger": true
+  },
+  {
+    "query": "Rethink this case study using non-obvious principles. I care more about the deeper mechanism than polishing the story.",
+    "should_trigger": true
+  },
+  {
+    "query": "These five market signals look unrelated. What pattern connects them, and what would change our decision if that pattern is real?",
+    "should_trigger": true
+  },
+  {
+    "query": "The exec team keeps saying 'the data is ready.' Challenge that sentence and surface the second-order implications.",
+    "should_trigger": true
+  },
+  {
+    "query": "Analyze these interview notes for unstated premises, power dynamics, and the issue people are talking around.",
+    "should_trigger": true
+  },
+  {
+    "query": "what's the non obvious read here? why might the obvious explanation be wrong",
+    "should_trigger": true
+  },
+  {
+    "query": "I have a strategy memo, two contradictory metrics, and a decision due Friday. Find the few insights that should actually change the decision.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you rethik this operating model? I suspect the bottleneck isn't where the team says it is.",
+    "should_trigger": true
+  },
+  {
+    "query": "What second and third order effects could follow from centralizing every AI decision in one governance council? Use the evidence in the notes.",
+    "should_trigger": true
+  },
+  {
+    "query": "Find the implications that are not stated in this research and tell me what evidence would change your mind.",
+    "should_trigger": true
+  },
+  {
+    "query": "Summarize this report in five bullets for my manager.",
+    "should_trigger": false
+  },
+  {
+    "query": "Proofread this case study and make the language less repetitive.",
+    "should_trigger": false
+  },
+  {
+    "query": "Extract every date, company name, and dollar amount from these meeting notes.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain inversion thinking in plain English and give me one example.",
+    "should_trigger": false
+  },
+  {
+    "query": "Translate this market research summary into Spanish.",
+    "should_trigger": false
+  },
+  {
+    "query": "Check whether the current CEO and revenue figures in this paragraph are accurate.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite this case study so it sounds more executive and concise, but do not change its meaning.",
+    "should_trigger": false
+  },
+  {
+    "query": "Calculate the CAGR from 2022 revenue of 18 million to 2026 revenue of 31 million.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a standard SWOT table from the strengths, weaknesses, opportunities, and threats already listed below.",
+    "should_trigger": false
+  },
+  {
+    "query": "Classify these comments as positive, negative, or neutral and return a CSV.",
+    "should_trigger": false
+  }
+]

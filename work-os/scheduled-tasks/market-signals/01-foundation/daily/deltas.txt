@@ -1,0 +1,57 @@
+::PILLAR::
+Foundation
+::PILLAR_QUESTION_SHORT::
+whether the underlying conditions can actually support what the organization is trying to do.
+::HEADER::
+YOUR JOB TODAY: the Foundation Market Signals daily briefing
+
+Use the fixed daily schema below. The structure, section names, and order are identical to the All Market Signals brief. Only the purpose, scope, selection rules, and Foundation-specific content differ.
+
+PURPOSE
+
+Surface up to 5 high-value signals that could change how Venkat thinks, advises, creates, or acts around the Foundation underneath AI and customer-data capabilities in pharma.
+
+Prioritize signals tied to whether the underlying data, technology, organizational, operational, security, delivery, and measurement conditions can actually support reliable AI and customer-data capabilities.
+
+Do not turn this into a general AI news digest.
+
+SCOPE
+
+Foundation asks: can the organization reliably supply, operate, secure, scale, and improve the data and AI capabilities it is trying to use?
+
+Foundation is broader than data quality or technology inventory. Having a customer data platform, a lakehouse, a customer relationship management system, application programming interfaces, cloud infrastructure, large language model access, or large amounts of customer data does not mean the foundation is ready.
+
+Scan across:
+- data foundation: availability, completeness, quality, freshness, identity, metadata, lineage, ownership, interoperability
+- architecture foundation: integration, application programming interfaces, modularity, reliability, scalability, real-time and event capability, legacy connectivity
+- AI platform foundation: model access, routing, serving, retrieval, agents, orchestration, state, tool use, lifecycle, evaluation
+- security, privacy, and governance: access controls, consent, privacy, auditability, policy enforcement, regulatory controls
+- engineering and operations: data operations, machine learning operations, large language model operations, testing, observability, monitoring, incident handling, rollback
+- organizational foundation: ownership, roles, decision rights, coordination, architecture and technical talent
+- product and delivery foundation: product management, reusable services, standards, documentation, productionization
+- economics foundation: cost, capacity, financial operations for cloud, vendor concentration, build versus buy, unit economics
+- adoption and change foundation: workflow redesign, training, AI literacy, incentives, human escalation, process ownership
+- measurement and learning foundation: instrumentation, baselines, experimentation, outcomes, feedback, evaluation, continuous improvement
+
+The key distinction: having the assets is not the same as having a working foundation. A company may own strong tools and still lack the conditions needed to operate them together reliably, securely, repeatedly, and at scale.
+
+SELECTION RULES
+
+Choose the highest-value Foundation signals, up to 5.
+
+Prioritize: recent and credible evidence; high practical value; Foundation conditions becoming stronger, weaker, or more important; pharma changing how it builds, funds, staffs, standardizes, or operates shared data and AI foundations; movement from separate tools or one-off projects toward reusable production capabilities; failures, delays, workarounds, or scaling problems tied to Foundation dependencies; new technology changing what the enterprise needs underneath AI; hiring or investment moving toward Foundation capabilities; measurable changes in reliability, cost, speed, access, production readiness, adoption, or learning; signals that strengthen, weaken, or complicate an existing Foundation belief, problem, hypothesis, or opportunity.
+
+Avoid: duplicates; low-signal hype; generic AI trend stories; model launches with no meaningful Foundation implication; announcements that simply add another tool to the stack; unsupported vendor claims; pure use-case stories with no Foundation implication; several stories about the same underlying event.
+
+If several stories point to the same Foundation change, combine them into one signal. If fewer than 5 meet the bar, use fewer. Do not pad the brief.
+::WHY_MATTERS_BULLETS::
+- a decision
+- a workflow
+- a customer outcome
+- business value
+- reliability
+- readiness
+- ownership
+- investment
+- trust
+- scale

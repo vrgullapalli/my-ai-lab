@@ -1,0 +1,134 @@
+::PILLAR::
+Foundation
+::HEADER::
+YOUR JOB TODAY: the Foundation Market Signals Friday Weekly Synthesis
+
+PURPOSE
+
+Review the Foundation Market Signals daily briefings from the current week and determine what the accumulated evidence now tells us.
+
+Do not repeat or summarize the daily briefs. Do not treat every interesting technology, data, or platform story as a weekly Foundation signal.
+
+The goal is to answer: what actually accumulated this week, what changed, which Foundation beliefs strengthened or weakened, and what now deserves Venkat's attention?
+
+Foundation asks: can the organization reliably supply, connect, operate, secure, measure, scale, and improve the data and technology needed for the capability to work?
+
+Foundation is broader than data quality or technology inventory. Having a customer data platform, a lakehouse, a customer relationship management system, application programming interfaces, cloud infrastructure, large language model access, models, or large amounts of customer data does not mean the foundation is ready.
+
+Focus on signals involving: data availability, completeness, quality, freshness, and reliability; identity resolution and customer-data connectivity; provenance, lineage, metadata, and traceability; access, permissions, privacy, and security; integration and interoperability; application programming interfaces, architecture, infrastructure, cloud, and compute; data pipelines and movement; model, tool, and platform access; technical observability and reliability; implementation and deployment conditions; technical skills and capacity; vendor and platform dependencies; cost, latency, performance, and infrastructure constraints; measurement infrastructure and feedback loops; gaps between intended architecture and live operation; technical and data conditions required for reliable production use and scale.
+
+Turn individual Foundation observations into a smaller set of evidence-backed patterns, belief updates, and decisions.
+::REVIEW_BULLETS::
+- multiple independent observations pointing toward the same Foundation change
+- an unusually strong individual Foundation signal
+- acceleration or deceleration in an existing pattern
+- movement from architecture or promises into observable implementation
+- changes in data availability, quality, freshness, identity, provenance, access, integration, infrastructure, security, deployment, reliability, cost, or technical capacity
+- repeated bottlenecks across companies or use cases
+- infrastructure or platform investments
+- vendor consolidation or replacement
+- implementation gaps
+- production failures or constraints
+- movement from pilot infrastructure to production-grade infrastructure
+- measurable changes in technical performance or reliability
+- meaningful counterevidence
+::NO_MANUFACTURE::
+Do not manufacture a pattern because several companies or vendors are talking about the same technology.
+::NEW_PROBLEM_KINDS::
+dependency, constraint, failure mode, capability gap, or opportunity
+::UNITS::
+a specific company, pharma companies, a data architecture, an identity capability, a customer-data platform, an integration layer, a data pipeline, AI infrastructure, a model platform, a cloud environment, a security or access layer, a technical workflow, a vendor category, or an enterprise data environment
+::WEIGHT_NOTE::
+Give greater weight to observable behavior and implementation than to broad claims about AI or data readiness.
+::OTHER_PILLARS::
+Meaning and Context, Use Case, Operating Model, Trust and Control, or Repeatability and Scale
+::HYPOTHESIS_QUESTION::
+what does this change about what we believe must be true underneath an AI or customer-data capability for it to work reliably?
+::EXTRA_PATTERN_CHECKS::
+; whether the same Foundation issue appears across multiple companies, technologies, workflows, or use cases
+::DO_NOT_CONFUSE::
+- investment with readiness
+- technology availability with reliable operation
+- repeated discussion of a technical issue with evidence that it is widespread
+::INSIGHT_EXAMPLES::
+- data that technically exists but cannot be reliably used
+- infrastructure that works for demos but not production
+- architecture that assumes deterministic behavior from probabilistic systems
+- identity or provenance weaknesses that become more important as AI acts across systems
+- access or security controls that limit practical use
+- implementation gaps hidden behind platform ownership
+- cost, latency, or reliability constraints that only appear at scale
+::OUTSIDE_CAUSES::
+- a weak or unclear use case
+- missing business context
+- unclear ownership
+- poor workflow design
+- weak trust requirements
+- lack of adoption
+- normal implementation friction rather than a structural Foundation problem
+::EXTRA_CHALLENGE::
+::TRIGGER_EXAMPLES::
+- additional independent companies expose the same data or infrastructure constraint
+- technical budgets materially shift
+- new architecture patterns become common
+- vendors are replaced or consolidated
+- dedicated technical roles appear
+- production workloads expose limitations that pilots did not
+- identity, integration, provenance, or access becomes a repeated blocker
+- measurable reliability or performance data appears
+- platform investments produce observable production outcomes
+- companies build workarounds around existing infrastructure
+- security or regulatory requirements force architecture changes
+- a missing infrastructure capability becomes a recognizable solution category
+::FAST_VALUE_BULLETS::
+- see a hidden Foundation dependency
+- test whether a claimed capability is actually supported
+- distinguish platform ownership from readiness
+- ask a better technical or organizational question
+- identify an assumption that needs evidence
+- make a better decision
+::ASSET_KINDS::
+framework, diagnostic, instrument, skill, workflow, product, or advisory capability
+::LEARNING_TARGETS::
+the Foundation problem, the buyer, the need, positioning, the audience, the capability, the opportunity, or the decision
+::EMERGING_PROBLEMS::
+- unreliable or incomplete data
+- fragmented identity
+- weak integration
+- poor provenance
+- access bottlenecks
+- infrastructure limits
+- security constraints
+- unreliable production environments
+- cost or latency problems
+- implementation gaps
+- platform fragmentation
+::OPPORTUNITY_WATCH::
+- infrastructure spend
+- data-platform spend
+- technical hiring
+- architecture changes
+- platform consolidation
+- vendor replacement
+- implementation workarounds
+- integration work
+- identity or provenance investments
+- security investments
+- missing technical capabilities
+- new solution categories
+- capability gaps
+::AUDIENCE_LEARNING::
+the buyer, the accountable leader, Foundation pain, language, the decision, the desired outcome, the objection, the technical trust requirement, and the evidence requirement
+::TERRITORY::
+the Foundation required for useful AI and customer-data capabilities
+::CROSS_SIGNAL::
+- Is one technical dependency causing several downstream problems?
+- Is the same underlying data or architecture constraint appearing across multiple use cases?
+- Are different companies responding to the same Foundation problem differently?
+- Does movement in Foundation expose weakness in Meaning and Context, Use Case, Operating Model, Trust and Control, or Repeatability and Scale?
+- Are organizations solving symptoms separately when the same underlying dependency connects them?
+- Are we seeing a larger Foundation shift that would be missed by examining each signal independently?
+::MOVE_EXTRA::
+test a Foundation assumption
+::EXTRA_RULES::
+Look for implementation and behavior change, not just language. Do not treat possession of data, platforms, infrastructure, or models as proof of readiness. Do not automatically interpret every AI or data failure as a Foundation failure.

@@ -1,0 +1,154 @@
+::PILLAR::
+Operating Model
+::HEADER::
+YOUR JOB TODAY: the Operating Model Market Signals Friday Weekly Synthesis
+
+PURPOSE
+
+Review the Operating Model Market Signals daily briefings from the current week and determine what the accumulated evidence now tells us.
+
+Do not repeat or summarize the daily briefs. Do not treat every reorganization, governance announcement, AI hire, or new committee as a weekly Operating Model signal.
+
+The goal is to answer: what actually accumulated this week, what changed, which Operating Model beliefs strengthened or weakened, and what now deserves Venkat's attention?
+
+Operating Model asks: who owns what, who makes which decisions, where human judgment sits, how work moves across teams, and how the capability stays reliable and useful over time?
+
+Having an AI strategy, a governance committee, a product owner, a center of excellence, or a vendor does not mean the operating model works.
+
+Focus on signals involving: ownership of capabilities, data, models, workflows, outcomes, and risks; decision rights; human judgment and review; approval, override, escalation, and stop authority; roles across business, data, AI, information technology, legal, compliance, privacy, security, agencies, and vendors; workflow integration; cross-functional handoffs; ongoing governance; monitoring and maintenance; updates to models, prompts, workflows, knowledge, and data; issue management; accountability for failures and outcomes; funding and resource ownership; product and capability management; centralized, federated, and embedded operating structures; center-of-excellence models; vendor and agency responsibility; insourcing and outsourcing; permanent versus temporary teams; operating changes required as AI becomes more autonomous.
+
+Turn individual Operating Model observations into a smaller set of evidence-backed patterns, belief updates, and decisions.
+::REVIEW_BULLETS::
+- multiple independent observations pointing toward the same Operating Model change
+- an unusually strong individual signal
+- acceleration or deceleration in an existing pattern
+- movement from pilot ownership into permanent operational ownership
+- decision rights becoming explicit or shifting
+- human judgment being moved, added, or removed
+- new review, escalation, override, or stop mechanisms
+- governance moving from policy into normal workflow
+- new permanent operating roles
+- changes in centralized versus federated ownership
+- product-management or capability-management structures
+- changing relationships between business, technology, compliance, agencies, and vendors
+- new monitoring or maintenance responsibilities
+- budget and funding ownership changes
+- measurable accountability for outcomes
+- operating-model failures blocking adoption or scale
+- meaningful counterevidence
+::NO_MANUFACTURE::
+Do not manufacture a pattern because several companies announce governance structures or AI leadership roles.
+::NEW_PROBLEM_KINDS::
+ownership, accountability, workflow, governance, maintenance, or decision-rights
+::UNITS::
+a specific company, pharma companies, an executive role, a commercial organization, an AI team, a governance structure, a decision process, a human-review model, a workflow, a center of excellence, a product team, an agency relationship, a vendor relationship, or an enterprise AI capability
+::WEIGHT_NOTE::
+Give greater weight to observable changes in ownership, decision rights, workflows, budgets, monitoring, maintenance, escalation, and permanent responsibility than to announcements or titles.
+::OTHER_PILLARS::
+Foundation, Meaning and Context, Use Case, Trust and Control, or Repeatability and Scale
+::HYPOTHESIS_QUESTION::
+what does this change about what we believe must be owned, decided, reviewed, maintained, funded, or operated for the capability to keep working?
+::EXTRA_PATTERN_CHECKS::
+; whether the same ownership, accountability, or workflow problem appears across multiple companies or use cases
+::DO_NOT_CONFUSE::
+- a governance committee with governance
+- a job title with decision authority
+- formal ownership with real accountability
+- project staffing with ongoing operational capacity
+- documented processes with workflows people actually follow
+- centralized standards with centralized execution
+::INSIGHT_EXAMPLES::
+- ownership existing without authority
+- accountability sitting with someone who cannot change the system
+- human review being added without defining what judgment humans should supply
+- AI removing work from one team while creating hidden work for another
+- governance becoming a workflow-design problem rather than a policy problem
+- model monitoring having no clear owner
+- agencies or vendors quietly holding critical institutional knowledge
+- temporary pilot teams masking the lack of a sustainable operating model
+- centralized AI teams becoming bottlenecks as adoption expands
+- decentralization creating inconsistent standards or duplicated capabilities
+- higher AI autonomy changing who should have stop or override authority
+::OUTSIDE_CAUSES::
+- weak infrastructure
+- missing business context
+- an unclear use case
+- unreliable technology
+- insufficient trust or controls
+- scaling constraints
+- ordinary organizational change unrelated to AI or customer-data capability
+::TRIGGER_EXAMPLES::
+- additional companies establish similar permanent ownership
+- budget moves with responsibility
+- decision rights become explicit
+- human-review responsibilities change
+- governance becomes embedded in day-to-day workflows
+- permanent operating roles replace temporary pilot teams
+- monitoring and maintenance become funded capabilities
+- vendor or agency responsibilities materially change
+- override, escalation, and stop mechanisms become operational
+- outcomes become tied to named accountable owners
+- centralized teams become federated or embedded
+- recurring operating-model failures begin blocking scale
+- a recognizable new operating role or service category begins forming
+::FAST_VALUE_BULLETS::
+- identify missing ownership
+- clarify decision rights
+- see where human judgment needs to sit
+- expose an accountability gap
+- identify a weak handoff
+- distinguish governance policy from operational governance
+- test whether the capability has an owner after launch
+- ask a better operating-model question
+- make a better decision
+::ASSET_KINDS::
+framework, diagnostic, instrument, skill, workflow, product, or advisory capability
+::LEARNING_TARGETS::
+the Operating Model problem, the buyer, the accountable owner, the need, positioning, the workflow, the capability, the opportunity, or the decision
+::EMERGING_PROBLEMS::
+- unclear ownership
+- unclear decision rights
+- missing accountability
+- weak human-review design
+- poor cross-functional handoffs
+- temporary pilot teams with no permanent owner
+- governance disconnected from workflow
+- monitoring without an accountable owner
+- unclear vendor or agency responsibility
+- fragmented funding
+- centralized teams becoming bottlenecks
+- inconsistent decentralized practices
+- capabilities that cannot be maintained after launch
+::OPPORTUNITY_WATCH::
+- new operating roles
+- hiring
+- permanent AI teams
+- new budget ownership
+- governance operations
+- AI product or capability management
+- workflow redesign
+- human-review services or tools
+- monitoring and maintenance capability
+- vendor or agency role changes
+- operating-model consulting or services
+- organizational workarounds
+- new solution categories
+- capability gaps
+::AUDIENCE_LEARNING::
+the buyer, the accountable leader, operating pain, language, ownership, decision rights, the desired outcome, the objection, the human-judgment requirement, the governance requirement, the trust requirement, and the evidence requirement
+::TERRITORY::
+ownership, accountability, human judgment, decision rights, governance, workflows, and how AI and customer-data capabilities stay useful over time
+::CROSS_SIGNAL::
+- Is unclear ownership causing several downstream failures?
+- Are different companies converging on similar operating roles?
+- Is increasing AI autonomy changing human decision rights?
+- Is governance moving closer to day-to-day workflow?
+- Are vendors or agencies absorbing responsibilities internal teams have not yet defined?
+- Are temporary pilot structures becoming permanent capabilities?
+- Does movement in Operating Model expose weakness in Foundation, Meaning and Context, Use Case, Trust and Control, or Repeatability and Scale?
+- Are organizations solving separate problems that actually share the same accountability gap?
+- Are we seeing a larger operating-model shift that would be missed by examining each signal independently?
+::MOVE_EXTRA::
+test an ownership or decision-rights assumption
+::EXTRA_RULES::
+Look for real changes in ownership, authority, workflows, accountability, funding, maintenance, and operating behavior. Do not treat org charts, committees, governance policies, titles, or job postings as proof that an operating model works. Do not confuse named ownership with real authority or accountability. Do not confuse governance documentation with operational governance. Do not automatically interpret every organizational failure as an Operating Model failure.

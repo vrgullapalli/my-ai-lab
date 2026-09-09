@@ -1,0 +1,164 @@
+::PILLAR::
+Trust and Control
+::HEADER::
+YOUR JOB TODAY: the Trust and Control Market Signals Friday Weekly Synthesis
+
+PURPOSE
+
+Review the Trust and Control Market Signals daily briefings from the current week and determine what the accumulated evidence now tells us.
+
+Do not repeat or summarize the daily briefs. Do not treat every governance, safety, evaluation, compliance, regulation, or responsible-AI story as a weekly Trust and Control signal.
+
+The goal is to answer: what actually accumulated this week, what changed, which Trust and Control beliefs strengthened or weakened, and what now deserves Venkat's attention?
+
+Trust and Control asks: why should we trust this, what has it earned the right to do, and what happens when it is uncertain, wrong, or outside its limits?
+
+Trust and Control is about both evidence for reliance and mechanisms for containing failure. Having evaluations, guardrails, policies, human review, audit logs, or governance does not mean a capability is trustworthy or well controlled.
+
+Focus on signals involving: evidence of performance; evaluation quality; realistic testing; edge-case and failure testing; uncertainty and confidence; evidence thresholds for deployment; authority and permissions; what systems may recommend, decide, change, approve, or execute; human review and oversight; escalation and intervention; override and stop mechanisms; refusal behavior; boundaries and prohibited actions; auditability and traceability; monitoring after deployment; drift and performance degradation; incidents and failure patterns; security and abuse controls; privacy and data-use controls; model risk and validation; regulatory expectations; compliance requirements; evidence required to expand autonomy; changes in how high-risk AI is managed; movement toward or away from human approval; evidence that controls themselves create operational burden or new risks.
+
+Turn individual Trust and Control observations into a smaller set of evidence-backed patterns, belief updates, and decisions.
+::REVIEW_BULLETS::
+- multiple independent observations pointing toward the same Trust and Control change
+- an unusually strong individual signal
+- acceleration or deceleration in an existing pattern
+- stronger or weaker evidence standards
+- changes in evaluation methods
+- movement toward realistic testing
+- changes in uncertainty or confidence handling
+- authority being expanded or restricted
+- changes in human oversight
+- new escalation, override, refusal, or stop mechanisms
+- autonomy being tied to demonstrated performance
+- incidents causing controls to change
+- regulation affecting permissions or evidence requirements
+- monitoring becoming more operational
+- governance becoming enforceable rather than policy-only
+- auditability becoming more important
+- measurable evidence of controls working or failing
+- meaningful counterevidence
+::NO_MANUFACTURE::
+Do not manufacture a pattern because several companies or vendors are discussing AI safety, governance, or evaluation.
+::NEW_PROBLEM_KINDS::
+evidence, authority, permission, safeguard, monitoring, or failure-containment
+::UNITS::
+a specific company, pharma companies, an AI agent, a model, a customer-data capability, a workflow, a decision, an evaluation method, a governance process, a human-review model, a permission structure, a monitoring system, the regulatory environment, a vendor category, or a production AI system
+::WEIGHT_NOTE::
+Give greater weight to observable changes in testing, permissions, production behavior, failures, controls, monitoring, authority, regulation, or deployment decisions than to broad claims about safety or responsible AI.
+::OTHER_PILLARS::
+Foundation, Meaning and Context, Use Case, Operating Model, or Repeatability and Scale
+::HYPOTHESIS_QUESTION::
+what does this change about what we believe the capability must prove, what authority it should receive, or how its failures should be detected and contained?
+::EXTRA_PATTERN_CHECKS::
+; whether the same trust or control issue appears across companies, use cases, workflows, or technologies
+::DO_NOT_CONFUSE::
+- benchmark scores with real-world reliability
+- governance policies with operational controls
+- human review with effective oversight
+- absence of reported failure with safety
+- technical capability with permission to act
+- evaluation success with earned autonomy
+- auditability with prevention
+- compliance with trustworthiness
+::INSIGHT_EXAMPLES::
+- capability improving faster than organizations can safely expand authority
+- strong average performance hiding dangerous edge cases
+- human review creating false confidence when reviewers cannot realistically catch failures
+- a system being reliable enough to recommend but not reliable enough to act
+- controls existing without enforceable stop authority
+- evaluation instruments measuring the wrong thing
+- deployment conditions being much harder than test conditions
+- refusal behavior being as important as successful completion
+- greater autonomy changing the evidence threshold required
+- monitoring identifying failures without anyone having authority to intervene
+- compliance controls reducing one risk while creating another
+- deterministic controls being applied to probabilistic behavior
+::OUTSIDE_CAUSES::
+- poor infrastructure
+- missing business context
+- an unclear use case
+- bad workflow design
+- unclear ownership
+- weak implementation
+- scaling conditions
+- ordinary technical failure rather than inadequate controls
+::EXTRA_CHALLENGE::
+Likewise, check whether apparent trustworthiness is caused by narrow testing, easy cases, heavy human support, limited permissions, unusually controlled environments, or unreported failures.
+::TRIGGER_EXAMPLES::
+- additional companies adopt similar evaluation standards
+- realistic failure testing becomes common
+- authority expands after demonstrated performance
+- authority is restricted after failures
+- human review is removed or materially redesigned
+- production systems add refusal, override, or stop mechanisms
+- buyers require specific evaluation evidence
+- auditability becomes a procurement requirement
+- regulators define clearer evidence or control thresholds
+- monitoring reveals recurring failure or drift
+- organizations explicitly tie permissions to demonstrated performance
+- production incidents change governance or deployment decisions
+- measurable evidence shows controls reducing or failing to reduce risk
+- a recognizable market for evaluation, monitoring, or control capabilities emerges
+::FAST_VALUE_BULLETS::
+- distinguish capability from authority
+- test whether evidence justifies reliance
+- identify what the system has actually earned the right to do
+- spot a weak evaluation
+- identify a missing failure case
+- clarify where human review adds real value
+- identify missing refusal, override, escalation, or stop behavior
+- make a better trust or permission decision
+::ASSET_KINDS::
+framework, diagnostic, instrument, evaluation method, test harness, skill, workflow, product, or advisory capability
+::LEARNING_TARGETS::
+the Trust and Control problem, the buyer, the accountable leader, the evidence requirement, the authority threshold, the need, positioning, the capability, the opportunity, or the decision
+::EMERGING_PROBLEMS::
+- weak evaluation
+- unrealistic test cases
+- missing edge-case testing
+- unclear evidence thresholds
+- authority expanding faster than evidence
+- ineffective human review
+- missing refusal behavior
+- weak escalation or stop mechanisms
+- inadequate monitoring
+- performance drift
+- unclear permissions
+- lack of auditability
+- controls that cannot be enforced
+- trust based on claims rather than evidence
+::OPPORTUNITY_WATCH::
+- evaluation spend
+- monitoring spend
+- governance operations
+- new evaluation roles
+- model-risk roles
+- auditability requirements
+- test-harness development
+- human-review redesign
+- authority-management capabilities
+- monitoring and observability tools
+- safety or control workarounds
+- vendor dissatisfaction
+- procurement changes
+- new solution categories
+- missing products or services
+- capability gaps
+::AUDIENCE_LEARNING::
+the buyer, the accountable leader, trust pain, language, the decision, the evidence threshold, the authority threshold, the desired outcome, the objection, the human-review requirement, the control requirement, the regulatory concern, and the proof required before reliance
+::TERRITORY::
+capability versus authority, earned autonomy, evidence before permission, evaluation quality, refusal, human judgment, stop rules, deterministic versus probabilistic behavior, and what a system has earned the right to do
+::CROSS_SIGNAL::
+- Is increasing autonomy raising the evidence threshold?
+- Are multiple failures exposing the same weakness in evaluation?
+- Are organizations adding controls after deployment rather than before it?
+- Are human-review models changing as AI becomes more capable?
+- Are permissions expanding faster than monitoring and stop mechanisms?
+- Are regulatory changes affecting technical controls or decision rights?
+- Does movement in Trust and Control expose weakness in Foundation, Meaning and Context, Use Case, Operating Model, or Repeatability and Scale?
+- Are organizations solving separate safety problems that share the same underlying evidence gap?
+- Are we seeing a larger shift from responsible-AI principles toward operational proof and enforceable controls?
+::MOVE_EXTRA::
+test an evaluation or authority assumption
+::EXTRA_RULES::
+Look for real changes in evidence, evaluation, authority, permissions, controls, monitoring, and failure handling. Distinguish capability from authority. Distinguish evidence of performance from permission to act. Do not treat benchmark success as proof of real-world reliability. Do not treat human review as automatically effective control. Do not treat governance policy as proof that controls work. Do not infer trustworthiness from the absence of reported failures.

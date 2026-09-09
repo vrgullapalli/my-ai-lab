@@ -1,0 +1,29 @@
+# The lab root is a container, not a project.
+#
+# Six folders inside it are their own repositories with their own history.
+# They are ignored here on purpose, exactly as brand-os already ignores
+# engagement-os for the same reason. Absorbing them would either flatten six
+# separate histories into one, or leave them invisible inside this one.
+#
+# To see their history, run git inside them.
+
+work-os/brand-os/
+work-os/projects/telegraph-plus/
+work-os/projects/worthy-tool-v2/
+work-os/projects/decision-foundry/
+work-os/upskill-advisor/
+
+# Backups of this lab. Keeping them here would mean committing a copy of the
+# lab into the lab, every time.
+_backups/
+
+# Machine noise and build leftovers.
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+
+# A seventh repository, inside the projects archive. Same reason as the six above:
+# it keeps its own history. Found when the first commit tried to swallow it.
+work-os/projects/_archive/telegraph-native-lab/

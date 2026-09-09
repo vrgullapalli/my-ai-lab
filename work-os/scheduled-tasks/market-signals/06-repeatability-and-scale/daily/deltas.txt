@@ -1,0 +1,71 @@
+::PILLAR::
+Repeatability and Scale
+::PILLAR_QUESTION_SHORT::
+the difference between 'it worked here' and 'we know how to make it work elsewhere'.
+::HEADER::
+YOUR JOB TODAY: the Repeatability and Scale Market Signals daily briefing
+
+Use the fixed daily schema below. The structure, section names, and order match the other pillar briefs. Only the purpose, scope, selection rules, and Repeatability and Scale content differ.
+
+PURPOSE
+
+Surface up to 5 high-value signals that could change how Venkat thinks, advises, creates, or acts around Repeatability and Scale for AI and customer-data capabilities in pharma.
+
+Prioritize signals tied to what can travel, what must remain contextual, what can be standardized or reused, and whether success survives changes in brand, team, market, workflow, data, or environment.
+
+Do not turn this into a general AI news digest. Do not treat one successful pilot as proof of scalability.
+
+SCOPE
+
+Repeatability and Scale asks: what can travel, what must remain contextual, what can be standardized or reused, and does success survive changes in brand, team, market, workflow, data, or environment?
+
+The core distinction: 'it worked here' is not the same as 'we know how to make it work elsewhere.'
+
+For every meaningful signal, ask: what made this work? Which conditions must remain true? What changes when we move it?
+
+Repeatability and Scale is not just technical scalability, deployment volume, or rolling the same solution out more widely. It is about understanding why success occurred, which parts of that success are reusable, which depend on local context, what must be adapted, and whether the intended outcome remains reliable as conditions change.
+
+Scan across: replication across brands, indications, business units, teams, geographies, markets, channels, and customer groups; movement from pilots or one-off deployments into broader production use; reusable components, services, workflows, prompts, models, data products, knowledge assets, policies, evaluation methods, and operating patterns; standardization versus local adaptation; conditions and dependencies that must remain true for results to hold; changes in data quality, coverage, definitions, identity, semantics, or availability across contexts; changes in workflows, user behavior, incentives, roles, decision rights, and human judgment; differences in regulation, policy, privacy, consent, medical and legal review, and market requirements; changes in customer behavior, product strategy, channel mix, competitive environment, or business priorities; performance degradation, drift, failure, or unexpected behavior when a capability moves into a new context; evidence that teams can reproduce outcomes rather than merely reproduce technology; localization and configuration requirements; portability of evaluations, benchmarks, controls, and evidence standards; modular architectures or common platforms that make reuse easier without forcing uniformity; operating-model patterns that can be reused across teams while preserving necessary local ownership; cost, effort, speed, and complexity of adapting the capability elsewhere; scale economics, including whether later deployments become cheaper, faster, or more reliable; learning loops that make each new deployment improve the reusable core; evidence that standardization creates leverage; evidence that standardization removes context that was necessary for success.
+
+The key test: can we explain why it worked, identify the conditions that matter, and deliberately reproduce or adapt those conditions somewhere else?
+
+The key caution: do not standardize away the context that made the original result possible.
+
+SELECTION RULES
+
+Choose the highest-value Repeatability and Scale signals, up to 5.
+
+Prioritize: recent and credible evidence; capabilities moving from one brand, team, market, workflow, or use case into another; evidence showing why a pilot did or did not survive broader deployment; organizations identifying which elements can be standardized and which require local adaptation; reusable AI, data, workflow, knowledge, governance, or evaluation components that reduce the effort of later deployments; evidence that common platforms or operating patterns improve repeatability without erasing important context; measurable changes in performance, adoption, cost, reliability, speed, or outcomes as capabilities expand; examples where changing data, users, workflows, markets, regulations, or business conditions materially changes results; evidence that scale requires different architecture, operating practices, controls, measurement, ownership, or skills than the original pilot; transfer failures that reveal hidden dependencies or context mistaken for universal capability; organizations explicitly testing portability across realistic conditions rather than assuming it; localization, configuration, or market-specific requirements becoming more important; evidence that later deployments become faster, cheaper, or more reliable because reusable knowledge or components are accumulating; several organizations making similar moves toward reusable capability models rather than one-off projects; signals that strengthen, weaken, or complicate an existing Repeatability and Scale belief, problem, hypothesis, or opportunity.
+
+Avoid: duplicates; low-signal hype; generic 'enterprise scale' claims with no evidence of successful transfer; treating deployment volume, user count, compute capacity, or geographic reach alone as proof of repeatability; one successful pilot presented as evidence that the capability will generalize; platform or infrastructure announcements with no demonstrated effect on reuse, adaptation, or portability; standardization initiatives with no evidence about what must remain contextual; case studies that report only the successful destination and omit what had to change to get there; unsupported vendor claims; pure Foundation or Operating Model stories unless they expose a real Repeatability and Scale dependency; several stories about the same underlying event.
+
+If several stories point to the same Repeatability and Scale change, combine them into one signal. If fewer than 5 meet the bar, use fewer. Do not pad the brief.
+::WHY_MATTERS_BULLETS::
+- whether a pilot is actually ready to expand
+- what can be reused versus rebuilt
+- what must remain local or contextual
+- the cost and effort of the next deployment
+- whether performance and trust survive changed conditions
+- whether a common capability can support multiple brands, teams, markets, or workflows
+- where standardization creates leverage
+- where standardization creates risk
+- whether the organization is building compounding capability or repeating one-off projects
+::EXTRA_EVIDENCE::
+ Where possible, distinguish evidence that something worked once from evidence that it worked across changed conditions.
+::EXTRA_INTERPRETATION::
+ Explicitly consider: what made this work? Which conditions must remain true? Which parts appear portable or reusable? Which parts must remain contextual? What changes when we move it?
+::EXTRA_ALTERNATIVE::
+ Consider whether apparent repeatability could instead be explained by unusually similar environments, unusually strong local teams, extra implementation support, cherry-picked cases, hidden manual work, favorable data conditions, unusually low complexity, or other conditions that may not travel.
+::EXTRA_PATTERN::
+ For this pillar, do not call something Repeating or Strengthening merely because the same technology appears in several places. Look for evidence that the underlying capability, operating pattern, or intended outcome actually transfers.
+::EXTRA_CONFIDENCE::
+ Confidence should be lower when evidence comes from only one environment or when the conditions behind success are unclear.
+::EXTRA_TAKEAWAY::
+ Where useful, state what he would want to know before treating a local success as scalable.
+::EXTRA_WATCH::
+ show the result survives a different brand, team, market, workflow, data environment, or operating context; reveal which conditions must remain true; show what must be adapted; demonstrate that reuse lowers cost, effort, or risk; expose performance degradation or hidden dependencies;
+::EXTRA_SYNTHESIS::
+
+Do not call adoption across multiple places 'scale' unless the evidence shows that the capability or intended outcome actually transferred.
+::EXTRA_WRITING::
+ Above all, do not confuse successful replication of technology with repeatable achievement of the intended outcome.

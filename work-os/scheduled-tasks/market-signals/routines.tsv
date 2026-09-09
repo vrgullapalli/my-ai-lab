@@ -1,0 +1,21 @@
+00-all-market-signals|daily|Signals: All Market, Daily|All Signals|All Signals|All Midweek|🌐|0 5 * * *|claude-sonnet-5|65f1a993-e4a0-44fc-8505-4b4bad17c0b9|trig_01SXdiDNbbTVxqfBLyXjdDyi
+01-foundation|daily|Signals: Foundation, Daily|Foundation Signals|Foundation Signals|Foundation Midweek|🧱|20 5 * * *|claude-sonnet-5|522d91f5-979d-4bd2-998f-7a8bcb7ea84c|trig_01BQ7J2uMiPyp2jAxsPsdjk2
+02-meaning-and-context|daily|Signals: Meaning and Context, Daily|Meaning Signals|Meaning Signals|Meaning Midweek|🗺️|40 5 * * *|claude-sonnet-5|5b6c23f9-b555-4153-9ba2-ae460689aad9|trig_01CHo1kMbWGdkCpCGzxEbbHf
+03-use-case|daily|Signals: Use Case, Daily|Use Case Signals|Use Case Signals|Use Case Midweek|🛠️|0 6 * * *|claude-sonnet-5|876028f7-4174-4e63-9cd9-23489136bd36|trig_01RMGqrwDVuZF9zBNZ34hDan
+04-operating-model|daily|Signals: Operating Model, Daily|Operating Model Signals|Operating Model Signals|Operating Model Midweek|⚙️|20 6 * * *|claude-sonnet-5|0e390eca-31ab-4eca-bc75-4e9619c7c324|trig_01BKnFqumqCJp9SeRxe2J4vG
+05-trust-and-control|daily|Signals: Trust and Control, Daily|Trust Signals|Trust Signals|Trust Midweek|🛡️|40 6 * * *|claude-sonnet-5|124ce652-1350-4450-ade7-684a4e1fcf72|trig_01MUTQFEpE7R7zUJ1KYUVzuk
+06-repeatability-and-scale|daily|Signals: Repeatability and Scale, Daily|Scale Signals|Scale Signals|Scale Midweek|🔁|0 7 * * *|claude-sonnet-5|0c5a59fc-4e2d-4849-8a90-e6ef61774e6f|trig_01MUGVb1s3b6p4tQKTpfbFXJ
+00-all-market-signals|wednesday|Signals: All Market, Midweek|All Midweek|All Signals|All Midweek|🌐|30 7 * * 3|claude-opus-5|ce89199d-81af-4076-b51b-687854b30bbe|trig_01AbSjToappw4PhHhNu6qoXX
+01-foundation|wednesday|Signals: Foundation, Midweek|Foundation Midweek|Foundation Signals|Foundation Midweek|🧱|50 7 * * 3|claude-opus-5|197e3991-621b-4452-8885-e973930a995c|trig_01TyVxxPVKNSFKtmfYwHwYTm
+02-meaning-and-context|wednesday|Signals: Meaning and Context, Midweek|Meaning Midweek|Meaning Signals|Meaning Midweek|🗺️|10 8 * * 3|claude-opus-5|1b4a831b-e5ce-4c0d-96e8-1afa2b5ca51f|trig_01LUPoCGjsLRcteggZf3rPNa
+03-use-case|wednesday|Signals: Use Case, Midweek|Use Case Midweek|Use Case Signals|Use Case Midweek|🛠️|30 8 * * 3|claude-opus-5|62d5ce2a-c37e-4d70-94f0-4ed1ad64c334|trig_01Q7VdipzCzAjHg5ZP8GHDkH
+04-operating-model|wednesday|Signals: Operating Model, Midweek|Operating Model Midweek|Operating Model Signals|Operating Model Midweek|⚙️|50 8 * * 3|claude-opus-5|9a2479a8-c366-43b4-9075-5eade4cae7b2|trig_01MUc2sVeQ2gqRmeqd4BS1ci
+05-trust-and-control|wednesday|Signals: Trust and Control, Midweek|Trust Midweek|Trust Signals|Trust Midweek|🛡️|10 9 * * 3|claude-opus-5|faf5c9cd-3f8a-448e-9dcb-41b3361f336d|trig_01TZhPcbtU7DzMGr5k9EZYzK
+06-repeatability-and-scale|wednesday|Signals: Repeatability and Scale, Midweek|Scale Midweek|Scale Signals|Scale Midweek|🔁|30 9 * * 3|claude-opus-5|720412fe-21e8-4ef8-9ad4-e579f0dccdba|trig_01Xt5hizbfM651XFyfvELQmP
+00-all-market-signals|friday|Signals: All Market, Weekly|All Weekly|All Signals|All Midweek|🌐|30 7 * * 5|claude-opus-5|5c7d0ae1-516f-48cd-82da-9005702434fa|trig_01ShdT4RGrSUqTYVXXuGpn6b
+01-foundation|friday|Signals: Foundation, Weekly|Foundation Weekly|Foundation Signals|Foundation Midweek|🧱|50 7 * * 5|claude-opus-5|03fef337-eec4-4957-9af7-06831c8b2ed7|trig_01Rf3fc9j75DvdSR9boPv44U
+02-meaning-and-context|friday|Signals: Meaning and Context, Weekly|Meaning Weekly|Meaning Signals|Meaning Midweek|🗺️|10 8 * * 5|claude-opus-5|c888772a-6210-4955-8739-2550ec9c2cdb|trig_01APAoRCW5TDuYkdhhZU8nxR
+03-use-case|friday|Signals: Use Case, Weekly|Use Case Weekly|Use Case Signals|Use Case Midweek|🛠️|30 8 * * 5|claude-opus-5|2e0165cb-fdfe-4a45-944d-4590ea598134|trig_01Bhsjt7RQviGDZ51oTtsCcK
+04-operating-model|friday|Signals: Operating Model, Weekly|Operating Model Weekly|Operating Model Signals|Operating Model Midweek|⚙️|50 8 * * 5|claude-opus-5|10739ca0-cea1-478d-a953-f267f7127c7b|trig_01Kyz9CpzN33Fg9qaSLS5nfr
+05-trust-and-control|friday|Signals: Trust and Control, Weekly|Trust Weekly|Trust Signals|Trust Midweek|🛡️|10 9 * * 5|claude-opus-5|34485bb5-c94f-4b92-be8f-cd7f530d3348|trig_0176M2BbQfGvYos9PXKsRHZp
+06-repeatability-and-scale|friday|Signals: Repeatability and Scale, Weekly|Scale Weekly|Scale Signals|Scale Midweek|🔁|30 9 * * 5|claude-opus-5|e0e9503c-fbd4-4890-92c7-637eb47d70af|trig_016XU4nhaUydvrCBVfwnJVah

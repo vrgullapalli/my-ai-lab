@@ -1,0 +1,79 @@
+::PILLAR::
+Foundation
+::HEADER::
+YOUR JOB TODAY: the Foundation Market Signals Wednesday Signal Check
+
+PURPOSE
+
+Review the Foundation Market Signals daily briefings from the current week so far and identify anything that may be developing into a meaningful pattern before the Friday synthesis.
+
+Do not repeat the daily briefs. Do not produce a full weekly synthesis.
+
+The goal is to answer: what may be emerging fast enough that Venkat should notice, investigate, or respond to before Friday about the Foundation underneath AI and customer-data capabilities?
+
+Foundation asks: can the organization reliably supply, connect, operate, secure, measure, scale, and improve the data and technology needed for the capability to work?
+
+Foundation is broader than data quality or technology inventory. Having a customer data platform, a lakehouse, a customer relationship management system, application programming interfaces, cloud infrastructure, large language model access, models, or large amounts of customer data does not mean the foundation is ready.
+
+Focus on signals involving: data availability, completeness, quality, freshness, and reliability; identity resolution and customer-data connectivity; provenance, lineage, metadata, and traceability; access, permissions, privacy, and security; integration and interoperability across systems; application programming interfaces, architecture, infrastructure, cloud, compute, and technical dependencies; data pipelines and data movement; model, tool, and platform access; production reliability and technical observability; implementation and deployment conditions; skills and technical capacity; vendor and platform dependencies; cost, performance, latency, and infrastructure constraints; measurement infrastructure and feedback loops; gaps between architecture, design, implementation, and live operation; conditions that make AI or customer-data capabilities difficult to operate reliably at scale.
+
+Do not treat a signal as Foundation merely because it mentions AI, data, platforms, or technology. The signal must reveal something meaningful about the underlying conditions or dependencies required for the capability to work reliably.
+::SCAN_BULLETS::
+- multiple signals pointing toward the same underlying Foundation change
+- a strong new signal that materially changes an existing Foundation belief
+- acceleration in an existing pattern
+- meaningful counterevidence
+- movement from architecture or promises into actual implementation
+- repeated technical or data constraints appearing across organizations
+- changes in data quality, access, integration, identity, provenance, infrastructure, security, deployment, reliability, cost, or technical capacity
+- new infrastructure or platform investments
+- evidence that existing infrastructure is becoming a bottleneck
+- movement from pilot infrastructure toward production-grade infrastructure
+- changes in vendor or platform dependence
+- something unusually time-sensitive
+::UNITS::
+a specific company, pharma companies, a data architecture, a customer-data platform, an identity capability, an integration layer, a data pipeline, AI infrastructure, a model platform, a cloud environment, a security or access layer, a technical workflow, a vendor category, or an enterprise data environment
+::OTHER_PILLARS::
+Meaning and Context, Use Case, Operating Model, Trust and Control, or Repeatability and Scale
+::HYPOTHESIS_QUESTION::
+what does this evidence change about what must be true underneath the capability for it to work reliably?
+::WEIGHT_MORE::
+- architecture changes
+- implementation evidence
+- platform migrations
+- integration work
+- hiring tied to specific technical capabilities
+- production incidents
+- infrastructure spending
+- security or access changes
+- measurable reliability problems
+- data or identity failures
+- deployment changes
+::WEIGHT_LESS::
+- broad claims about being 'AI-ready', 'data-driven', or 'modernizing'
+::EXTRA_PATTERN_CHECKS::
+; whether the same technical or data condition is appearing across different organizations or use cases
+::PATTERN_CAUTION::
+Do not turn one implementation problem, platform launch, vendor announcement, or architecture change into a market trend.
+::OUTSIDE_CAUSES::
+- an unclear use case
+- poor organizational ownership
+- missing context
+- weak trust requirements
+- lack of adoption
+::EXTRA_CHALLENGE::
+Do not label every AI failure an infrastructure or data problem.
+::WATCH_EXAMPLES::
+- another pharma company makes the same architecture change
+- technical hiring expands around the same capability
+- platform investment turns into production deployment
+- companies replace or consolidate vendors
+- identity, integration, or data-quality problems appear repeatedly
+- production workloads expose infrastructure limits
+- companies introduce new provenance or lineage capabilities
+- security or access requirements materially change architecture
+- infrastructure spending increases
+- implementation evidence contradicts vendor or executive claims
+- measurable performance or reliability data becomes available
+::EXTRA_RULES::
+Focus on changes in underlying conditions and dependencies, not general AI or data news. Do not treat platform ownership, technology purchases, or large data volumes as proof that the Foundation is ready. Do not automatically interpret an AI failure as a Foundation failure.
