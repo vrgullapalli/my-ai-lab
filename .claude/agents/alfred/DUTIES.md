@@ -1,12 +1,12 @@
-# Alfred — Active Duties (D1–D5), version 2
+# Alfred — Active Duties (D1–D7), version 2
 
 ```yaml
 status: active
-ruling: D-155 (activation, 2026-08-24) · revised 2026-09-09 at Venkat's word
+ruling: D-155 (activation, 2026-08-24) · revised 2026-09-09 at Venkat's word · 2026-09-10: D7 added, and the duties wired into the open and close routines, both at his word
 charter: .claude/agents/alfred/CHARTER.md
 log: .claude/agents/alfred/LOG.md
 drives_investigation: context/intent/STANDING.md
-sensors: git · ~/Documents/_warehouse/_backups/snapshot.sh · launchctl · work-os/scheduled-tasks/market-signals/verify.sh · .claude/skills/context-check/context-check.sh
+sensors: .claude/agents/alfred/sensors/facts.py · .claude/agents/alfred/sensors/waiting.py · .claude/agents/alfred/sensors/session-sync.py · .claude/skills/context-check/skill-check.py · git · ~/Documents/_warehouse/_backups/snapshot.sh · launchctl · work-os/scheduled-tasks/market-signals/verify.sh · .claude/skills/context-check/context-check.sh
 ```
 
 ## Why version 2
@@ -31,6 +31,19 @@ YYYY-MM-DD HH:MM | D# | ran/blocked | result in ≤10 words | receipt or file
 
 Append only. Never rewrite or delete a line. On a write collision, stop and surface it.
 A missing line where a duty should have run is the alarm. Acceptance tests log as `D#-test`.
+
+## When the duties run (2026-09-10, at Venkat's word)
+
+Two routines carry the duties, so none of them depends on someone remembering to run them.
+
+| Routine | Started by | Runs |
+|---|---|---|
+| `alfred-open` (skill) | the SessionStart hook, on the first session of each day | D1, D2, D3, and D5 when due |
+| `alfred-close` (skill) | Venkat ("wrap up", "done for today"), or the next open routine, late, when a session ended without a receipt | D6, D7, and D5 when due |
+
+Their numbers come from `.claude/agents/alfred/sensors/facts.py`, never from Alfred's say-so.
+The open routine also logs an `OPEN` line and the close routine a `CLOSE` line, so the log
+itself shows whether each ran.
 
 ## The duties
 
@@ -57,23 +70,30 @@ where Alfred looks. For every threat a script can test, test it. Report what bec
 
 ### D2 — Record honesty (session open)
 
-1. The lab has no lab-wide loop list today. The one live tracker is
-   `work-os/upskill-advisor/records/open-items.md` (Telegraph only; last updated
-   2026-09-04). Read its "Needs Venkat" section and report the items and their age.
+1. Follow-ups live in the receipts that created them (`evidence/receipts/`), written as
+   `- [ ] F-...` and closed by a later receipt. `facts.py loops` lists every one still open.
+   That is a view computed from the receipts, not a second tracker (D-009: one home per
+   fact). Also read the "Needs Venkat" section of
+   `work-os/upskill-advisor/records/open-items.md` (Telegraph only) and report its items and age.
 2. Count nothing you cannot count fresh. Never reuse a prior number without reconciling.
 3. Flag stale views and duplicate records. Repair nothing without Venkat's word.
-4. If a lab-wide loop list is created, it becomes this duty's source; propose it, do not
-   create it.
+4. The receipts are this duty's lab-wide source from 2026-09-10. Do not start a separate
+   loop list.
 5. Write the LOG line: what was read, items needing him, what is stale.
 - Scorecard: unsupported counts presented (target 0).
 
 ### D3 — Claimed-running check (session open)
 
-1. List what the record says is running: session capture (declared dead), launchd jobs,
-   the 28 cloud routines.
-2. Verify each with fresh evidence: `launchctl list` filtered for the lab (today: nothing
-   of the lab's is loaded); `work-os/scheduled-tasks/market-signals/verify.sh` for the 21;
-   the seven originals against their `ROUTINE.md` logs and `runs/`.
+1. List what the record says is running: session capture (back since 2026-09-10: a
+   SessionEnd hook plus the launchd job `com.venkat.session-sync`), launchd jobs, the 28
+   cloud routines, and the skill check.
+2. Verify each with fresh evidence. The facts sheet already carries four of these lines:
+   `session capture: last run N hours ago`, whether the launchd job is loaded and whether
+   its last run failed, `sessions older than a day with no transcript in the lab`, and the
+   `skill check` line from `.claude/skills/context-check/skill-check.py --summary` (every
+   path and skill name the skills and agents point at, resolved strictly). Then
+   `work-os/scheduled-tasks/market-signals/verify.sh` for the 21; the seven originals
+   against their `ROUTINE.md` logs and `runs/`.
 3. Mark anything unverifiable `Unknown`. Never assume fine.
 4. Write the LOG line: items checked and their states.
 - Scorecard: false "running" claims, and who caught them.
@@ -92,9 +112,9 @@ does not silently disappear from the log.
 4. Score: per-duty streaks, first-catcher counts, and recurrence of the baseline failure
    categories from the 2026-08-24 plan (Appendix B, now at
    `~/Documents/_warehouse/agents-from-lab-2026-09-09/_source/`).
-5. Write the LOG line. There is no receipts folder yet (`CLAUDE.md`: "ask before writing
-   one"), so the review's findings go in the LOG line and the session reply until Venkat
-   names a home.
+5. Write the review's findings into that day's review
+   (`evidence/receipts/YYYY-MM-DD--day-review.md`, written by the close routine), then the
+   LOG line.
 - Scorecard: reviews on time; scorecard complete.
 
 ### D6 — Commission management (continuous, in-session)

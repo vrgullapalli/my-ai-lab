@@ -12,4 +12,4 @@ description: ARCHIE, the editorial researcher. Use when saying "/archie <topic>"
 2. Launch the `archie` agent with that input, verbatim, using the Agent tool. Do not run the pipeline yourself. Do not add brand context, a desired thesis, or a landing zone he did not give.
 3. When it returns, tell Venkat: the output file path, the surviving ideas with their scores, what was killed and why, and anything routed to the backlog. Quote, do not summarize away, the weakest point on each survivor.
 
-Until 2026-09-09 this skill ran the pipeline itself with parallel sub-agents. That form is in the warehouse at `_archive/claude-agents/archie-v2--skill-form--superseded-2026-09-09/`.
+Until 2026-09-09 this skill ran the pipeline itself with parallel sub-agents. That form is in the warehouse at `~/Documents/_warehouse/_archive/claude-agents/archie-v2--skill-form--superseded-2026-09-09/`.

@@ -12,6 +12,45 @@
           }
         ]
       }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/venkatgullapalli/Documents/my-ai-lab/.claude/hooks/unlazy-trigger.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /Users/venkatgullapalli/Documents/my-ai-lab/.claude/agents/alfred/sensors/facts.py session-start",
+            "timeout": 30,
+            "statusMessage": "Alfred: measuring the lab for the open routine"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /Users/venkatgullapalli/Documents/my-ai-lab/.claude/agents/alfred/sensors/facts.py session-end",
+            "timeout": 15
+          },
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /Users/venkatgullapalli/Documents/my-ai-lab/.claude/agents/alfred/sensors/session-sync.py --hook",
+            "timeout": 60
+          }
+        ]
+      }
     ]
   }
 }

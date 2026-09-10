@@ -44,6 +44,22 @@ he does next. He reads at a glance — lead with the number, then what it means.
 The orphan count in section E is usually the one that matters. It is the direct
 measure of "I cannot find anything."
 
+## Two more scripts beside it (2026-09-10)
+
+```bash
+python3 .claude/skills/context-check/dead-pointers.py           # every path a live file names that does not exist, lab-wide
+python3 .claude/skills/context-check/skill-check.py             # skills and agents only, strict: empty bodies, base
+                                                                #   directories, every path, every skill named by name
+python3 .claude/skills/context-check/skill-check.py --summary   # the one line Alfred's facts sheet carries
+```
+
+Both are read-only. `dead-pointers.py` counts a path as found if a file of that name exists
+anywhere in the lab; that is right for a lab-wide sweep and wrong for a skill, which fails
+silently when its pointer is off by a folder. `skill-check.py` resolves against the skill's
+own folder, its declared base directory, and the lab root, nothing else, and it also flags a
+skill that names a retired skill. Reviewed exceptions live in `dead-pointers-accepted.txt`
+and `skill-check-accepted.txt`, each with a reason. Tests: `tests/skill_check_tests.py`.
+
 ## What it will not tell you
 
 - Whether a file is any *good*. It counts and compares; it does not judge.

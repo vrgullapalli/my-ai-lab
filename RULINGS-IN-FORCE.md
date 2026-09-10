@@ -1,7 +1,7 @@
 # Rulings in force
 
 **Derived 2026-09-08 from the old `DECISIONS.md` (72 entries, 1,476 lines).**
-Full log preserved at `_archive/DECISIONS--from-imac-2026-09-08.md` and on the iMac.
+Full log preserved at `~/Documents/_warehouse/_archive/DECISIONS--from-imac-2026-09-08.md` and on the iMac.
 This page is Claude's read. **Nothing here is settled until Venkat rules on Part 2.**
 
 The old log broke its own rule — it said "keep under 300 lines" and reached 1,476.
@@ -21,7 +21,7 @@ the rebuild.
 | **D-009** | One canonical home per fact. Competing parallel trackers are prohibited. | The rule that would have prevented four decision registers and three Telegraphs. |
 | **D-008** | The system optimises for decision quality, not agreement. It challenges; it tests for both flattery and over-challenging. | Without this, an assistant just agrees with you. |
 | **D-006** | Creator research is a reference corpus, never a product spec. Nothing is copied. Third-party paid material never feeds public work. | An IP and ethics rule. Independent of any system. |
-| **D-003** | Working identity: **"Applied AI systems builder grounded in customer intelligence."** "Data strategy consultant" is retired and cannot return without an explicit new ruling. | Identity. Lives in `brand/` now. |
+| **D-003** | Working identity: **"Applied AI systems builder grounded in customer intelligence."** "Data strategy consultant" is retired and cannot return without an explicit new ruling. | Identity. Lives in `work-os/brand-os/` now. |
 | **D-109** | Public identity and the no-dilution rule. | Governs everything public. |
 | **D-135** | `reference/recordings/` is confidential media. Its home is an encrypted image **outside every agent workspace.** | See the warning below. |
 | **D-110** | Substack under his own name; publish before building the system around it. | Still the plan. |

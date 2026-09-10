@@ -18,7 +18,7 @@ that would move each forward, and proposes what should change. Proposes only. He
 
 - The ideas: `work-os/brand-os/engagement-os/seedbank/` — 191 session, 459 written, 30 spoken
 - The tool: this folder. Identity in `CLAUDE.md`, standing rules in `claude/rules/`, one file per job in `claude/skills/`
-- Its index: `seedbank/INDEX.md` — does not exist yet. The first time you call it, it will say so and offer to build it. That means reading all 680 files once; say yes when you have time for it.
+- Its index: `work-os/brand-os/engagement-os/seedbank/INDEX.md` — does not exist yet. The first time you call it, it will say so and offer to build it. That means reading all 680 files once; say yes when you have time for it.
 
 ## Where an idea stands
 
@@ -40,4 +40,4 @@ words. Rename anything. Write outside the seedbank folder.
 
 Adapted 2026-09-09 from a downloaded tool, then stripped of everything that was the
 tool's rather than ours. The unchanged original is at
-`.claude/agents/_archive/cultivator--exact-clone-of-desktop-original-2026-09-09/`.
+`~/Documents/_warehouse/_archive/claude-agents/cultivator--exact-clone-of-desktop-original-2026-09-09/`.

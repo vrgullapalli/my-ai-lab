@@ -9,24 +9,29 @@ description: Write anything in Venkat's own voice — LinkedIn posts and comment
 > `work-os/brand-os/voice/VENKAT-WRITING-CANON.md`, read through its generated folder
 > `work-os/brand-os/voice/venkat-writing-guide/`. This skill's `references/` (voice.md, lens.md, media/,
 > transcript-mining.md) are the 2026-09-02 specimen-first files; their originals are archived at
-> `voice/_archive/2026-09-08--superseded-by-canon/`. Until this skill is re-specified in the Writer intake,
+> `work-os/brand-os/voice/_archive/2026-09-08--superseded-by-canon/`. Until this skill is re-specified in the Writer intake,
 > load the canon's parts first and treat `references/` as history. The quote bank is blind-test material only.
 
-> **Base directory:** all relative paths in this skill resolve from `work-os/upskill-advisor/`
+> **Base directory:** all relative paths in this skill resolve from `work-os/brand-os/` (corrected 2026-09-10 in the skills audit; it said `work-os/upskill-advisor/`, which is Telegraph, not voice)
 > (lab root: `/Users/venkatgullapalli/Documents/my-ai-lab/`). Consolidated to the lab-root
 > `.claude/skills/` on 2026-09-07 so it runs from anywhere; its data stayed put.
 
 Voice is not described, it is sourced. Load-bearing sentences come from
 specimens (him talking, unedited); the model writes connective tissue
 only; the voice pass cuts toward his cadence. This skill holds the
-specimen bank, the lens, and one dial file per medium. It is called by
-instrument-ship at Stage 2 for readings and room cards.
+specimen bank, the lens, and one dial file per medium. (It used to be called by an
+instrument-ship skill at Stage 2 for readings and room cards; no skill of that name exists
+in the lab as of 2026-09-10.)
 
 ## Always load
 1. `references/voice.md` — specimens, observable markers, the dominant
    finding (the voice is INTERROGATIVE), the ban list, the voice pass.
 2. `references/lens.md` — how he sees any subject (absence-first). A piece
    that names no absence is not through his lens.
+
+3. `work-os/brand-os/model/17-semantic-usage-guide.md`, rules 3 and 4 (spoke since 2026-09-10): the
+   authorship class "designed and directed, AI-built" travels with every build-era fact, and the never-cite
+   list binds every draft. Any capability claim in a piece comes from `work-os/brand-os/model/capabilities.json`.
 
 ## Then load exactly one medium file from `references/media/`
 Pick by where the words will live. Each file sets the dials: registers

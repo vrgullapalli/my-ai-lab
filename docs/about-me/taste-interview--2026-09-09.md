@@ -22,6 +22,8 @@ The compiled profile is at `VOICE-PROFILE-venkat-gullapalli.md`. The LinkedIn pi
 
 **Venkat:** I mean, that's the thing. Let's just choose a content workflow: how it accesses context, how it does research. I have yet to see, especially because we don't know what that looks like, and it's not really about the workflow itself, but how. There's this analogy that the process or the workflow that went into making white paint was the same process that delivered whiteout. Same thing, completely different capabilities.
 
+[Added 2026-09-10, his correction to the analysis of this answer:] "Native" is not a new workflow to you. It is the same process that produces a new capability that could not have been produced if we removed AI.
+
 ## Q3 (Beliefs)
 
 **Alfred:** That analogy is the first thing today that sounds like only you would say it. Take the content workflow you named: access context, do research, write. That is white paint. Everyone is building it. What is the whiteout? Describe one thing an AI content system could do that is not a faster version of any step a writer already takes. If you cannot see it yet, tell me what you would need to see first.
@@ -325,3 +327,4 @@ It's not that everything can be perfect in terms of how we should put it togethe
 1. An exact skeptical reply. Asked three times (Q19, Q20, Q22), none given. Needed: one real reply he typed to a claim he did not buy, or one typed now against a real vendor post.
 2. A time the feeling test fooled him on a piece of writing. He named being fooled by people and by his own assumptions, not by writing. Needed: one title or link and the line that got past him, or "none."
 3. A rule for endings. He has none. Needed: three of his own posts he is happy with, to write the rule from what he actually does.
+4. A provenance pass (added 2026-09-10, his word). A short follow-up interview that takes every belief and term in the profile and asks: where did you first meet this idea, and are these words yours? Influences get acknowledged. Copied vocabulary gets rewritten in his words. First known case: the "take the AI away" test, which he read in Nate B Jones (2025-08-24) and praised in a comment.

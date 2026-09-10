@@ -50,7 +50,7 @@ justify the pass.
 
 ## Rules
 - Evidence only — never flag a violation without a screenshot or a direct
-  read to back it up (hard rule 3).
+  read to back it up (the lab's evidence rule).
 - This checks identity conformance, not copy quality, content accuracy, or
   code quality — those are different reviews.
 - If the artifact's format isn't supported yet (PPTX/DOCX), say so and stop

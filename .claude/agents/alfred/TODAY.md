@@ -12,3 +12,21 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [x] **Homebrew installed** by Venkat ("installed home=brew", 13:46). Put on the path in `~/.zprofile`; checked in a login shell, 6.0.22.
 - [x] **Dropbox is fine for backups.** His word, 13:46.
 - [x] **Close routine run** for the long session of 09-08 to 09-10, at his "yes to alfred-close". Receipt in `evidence/receipts/`.
+- [x] **Career-advisor**: snapshot to warehouse (checked), 62 reasoning files into brand-os, index, banner on iMac START-HERE, handoff restored. His "yes to all" 14:27. Rulings 034 to 036.
+- [ ] **Two real-looking API keys** in two raw session logs in `evidence/sessions/raw-native-lab-2026-09-03-04/`, committed 2026-09-09. Venkat to rotate both; removal from files and history needs his word. Blocks pushing the lab root.
+- [ ] **Private GitHub remote for brand-os** — needs Venkat's GitHub login.
+- [ ] **LinkedIn**: Venkat takes down "70% productivity lift" and "60–70+ accounts" (only he can edit it).
+- [ ] **Ping when the backfill is done** — asked 13:02. Waiting on session my-ai-lab-3e's completion message.
+- [x] **Amplifiers: stop or keep** — asked 13:01 "do we need it really?"; answered no. His word 16:33: "uninstall". It is a claude.ai connector, not a local install; only he can remove it, at claude.ai, Settings, Connectors. Session my-ai-lab-5a stands down.
+- [ ] **Voice profile, the 60 from-the-record answers** — asked 13:03; they exist; his call on rewrite / deepen / leave.
+- [ ] **Rule audit** — four of six areas done; two helpers stopped at the 16:23 restart. Finish next session into `evidence/audits/2026-09-10-rule-audit/`. Receipt R-2026-09-10-1630-6921.
+- [x] **Architecture decision record count** — 14 across five projects, by script. Correcting the model's "21" waits on his yes.
+- [x] **Skills cleanup and Alfred's routines** (asked 12:31): six empty skills and `ai-native-asset-design` archived; `unlazy` installed for Claude Code with its hooks; root lock version 2; `alfred-open` and `alfred-close` built; seed-capture helper scripts. Receipt `evidence/receipts/2026-09-10-1627-skills-unlazy-root-lock-routines-4751.md`.
+- [ ] **Dead-pointer sweep** — 420 live mentions left. Part of the 12:31 ask, not finished.
+- [ ] **Seed-capture integration options** — not written yet. Part of the 12:31 ask.
+- [x] **Web reading for the cloud routines** — his word 16:33: "done".
+- [x] **Whole-market daily briefs, keep one or both** — his word 16:33: "done". Which he kept: Unknown until the next run shows it.
+- [x] **Weekly run volume, 86 runs** — his word 16:33: "all". Kept as is.
+- [x] **Session 52884b30 skipped by capture** — his word 16:33: "leave". Stays unrendered; the raw file expires around 2026-10-08.
+- [ ] **Push telegraph-plus and give the lab root a remote** — his word 16:33: "done". The sensor at 16:33 still shows 10 unpushed on telegraph-plus and no remote on the lab root or brand-os, so it stays open until the sensor agrees.
+- [x] **The inherited estate, plain-page field note** — his word 16:36: "archive it". Preview page kept in the warehouse beside the AS-006 package; brief ruling moved to REJECTED.

@@ -1,0 +1,4 @@
+# dead-pointers: mentions a person has looked at and left on purpose. One per line:
+#   <file relative to lab>            (the whole file)
+#   <file relative to lab> :: <token> | <reason>
+# Counted, not listed. Started 2026-09-10; nothing reviewed yet.

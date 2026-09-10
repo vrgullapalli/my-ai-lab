@@ -1,6 +1,6 @@
 ---
 name: seed-capture
-description: Capture a session's seed-worthy moments as seed files under fixed conventions. Runs at session close only when Venkat asked or a candidate was marked during the session (D-137, 2026-08-21, which amends the 2026-08-14 standing consent that chained a full sweep to every session-receipt). Also use mid-session the moment something seed-worthy appears, or when Venkat says "capture this as a seed", "add this to the greenhouse", or "is this a seed?". Three modes — Scan (propose, write nothing), Capture (write), Missed (log a miss) — also triggered by "scan this for seeds", "what seeds are here", "identify seed candidates", "you missed X". Writes only to /Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/session/, the seeds README count, and /Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/missed.md. Zero seeds is a valid outcome.
+description: Capture a session's seed-worthy moments as seed files under fixed conventions. Runs in Scan mode at every session close, from alfred-close (Venkat, 2026-09-10); writes seeds only on his pick or when a candidate was marked during the session (D-137). Also use mid-session the moment something seed-worthy appears, or when Venkat says "capture this as a seed", "add this to the greenhouse", or "is this a seed?". Three modes — Scan (propose, write nothing), Capture (write), Missed (log a miss) — also triggered by "scan this for seeds", "what seeds are here", "identify seed candidates", "you missed X". Writes only to /Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/session/, the seeds README count, and /Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/missed.md. Zero seeds is a valid outcome.
 ---
 
 # Seed Capture
@@ -34,8 +34,8 @@ Pick the mode from what Venkat said. When in doubt, Scan — it writes nothing.
 
 | Mode | Triggers | What runs | Writes |
 |---|---|---|---|
-| **Scan** | "scan this for seeds" · "what seeds are here" · "identify seed candidates" · "any seeds in this?" · a sweep that turns up more than five survivors | Steps 1–2 only. Return at most five ranked candidates; for each: the claim as a sentence · attribution class · source anchor (path + line, or "not on disk") · tension · which of the four tests pass · what is missing. If more than five passed, say how many. Rank by how many tests pass, then by how clearly the sentence carries the rule. | **Nothing.** Capture happens only on his pick. If the source is not on disk, say so: Scan can propose from a paste; Capture cannot write until the record exists. |
-| **Capture** | `/seed-capture` · session-receipt · "capture this as a seed" · his pick from a Scan ("approve 1, 3, 4", "all eight") | Steps 1–6 (or 3–6 after a Scan). | Seed files, README count, `memory/concepts.md` (step 5). |
+| **Scan** | every close routine (`alfred-close`, 2026-09-10) · "scan this for seeds" · "what seeds are here" · "identify seed candidates" · "any seeds in this?" · a sweep that turns up more than five survivors | Steps 1–2 only. Return at most five ranked candidates; for each: the claim as a sentence · attribution class · source anchor (path + line, or "not on disk") · tension · which of the four tests pass · what is missing. If more than five passed, say how many. Rank by how many tests pass, then by how clearly the sentence carries the rule. | **Nothing.** Capture happens only on his pick. If the source is not on disk, say so: Scan can propose from a paste; Capture cannot write until the record exists. |
+| **Capture** | `/seed-capture` · his pick at the close routine · "capture this as a seed" · his pick from a Scan ("approve 1, 3, 4", "all eight") | Steps 1–6 (or 3–6 after a Scan). | Seed files, README count, `memory/concepts.md` (step 5). |
 | **Missed** | "that should have been a seed" · "you missed X" · "why isn't X a seed?" | One row in `/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/missed.md` (see Rules). No seed is written unless he also says to capture it. | `/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/missed.md`, one row. |
 
 ## Steps
@@ -61,8 +61,8 @@ Pick the mode from what Venkat said. When in doubt, Scan — it writes nothing.
    passed, write nothing until he picks.**
 
 3. **Write one file per seed** in `/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/session/`, using the template below.
-   - **ID:** next number in the existing sequence, zero-padded (check the
-     folder; never reuse or renumber). IDs are immutable — folder and prefix
+   - **ID:** next number in the existing sequence, zero-padded (run
+     `python3 .claude/skills/seed-capture/scripts/next-id.py`; never reuse or renumber). IDs are immutable — folder and prefix
      names are placeholders pending Venkat's naming (loop #43), and a rename
      must never touch an ID.
    - **Attribution class is mandatory**, one of: **his** (verbatim or near) ·
@@ -112,6 +112,15 @@ Pick the mode from what Venkat said. When in doubt, Scan — it writes nothing.
    plus any candidate that failed triage narrowly, named in one line so Venkat
    can overrule.
 
+## Helpers (2026-09-10)
+
+- `scripts/find-similar.py "<the claim>"` — the five seeds whose wording is closest, scored 0 to 1.
+  Word overlap, no model, same answer every time. Finds repeats; misses paraphrases. Its top
+  matches are the first candidates for `Conflicts with:` and `## Connections`.
+- `scripts/next-id.py --check` — the next free `A-LIVE` number, and any number on two seeds.
+- `references/options--2026-09-10.md` — ways to get more out of seed capture, with what each
+  needs from Venkat. Nothing in it is approved yet.
+
 ## Seed file template
 
 ```
@@ -145,8 +154,9 @@ Pick the mode from what Venkat said. When in doubt, Scan — it writes nothing.
   voice transcription, note that his words may be garbled (PROFILE rule) —
   near-verbatim is labeled near-verbatim.
 - No secrets, no restricted client content, no financial figures.
-- **Conflicts are recorded, not resolved.** The duplicate check (grep existing
-  seeds for the claim's key words) is also where a contradiction shows up. When
+- **Conflicts are recorded, not resolved.** The duplicate check (run
+  `python3 .claude/skills/seed-capture/scripts/find-similar.py "<the claim>"`; a score of 0.45 or
+  more is probably a repeat) is also where a contradiction shows up. When
   a candidate disagrees with an existing seed, capture still writes it, with a
   `Conflicts with:` line naming the other seed and what conflicts. The old seed
   is not touched — which one wins is cultivation, for the weekly review.

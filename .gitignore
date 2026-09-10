@@ -27,3 +27,14 @@ node_modules/
 # A seventh repository, inside the projects archive. Same reason as the six above:
 # it keeps its own history. Found when the first commit tried to swallow it.
 work-os/projects/_archive/telegraph-native-lab/
+
+# Local, machine-specific, or short-lived state. Added 2026-09-10.
+# unlazy's Stop hook lives here; it holds this machine's absolute Node path.
+.claude/settings.local.json
+# Alfred's session notes, written by the lab's SessionStart and SessionEnd hooks.
+.claude/agents/alfred/state/
+# unlazy's working ledger and state. The close routine archives a finished ledger
+# next to the session receipt, so the proof is kept even though these are ignored.
+GATES.md
+.unlazy/
+.unlazy-hook-state.json

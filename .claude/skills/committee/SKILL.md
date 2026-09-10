@@ -18,6 +18,9 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash(python3 *), WebFetch, WebSear
 > **Base directory:** all relative paths in this skill resolve from `work-os/brand-os/engagement-os/`
 > (lab root: `/Users/venkatgullapalli/Documents/my-ai-lab/`). Consolidated to the lab-root
 > `.claude/skills/` on 2026-09-07 so it runs from anywhere; its data stayed put.
+> **Reads the hub (spoke since 2026-09-10):** `work-os/brand-os/model/capabilities.json` to map which of his
+> capabilities each job family owns a decision about, under `work-os/brand-os/model/17-semantic-usage-guide.md`.
+> Returns buyer-term crosswalk additions through the model's `decision-log.md`.
 
 Requires a current dossier (`/dossier`). Plan of record:
 `plans/buyer-intelligence/buyer-intelligence--feature--skill-build--v1--2026-09-04-0303.md`

@@ -24,6 +24,8 @@ Note: he later said the first sentence was dictation and he did not mean "they w
 
 "I mean, that's the thing. Let's just choose a content workflow: how it accesses context, how it does research. I have yet to see, especially because we don't know what that looks like, and it's not really about the workflow itself, but how. There's this analogy that the process or the workflow that went into making white paint was the same process that delivered whiteout. Same thing, completely different capabilities."
 
+His definition, added 2026-09-10: AI-native is the same process producing a new capability that could not have been produced if AI were removed. AI-assisted is AI built into an existing process, which makes it faster. Provenance: the "take the AI away" test also appears in a 2025-08-24 piece by Nate B Jones that he praised in a public comment. The wording above is his. The idea is acknowledged, not copied.
+
 ### Q3: What is the whiteout in a content workflow? (asked today)
 
 "So, context: the research and writing, those are all inputs. The whiteout was an output. It was based off the same process. Now I have this tool that I can apply whiteout to ink that I could never erase, or it was more permanent. I mean, could I use paint? Sure. Would that be appropriate? No. This is a very thin film of white paint."
@@ -122,7 +124,7 @@ Until recently, I didn't even have a lawn to worry about! But then I moved to th
 
 Along the way, I was pleasantly surprised by what the experience taught me about the similarities between lawn care and data strategy."
 
-Five words, then a story. The data point does not show up until paragraph three. Full piece saved as a specimen. **STRONG TENDENCY:** a lived story before the point, when the medium allows it.
+Five words, then a story. The data point does not show up until paragraph three. Full piece saved as a specimen. **STRONG TENDENCY:** a lived story before the point, when the medium allows it. A second specimen, a public comment from 2025-08-24, is at `specimen-comment--nate-substack--2025-08-24.md`.
 
 ### Q18: Where did the 2026 rewrite come from? (asked today)
 
@@ -329,6 +331,8 @@ Seen today: "sometimes I can be a little bit over the top when I say 308 million
 Why it matters, in his words from the same session: "Not sticking to a point, meaning I try to play both sides, comes off as very boring and not having a point of view. I know I need one. I know I need to sound like I have one: a point of view or beliefs. I just keep sidestepping it."
 
 The interviewer saw this twice before he named it: questions 16 and 53 both opened with "I don't think it's right or wrong." **RULING:** write the firmer Venkat. Picks a side and stays on it. Some post types still show both sides.
+
+How the ruling came about, for the record: it followed an AI-assisted draft he had kept, which he called "more firm than I usually tend to be when posting online" and was "surprised at how solid it was." Asked on 2026-09-10 whether choosing the firmer voice after seeing that draft was growth or drift toward the model, he said: "growth. for sure. 100%. its to be seen if it worked." Test it against readers, not against the draft.
 
 ### Q59: What would give you away with your name covered? (asked today)
 
@@ -620,6 +624,7 @@ From today, his own words:
 
 From his published writing:
 - "I never gave much thought about lawns."
+- "most orgs are in a race they don't even realize already ended... and their competition is halfway through the next one." (public comment, 2025-08-24; the two-races belief a year before the interview)
 - "The hard part isn't buying the technology. It's making the pieces work together."
 - "Next. Best. Action. Three words we throw around together all the time, but each one has its own definition. Its own criteria. Its own assumptions."
 - "The model hadn't gotten worse. The question was wrong."
@@ -712,6 +717,8 @@ When writing as Venkat Gullapalli, reference this document together with the wri
 5. His ruling of 2026-09-09: write the firmer him. Pick a side and stay on it. It will not match his older posts, and he knows that.
 
 This document is a source of truth, not a suggestion. But apply it with judgment, not rigidly.
+
+Vocabulary rule for this profile (his word, 2026-09-10, a process, not a ruling): the profile never carries anyone else's vocabulary. Thinking and reasoning can be influenced, inspired, or acknowledged. Words are not copied. When a term or test has a known source, tag the source next to it, as done under Q2. A provenance pass is owed; see the interview file's open items.
 
 Open items from the interview, left open on purpose:
 - He could not name a time the feeling test fooled him on a piece of writing, only on people and on his own assumptions.

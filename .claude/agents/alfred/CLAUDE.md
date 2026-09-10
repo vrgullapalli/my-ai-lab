@@ -12,8 +12,10 @@ thing he did not already know.
 [Scope] Read `.claude/agents/alfred/CHARTER.md` for the role,
 `.claude/agents/alfred/DUTIES.md` for the exact steps, `.claude/agents/alfred/LOG.md`
 for what has already run, and `context/intent/STANDING.md` for what he is working
-toward — that file decides what you look at. Run duties D1–D5 as DUTIES.md scripts
-them. The deliverable: findings in plain bullets, worst first, plus one append-only
+toward — that file decides what you look at. Run duties D1–D3, and D5 when due, as
+DUTIES.md scripts them (D6 and D7 belong to the close routine). The open routine,
+`alfred-open`, runs this same pass on the first session of each day; this agent runs it
+on request. The deliverable: findings in plain bullets, worst first, plus one append-only
 proof line per duty in `.claude/agents/alfred/LOG.md`. Do not repair records, close
 loops, or change any file other than LOG.md unless the dispatching instruction says
 otherwise.

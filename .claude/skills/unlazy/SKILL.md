@@ -1,11 +1,23 @@
 ---
 name: unlazy
-description: Enforces completion discipline for substantial autonomous work by writing acceptance gates before execution, decomposing work with the Depth Tree, running approved checks, and re-verifying evidence before reporting. Use when an agent faces a long or multi-part task, work that has returned half-done, an exhaustive audit or build, parallel leaves or pipelines, or explicit triggers such as /unlazy, $unlazy, "tree N", "gates", and "do not stop until it is done".
+description: Enforces completion discipline for substantial work by writing acceptance gates before starting, decomposing big work with the Depth Tree, running approved checks, and re-verifying evidence before reporting done. Use when a task is long or has several parts, when work has come back half-done, for an exhaustive audit or build, for parallel agents, or when Venkat says /unlazy, "tree N", "gates", "do not stop until it is done", "don't do anything half-assed", "be complete and thorough", or "no half measures".
 ---
 
 # Unlazy
 
 Make incomplete work visible and make completion testable. Prove outcomes against a ledger instead of relying on a confident done report.
+
+## In this lab
+
+Added 2026-09-10 when the skill was installed for Claude Code at Venkat's word. Everything after this section is the upstream skill (github.com/Leonxlnx/unlazy, MIT, commit 1667149), with one edit marked below.
+
+- **Where the ledger goes.** Solo work: `GATES.md` at the lab root. Orchestrated work: `.unlazy/<scope>/`. The root lock allows both and git ignores both. They sit at the root because the Stop hook reads the session's working folder, which is the lab root. When every gate is met, the close routine (`alfred-close`) copies the finished ledger next to the session receipt in `evidence/receipts/`, so the proof outlives the session, and moves the root copy to the warehouse.
+- **`<skill-dir>`** below is `.claude/skills/unlazy`, from the lab root.
+- **Node** is installed at `~/.local/node` (version 24 LTS, on the login PATH through `~/.zprofile`). If `node` is not found, use `~/.local/node/bin/node`.
+- **Approvals** live in `~/.unlazy/approved`. The folder must be owner-only (`chmod 700 ~/.unlazy ~/.unlazy/approved`); the checker refuses a folder others can read.
+- **Sandboxed sessions.** Claude Code's Bash sandbox blocks the default temp folder for the checks this checker runs. If checks fail for no visible reason, run the checker with `TMPDIR` set to the session's scratchpad. That is how the upstream test suite passes here (34 of 34 and 51 of 51 on 2026-09-10).
+- **Venkat's rules outrank any gate.** A gate may never require committing, pushing, publishing, sending, or deleting. When an outcome needs his word, make it a manual gate titled `needs Venkat: ...` and hand it off with `ABANDON:` and the reason. Do not work around it, and never count it as met.
+- **Triggers.** This description covers `/unlazy` and the phrases above. A UserPromptSubmit hook (`.claude/hooks/unlazy-trigger.py`) also reminds the session to use this skill when Venkat asks for complete, thorough work in his own words.
 
 ## Write gates before real work
 
@@ -52,7 +64,7 @@ Keep check execution sequential by default. Use `--jobs <N>` only for independen
 
 Use rolling dispatch: when a parent-verified leaf's exact lease has been released and that unblocks another, open and launch the next ready wave without waiting for unrelated in-flight work. Keep every leaf's `Owns`, `Needs`, `Tier`, `Planned wave`, and `State` in the one PLAN dispatch table; keep the tree topology-only. Store actual launch state in `.unlazy/<scope>/dispatch.json` and append events to the scope status log.
 
-Verification runs in four layers: leaf self-check, parent `--reverify`, branch integration, and the optional Stop hook (a structural backstop that does not itself execute checks). Only the parent and branch layers are independent of the leaf. See `references/orchestration.md`.
+Verification runs in four layers: leaf self-check, parent `--reverify`, branch integration, and the Stop hook (a structural backstop that does not itself execute checks). Only the parent and branch layers are independent of the leaf. See `references/orchestration.md`.
 
 ## Work each leaf in four passes
 
@@ -85,15 +97,11 @@ Fix every error it reports. Treat each warning as a prompt to sharpen the gate. 
 
 Re-read the current request, reconcile it against the PLAN inventory when present, and re-measure every number and completion claim immediately before reporting. Use qualified ids such as `leaf-1.2.1:G3`. Report the measured met, unmet, and abandoned counts and surface every abandonment. Do not compose a done report while any required gate is unmet, abandoned, deferred, or awaiting an owner decision.
 
-## Install the optional Claude Code Stop hook carefully
+## The Claude Code Stop hook (lab edit: installed, not offered)
 
-Offer the hook once when structural stop enforcement would materially help. Never install it without the user's consent:
+Installed in this lab on 2026-09-10 at Venkat's word ("install what you need to enable unlazy and have it run"), in `.claude/settings.local.json`. Git ignores that file because it holds this machine's absolute Node path.
 
-```text
-node <skill-dir>/scripts/install-hooks.mjs
-```
-
-The hook returns Claude Code's top-level `decision: "block"` response while this session's resolved pipeline has unmet gates or incomplete dispatch waves, and its progress guard releases after six no-progress blocks so it cannot wedge. Remove it with `--uninstall`.
+The hook returns Claude Code's top-level `decision: "block"` response while this session's resolved pipeline has unmet gates or incomplete dispatch waves, and its progress guard releases after six no-progress blocks so it cannot wedge. With no ledger open it does nothing. Remove it with `node <skill-dir>/scripts/install-hooks.mjs --uninstall`, run from the lab root.
 
 Keep `.claude/settings.local.json`, `.unlazy/`, and `.unlazy-hook-state.json` untracked. A shared install embeds machine-specific absolute paths and is usually not portable; read the local `SECURITY.md` before choosing an install target and for the progress-guard details.
 

@@ -13,11 +13,15 @@ status: active
 what_drives_investigation: context/intent/STANDING.md
 active_duties: .claude/agents/alfred/DUTIES.md
 proof_log: .claude/agents/alfred/LOG.md
+routines: .claude/skills/alfred-open/ (open, first session each day) · .claude/skills/alfred-close/ (close)
+receipts: evidence/receipts/
+facts: .claude/agents/alfred/sensors/facts.py
 what_he_may_do: .claude/agents/alfred/AUTHORITY.md
 history: ~/Documents/_warehouse/agents-from-lab-2026-09-09/_source/  (the 2026-08-24 plans, v1 and v2)
 ```
 
-> **This is the full role. Only duties D1–D5 are active. Nothing else is built.**
+> **This is the full role. Duties D1–D3 and D5–D7 are active (D4 retired into D1). They run
+> inside the open and close routines. Nothing else is built.**
 
 ## Identity
 
@@ -114,8 +118,12 @@ separate approval. A proven upkeep duty never implies the full role is validated
 
 ## What is deliberately not built
 
-Domain caretakers · registries · routing machinery · schemas · monitors · dashboards ·
-new skills or hooks for Alfred's own use. Inclusion in this list is not approval.
+**Built 2026-09-10, at Venkat's word:** the open and close routines (skills `alfred-open` and
+`alfred-close`), the facts script that measures for them (`sensors/facts.py`), and the
+SessionStart and SessionEnd hooks that start them.
+
+**Still not built:** domain caretakers · registries · routing machinery · schemas · monitors ·
+dashboards. Inclusion in this list is not approval.
 
 ## Reading order for a fresh session
 
@@ -124,3 +132,5 @@ new skills or hooks for Alfred's own use. Inclusion in this list is not approval
 3. This charter — the role.
 4. `.claude/agents/alfred/DUTIES.md` — what is active.
 5. `.claude/agents/alfred/LOG.md` — what has actually run.
+6. `.claude/skills/alfred-open/SKILL.md` and `.claude/skills/alfred-close/SKILL.md` — how a
+   day opens and a session closes.

@@ -20,6 +20,7 @@ Built 2026-09-10 at Venkat's word, when daily-brief, session-receipt and daily-r
 were rebuilt as Alfred's open and close routines. Python 3.9, standard library only.
 """
 import datetime as dt
+import glob
 import json
 import os
 import re
@@ -34,6 +35,7 @@ UNRECEIPTED = os.path.join(STATE, "unreceipted")
 LOG = os.path.join(ALFRED, "LOG.md")
 RECEIPTS = os.environ.get("ALFRED_RECEIPTS_DIR") or os.path.join(LAB, "evidence", "receipts")
 SNAPSHOTS = os.path.expanduser("~/Documents/_warehouse/_backups/snapshots")
+OFFSITE = os.path.expanduser("~/Library/CloudStorage/Dropbox-Telisina/Venkat Gullapalli/my-ai-lab-backups")
 TASKS = os.path.join(LAB, "work-os", "scheduled-tasks")
 ENG = os.path.join(LAB, "work-os", "brand-os", "engagement-os")
 SEEDS = os.path.join(ENG, "seedbank")
@@ -41,6 +43,9 @@ ARCHIE_INBOX = os.path.join(ENG, "agents", "archie", "inbox")
 EDITORIAL = os.path.join(ENG, "editorial", "pieces")
 OPEN_ITEMS = os.path.join(LAB, "work-os", "upskill-advisor", "records", "open-items.md")
 STANDING = os.path.join(LAB, "context", "intent", "STANDING.md")
+SESSIONS_DIR = os.environ.get("SESSIONS_DIR") or os.path.join(LAB, "evidence", "sessions")
+CLAUDE_PROJECTS = os.environ.get("CLAUDE_PROJECTS") or os.path.expanduser("~/.claude/projects")
+CODEX_ROOT = os.environ.get("CODEX_ROOT") or os.path.expanduser("~/.codex")
 
 RECEIPT_NAME = re.compile(r"^(\d{4}-\d{2}-\d{2})-(\d{4})-.+\.md$")
 FOLLOWUP_OPEN = re.compile(r"^\s*- \[ \] (F-\d{8}-\d{4}-\d+)\b[:\s—-]*(.*)$")
@@ -173,6 +178,79 @@ def first_session_today():
                    for ts, duty, _ in log_lines())
 
 
+def capture_lines():
+    """Session capture, measured (duty three). Added 2026-09-10 when capture was brought back:
+    when the sync last ran, whether the launchd job is loaded, whether its last run failed, and
+    how many raw sessions on this machine have no render or a stale one."""
+    out = []
+    logp = os.path.join(SESSIONS_DIR, "SYNC-LOG.md")
+    rows = [l for l in read(logp).split("\n") if l.startswith("| 20")]
+    if rows:
+        last = rows[-1].split("|")
+        when = dt.datetime.strptime(last[1].strip(), "%Y-%m-%d %H:%M")
+        hours = int((now() - when).total_seconds() // 3600)
+        out.append(f"{'ALERT ' if hours > 24 else ''}session capture: last run {hours} hours ago "
+                   f"({last[2].strip()}: {last[3].strip()} rendered, {last[4].strip()} refreshed, {last[6].strip()} skipped)")
+    else:
+        out.append("ALERT session capture: no run logged in evidence/sessions/SYNC-LOG.md")
+    try:
+        r = subprocess.run(["launchctl", "list", "com.venkat.session-sync"], capture_output=True, text=True, timeout=5)
+        loaded = r.returncode == 0
+    except Exception:
+        loaded = False
+    err = read("/tmp/session-sync.err").strip()
+    if not loaded:
+        out.append("ALERT session capture launchd job: not loaded (com.venkat.session-sync)")
+    elif err:
+        out.append(f"ALERT session capture launchd job: loaded, last run failed: {err.splitlines()[-1][-120:]}")
+    else:
+        out.append("session capture launchd job: loaded")
+    stale = 0
+    for proj in sorted(glob.glob(os.path.join(CLAUDE_PROJECTS, "*"))):
+        for src in glob.glob(os.path.join(proj, "*.jsonl")):
+            dest = os.path.join(SESSIONS_DIR, "claude", os.path.basename(src)[:-6] + ".md")
+            if not os.path.isfile(dest):
+                stale += age_days(os.path.getmtime(src)) >= 1
+            elif os.path.getmtime(dest) < os.path.getmtime(src) - 3600 and age_days(os.path.getmtime(src)) >= 1:
+                stale += 1
+    for src in glob.glob(os.path.join(CODEX_ROOT, "sessions", "**", "*.jsonl"), recursive=True):
+        dest = os.path.join(SESSIONS_DIR, "codex", os.path.basename(src)[:-6] + ".md")
+        if not os.path.isfile(dest) and age_days(os.path.getmtime(src)) >= 1:
+            stale += 1
+    out.append(f"{'ALERT ' if stale else ''}sessions older than a day with no transcript in the lab: {stale}")
+    return out
+
+
+def skill_check_line():
+    """One line from skill-check.py, the strict path and skill-name check for every skill and
+    agent file (2026-09-10). Its number, not Alfred's."""
+    script = os.path.join(LAB, ".claude", "skills", "context-check", "skill-check.py")
+    if not os.path.isfile(script):
+        return "ALERT skill check: script missing (.claude/skills/context-check/skill-check.py)"
+    try:
+        r = subprocess.run([sys.executable, script, "--summary"], capture_output=True, text=True, timeout=60)
+        return r.stdout.strip() or "ALERT skill check: no output"
+    except Exception as exc:
+        return f"ALERT skill check: could not run ({type(exc).__name__})"
+
+
+def waiting_line():
+    """The count of things waiting on Venkat's word and the oldest one, from waiting.py
+    (added to the morning brief at his word, 2026-09-10 16:42)."""
+    script = os.path.join(ALFRED, "sensors", "waiting.py")
+    if not os.path.isfile(script):
+        return "ALERT waiting on Venkat: waiting.py missing"
+    try:
+        out = subprocess.run([sys.executable, script], capture_output=True, text=True, timeout=120,
+                             env=dict(os.environ, WAITING_FROM_FACTS="1")).stdout
+    except Exception as exc:
+        return f"ALERT waiting on Venkat: could not run ({type(exc).__name__})"
+    lines = [l for l in out.split("\n") if l.strip()]
+    m = re.search(r"— (\d+) items", lines[0]) if lines else None
+    first = next((l.strip()[2:] for l in lines[1:] if l.startswith("- ")), "")
+    return f"waiting on Venkat: {m.group(1) if m else '?'} items; oldest: {first[:120]}"
+
+
 def open_sheet():
     t = now()
     today = t.strftime("%Y-%m-%d")
@@ -223,6 +301,14 @@ def open_sheet():
         out.append(f"{'ALERT ' if age > 3 else ''}last snapshot: {os.path.basename(snaps[-1])} ({age} days old)")
     else:
         out.append("ALERT last snapshot: none found")
+    # standing intent 2: the work survives losing a machine. A copy on this laptop does not count.
+    off = sorted([os.path.join(OFFSITE, f) for f in os.listdir(OFFSITE) if f.endswith(".tar.gz")],
+                 key=os.path.getmtime) if os.path.isdir(OFFSITE) else []
+    if off:
+        age = age_days(os.path.getmtime(off[-1]))
+        out.append(f"{'ALERT ' if age > 7 else ''}last off-machine copy (Dropbox): {os.path.basename(off[-1])} ({age} days old)")
+    else:
+        out.append("ALERT last off-machine copy: none found in Dropbox")
 
     lines = log_lines()
     if lines:
@@ -245,7 +331,8 @@ def open_sheet():
                    f"{age_days(os.path.getmtime(OPEN_ITEMS))} days ago)")
 
     if os.path.isdir(ARCHIE_INBOX):
-        items = [os.path.join(ARCHIE_INBOX, f) for f in os.listdir(ARCHIE_INBOX) if not f.startswith(".")]
+        items = [os.path.join(ARCHIE_INBOX, f) for f in os.listdir(ARCHIE_INBOX)
+                 if not f.startswith(".") and f.lower() != "readme.md"]
         if items:
             oldest = min(items, key=os.path.getmtime)
             out.append(f"ARCHIE inbox: {len(items)} waiting, oldest {age_days(os.path.getmtime(oldest))} days"
@@ -271,6 +358,10 @@ def open_sheet():
 
     if os.path.isfile(os.path.join(LAB, "GATES.md")) or os.path.isdir(os.path.join(LAB, ".unlazy")):
         out.append("unlazy: a gates ledger is open at the lab root (GATES.md or .unlazy/)")
+
+    out.extend(capture_lines())
+    out.append(skill_check_line())
+    out.append(waiting_line())
 
     if lines and os.path.isfile(STANDING):
         opens = [ts for ts, duty, _ in lines if duty == "OPEN"]

@@ -67,7 +67,12 @@ let payload = {};
 try { payload = JSON.parse(readFileSync(0, "utf8") || "{}"); }
 catch { allow(null); }
 
-const root = resolve(typeof payload.cwd === "string" && payload.cwd ? payload.cwd : process.cwd());
+// Lab edit (2026-09-10): read the ledger from the project root Claude Code names, not the
+// shell's current folder. A `cd` into a subfolder with its own gates/ directory (Telegraph's
+// release gates) made the hook parse those as ledgers and block the stop.
+const projectDir = process.env.CLAUDE_PROJECT_DIR;
+const root = resolve(projectDir ? projectDir
+  : typeof payload.cwd === "string" && payload.cwd ? payload.cwd : process.cwd());
 const sessionId = payload.session_id || payload.sessionId || "anonymous";
 const target = resolveTarget({ root, scope: scopeArg, sessionId });
 

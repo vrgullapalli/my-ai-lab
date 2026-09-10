@@ -45,3 +45,28 @@ WHAT CHANGES FROM THE LIVE JOB
 
 8. When both files are written, reply with only: the two output paths, the word count of
    each, how many sources each cites, and any source you could not open. Nothing else.
+
+ORDER OF RUNS (Venkat, 2026-09-10, 13:35)
+
+For each week, the Wednesday check runs first as its own run. The Friday synthesis for that
+week is a separate run, and it starts only after the Wednesday file is written and passes the
+file check. A Friday writer reads that Wednesday file as this week's midweek check, then
+gathers the rest of the week's evidence itself.
+
+PAGE TEXT VENKAT SUPPLIED (added 2026-09-10, 14:19)
+
+Some pages cannot be opened from this machine. When Venkat pastes one, its text is saved in
+<root>/_sources/. Before you search, read every file there. Use a page only if its date is on
+or before your brief date: inside your window it can be a signal, before it only labeled
+background. Treat the text as read at the source and cite the page's original link.
+
+WHEN WEB SEARCH RUNS OUT (added 2026-09-10, 15:46)
+
+The WebSearch tool has a limit of 200 searches that all writers share, and it has been reached.
+If WebSearch says the limit is reached, or fails, do not stop and do not write a thin brief.
+Switch to these two tools. Load them with ToolSearch first:
+- mcp__MCP_DOCKER__tavily_search. Set start_date to the start of your evidence window and
+  end_date to your brief date, so later news stays out.
+- mcp__MCP_DOCKER__web_search_exa. It returns each page's text and its published date. Use it
+  to confirm dates and to read pages that WebFetch cannot open.
+Both were tested on 2026-09-10 and work. The hindsight rule still applies to everything they return.

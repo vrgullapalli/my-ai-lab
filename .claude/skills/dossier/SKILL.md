@@ -17,6 +17,9 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash(python3 *), Bash(curl -s http
 > **Base directory:** all relative paths in this skill resolve from `work-os/brand-os/engagement-os/`
 > (lab root: `/Users/venkatgullapalli/Documents/my-ai-lab/`). Consolidated to the lab-root
 > `.claude/skills/` on 2026-09-07 so it runs from anywhere; its data stayed put.
+> **Reads the hub (spoke since 2026-09-10):** `work-os/brand-os/model/capabilities.json` to match a company's
+> postings against his 92 capabilities, under the rules in `work-os/brand-os/model/17-semantic-usage-guide.md`.
+> Returns new market terms through the model's `decision-log.md`, never by editing the model.
 
 Wraps `WORKFLOW.md` Stages 1–3. Plan of record:
 `plans/buyer-intelligence/buyer-intelligence--feature--skill-build--v1--2026-09-04-0303.md`
@@ -30,7 +33,7 @@ Wraps `WORKFLOW.md` Stages 1–3. Plan of record:
 - **The examination points outward** (Stage 5): at a vendor's claims, a third
   party's work, an inherited decision. Never at the recipient's own competence.
 - **Firewall first.** Check `profile/past-engagements.md` and the exclude set in
-  `index/companies.json` (`tier: excluded`). Relevate Health is excluded by
+  `targets/index/companies.json` (`tier: excluded`). Relevate Health is excluded by
   ruling (2026-08-26). A firewalled company gets a folder only to hold the
   refusal record, never outreach.
 - **LinkedIn is never scraped.** People enter through public pages, press, and
@@ -46,7 +49,7 @@ Wraps `WORKFLOW.md` Stages 1–3. Plan of record:
 
 0. **Load state.** `docs/state.md`, `targets/collectors.json`, any existing
    `targets/<slug>/dossier-*.md`, `targets/snapshots/<slug>/`, and the
-   company's row in `index/companies.json`. Derive the slug per the slug rule;
+   company's row in `targets/index/companies.json`. Derive the slug per the slug rule;
    if empty, stop and ask.
 1. **Board.** Run `/scan <company>` (target-scan) or fetch the registered ATS
    endpoint. Read every open role as one document: clusters, sequential

@@ -13,6 +13,11 @@ metadata:
 > (lab root: `/Users/venkatgullapalli/Documents/my-ai-lab/`). Consolidated to the lab-root
 > `.claude/skills/` on 2026-09-07 so it runs from anywhere; its data stayed put.
 
+> **Known gap, 2026-09-10 (skills audit):** the script this skill runs, `telegraph/evals/prove_checks.py`,
+> lives in the superseded Telegraph repo inside `work-os/upskill-advisor/`. The current line,
+> `work-os/projects/telegraph-plus/`, has no equivalent yet. The method holds; the script needs
+> moving or rewriting when telegraph-plus gets its own checks. Nothing here points at telegraph-plus.
+
 A check nobody has broken guards nothing. Passing is not evidence; failing on
 demand is.
 

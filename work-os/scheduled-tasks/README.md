@@ -93,6 +93,10 @@ read artifacts. Nothing on the laptop runs on its own.
   claude-sonnet-5. Venkat said "that's fine" on 2026-09-08. One line in `assemble.sh` changes it.
 - **Market Signal Brief is Monday to Friday.** Accepted by Venkat on 2026-09-08. Seven days
   would be cron `0 12 * * *`.
+- **Both whole-market daily briefs stay, for now.** The 9:00 AM "All Market Signals" task and
+  the midnight "Signals: All Market, Daily" routine cover the same ground, and both push.
+  Venkat ruled on 2026-09-10: keep both, and look in the week of 2026-09-14 at what repeats
+  between them before retiring either one.
 - **Cron is universal time.** Chicago is UTC-5 until early November, then UTC-6. Every task
   will fire one hour earlier on the clock after the change unless the crons move by one hour.
 - **Context lives in the prompt, not in a repo.** The lab has no git remote.

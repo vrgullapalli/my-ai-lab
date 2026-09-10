@@ -1,0 +1,56 @@
+# skill-check: findings a person has looked at and left on purpose. One per line:
+#   <file relative to lab> :: <token> | <reason>
+#   <file relative to lab> :: * | <reason>        (the whole file)
+# Anything here is counted in the summary, not listed. A new finding always shows up.
+# Started 2026-09-10 by Alfred, at Venkat's word ("dead pointers - ok fix it").
+
+# Vendored packages: their SKILL.md is upstream text and names other agents' folders.
+.claude/skills/book-to-skill/SKILL.md :: * | upstream package (virgiliojr94/book-to-skill); its paths are for other hosts and for files it generates
+.claude/skills/unlazy/SKILL.md :: * | upstream package (Leonxlnx/unlazy); GATES.md and .unlazy/ exist only while a ledger is open
+
+# Dated records: history is supposed to name things that no longer exist.
+.claude/agents/alfred/LOG.md :: * | append-only log; old lines name retired chief-of-staff paths on purpose
+
+# Folders and files that exist only at runtime.
+.claude/skills/alfred-close/SKILL.md :: .claude/agents/alfred/state/unreceipted/ | written by the SessionEnd hook when a session ends without a receipt; git ignores it
+.claude/skills/alfred-open/SKILL.md :: .claude/agents/alfred/state/unreceipted/ | same
+.claude/skills/alfred-open/SKILL.md :: .claude/agents/alfred/state/unreceipted/done/ | same, made by the open routine
+.claude/skills/alfred-close/SKILL.md :: ~/Documents/_warehouse/unlazy-ledgers/ | made the first time a finished gates ledger is archived
+.claude/skills/target-scan/SKILL.md :: board-raw.json | written per snapshot at scan time
+.claude/skills/target-scan/SKILL.md :: meta.json | written per snapshot at scan time
+.claude/skills/target-scan/SKILL.md :: url-reference.md | part of the collector contract; no collector is built yet (the skill says so)
+
+# Named as not written yet, on purpose. CLAUDE.md says the three context files are not written.
+.claude/skills/alfred-close/SKILL.md :: context/how-i-work.md | the ruled file; not written yet, and the skill says never to write it
+.claude/agents/alfred/DUTIES.md :: context/how-i-work.md | same
+.claude/agents/alfred/TODAY.md :: context/who-i-am.md | not written yet; on today's list
+.claude/agents/alfred/TODAY.md :: how-i-talk.md | same
+.claude/agents/alfred/TODAY.md :: how-i-work.md | same
+
+# History explained inside a live file (why a rule exists), not a live pointer.
+.claude/agents/alfred/DUTIES.md :: portfolio/NOW.md | "Why version 2" explains what the retired duties read
+.claude/agents/alfred/DUTIES.md :: portfolio/open-loops.md | same
+.claude/agents/alfred/DUTIES.md :: traces/receipts/ | same
+.claude/agents/alfred/DUTIES.md :: chief-of-staff/ | same
+.claude/skills/seed-capture/SKILL.md :: chief-of-staff/.claude/skills/ | the canonical-copy banner says where the old duplicate was
+.claude/skills/seed-capture/SKILL.md :: chief-of-staff/ | same
+.claude/skills/session-capture/SKILL.md :: chief-of-staff/tools/codex-session-sync.py | says where the script was re-homed from
+.claude/agents/alfred/CHARTER.md :: .claude/agents/reviewer- | a name prefix for the five reviewer agents, not a path
+
+# A skill saying which retired skill it replaced. That is the banner's job.
+.claude/skills/alfred-close/SKILL.md :: daily-review | the banner says what alfred-close replaced on 2026-09-10
+.claude/skills/alfred-open/SKILL.md :: daily-brief | the banner says what alfred-open replaced on 2026-09-10
+.claude/skills/prove-it-can-fail/SKILL.md :: data/telegraph.sqlite | the superseded Telegraph repo's database; kept out of git, exists only where that repo ran
+
+# Left LIVE on purpose (not accepted), so the morning sheet keeps showing them until Venkat rules:
+#   public-asset-experience-design -> public-asset-development   (the publishing chain's build stage was never written)
+#   seed-capture -> references/options--2026-09-10.md   (named by another session before the file was written)
+
+# The two callers of ai-native-asset-design were edited 2026-09-10 (Venkat: "edit the two callers").
+# Both now say the skill was retired and why; the name stays only as history.
+.claude/skills/public-value-opportunity/SKILL.md :: ai-native-asset-design | text already says "retired 2026-09-10 at Venkat's word"; the name is history, not a call
+.claude/agents/public-value-advisor.md :: ai-native-asset-design | same; the agent says the decision now lives inside public-value-opportunity steps 5 and 6
+
+# 2026-09-10 16:47, after the AS-006 and AS-002 packages were archived at Venkat's word.
+.claude/skills/public-asset-development/SKILL.md :: release.yaml | the manifest the build writes; no release package exists in the lab right now, so the bare name has nowhere to resolve
+.claude/agents/alfred/TODAY.md :: ai-native-asset-design | today's list names the archived skill as history (another session's line)

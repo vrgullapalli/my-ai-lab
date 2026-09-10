@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Session sync launch agent, re-homed 2026-09-10 (Venkat: "yes, load launchd job").
+     Runs .claude/agents/alfred/sensors/session-sync.py at 09:00, 13:00 and 18:00 local, so Codex
+     sessions, sessions still open, and anything the SessionEnd hook missed get rendered into
+     evidence/sessions/. No network, no secrets, never commits.
+     To load:   cp .claude/agents/alfred/sensors/com.venkat.session-sync.plist ~/Library/LaunchAgents/
+                launchctl load ~/Library/LaunchAgents/com.venkat.session-sync.plist
+     To unload: launchctl unload ~/Library/LaunchAgents/com.venkat.session-sync.plist
+     To run now: launchctl start com.venkat.session-sync
+     WHY THE PROGRAM IS Python.app's executable, not /usr/bin/python3 (2026-08-20 18:00 failure):
+     the lab lives under ~/Documents, which macOS protects per program. launchd is judged by the
+     first program it launches; /usr/bin/python3 is a shim that cannot hold a grant. Venkat granted
+     Full Disk Access to Python.app on 2026-08-20. If Command Line Tools update and this path moves,
+     the job fails with "Operation not permitted" in /tmp/session-sync.err: fix the path, reload. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.venkat.session-sync</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python</string>
+    <string>/Users/venkatgullapalli/Documents/my-ai-lab/.claude/agents/alfred/sensors/session-sync.py</string>
+    <string>--tag</string>
+    <string>launchd</string>
+  </array>
+  <key>WorkingDirectory</key><string>/Users/venkatgullapalli/Documents/my-ai-lab</string>
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>13</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>18</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
+  <key>StandardOutPath</key><string>/tmp/session-sync.out</string>
+  <key>StandardErrorPath</key><string>/tmp/session-sync.err</string>
+  <key>RunAtLoad</key><false/>
+</dict>
+</plist>

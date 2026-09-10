@@ -29,3 +29,18 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-10 13:49 | D6 | ran | 7 follow-ups opened, 0 closed; commits 54224b2 and 99fdca2 not pushed | evidence/receipts/2026-09-10-1349-scheduled-routines-seedbank-and-backups-f358.md
 2026-09-10 13:49 | D7 | ran | 2 observation lines appended | docs/about-me/how-i-work--observed.md
 2026-09-10 13:49 | CLOSE | ran | 2026-09-10-1349-scheduled-routines-seedbank-and-backups-f358 | facts.py close (no session-start note, so unmeasured)
+2026-09-10 14:40 | D6 | ran | career-advisor snapshot+drop+banner+handoff; rulings 034-036; 2 keys found in raw session logs, not moved | work-os/brand-os/DECISIONS.md
+2026-09-10 14:38 | D2 | ran | removed client-meeting RESULTS file from brand-os drop (warehouse copy identical, never committed); ruling 037 | work-os/brand-os/DECISIONS.md
+2026-09-10 15:34 | D6 | ran | 5 follow-ups opened (backfill ping, Amplifiers, push, voice-profile format, skipped session); 0 closed | evidence/receipts/2026-09-10-1533-agents-rebuilt-commits-and-backup-7697.md
+2026-09-10 15:34 | D7 | ran | 2 observation lines appended | docs/about-me/how-i-work--observed.md
+2026-09-10 15:34 | CLOSE | ran | 2026-09-10-1533-agents-rebuilt-commits-and-backup-7697.md | facts.py close
+2026-09-10 15:38 | D6 | ran | orphaned unlazy ledger moved to warehouse at his word (move it); stop hook unblocked | /Users/venkatgullapalli/Documents/_warehouse/unlazy-ledgers/GATES--lab-wide-rule-audit--session-36f242f2--orphaned-2026-09-10.md
+2026-09-10 16:26 | D2 | ran | removed a stray GATES.md I recreated by appending after another session had moved the audit ledger to the warehouse (_warehouse/unlazy-ledgers/...orphaned-2026-09-10.md); stray held only 3 ABANDON lines, nothing to archive | this line
+2026-09-10 16:32 | D6 | ran | commissions: 9 follow-ups opened (F-20260910-1630-1..9), 0 closed; rule audit handed off | evidence/receipts/2026-09-10-1630-archie-career-model-rule-audit-6921.md
+2026-09-10 16:32 | D7 | ran | 6 observation lines appended | docs/about-me/how-i-work--observed.md
+2026-09-10 16:32 | CLOSE | ran | 2026-09-10-1630-archie-career-model-rule-audit-6921.md | facts.py close
+2026-09-10 16:27 | D6 | ran | 12:31 commission: 6 parts done, 2 open (pointers, seed options); 6 follow-ups | evidence/receipts/2026-09-10-1627-skills-unlazy-root-lock-routines-4751.md
+2026-09-10 16:27 | D7 | ran | 3 observation lines appended | docs/about-me/how-i-work--observed.md
+2026-09-10 16:27 | CLOSE | ran | 2026-09-10-1627-skills-unlazy-root-lock-routines-4751.md | facts.py close
+2026-09-10 16:33 | D6 | ran | 6 rulings logged; 5 follow-ups closed by his word, 1 kept open by sensor; 2 new | evidence/receipts/2026-09-10-1633-rulings-on-the-waiting-list-17de.md
+2026-09-10 16:36 | D6 | ran | field note archived at his word; AS-006 brief APPROVED->REJECTED, page kept in warehouse | work-os/brand-os/engagement-os/assets/briefs/AS-006--brief--2026-08-30.md

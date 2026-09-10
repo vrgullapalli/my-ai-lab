@@ -42,7 +42,7 @@ Processing incoming topics to generate researched, receipted, brand-aligned cont
 ## Key Locations
 
 Data lives in the lab domain that owns it, never inside this agent folder.
-Base: `work-os/brand-os/engagement-os/agents/archie/`
+Base directory: `work-os/brand-os/engagement-os/agents/archie/` · `work-os/brand-os/engagement-os/` · `work-os/brand-os/`
 
 - `inbox/`: topics to process
 - `outputs/`: generated idea files, one per run

@@ -21,7 +21,7 @@ publishes, posts, sends, or contacts anyone.
 
 **Purpose.** Design the minimum complete experience that delivers the
 approved asset's promised value, protects the person's attention, makes
-the judgment understandable, and hands `public-asset-development` an
+the judgment understandable, and hands `public-asset-development` (the build stage, written 2026-09-10) an
 implementable spec. Design the experience around the value the person
 should receive, never around the interface we can build. Optimize for
 what the person needs to understand, receive, or be able to do — never
