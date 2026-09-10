@@ -25,3 +25,7 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-10 12:55 | D7 | ran | observed file created, 14 lines seeded | context/how-i-work--observed.md
 2026-09-10 12:58 | D7 | ran | observed file moved to docs/about-me, marked draft | docs/about-me/how-i-work--observed.md
 2026-09-10 13:02 | D6 | ran | commits at his word: engagement-os (cultivator pass), brand-os, lab root; secret scans clean | git log -1 in each
+2026-09-10 13:12 | D6 | ran | hub: generator, 5 wires, sensor built; ruling 033 | work-os/brand-os/model/SPOKES.md
+2026-09-10 13:49 | D6 | ran | 7 follow-ups opened, 0 closed; commits 54224b2 and 99fdca2 not pushed | evidence/receipts/2026-09-10-1349-scheduled-routines-seedbank-and-backups-f358.md
+2026-09-10 13:49 | D7 | ran | 2 observation lines appended | docs/about-me/how-i-work--observed.md
+2026-09-10 13:49 | CLOSE | ran | 2026-09-10-1349-scheduled-routines-seedbank-and-backups-f358 | facts.py close (no session-start note, so unmeasured)
