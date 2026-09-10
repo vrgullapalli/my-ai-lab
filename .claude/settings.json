@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/venkatgullapalli/Documents/my-ai-lab/.claude/hooks/root-lock.sh",
+            "timeout": 10,
+            "statusMessage": "Checking the lab root is not being written to"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -31,7 +31,7 @@ Requires a current dossier (`/dossier`). Plan of record:
    customer data / CRM / identity, analytics, AI / digital, medical, market
    access, IT / data engineering, finance-of-AI), counted with the board size
    as denominator. Reuse the job-family classifier that the weekly instrument
-   already carries (`brand-identity/audience/weekly/annotate.py`, read-only).
+   already carries (`work-os/brand-os/audience/weekly/annotate.py`, read-only).
    **Four or more families touching the same capability = ownership-dispersion
    candidate** (DECISIONS #012 rule), flagged, never asserted as fact.
 2. **Reporting lines as stated.** Only what postings say ("reports to the VP,
@@ -41,7 +41,7 @@ Requires a current dossier (`/dossier`). Plan of record:
    data model, the AI roadmap, measurement, vendor selection. Gaps are
    recorded as gaps ("no posting names an owner for X"), never filled.
 4. **Their vocabulary.** Verbatim phrases from this company's postings and
-   press, mapped to `brand-identity/audience/buyer-terms-2026-08/keyword-bank.jsonl`
+   press, mapped to `work-os/brand-os/audience/buyer-terms-2026-08/keyword-bank.jsonl`
    and the metadata ten. His coined terms are never attributed to them.
 5. **Trigger signals with windows,** from the dossier's signal records: new
    leader, deal clock, reposted seat, sequential requisition block, launch.

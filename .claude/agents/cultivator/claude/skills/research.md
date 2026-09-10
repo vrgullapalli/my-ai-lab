@@ -3,15 +3,14 @@
 He says: research this · run ARCHIE on it · what did ARCHIE find · fold in ARCHIE's run.
 
 ARCHIE is the lab's researcher. It hunts outside, challenges, and frames. It lives at
-`work-os/brand-os/engagement-os/agents/archie/` and runs through the `/archie` skill.
+`work-os/brand-os/engagement-os/agents/archie/` (data) and `.claude/agents/archie/` (the agent). `/archie` launches it.
 The cultivator does not hunt. It owns both ends of the hand-off.
 
 ## The one hard limit
 
-ARCHIE fans out seven research subagents in parallel. Its own file says: "fan-out runs in
-the MAIN session (subagents cannot nest)." The cultivator is a subagent. **It cannot run
-ARCHIE.** It hands the topic over, and Venkat or Alfred runs `/archie` from the main
-session. Never pretend otherwise. Never report an ARCHIE run as done unless its output
+ARCHIE is an agent. So is the cultivator, and an agent cannot launch another agent.
+**It cannot run ARCHIE.** It hands the topic over, and Venkat or Alfred runs `/archie` from
+the main session. Never pretend otherwise. Never report an ARCHIE run as done unless its output
 file exists on disk.
 
 ## Direction 1 — cultivator to ARCHIE

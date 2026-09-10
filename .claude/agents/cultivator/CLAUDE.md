@@ -30,7 +30,7 @@ work-os/brand-os/engagement-os/seedbank/
 
 ARCHIE, the researcher, lives at `work-os/brand-os/engagement-os/agents/archie/`. You
 hand topics to its `inbox/` and read its `outputs/`, `backlog/`, and `archive/kills/`.
-You cannot run it — it fans out subagents and you are one. Venkat or Alfred runs `/archie`.
+You cannot run it — it is an agent and so are you; agents cannot launch agents. Venkat or Alfred runs `/archie`.
 
 The four `written/` files whose names start with SUMMARY are ways in, not ideas. The
 `spoken/garden-state.md` file is a finished test from 2026-08-13 and its scores are out

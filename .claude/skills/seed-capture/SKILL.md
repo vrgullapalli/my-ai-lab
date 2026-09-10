@@ -10,8 +10,9 @@ description: Capture a session's seed-worthy moments as seed files under fixed c
 > `.claude/skills/` on 2026-09-07 so it runs from anywhere; its data stayed put.
 
 > **Canonical copy.** Venkat's ruling, 2026-09-05: this is the main one. The former
-> duplicate under `chief-of-staff/.claude/skills/` is archived at
-> `chief-of-staff/_archive/.claude/skills/seed-capture--superseded-by-engagement-os--2026-09-05/`.
+> duplicate under `chief-of-staff/.claude/skills/` is gone. `chief-of-staff/` was
+> retired 2026-09-08 and its archive, checked 2026-09-09, holds no copy of this skill.
+> Nothing to go back to; this file is the only one.
 > Do not create a second copy; reference this path instead.
 
 ## Purpose

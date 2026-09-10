@@ -4,8 +4,9 @@
 # READ-ONLY. This script writes nothing, moves nothing, deletes nothing.
 # It only looks and reports. Run it any time, before or after any change.
 #
-# Usage:  ./_audit/context-check.sh            full report to screen
-#         ./_audit/context-check.sh > out.txt  save it yourself
+# Usage:  .claude/skills/context-check/context-check.sh            full report to screen
+#         .claude/skills/context-check/context-check.sh > out.txt  save it yourself
+#         or just:  /context-check
 #
 # Why it exists: five reorganization plans were written between 2026-09-04 and
 # 2026-09-07 and none were executed. A plan can claim it is done. This cannot.
@@ -32,7 +33,7 @@ rule "A. Can this be undone?"
 echo "git:     $(git --version 2>&1 | head -1)"
 echo "python3: $(python3 --version 2>&1 | head -1)"
 echo
-snap=$(ls -1t _backups/snapshots/*.tar.gz 2>/dev/null | head -1)
+snap=$(ls -1t /Users/venkatgullapalli/Documents/_warehouse/_backups/snapshots/*.tar.gz 2>/dev/null | head -1)
 if [ -n "$snap" ]; then
   echo "Last full snapshot: $(basename "$snap")  ($(( ( $(date +%s) - $(stat -f %m "$snap") ) / 86400 )) days old)"
 else
@@ -49,7 +50,7 @@ while IFS= read -r g; do
 done < <(find . -maxdepth 5 -name ".git" -type d 2>/dev/null | grep -vE '/_backups/|/\.tmp/' | sort)
 echo
 echo "Folders with no repo and no protection but git:"
-for d in chief-of-staff evidence _audit work-os/scheduled-tasks work-os/upskill-advisor; do
+for d in evidence context work-os/scheduled-tasks work-os/upskill-advisor; do
   [ -d "$d" ] && [ ! -d "$d/.git" ] && echo "  $d  ($(find "$d" -type f 2>/dev/null | wc -l | tr -d ' ') files)"
 done
 

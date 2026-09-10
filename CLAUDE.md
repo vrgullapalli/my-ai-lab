@@ -12,13 +12,15 @@ Always Use plain terms and everyday adjectives. Write at a 10th-grade level. Mak
 
 ## The three safety minimums (Venkat's word, 2026-08-26 — still in force)
 
-1. **No deletes — archive only.** Anything removed moves to an `_archive/`, and if there
-   is nothing to archive, the removal is recorded in writing.
+1. **No deletes — archive only.** Anything removed moves to `~/Documents/_warehouse/`,
+   never to an `_archive/` inside the lab. If there is nothing to archive, the removal is
+   recorded in writing. (Amended 2026-09-09: the lab's `_archive/` and `_backups/` moved
+   to the warehouse, and this rule kept recreating them.)
 2. **Nothing external without Venkat's approval.** No publishing, sending, pushing, or
    committing on his behalf.
 3. **No secrets** in any repo, log, receipt, or generated view.
 
-Underneath everything: his five roots in `chief-of-staff/ROOT.md` — Lived Ground,
+Underneath everything: his five roots in `ROOT.md` — Lived Ground,
 Earned Trust, No Bullshit Passes, The Real Problem, The Outside Gate. Apply them without
 announcing them.
 
@@ -80,14 +82,14 @@ reverting to a checklist.
 | `context/` | Who he is, how he sounds, how he wants work done. Loaded every session. Four files: `who-i-am.md`, `how-i-talk.md`, `how-i-work.md`, `CLAUDE.md` |
 | `.claude/` | Every skill and agent, once, for the whole lab. Alfred lives at `.claude/agents/alfred/` |
 | `work-os/brand-os/` | Personal brand: voice, positioning, ICP/audience, writing style, quote bank. The identity authority |
-| `work-os/brand-os/engagement-os/` | Publishing system. ARCHIE (editorial researcher) + 15 skills, seedbank, writing guide, workflows |
+| `work-os/brand-os/engagement-os/` | Publishing system. ARCHIE's data (the agent itself is at `.claude/agents/archie/`) + 15 skills, seedbank, writing guide, workflows |
 | `work-os/brand-os/gullapalli-site/` | The public site (only repo with a live GitHub remote) |
 | `work-os/projects/telegraph-plus/` | **Telegraph — the current line** (Venkat, 2026-09-07). Two superseded predecessors are retained for learning, not use — see its `STATUS.md` |
 | `work-os/upskill-advisor/` | Telegraph private instruction package: spec, gates, governance, records, research. The `telegraph/` repo inside it is **superseded** |
 | `work-os/projects/` | also `worthy-tool-v2`, `decision-foundry` |
 | `work-os/scheduled-tasks/` | All 28 cloud routines: prompts, ids, schedules, run records. Seven original tasks, one subfolder each. Plus `market-signals/`, the 21 signal routines (7 subjects × daily, Wednesday, Friday) with its own README and `verify.sh` |
 | `evidence/sessions/` | 227 rendered session transcripts (155 Claude, 72 Codex) |
-| `_archive/`, `_backups/` | Working checkpoints from the current session only. The older ones left — see below |
+| *(no `_archive/` or `_backups/` in the lab)* | Both live in `~/Documents/_warehouse/`. Do not recreate them here |
 
 ### What left the lab, 2026-09-09
 
@@ -110,13 +112,20 @@ client decks, and a 2020 non-compete. That is why it lives outside the lab: noth
 warehouse is a git repository and nothing there is published.
 
 **Two things to know.** `snapshot.sh` moved with `_backups`, so the lab path is now written
-into it directly — run it as `~/Documents/_warehouse/_backups/snapshot.sh`. And about 100
+into it directly — run it as `~/Documents/_warehouse/_backups/snapshot.sh`. It writes into the warehouse, not the lab. And about 100
 files still point at old `_archive/...` paths; in dated records that is correct history and
 should be left alone, in live pointers it is a bug.
 
-`context-check.sh` at the lab root reads the whole lab and reports what is duplicated,
-declared dead but still live, unlinked, uncommitted, or pointing at nothing. It writes
-nothing. Run it before and after any restructuring.
+**`/context-check`** reads the whole lab and reports what is duplicated, declared dead but
+still live, unlinked, uncommitted, or pointing at nothing. It writes nothing. Run it before
+and after any restructuring. The script sits in the skill at
+`.claude/skills/context-check/`, not at the root.
+
+**The lab root is locked.** Only ten things may live there: `CLAUDE.md`, `ROOT.md`,
+`TASTE.md`, `RULINGS-IN-FORCE.md`, `DONE.md`, `.claude/`, `context/`, `evidence/`,
+`work-os/`, `docs/` (added 2026-09-10 for `docs/about-me/`, the voice profile and
+interview). A hook refuses anything else and says where to put it instead. To change the
+list, edit the `ALLOWED` line in `.claude/hooks/root-lock.sh`.
 
 ## Where each kind of fact lives
 
@@ -129,7 +138,7 @@ One home per fact. **A link beats a copy.**
 | A seed | `work-os/brand-os/engagement-os/seedbank/` (canonical `seed-capture` skill lives there) |
 | Session transcripts | `evidence/sessions/` |
 | Anything about one body of work | that work's own folder |
-| Superseded anything | the nearest `_archive/` |
+| Superseded anything | `~/Documents/_warehouse/` — never an `_archive/` inside the lab |
 
 ## Where a NEW file goes
 
@@ -142,16 +151,16 @@ at the root.** The root holds routing and lab-wide records only.
 | Creating… | Goes to |
 |---|---|
 | a seed | `work-os/brand-os/engagement-os/seedbank/session/` — use `seed-capture`, don't hand-write |
-| a session receipt | `chief-of-staff/traces/receipts/` |
+| a session receipt | **nowhere yet.** `chief-of-staff/` was retired 2026-09-08 and the `session-receipt` skill is parked. Ask before writing one |
 | a ruling Venkat made | the `DECISIONS.md` of the domain it governs; if lab-wide, say so and ask where |
 | voice / positioning / audience / style | `work-os/brand-os/<area>/` |
 | ARCHIE output, kills, backlog | `work-os/brand-os/engagement-os/agents/archie/` |
 | Telegraph work | `work-os/projects/telegraph-plus/` — **never** the two superseded ones |
 | a scheduled cloud task, or a change to one | `work-os/scheduled-tasks/<task>/` — edit the parts, run `assemble.sh`, update the routine |
 | a change to one of the 21 market-signal routines | `work-os/scheduled-tasks/market-signals/` — edit the parts, run `build.sh` then `assemble.sh`, update the routine, then `verify.sh` to prove live matches file |
-| an audit, plan, or program about the lab itself | `_audit/` |
+| an audit, plan, or program about the lab itself | ask — the old `_audit/` went to the warehouse and has no replacement in the lab yet |
 | session transcripts | `evidence/sessions/` |
-| anything superseded | the **nearest** `_archive/`, with a note saying what replaced it |
+| anything superseded | `~/Documents/_warehouse/`, with a note saying what replaced it. **Never create an `_archive/` or `_backups/` inside the lab** |
 | scratch, temp, throwaway | the session scratchpad — **never** the lab |
 
 **Skills carry their own destination.** Each of the 28 skills declares a *Base directory*
@@ -164,7 +173,7 @@ truth.
 
 ## Capability is local, invocation is global
 
-All 28 skills and 8 agents live **once**, at the lab-root `.claude/` (consolidated
+All 28 skills and 9 agents live **once**, at the lab-root `.claude/` (consolidated
 2026-09-07). They are therefore available in every session, from anywhere — which is the
 point. Their **data did not move**: each skill declares the domain it belongs to and
 writes back into it.
@@ -199,5 +208,7 @@ Name the intended outcome first. Take the fastest safe path to it and stop when 
 reached. Add no steps, files, structure, or options the outcome does not need. Safe =
 reversible and approved; never skip approval or delete to go faster.
 
-Without `git`, a move is not undoable. So: **copy → verify → remove**, never `mv`, and
-leave a pointer at the old location.
+**Moves are undoable now.** git works, and the lab root became a repository on
+2026-09-09. Even so: **copy → verify → remove**, never `mv`, and leave a pointer at the
+old location. Verify means compare the file count and a checksum of both trees before
+removing anything — git protects what is committed, not what is loose.
