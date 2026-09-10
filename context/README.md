@@ -23,3 +23,7 @@ their place. Nothing was archived because there was nothing in them.
 
 `who-i-am.md` had been created at the lab root rather than here. All four
 belong in this folder.
+
+## Moved — 2026-09-10
+
+`how-i-work--observed.md` (evidence about how he works, from agents) was created here at 12:54 and moved to `docs/about-me/` at 12:56 at Venkat's word: "move that to /docs as a subfolder. its a draft until i review and approve." Nothing goes from it into `how-i-work.md` without his review.

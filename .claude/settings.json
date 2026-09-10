@@ -6,9 +6,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/venkatgullapalli/Documents/my-ai-lab/.claude/hooks/root-lock.sh",
+            "command": "/Users/venkatgullapalli/Documents/my-ai-lab/.claude/hooks/root-lock.py",
             "timeout": 10,
-            "statusMessage": "Checking the lab root is not being written to"
+            "statusMessage": "Checking nothing new is being created at the lab root"
           }
         ]
       }

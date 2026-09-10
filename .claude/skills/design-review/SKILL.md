@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: Checks a finished visual artifact against Venkat's fixed identity and its own design brief. Use after building an HTML artifact, PDF, or other visual output with frontend-design, web-artifacts-builder, theme-factory, or brand-guidelines, before calling it done. Screenshots HTML via the webapp-testing skill; reads PDFs directly. Flags color, type, and motif violations with evidence labels. Not for checking content accuracy or copy quality (that's a different kind of review).
+description: Checks a finished visual artifact against Venkat's fixed identity and its own design brief. Use after building an HTML page or Artifact, a PDF, or other visual output, before calling it done. Screenshots HTML with the Playwright browser tools from the MCP_DOCKER gateway; reads PDFs directly. Flags color, type, and motif violations with evidence labels. Not for checking content accuracy or copy quality (that's a different kind of review).
 ---
 
 # Design Review
@@ -18,8 +18,9 @@ whatever that artifact's brief said it would do.
 1. `work-os/brand-os/visual/DESIGN-IDENTITY.md` — the fixed identity to check against.
 2. The artifact's plan (its `design-brief` section, if one was written).
 3. The artifact itself:
-   - **HTML** — capture via the `webapp-testing` skill (Playwright
-     screenshot), both light and dark mode if the artifact supports both.
+   - **HTML** — capture with the Playwright browser tools on the MCP_DOCKER
+     gateway (`browser_navigate`, then `browser_take_screenshot`), both light
+     and dark mode if the artifact supports both.
    - **PDF** — read directly.
    - Other formats (PPTX, DOCX) — not yet supported. Say so rather than
      guessing from a description.

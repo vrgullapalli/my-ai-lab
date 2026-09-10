@@ -18,3 +18,10 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-09 14:12 | D3 | ran | launchd: nothing of the lab's loaded; session capture dead; 21 routines matched per README, not rerun by me | work-os/scheduled-tasks/README.md
 2026-09-09 14:12 | D4 | retired | folded into D1 at his word; sources gone | .claude/agents/alfred/DUTIES.md
 2026-09-09 14:15 | D6 | ran | 7 asks today, all closed but one: commit (needs his word) | this session; v1 files at ~/Documents/_warehouse/alfred--before-charter-v2--2026-09-09/
+2026-09-10 12:37 | D6 | ran | commit e24a79b at his word, 55 files; push not asked, not done | git log -1
+2026-09-10 12:40 | D1 | ran | snapshot my-ai-lab--2026-09-10--1239 7185 files sha ok; restore diffed; push blocked, no login | ~/Documents/_warehouse/_backups/snapshots/
+2026-09-10 12:42 | D1 | ran | snapshot copied to Dropbox, sha verified; sync state per client | /Users/venkatgullapalli/Library/CloudStorage/Dropbox-Telisina/my-ai-lab-backups/my-ai-lab--2026-09-10--1239.tar.gz
+2026-09-10 12:43 | D1 | ran | snapshot moved to Dropbox under Venkat Gullapalli/, sha ok at final path, warehouse copy removed with pointer | /Users/venkatgullapalli/Library/CloudStorage/Dropbox-Telisina/Venkat Gullapalli/my-ai-lab-backups
+2026-09-10 12:55 | D7 | ran | observed file created, 14 lines seeded | context/how-i-work--observed.md
+2026-09-10 12:58 | D7 | ran | observed file moved to docs/about-me, marked draft | docs/about-me/how-i-work--observed.md
+2026-09-10 13:02 | D6 | ran | commits at his word: engagement-os (cultivator pass), brand-os, lab root; secret scans clean | git log -1 in each

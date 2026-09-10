@@ -1,6 +1,6 @@
 ---
 name: design-brief
-description: Plans a visual artifact against Venkat's fixed identity before it's built. Use before building anything with frontend-design, web-artifacts-builder, theme-factory, or brand-guidelines — an HTML artifact, a PDF leave-behind, a slide deck. Reads context/DESIGN-IDENTITY.md, asks only what that file doesn't already answer, and writes the decisions into the artifact's own plan under work/plans/{slug}/. Not for artifacts that don't need Venkat's brand identity (internal scratch files, one-off diagnostics).
+description: Plans a visual artifact against Venkat's fixed identity before it's built. Use before building anything visual — an HTML page or Artifact, a PDF leave-behind, a slide deck — whether it is built with the frontend-design plugin, the Artifact tool, or by hand. Reads visual/DESIGN-IDENTITY.md, asks only what that file doesn't already answer, and writes the decisions into the artifact's own plan under plans/<slug>/. Not for artifacts that don't need Venkat's brand identity (internal scratch files, one-off diagnostics).
 ---
 
 # Design Brief
@@ -16,14 +16,15 @@ receipts, or code with no visual output.
 
 ## What it does
 Turns a design ask into the Approach/Steps of that artifact's own plan (per
-the plan-persistence rule). It does not create a separate design-doc format.
+the rule that every build gets a plan first). It does not create a separate
+design-doc format.
 
 ## Inputs
 1. `work-os/brand-os/visual/DESIGN-IDENTITY.md` — the fixed identity: colors, type, motif,
    mode defaults. Never re-derive these; only fill what this file leaves open.
 2. The design ask itself — what artifact, for whom, what job it does, what
    format.
-3. The artifact's plan file under `work/plans/{slug}/`, if one exists yet — this
+3. The artifact's plan file under `plans/<slug>/`, if one exists yet — this
    skill's output becomes part of that plan, not a substitute for it.
 
 ## What to ask
@@ -41,7 +42,7 @@ Never ask about colors, fonts, or the motif — those are already answered.
 
 ## Output
 A short brief, written directly into the artifact's plan file
-(`work/plans/{slug}/...--v{N}--{timestamp}.md`) under its Approach and Steps
+(`plans/<slug>/<slug>--v<N>--<timestamp>.md`) under its Approach and Steps
 sections — not a new file.
 
 **Brief structure:**
@@ -57,5 +58,5 @@ sections — not a new file.
 - If `work-os/brand-os/visual/DESIGN-IDENTITY.md` is missing or looks stale, stop and say
   so — don't proceed on a guess.
 - If the artifact doesn't have a plan yet, this skill's output is not a
-  substitute — it still needs its own plan per hard rule 16 before it's built.
+  substitute — it still needs its own plan before it's built.
 - Keep it short. This is a brief, not a spec — a paragraph per section.

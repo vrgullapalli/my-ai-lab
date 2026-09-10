@@ -39,11 +39,23 @@ target-specific artifact stays private).
 2. Name who might care, specifically. "Executives" is not an answer.
 3. Name the recognizable moment in their world.
 4. Name the useful progress it could create.
-5. **Test AI-native FIRST** — hand the candidate to the
-   `ai-native-asset-design` skill's earned test. AI-native when earned.
-6. If not earned, test AI-assisted: does AI materially help research,
-   create, update, or tailor it while the person gets full value without
-   AI in their experience?
+5. **Start from AI-native.** The lab's rule is that AI-native is not
+   earned (`CLAUDE.md`, Venkat, 2026-09-07). Ask what AI would do inside
+   the person's experience: what they give it, what it notices and judges,
+   and what changes in the result because of their input. If that design
+   is real, classify `ai-native`, set `ai_native_verdict: earned`, and
+   write the design to `ai-native-evaluation.md` beside the record: what
+   the person provides · what AI does · what changes with their input ·
+   what AI must never infer or do · how failure is recognized · how it is
+   tested. The validator requires that file and still uses the word
+   "earned"; both date from the `ai-native-asset-design` skill, retired
+   2026-09-10 at Venkat's word.
+6. If AI inside the experience would add nothing real, classify
+   `ai-assisted`: AI helps research, create, update, or tailor it, and the
+   person gets full value without AI in their experience. Set
+   `ai_native_verdict: not-earned` and write one plain paragraph saying why
+   to `ai-native-evaluation.md` (the validator requires it). Never add
+   decorative AI to make something look native.
 7. If neither fits, consider the other public value forms: an expression
    of an existing asset, a field note, an evidence note, a method note,
    direct/private distribution, a contribution to an existing asset —

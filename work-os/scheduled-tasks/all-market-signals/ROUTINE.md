@@ -52,3 +52,4 @@ Flagged to Venkat on 2026-09-09.
 
 - 2026-09-09: created at Venkat's request, with his structure. Run once immediately: it worked (see `runs/2026-09-09--first-run.md`, output in `outputs/2026-09-09.md`).
 - 2026-09-09: two small prompt fixes after reading the first run. The search window now starts at two days and may widen to about eight weeks, with the run saying how far back it went. Confidence must be one word, never a range. Rebuilt and pushed; live prompt diffed against `build/full-prompt.md` and matches.
+- 2026-09-10: the pre-change copies of `assemble.sh`, the README, and the first-run prompt moved out of the lab to `~/Documents/_warehouse/_archive/scheduled-tasks--pre-all-market-signals-2026-09-09/`. Checked by file count and checksum before the lab copy was removed. The run record still names the old path; it is a dated record and was left as written.

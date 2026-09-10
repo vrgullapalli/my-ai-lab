@@ -25,8 +25,11 @@ Coordinate the project skills — do not duplicate their methods:
 
 1. `public-value-opportunity` — the entry question. Always first.
 2. `asset-corpus-match` — before any BUILD leaning.
-3. `ai-native-asset-design` — AI-native is tested FIRST and must be
-   EARNED; when not earned, route to AI-assisted without inflating.
+3. AI-native or AI-assisted is decided inside `public-value-opportunity`
+   (its steps 5 and 6). The separate `ai-native-asset-design` skill was
+   retired 2026-09-10 at Venkat's word; its "must be earned" test
+   contradicted the lab's rule that AI-native is not earned. Do not
+   inflate: if AI inside the experience adds nothing real, it is AI-assisted.
 4. `public-asset-brief` — the human decision artifact. Produce it,
    validate the records (`tools/validate_public_value.py`), then STOP
    for the asset-direction ruling.

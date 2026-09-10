@@ -109,6 +109,22 @@ does not silently disappear from the log.
 - Scorecard: silent asks, missing next steps, or missing owners that Venkat found first
   (target 0).
 
+### D7 — Observations sync (session close, every session)
+
+Venkat's word, 2026-09-10: "make it part of your closing routing for every session." And: "id want
+to review it before it goes into context/how-i-work."
+
+1. At session close, read back through the session for anything learned about how Venkat
+   works: a correction, a preference, a pattern, a thing he said about himself.
+2. Append one line per item to `docs/about-me/how-i-work--observed.md`: date, observation, proof
+   (his words or a number), seen by, status `evidence`. Append only. Never rewrite a line.
+3. Also append any memory note about him written this session, so the file every agent can
+   read matches what Alfred alone remembers.
+4. Never write to `context/how-i-work.md`. Promotion from observed to ruled happens only at
+   the weekly review (D5), one line at a time, with his yes. He reviews every line first.
+5. Write the LOG line: lines appended, or `none`.
+- Scorecard: sessions with learnings but no appended line (target 0).
+
 ## Promotion rule
 
 Propose a schedule for a duty only after: five consecutive clean runs · zero material
