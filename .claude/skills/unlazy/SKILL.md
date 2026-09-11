@@ -11,7 +11,7 @@ Make incomplete work visible and make completion testable. Prove outcomes agains
 
 Added 2026-09-10 when the skill was installed for Claude Code at Venkat's word. Everything after this section is the upstream skill (github.com/Leonxlnx/unlazy, MIT, commit 1667149), with one edit marked below.
 
-- **Where the ledger goes.** Solo work: `GATES.md` at the lab root. Orchestrated work: `.unlazy/<scope>/`. The root lock allows both and git ignores both. They sit at the root because the Stop hook reads the session's working folder, which is the lab root. When every gate is met, the close routine (`alfred-close`) copies the finished ledger next to the session receipt in `evidence/receipts/`, so the proof outlives the session, and moves the root copy to the warehouse.
+- **Where the ledger goes.** Solo work: `GATES.md` at the lab root. Orchestrated work: `.unlazy/<scope>/`. The root lock allows both and git ignores both. They sit at the root because the Stop hook reads the project root (`CLAUDE_PROJECT_DIR`, the lab root), not whatever folder the shell last moved into; see `INSTALLED.md`. When every gate is met, the close routine (`alfred-close`) copies the finished ledger next to the session receipt in `evidence/receipts/`, so the proof outlives the session, and moves the root copy to the warehouse.
 - **`<skill-dir>`** below is `.claude/skills/unlazy`, from the lab root.
 - **Node** is installed at `~/.local/node` (version 24 LTS, on the login PATH through `~/.zprofile`). If `node` is not found, use `~/.local/node/bin/node`.
 - **Approvals** live in `~/.unlazy/approved`. The folder must be owner-only (`chmod 700 ~/.unlazy ~/.unlazy/approved`); the checker refuses a folder others can read.

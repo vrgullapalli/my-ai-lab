@@ -15,6 +15,15 @@ older snapshot of the same 2.1.0 line. That copy is in the warehouse at
 - `SKILL.md`: a new "In this lab" section at the top; the description rewritten for Claude
   Code and Venkat's own phrases; `$unlazy` (Codex) removed; the Stop hook section says it is
   installed rather than offered. Everything else is upstream text.
+- `scripts/stop-hook.mjs` (2026-09-10, Venkat: "3. yes"): the hook reads the ledger from
+  `CLAUDE_PROJECT_DIR`, the project root Claude Code gives every hook, and falls back to the
+  payload's `cwd` only when that is unset. Upstream uses `cwd`, which follows the shell. A `cd`
+  into `work-os/upskill-advisor/` made it parse Telegraph's release gates (`gates/README.md`,
+  `gate-0.md` to `gate-5.md`) as ledgers and block the stop with "ledger contains zero live
+  gates". Not chosen: skipping ledgers with no gates, because then emptying a ledger would
+  release the stop. Proof: the block reproduced without the fix and cleared with it; a real
+  root ledger still blocked with a decoy `gates/` folder underneath; all seven suites pass
+  (34, 27, 51, 29, 8, 24, 15), run with `CLAUDE_PROJECT_DIR` unset.
 - Not copied: `.git/`, `.github/` (upstream CI), and `agents/openai.yaml` (Codex interface
   settings). Nothing else was left out.
 
