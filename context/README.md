@@ -9,8 +9,9 @@ work done. Loaded every session.
 | `how-i-talk.md` | How he sounds, and how he wants to be written to |
 | `how-i-work.md` | How work should be done with him |
 | `CLAUDE.md` | Session instructions |
+| `intent/STANDING.md` | The current drivers of the lab. Exists. They change; the machinery that reads them does not (Venkat, 2026-09-11) |
 
-None of these exist yet. They are the next thing being written.
+`how-i-work.md` exists since 2026-09-11, from Venkat's own text, and loads every session through an import line in the lab's CLAUDE.md (live 23:37). `who-i-am.md`, `how-i-talk.md`, and `CLAUDE.md` here do not exist yet. `intent/STANDING.md` does exist.
 
 ## Removal recorded — 2026-09-09
 

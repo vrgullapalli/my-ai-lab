@@ -34,6 +34,7 @@ SESSIONS = os.path.join(STATE, "sessions")
 UNRECEIPTED = os.path.join(STATE, "unreceipted")
 LOG = os.path.join(ALFRED, "LOG.md")
 RECEIPTS = os.environ.get("ALFRED_RECEIPTS_DIR") or os.path.join(LAB, "evidence", "receipts")
+AUDITS = os.environ.get("ALFRED_AUDITS_DIR") or os.path.join(LAB, "evidence", "audits")   # follow-ups in audits count too (Venkat, 2026-09-11)
 SNAPSHOTS = os.path.expanduser("~/Documents/_warehouse/_backups/snapshots")
 OFFSITE = os.path.expanduser("~/Library/CloudStorage/Dropbox-Telisina/Venkat Gullapalli/my-ai-lab-backups")
 TASKS = os.path.join(LAB, "work-os", "scheduled-tasks")
@@ -113,13 +114,24 @@ def front_matter(text):
     return fm
 
 
+def audit_files():
+    """Every .md inside a dated audit folder, as (label, path). Audits are new files only,
+    so an audit records its follow-ups in a file of its own, in the receipt's F- form."""
+    out = []
+    for path in sorted(glob.glob(os.path.join(AUDITS, "*", "*.md"))):
+        out.append(("audits/" + os.path.relpath(path, AUDITS), path))
+    return out
+
+
 def open_loops():
-    """Every follow-up written as '- [ ] F-...' in a receipt and not yet closed by a
-    later receipt ('- [x] F-...' or listed under '## Closed')."""
+    """Every follow-up written as '- [ ] F-...' in a receipt or an audit file and not yet
+    closed by a receipt ('- [x] F-...' or listed under '## Closed'). Audit findings that
+    never reach this list are invisible to the open routine (Venkat, 2026-09-11)."""
     sessions, _ = receipts()
+    sources = [(n, os.path.join(RECEIPTS, n)) for n in sessions] + audit_files()
     opened, closed = {}, set()
-    for name in sessions:
-        text = read(os.path.join(RECEIPTS, name))
+    for name, path in sources:
+        text = read(path)
         in_closed = False
         for line in text.split("\n"):
             if line.startswith("## "):
@@ -301,7 +313,7 @@ def open_sheet():
         out.append(f"{'ALERT ' if age > 3 else ''}last snapshot: {os.path.basename(snaps[-1])} ({age} days old)")
     else:
         out.append("ALERT last snapshot: none found")
-    # standing intent 2: the work survives losing a machine. A copy on this laptop does not count.
+    # driver 2 in context/intent/STANDING.md: the work survives losing a machine. A copy on this laptop does not count.
     off = sorted([os.path.join(OFFSITE, f) for f in os.listdir(OFFSITE) if f.endswith(".tar.gz")],
                  key=os.path.getmtime) if os.path.isdir(OFFSITE) else []
     if off:
@@ -366,7 +378,7 @@ def open_sheet():
     if lines and os.path.isfile(STANDING):
         opens = [ts for ts, duty, _ in lines if duty == "OPEN"]
         if opens and os.path.getmtime(STANDING) > opens[-1].timestamp():
-            out.append("standing intent changed since the last open routine")
+            out.append("current drivers changed since the last open routine (context/intent/STANDING.md)")
     return "\n".join(out)
 
 

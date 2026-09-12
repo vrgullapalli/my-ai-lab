@@ -117,6 +117,7 @@ Same principle as Telegraph+: *a belief must continuously earn the right to surv
 
 | Date | The ruling | Where it now lives |
 |---|---|---|
+| 2026-09-11 | **The four "standing intents" are current drivers, not the architecture.** His words: "They are not four foundational capabilities, permanent architectural pillars, or four things the architecture should be built around. The architecture should support changing drivers over time without needing to be redesigned." Each driver now carries a kind (behavior · reliability invariant · product objective · external outcome), a working-when test, and the sensors that prove its state. Telegraph+ is replaceable without touching the machinery. | `context/intent/STANDING.md` (canonical); Alfred's `DUTIES.md` D1 reads whatever drivers are listed |
 | 2026-09-11 | **No Gabriel label.** Every message is `Alfred —`. An independent view is said in plain words and is evidence, never permission. Reason: the label answered a prompt on its own because the prompt said "advisor." | `CLAUDE.md`, "Who is speaking"; Alfred's `CHARTER.md`, "One interface, one voice" |
 
 ---

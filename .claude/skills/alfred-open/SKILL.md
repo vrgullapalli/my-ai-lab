@@ -16,7 +16,7 @@ system, not a report."* It must name **exactly one recommended next action, with
 step already prepared**, and be *"short enough to read on a bad focus day. If I skim past
 it, it's too long."*
 
-Standing intent 1 names what would ruin it: *"A briefing that reports what he already
+Driver 1 in `context/intent/STANDING.md` names what would ruin it: *"A briefing that reports what he already
 knows"* and *"Duties that depend on someone remembering to run them."* That is why a hook
 starts this routine, and why the brief leads with what changed, not with what is.
 
@@ -56,7 +56,7 @@ for more than an hour. Lines that start with `ALERT` are the ones worth his atte
    routine briefs pulled into the lab today` shows how many remain.
 
 4. **Connect what came in to what he cares about.** Keep this to three connections at most.
-   - Each brief's top items against the four standing intents and the open follow-ups.
+   - Each brief's top items against the current drivers and the open follow-ups.
    - The strongest headline or takeaway of each brief against the seeds:
      `python3 .claude/skills/seed-capture/scripts/find-similar.py "<the takeaway>"`.
      A seed scoring 0.30 or more means the market is talking about it today. Name it by its

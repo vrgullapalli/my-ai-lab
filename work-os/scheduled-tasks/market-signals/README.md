@@ -177,3 +177,16 @@ Midweek and Weekly work. Neither change has been made.
 - **2026-09-09** — Added the trigger id column to `routines.tsv`. The version
   before that is in `_archive/`.
 - **2026-09-09** — Added `verify.sh`.
+- **2026-09-10**: Backfilled eight weeks of Wednesday checks and Friday syntheses for all
+  seven subjects, at Venkat's request. 105 files, in each subject's `wednesday/outputs/` and
+  `friday/outputs/`: Wednesdays 2026-07-22 to 2026-09-09 (the 2026-09-09 checks were never run
+  live), Fridays 2026-07-24 to 2026-09-04. The 2026-09-11 Fridays run live. Written on this
+  machine, not in the cloud, because the cloud cannot open web pages. One writer per brief.
+  Each week's Wednesday was written and checked before its Friday (Venkat, 13:35), and each week
+  read the week before it. The rules are in `_schema/backfill.md`: nothing dated after the
+  brief's own date, a set title line, and a note on line two saying it is a backfill. Every file
+  passed a scripted check for title, note, no em dashes, and at least three distinct links. The
+  check was proven to catch each rule by breaking throwaway copies. Page text Venkat pasted is in
+  `_sources/`. The shared web search limit of 200 ran out partway, so later writers used the
+  Tavily and Exa search tools. About 199,000 words and 1,215 source links in total. The 14
+  newest are built as pages but are **not published**: that waits on Venkat's approval.

@@ -22,8 +22,10 @@ the agent type and short label on every Agent call, one line per subagent the se
 machine-readable usage line in every header. `--usage` rebuilds the ledger from those lines.
 
 What it never holds: tool inputs (except the skill or agent name), tool results, system
-reminders, IDE notices, anything matching the secret patterns (a file with a hit is skipped
-and named in the log, never written).
+reminders, IDE notices, anything matching the secret patterns (each hit is replaced with
+"[secret-like text removed]" and the file is named in the log with its count; before
+2026-09-10 a file with a hit was skipped whole). Anthropic keys (`sk-ant-…`) were added to
+the patterns that day: the old `sk-` pattern stopped at the hyphen and never matched them.
 
 Writes only under evidence/sessions/: claude/<session>.md, codex/<thread>.md, SYNC-LOG.md,
 USAGE.jsonl.
@@ -42,8 +44,10 @@ DEST = os.environ.get("SESSIONS_DIR") or os.path.join(LAB, "evidence", "sessions
 CLAUDE_PROJECTS = os.environ.get("CLAUDE_PROJECTS") or os.path.expanduser("~/.claude/projects")
 CODEX_ROOT = os.environ.get("CODEX_ROOT") or os.path.expanduser("~/.codex")
 
-SECRET = re.compile(r"(sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|"
-                    r"Bearer\s+[A-Za-z0-9._-]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY)")
+SECRET = re.compile(r"(sk-ant-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|"
+                    r"xox[baprs]-[A-Za-z0-9-]{10,}|Bearer\s+[A-Za-z0-9._-]{20,}|AKIA[0-9A-Z]{16}|"
+                    r"-----BEGIN [A-Z ]*PRIVATE KEY)")
+MASK = "[secret-like text removed]"
 STRIP_BLOCKS = re.compile(r"<(system-reminder|ide_opened_file|ide_selection)>.*?</\1>", re.S)
 SKIP_USER_PREFIX = ("<environment_context>", "<permissions", "# AGENTS.md", "<INSTRUCTIONS>",
                     "<user_instructions>", "<turn_aborted>", "<system>", "<local-command-stdout>",
@@ -292,10 +296,12 @@ def sync_one(src, dest_path, render_fn, force, log, **kw):
     if prev == iso(st.st_mtime) and not force:
         return "unchanged"
     body = render_fn(src, **kw)
-    hits = SECRET.findall(body)
+    # Blank each secret-like string and keep the transcript (Venkat, 2026-09-10: "just save it").
+    # Until then a single hit skipped the whole file, and a 185-message session was lost to four
+    # harmless "BEGIN PRIVATE KEY" labels. The count goes in the log so a real hit stays visible.
+    body, hits = SECRET.subn(MASK, body)
     if hits:
-        log.append(f"SKIPPED (secret-like string, {len(hits)} hit/s): {os.path.basename(src)}")
-        return "skipped"
+        log.append(f"MASKED (secret-like string, {hits} hit/s blanked): {os.path.basename(src)}")
     status = "refreshed" if os.path.exists(dest_path) else "rendered"
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w", encoding="utf-8") as f:

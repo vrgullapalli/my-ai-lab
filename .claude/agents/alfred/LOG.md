@@ -57,3 +57,11 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-11 21:44 | D6 | ran | 3 follow-ups opened (commit the rule files; old sessions may still answer as Gabriel; mark audit rows resolved), 0 closed; 32 still open from before | evidence/receipts/2026-09-11-2141-gabriel-label-retired-663d.md
 2026-09-11 21:44 | D7 | ran | 1 observation line appended (notices an unasked voice; archived means gone) | docs/about-me/how-i-work--observed.md
 2026-09-11 21:44 | CLOSE | ran | 2026-09-11-2141-gabriel-label-retired-663d.md; day review 2026-09-11 written | facts.py close
+2026-09-11 22:14 | D6 | ran | at his word: facts.py loops now reads evidence/audits/*/*.md (test added, proven to fail when the read is removed); 18 follow-ups written from the 09-10 audit; seeds A-LIVE-291, A-LIVE-292 captured at his pick | evidence/audits/2026-09-10-rule-audit/follow-ups.md
+2026-09-11 22:23 | D6 | ran | drivers ruling applied: STANDING.md canonical, D1 generic, 8 files reworded, sensors unchanged | context/intent/STANDING.md
+2026-09-11 22:59 | D6 | ran | seed A-LIVE-293 captured at his word; 3 follow-ups opened (attribution, wording, build order), all owner Venkat; 0 closed | evidence/receipts/2026-09-11-2259-seed-proactivity-emerges-a49a.md
+2026-09-11 22:59 | D7 | ran | 1 observation line appended (runs briefs past an outside read, keeps the closing idea as the seed) | docs/about-me/how-i-work--observed.md
+2026-09-11 22:59 | CLOSE | ran | 2026-09-11-2259-seed-proactivity-emerges-a49a.md; day review already written today | facts.py close
+2026-09-11 22:59 | D6 | ran | 3 follow-ups opened (3 no-ruling audit fixes; 15 rulings three at a time; day review predates this work), 1 closed (F-20260911-2141-1 by commit 5488ece, another session) | evidence/receipts/2026-09-11-2258-sensor-reads-audits-two-seeds-367d.md
+2026-09-11 22:59 | D7 | ran | 1 observation line appended (formal template headings read as formality; he restates the whole style sheet) | docs/about-me/how-i-work--observed.md
+2026-09-11 22:59 | CLOSE | ran | 2026-09-11-2258-sensor-reads-audits-two-seeds-367d.md; day review already written 21:43 | facts.py close

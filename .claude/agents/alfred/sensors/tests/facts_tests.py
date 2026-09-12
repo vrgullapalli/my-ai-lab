@@ -19,8 +19,10 @@ FACTS = os.path.join(os.path.dirname(HERE), "facts.py")
 tmp = tempfile.mkdtemp(prefix="alfred-facts-tests-", dir=os.environ.get("TMPDIR"))
 STATE = os.path.join(tmp, "state")
 REC = os.path.join(tmp, "receipts")
+AUD = os.path.join(tmp, "audits")
 os.makedirs(REC)
-ENV = dict(os.environ, ALFRED_STATE_DIR=STATE, ALFRED_RECEIPTS_DIR=REC)
+os.makedirs(AUD)
+ENV = dict(os.environ, ALFRED_STATE_DIR=STATE, ALFRED_RECEIPTS_DIR=REC, ALFRED_AUDITS_DIR=AUD)
 failures = 0
 
 
@@ -64,7 +66,7 @@ with open(os.path.join(REC, "2026-09-10-1500-second-c3d4.md"), "w") as f:
             "**Next session starts with:** review the pulled briefs\n\n"
             "## Closed\n- F-20260910-1200-1 — sent, see the reply in the thread\n")
 rc, out = run("loops")
-check("loops: a follow-up closed in a later receipt is not open", "F-20260910-1200-1" not in out, out)
+check("loops: a follow-up closed in a later receipt is not open", "F-20260910-1230-1" not in out, out)
 check("loops: the other follow-up is still open", "F-20260910-1200-2" in out and "open follow-ups: 1" in out, out)
 rc, out = run("open")
 check("open: reads the newest receipt's next step", "review the pulled briefs" in out, out[:300])
@@ -121,6 +123,19 @@ rc, out = run("session-start", stdin="not json")
 check("session-start: survives an unreadable payload", rc == 0)
 rc, out = run("session-end", stdin="not json")
 check("session-end: survives an unreadable payload", rc == 0)
+
+# 9. loops reads follow-ups written by an audit, and a later receipt can close them
+# (Venkat, 2026-09-11: an audit finding no sensor reads is a note to nobody)
+os.makedirs(os.path.join(AUD, "2026-09-10-test-audit"))
+with open(os.path.join(AUD, "2026-09-10-test-audit", "follow-ups.md"), "w") as f:
+    f.write("# Follow-ups\n\n- [ ] F-20260910-1230-1: an audit finding — owner: Alfred — first step: look\n")
+rc, out = run("loops")
+check("loops: sees a follow-up written in an audit folder",
+      "F-20260910-1230-1" in out and "audits/2026-09-10-test-audit/follow-ups.md" in out, out[:300])
+with open(os.path.join(REC, "2026-09-10-1700-fourth-a1b2.md"), "w") as f:
+    f.write("---\nid: R-2026-09-10-1700-a1b2\ntype: receipt\nsession_id: t\n---\n## Closed\n- F-20260910-1230-1 — fixed\n")
+rc, out = run("loops")
+check("loops: a later receipt closes an audit follow-up", "F-20260910-1230-1" not in out, out[:300])
 
 print(f"\n{'all passed' if not failures else str(failures) + ' failed'}  (scratch folder: {tmp})")
 if failures:

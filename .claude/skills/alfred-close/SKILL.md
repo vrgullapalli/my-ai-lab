@@ -45,6 +45,8 @@ and the receipt says so.
    - **Follow-ups** (duty six, commissions). Every ask still open, written exactly as
      `- [ ] F-YYYYMMDD-HHMM-n: <what> — owner: <who> — first step: <prepared step>`,
      using the receipt's own date and time. The open routine finds them by that pattern.
+     Audits use the same pattern, in a `follow-ups.md` inside their dated folder; the sensor
+     reads audit folders too (Venkat, 2026-09-11: "a finding no sensor reads is a note to nobody").
    - **Closed.** Any follow-up from `facts.py loops` that this session finished, listed under
      `## Closed` as `- F-... — <the evidence>`. No evidence, not closed.
    - **Corrections** he made. Recorded as evidence with the context, never as new rules —

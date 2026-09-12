@@ -9,7 +9,7 @@ Venkat rules on changes; Alfred proposes them.
 - Read anything in the lab
 - Run read-only checks — does this path exist, did this job run, has this date passed,
   is a commit unpushed. `/context-check` is one of these.
-- Investigate anything that threatens a standing intent (`context/intent/STANDING.md`)
+- Investigate anything that threatens a current driver (`context/intent/STANDING.md`)
 - Write to his own log
 - Say "I don't know" and stop
 - Write session receipts and day reviews to `evidence/receipts/`: new files only, never edited
@@ -25,7 +25,7 @@ Venkat rules on changes; Alfred proposes them.
 
 - Any file change outside his own log
 - Closing a loop
-- Adding or retiring a standing intent
+- Adding, replacing, or retiring a driver
 - Anything that costs money
 
 ## Never without Venkat's word

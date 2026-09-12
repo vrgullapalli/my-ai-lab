@@ -79,3 +79,19 @@ One line per run of `tools/codex-session-sync.py`. Never commits; Venkat commits
 | 2026-09-10 16:23 | all | 0 | 7 | 16 | 1 | SKIPPED (secret-like string, 1 hit/s): 52884b30-90a5-4667-b06b-06a6f6befd4c.jsonl |
 | 2026-09-10 16:24 | all | 0 | 1 | 0 | 0 | — |
 | 2026-09-10 16:37 | launchd | 0 | 7 | 16 | 1 | SKIPPED (secret-like string, 1 hit/s): 52884b30-90a5-4667-b06b-06a6f6befd4c.jsonl |
+| 2026-09-10 16:49 | launchd | 0 | 3 | 20 | 1 | SKIPPED (secret-like string, 1 hit/s): 52884b30-90a5-4667-b06b-06a6f6befd4c.jsonl |
+| 2026-09-10 18:00 | launchd | 0 | 4 | 18 | 2 | SKIPPED (secret-like string, 1 hit/s): 52884b30-90a5-4667-b06b-06a6f6befd4c.jsonl; SKIPPED (secret-like string, 1 hit/s): 81b1ff29-9059-4311-84a2-147e7b3375e8.jsonl |
+| 2026-09-10 23:28 | manual | 1 | 0 | 0 | 0 | MASKED (secret-like string, 1 hit/s blanked): 52884b30-90a5-4667-b06b-06a6f6befd4c.jsonl |
+| 2026-09-10 23:34 | all | 0 | 1 | 0 | 0 | — |
+| 2026-09-11 01:57 | hook | 0 | 1 | 0 | 0 | — |
+| 2026-09-11 04:39 | hook | 1 | 0 | 0 | 0 | — |
+| 2026-09-11 09:00 | launchd | 7 | 5 | 20 | 0 | MASKED (secret-like string, 1 hit/s blanked): 81b1ff29-9059-4311-84a2-147e7b3375e8.jsonl |
+| 2026-09-11 13:00 | launchd | 0 | 2 | 30 | 0 | — |
+| 2026-09-11 18:00 | launchd | 0 | 3 | 29 | 0 | — |
+| 2026-09-11 18:12 | hook | 0 | 1 | 0 | 0 | — |
+| 2026-09-11 21:40 | all | 1 | 0 | 0 | 0 | — |
+| 2026-09-11 22:09 | all | 0 | 1 | 0 | 0 | — |
+| 2026-09-11 22:23 | all | 1 | 0 | 0 | 0 | — |
+| 2026-09-11 22:58 | all | 0 | 1 | 0 | 0 | — |
+| 2026-09-11 22:59 | all | 0 | 1 | 0 | 0 | — |
+| 2026-09-11 23:45 | all | 1 | 0 | 0 | 0 | — |

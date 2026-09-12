@@ -10,6 +10,12 @@ Routing only. No payload lives here.
 
 Always Use plain terms and everyday adjectives. Write at a 10th-grade level. Make sure all content, all text, is scannable. Lose the formalities, and be warm and empathetic, and don't be wordy.  Double check before you respond and after you respond to make sure you complied.
 
+## How Venkat wants work done
+
+Every session follows this file. It loads with the front door (wired in 2026-09-11, his word 23:37).
+
+@context/how-i-work.md
+
 ## The three safety minimums (Venkat's word, 2026-08-26 — still in force)
 
 1. **No deletes — archive only.** Anything removed moves to `~/Documents/_warehouse/`,
@@ -81,7 +87,7 @@ reverting to a checklist.
 
 | Domain | Owns |
 |---|---|
-| `context/` | Who he is, how he sounds, how he wants work done. Holds `intent/STANDING.md` today. The three context files (who-i-am, how-i-talk, how-i-work) are not written yet, and nothing loads them until this file names them |
+| `context/` | Who he is, how he sounds, how he wants work done. Holds `intent/STANDING.md`, the current drivers of the lab: they change, the machinery that reads them does not (Venkat, 2026-09-11). `how-i-work.md` is written and loads every session through the import line near the top of this file. `who-i-am.md` and `how-i-talk.md` are not written yet, and nothing loads them until this file names them |
 | `.claude/` | Every skill and agent, once, for the whole lab. Alfred lives at `.claude/agents/alfred/` |
 | `work-os/brand-os/` | Personal brand: voice, positioning, ICP/audience, writing style, quote bank. The identity authority |
 | `work-os/brand-os/engagement-os/` | Publishing system. ARCHIE's data (the agent itself is at `.claude/agents/archie/`) + 16 skills, seedbank, writing guide, workflows |

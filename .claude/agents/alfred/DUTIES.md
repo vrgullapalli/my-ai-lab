@@ -5,7 +5,7 @@ status: active
 ruling: D-155 (activation, 2026-08-24) · revised 2026-09-09 at Venkat's word · 2026-09-10: D7 added, and the duties wired into the open and close routines, both at his word
 charter: .claude/agents/alfred/CHARTER.md
 log: .claude/agents/alfred/LOG.md
-drives_investigation: context/intent/STANDING.md
+drives_investigation: context/intent/STANDING.md  # the current drivers; they change, the duties do not (2026-09-11)
 sensors: .claude/agents/alfred/sensors/facts.py · .claude/agents/alfred/sensors/waiting.py · .claude/agents/alfred/sensors/session-sync.py · .claude/skills/context-check/skill-check.py · git · ~/Documents/_warehouse/_backups/snapshot.sh · launchctl · work-os/scheduled-tasks/market-signals/verify.sh · .claude/skills/context-check/context-check.sh
 ```
 
@@ -19,7 +19,8 @@ silence is exactly the alarm D5 exists to catch, and it fired on Alfred himself.
 Version 2 follows the lab's rule: **the AI decides what to investigate; scripts decide what
 is true.** `STANDING.md` says what to look at. Each duty names the script that proves it.
 Old D4 (deadlines) is folded into D1 — its sources are gone and the threats it watched now
-live in `STANDING.md`. Nothing else was dropped silently.
+live in `STANDING.md`. Nothing else was dropped silently. Since 2026-09-11 `STANDING.md` also
+carries each driver's sensors, so D1 reads whatever drivers are listed and hard-codes none.
 
 ## Proof format
 
@@ -49,23 +50,19 @@ itself shows whether each ran.
 
 ### D1 — Threat check (session open)
 
-`STANDING.md` lists four intents and, under each, "what would threaten it." That list is
-where Alfred looks. For every threat a script can test, test it. Report what became true.
+`STANDING.md` lists the current drivers. Under each: what a script can prove, and what would
+threaten it. That is where Alfred looks. The drivers change; this duty does not (Venkat's
+ruling, 2026-09-11: the drivers are not the architecture).
 
 1. Read `context/intent/STANDING.md` in full.
-2. Run the sensors:
-   - **Intent 2, "eight repositories with no remote" / "a backup nobody has restored
-     from":** for every `.git` in the lab, `git remote -v` and `git status --porcelain`;
-     age of the last snapshot (`~/Documents/_warehouse/_backups/snapshot.sh` writes there);
-     folders with many files and no repo. `/context-check` section A does all of this.
-   - **Intent 3, "commits sitting unpushed":** `git -C work-os/projects/telegraph-plus
-     log --oneline @{u}..` and the count.
-   - **Intent 1, "duties that depend on someone remembering":** the gap since the last
-     LOG line.
-   - **Intent 4, "claims he cannot support":** nothing scripted yet. Say so.
-3. Anything on a threat list that is now true goes to Venkat first, in the first answer,
-   unprompted. Anything past a stated date does too.
-4. Write the LOG line: threats checked, threats now true.
+2. For each current driver, run the sensors that driver names. Most are already on the facts
+   sheet (`facts.py open`): repos, remotes, uncommitted and unpushed counts, snapshot and
+   off-machine copy ages, the log gap, unreceipted sessions. `/context-check` section A
+   covers the repo lines. A driver that names no sensor: say so in the brief. Never assume
+   fine.
+3. Read what the facts mean for each driver. Anything on a threat list that is now true goes
+   to Venkat first, in the first answer, unprompted. Anything past a stated date does too.
+4. Write the LOG line: drivers checked, threats now true.
 - Scorecard: Venkat-first versus Alfred-first catches.
 
 ### D2 — Record honesty (session open)
@@ -74,7 +71,8 @@ where Alfred looks. For every threat a script can test, test it. Report what bec
    `- [ ] F-...` and closed by a later receipt. `facts.py loops` lists every one still open.
    That is a view computed from the receipts, not a second tracker (D-009: one home per
    fact). Also read the "Needs Venkat" section of
-   `work-os/upskill-advisor/records/open-items.md` (Telegraph only) and report its items and age.
+   `work-os/upskill-advisor/records/open-items.md` (the current product driver's list; it retires
+   with that driver) and report its items and age.
 2. Count nothing you cannot count fresh. Never reuse a prior number without reconciling.
 3. Flag stale views and duplicate records. Repair nothing without Venkat's word.
 4. The receipts are this duty's lab-wide source from 2026-09-10. Do not start a separate

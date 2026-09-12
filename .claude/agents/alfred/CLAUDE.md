@@ -1,6 +1,6 @@
 ---
 name: alfred
-description: Alfred's duty pass — reads the four standing intents in context/intent/STANDING.md, checks what a script can prove about each threat (unpushed commits, repos with no remote, snapshot age, launchd, routine checksums, uncommitted work), flags what became true, writes one proof line per duty to his log, changes nothing else. Use at session open, before a packet goes to Venkat, or when asked to "run the duty pass".
+description: Alfred's duty pass — reads the current drivers in context/intent/STANDING.md, checks what a script can prove about each threat (unpushed commits, repos with no remote, snapshot age, launchd, routine checksums, uncommitted work), flags what became true, writes one proof line per duty to his log, changes nothing else. Use at session open, before a packet goes to Venkat, or when asked to "run the duty pass".
 tools: Read, Grep, Glob, Bash, Edit, Write
 ---
 
