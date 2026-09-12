@@ -246,6 +246,19 @@ def skill_check_line():
         return f"ALERT skill check: could not run ({type(exc).__name__})"
 
 
+def architecture_check_line():
+    """One line from docs/architecture/check.py: the capability map, the definitions, and the lab
+    agree (2026-09-12, the capability-architecture entry's own sensor). Its number, not Alfred's."""
+    script = os.path.join(LAB, "docs", "architecture", "check.py")
+    if not os.path.isfile(script):
+        return "ALERT architecture check: script missing (docs/architecture/check.py)"
+    try:
+        r = subprocess.run([sys.executable, script, "--summary"], capture_output=True, text=True, timeout=60)
+        return r.stdout.strip() or "ALERT architecture check: no output"
+    except Exception as exc:
+        return f"ALERT architecture check: could not run ({type(exc).__name__})"
+
+
 def waiting_line():
     """The count of things waiting on Venkat's word and the oldest one, from waiting.py
     (added to the morning brief at his word, 2026-09-10 16:42)."""
@@ -373,6 +386,7 @@ def open_sheet():
 
     out.extend(capture_lines())
     out.append(skill_check_line())
+    out.append(architecture_check_line())
     out.append(waiting_line())
 
     if lines and os.path.isfile(STANDING):

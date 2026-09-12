@@ -243,6 +243,15 @@ Name the intended outcome first. Take the fastest safe path to it and stop when 
 reached. Add no steps, files, structure, or options the outcome does not need. Safe =
 reversible and approved; never skip approval or delete to go faster.
 
+**Before adding a shared system** (a capability, registry, bank, store, index, tracker, agent,
+or skill; Venkat, 2026-09-12): read `docs/architecture/CAPABILITY-MAP.md` and answer five things
+in the reply, one line each. What job is needed. Which existing capability or system already
+covers it, or why none does. The AI-native test: what should this become now that AI exists,
+and would the outcome stay the same without AI. Which standard applies: shared system,
+registry, or sensor. Whether a new system is necessary at all. The answers are judgment. Then
+`docs/architecture/check.py` proves the record agrees with the lab; its line is on the facts
+sheet every session, and `/context-check` section G runs it in full.
+
 **Moves are undoable now.** git works, and the lab root became a repository on
 2026-09-09. Even so: **copy → verify → remove**, never `mv`, and leave a pointer at the
 old location. Verify means compare the file count and a checksum of both trees before

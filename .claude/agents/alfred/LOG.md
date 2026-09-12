@@ -65,3 +65,6 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-11 22:59 | D6 | ran | 3 follow-ups opened (3 no-ruling audit fixes; 15 rulings three at a time; day review predates this work), 1 closed (F-20260911-2141-1 by commit 5488ece, another session) | evidence/receipts/2026-09-11-2258-sensor-reads-audits-two-seeds-367d.md
 2026-09-11 22:59 | D7 | ran | 1 observation line appended (formal template headings read as formality; he restates the whole style sheet) | docs/about-me/how-i-work--observed.md
 2026-09-11 22:59 | CLOSE | ran | 2026-09-11-2258-sensor-reads-audits-two-seeds-367d.md; day review already written 21:43 | facts.py close
+2026-09-12 01:13 | D6 | ran | 3 follow-ups opened (hand-test rule: Venkat; hub guard false hits: Alfred; weekly instrument retire or repoint: Venkat), 0 closed | evidence/receipts/2026-09-12-0113-career-model-capability-scan-39fb.md
+2026-09-12 01:13 | D7 | ran | 1 observation line appended (fixes the test and the do-not-build list before a scan starts) | docs/about-me/how-i-work--observed.md
+2026-09-12 01:13 | CLOSE | ran | 2026-09-12-0113-career-model-capability-scan-39fb.md; day review not due (after 5 PM rule; yesterday's exists) | facts.py close

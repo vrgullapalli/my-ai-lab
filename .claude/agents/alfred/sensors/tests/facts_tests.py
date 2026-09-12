@@ -47,6 +47,7 @@ check("open: reports session capture from the sync log", "session capture: " in 
 check("open: reports whether the capture launchd job is loaded", "session capture launchd job" in out, out)
 check("open: counts sessions with no transcript", "with no transcript in the lab:" in out, out)
 check("open: carries the skill check line", "skill check: " in out and "skills and" in out, out)
+check("open: carries the architecture check line", "architecture check: " in out and "registry entries" in out, out)
 
 # capture with an empty sessions folder: the sheet says no run is logged, and does not crash
 empty = os.path.join(tmp, "no-sessions")

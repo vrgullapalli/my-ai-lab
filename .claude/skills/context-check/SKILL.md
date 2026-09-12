@@ -34,6 +34,7 @@ at any time, including in the middle of other work.
 | D | Can a machine follow the connections, per area? |
 | E | What does nothing point at? |
 | F | What points at folders that no longer exist? |
+| G | Do the capability map, the definitions, and the lab agree? Runs `docs/architecture/check.py` (added 2026-09-12) |
 
 ## How to report it back to Venkat
 
@@ -52,6 +53,11 @@ python3 .claude/skills/context-check/skill-check.py             # skills and age
                                                                 #   directories, every path, every skill named by name
 python3 .claude/skills/context-check/skill-check.py --summary   # the one line Alfred's facts sheet carries
 ```
+
+A third check lives with the thing it watches, not here: `python3 docs/architecture/check.py` proves the
+capability registry follows the registry standard (unique ids, five statuses, paths that exist, a definition
+per entry, no two entries on one store, no second copy of the registry). Section G runs it, and `facts.py`
+carries its one-line summary on the facts sheet at every session start (2026-09-12).
 
 Both are read-only. `dead-pointers.py` counts a path as found if a file of that name exists
 anywhere in the lab; that is right for a lab-wide sweep and wrong for a skill, which fails

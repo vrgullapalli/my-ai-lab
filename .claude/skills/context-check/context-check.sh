@@ -131,4 +131,10 @@ done
 echo
 echo "  (in dated records these are correct history — leave them. In live pointers they are bugs.)"
 
+# ------------------------------------------------- G. architecture record
+rule "G. Do the capability map, the definitions, and the lab agree?"
+echo "(docs/architecture/check.py: the registry standard as a test. ids, statuses, paths, definitions, competing records)"
+echo
+python3 docs/architecture/check.py 2>&1 | sed 's/^/  /'
+
 rule "Done — nothing was changed."
