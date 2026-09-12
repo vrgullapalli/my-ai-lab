@@ -12,7 +12,8 @@ Deterministic; reports, never fixes, never registers a source.
 
 Register (the registry standard on this register):
   ids unique and equal to headings; required fields present; status, standing, use, and tier from the allowed words;
-  a replica names canonical-at; added and changed are dates; no two sources claim one location.
+  a replica names canonical-at, and never another registered id (one identity per source); added and changed are dates;
+  no two sources claim one location.
 Health (for every live or degraded source):
   missing (location not there; says where a file or folder of that name is now, if one exists);
   unreadable (there, but this user cannot read it); empty (there, but no file matches the pattern);
@@ -161,6 +162,10 @@ def integrity(lab, records):
         if r.get("standing") == "replica" and not r.get("canonical-at"):
             findings.append(finding(f"{i}: standing is replica but no canonical-at", where,
                                     "a copy must say where the original is, or it becomes a second source of truth", "add '- canonical-at:'"))
+        if r.get("canonical-at") in ids and r.get("canonical-at") != i:
+            findings.append(finding(f"{i}: canonical-at names another registered source '{r['canonical-at']}'", where,
+                                    "one source has one id whatever copies exist; a copy never gets its own id (his word, 2026-09-12 01:44)",
+                                    "fold this record into that one as a second location, or name the original by place, not by id"))
         for k in ("added", "changed"):
             if r.get(k) and not DATE.match(r[k]):
                 findings.append(finding(f"{i}: {k} '{r[k]}' is not a date", where, "timestamps are how freshness is measured", "write YYYY-MM-DD"))

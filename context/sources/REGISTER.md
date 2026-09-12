@@ -1,7 +1,7 @@
 ---
 name: source-register
 what: Retrieval's list of what it may depend on. One record per source the lab treats as knowledge, with where it is now, what kind it is, who owns it, where this copy stands, how much authority its records carry, what jobs it may inform, and what it must never establish on its own.
-status: live since 2026-09-12 (build step 2 of the sequence in docs/architecture/ARCHITECTURE-DECISIONS.md AD-06). Retrieval itself is not built.
+status: live since 2026-09-12. Build step 2 (AD-06) complete at his word, 2026-09-12 01:44 (AD-19). Retrieval itself is not built and step 3 has not started.
 home: context/sources/ (proposed, AD-16). The same idea as intent/STANDING.md: the list changes, the reader does not.
 reads_this: context/sources/check.py (register, health, coverage, freshness, source discovery, resolve); one line on the facts sheet; context-check section G
 proof: context/sources/tests/check_tests.py (planted faults: missing, moved, duplicate id, competing location, broken location, bad words, unregistered folder and repo)
@@ -26,14 +26,14 @@ It prints the current location and whether it exists, the status, the standing, 
 ## Words a script checks
 
 - `status`: the registry standard's five (AD-05): planned · building · live · degraded · retired. Only live and degraded may be read.
-- `standing`: where this copy stands. canonical (the original) · replica (a copy; `canonical-at` says where the original is) · historical (kept as a record; nothing in it is current) · unavailable (known, not reachable from this machine).
+- `standing`: where the copy being read stands. One source has one id, whatever copies exist: a replica is the same source read from a copy, and `canonical-at` names the original. A copy never gets its own id (his word, 2026-09-12 01:44). canonical (the original) · replica (a copy; `canonical-at` says where the original is) · historical (kept as a record; nothing in it is current) · unavailable (known, not reachable from this machine).
 - `tier` (authority): his-ruling · his-words · endorsed · system · proposed · generated · mixed. `mixed` means each record carries its own tier; `tier-field` says where.
-- `use`: the strongest job this source may carry. authoritative (may settle a judgment on its own, inside its job) · evidentiary (shows what happened or what was said; supports, never settles; cite the pointer) · contextual (shapes how to read or write; never establishes a fact) · exploratory (a lead to check; nothing rests on it alone).
+- `use`: the ceiling, meaning the maximum influence this source is permitted to have. It may be lowered for a specific job, never raised (his word, 2026-09-12 01:44). authoritative (may settle a judgment on its own, inside its job) · evidentiary (shows what happened or what was said; supports, never settles; cite the pointer) · contextual (shapes how to read or write; never establishes a fact) · exploratory (a lead to check; nothing rests on it alone).
 - `date-field`: how a record's date is read. `mtime` means the file's change time. Anything else names a line or key inside the record.
 
 ## Use limits
 
-**The rule.** The strength of the action must not exceed the strength of the evidence. `use` is the ceiling. `may-inform` says which jobs the source may reasonably influence. `not-alone` says what it must never establish by itself, even when it is the only thing that mentions it. These are job limits, not a grade: a source can be authoritative for one question and useless for the next. The AI reads all three before it leans on a source. A script checks that they are there and that the words are allowed. Nothing scores them.
+**The rule.** The strength of the action must not exceed the strength of the evidence. `use` is the ceiling: the maximum influence permitted, which a consumer may lower for the job in front of it and may never raise. `may-inform` says which jobs the source may reasonably influence. `not-alone` says what it must never establish by itself, even when it is the only thing that mentions it. These are job limits, not a grade: a source can be authoritative for one question and useless for the next. The AI reads all three before it leans on a source. A script checks that they are there and that the words are allowed. Nothing scores them.
 
 ## Adding a source
 

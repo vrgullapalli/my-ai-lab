@@ -5,7 +5,7 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [ ] **Write the three context files** (`context/who-i-am.md`, `how-i-talk.md`, `how-i-work.md`). His: "yes, its on purpose. will get to that today." Nothing drafted until he starts. Reminder set for 13:49. (from 2026-09-10)
 - [ ] **Scan the career-advisor repo on the iMac** for every analysis about him; consolidate. Asked 12:51. In progress. (from 2026-09-10)
 - [ ] **Consolidate the analyses about him** into one draft in docs/about-me. Scout inventory saved. In progress. (from 2026-09-10)
-- [ ] **Two real-looking API keys** in two raw session logs in `evidence/sessions/raw-native-lab-2026-09-03-04/`, committed 2026-09-09. Venkat to rotate both; removal from files and history needs his word. Blocks pushing the lab root. (from 2026-09-10)
+- [x] **Two real-looking API keys** in two raw session logs (DONE 2026-09-12 01:42: he rewrote 11 commits in his Terminal, 0 key patterns left, pushed) in `evidence/sessions/raw-native-lab-2026-09-03-04/`, committed 2026-09-09. Venkat to rotate both; removal from files and history needs his word. Blocks pushing the lab root. (from 2026-09-10)
 - [ ] **Private GitHub remote for brand-os** — needs Venkat's GitHub login. (from 2026-09-10)
 - [ ] **LinkedIn**: Venkat takes down "70% productivity lift" and "60–70+ accounts" (only he can edit it). (from 2026-09-10)
 - [ ] **Ping when the backfill is done** — asked 13:02. Waiting on session my-ai-lab-3e's completion message. (from 2026-09-10)
@@ -13,7 +13,7 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [ ] **Rule audit** — four of six areas done; two helpers stopped at the 16:23 restart. Finish next session into `evidence/audits/2026-09-10-rule-audit/`. Receipt R-2026-09-10-1630-6921. (from 2026-09-10)
 - [ ] **Dead-pointer sweep** — 420 live mentions left. Part of the 12:31 ask, not finished. (from 2026-09-10)
 - [ ] **Seed-capture integration options** — not written yet. Part of the 12:31 ask. (from 2026-09-10)
-- [ ] **Push telegraph-plus and give the lab root a remote** — his word 16:33: "done". The sensor at 16:33 still shows 10 unpushed on telegraph-plus and no remote on the lab root or brand-os, so it stays open until the sensor agrees. (from 2026-09-10)
+- [ ] **Push telegraph-plus** (lab root now has a remote and is pushed, 2026-09-12 01:42; telegraph-plus still 11 unpushed) — his word 16:33: "done". The sensor at 16:33 still shows 10 unpushed on telegraph-plus and no remote on the lab root or brand-os, so it stays open until the sensor agrees. (from 2026-09-10)
 - [ ] **Thinking model written** to `docs/about-me/THINKING-MODEL-venkat-gullapalli.md` at his ask, 04:37. Done; his read pending.
 - [x] **Gabriel label retired** at his word 21:39, after it answered a prompt on its own at 21:36. Three rule files edited, nothing deleted. Receipt R-2026-09-11-2141-663d. Committed 22:03 as 5488ece from another session.
 - [x] **Sensor reads audit follow-ups** (his "option 2", 22:06). Done, tested. The 09-10 audit's 18 open conflicts now show in the open routine with owners. Two seeds captured, A-LIVE-291 and 292.
@@ -23,3 +23,5 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [x] **Market signal to action scan** at his ask 23:37 (09-11), saved as a report at his word 23:46. `docs/reports/2026-09-11--market-signal-to-action-scan.md`. 0 of 21 market-signal routines exist; signals are not in the seedbank. Receipt R-2026-09-12-0116-565d.
 - [x] **Hand test** at his word 23:55: context changed all three picks (blind verdict 3 of 3 "not present"). `docs/reports/2026-09-12--hand-test-signals-against-lab-context.md`; plan saved to `docs/plans/` at his word 00:02. His ruling on the routines is next (F-20260912-0116-1).
 - [x] **Build step 2, the source register** at his ask 01:23 (09-12). 23 sources with standing and use limits, resolve by id, health sensor, tests. His ruling on AD-17 and AD-18 is open. Receipt R-2026-09-12-0134-3e8f.
+- [x] **Lab root committed and pushed** at his word 01:15 and 01:18. GitHub private, main fc8be82. Receipt R-2026-09-12-0143-7c21.
+- [x] **Hand-test rule ruled** 01:19, DECISIONS 038. SPOKES.md line waits on his yes.
