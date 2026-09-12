@@ -137,16 +137,16 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 ### retrieval
 - id: retrieval
 - family: Memory and state
-- status: planned
+- status: building
 - job: Find the best relevant knowledge the system already has across registered sources and return it with enough source, freshness, authority, and evidence information to use safely.
 - canonical-store: context/sources/REGISTER.md (its list of what it may depend on, with standing and use limits; sources stay canonical where they live; any index is derived and rebuildable)
-- access: not decided for retrieval itself (build step 3). For the register: python3 context/sources/check.py resolve <id> is the one path from a source id to its current location, status, standing, and use limits
+- access: python3 context/sources/retrieve.py (index, sources, candidates, fetch, stats) plus the retrieval skill for the model's part; one call from a session or a script, not a service (built 2026-09-12). For the register: python3 context/sources/check.py resolve <id> is the one path from a source id to its current location, status, standing, and use limits
 - consumers: Alfred, ARCHIE, signal reasoning, career model, project work, Telegraph+, context-assembly, seed-capture repeat check
-- sensors: context/sources/check.py (register integrity, source health, coverage, freshness, source discovery; built 2026-09-12); planned: quality (a fixed question set), unused consumers, pointer resolution
-- proof: context/sources/tests/check_tests.py (27 planted faults caught 2026-09-12: missing, moved, duplicate id, competing location, nested location, broken location, archive-only folder, bad words, unregistered folder and repo). Retrieval itself is still planned; this proves its store
+- sensors: context/sources/check.py (register integrity, source health, coverage, freshness, source discovery; built 2026-09-12); context/sources/tests/reachability.py (known-answer files inside the eligible set); context/sources/tests/run_tests.py (quality: the seven frozen tests, scored on the package); context/sources/retrieve.py (stats: the size of the full-index semantic pass); planned: unused consumers
+- proof: context/sources/tests/check_tests.py (27 planted faults caught 2026-09-12). Retrieval v0.1: four blind runs against the seven frozen tests, final 5 of 7 (T2 meaning match and T4 one file's rank failed every run); positive control 7 of 7, negative control 0 of 7; boundary refusal proven. docs/reports/2026-09-12--retrieval-v0-1-first-runs.md
 - defined-in: CAPABILITY-DEFINITIONS.md#retrieval
 - related: context-assembly, evidence-record, drivers
-- build-steps: step 2 (source register) complete, his word 2026-09-12 01:44 (AD-19); step 3 (retrieval v0.1) not started
+- build-steps: step 2 (source register) complete, his word 2026-09-12 01:44 (AD-19); step 3 (retrieval v0.1) built 2026-09-12 02:30 to 03:00 at his word (AD-22), 5 of 7 frozen tests pass blind; not called working: the meaning test (T2) needs a different semantic method or a changed test, his call
 - proving-case: market signals first (hand test 2026-09-12), then Alfred, ARCHIE, and career-model questions (build step 4)
 - added: 2026-09-12
 - changed: 2026-09-12

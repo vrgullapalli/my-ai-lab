@@ -11,3 +11,4 @@ work-os/brand-os/engagement-os | the engagement-os repo as a whole; its knowledg
 work-os/brand-os | the brand-os repo as a whole; its knowledge folders are registered one by one (model, voice, positioning); Alfred, 2026-09-12
 work-os/projects/telegraph-plus | registered as a source; listed here so the repo check does not name it twice; Alfred, 2026-09-12
 claude.ai | the routines' own pages and artifact links, not a knowledge source; Alfred, 2026-09-12
+context/sources/index | retrieval's derived index and run log, rebuilt from the register by retrieve.py; git ignores it; Alfred, 2026-09-12
