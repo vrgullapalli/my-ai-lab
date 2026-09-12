@@ -2,3 +2,8 @@
 #   <file relative to lab>            (the whole file)
 #   <file relative to lab> :: <token> | <reason>
 # Counted, not listed. Started 2026-09-10; nothing reviewed yet.
+work-os/brand-os/engagement-os/references/writing-guide--POINTER.md :: writing-guide/ | a note about the folder that moved to the warehouse 2026-09-11; naming it is the point
+work-os/brand-os/messaging/trust-is-the-product--POINTER.md :: engagement-os/references/writing-guide/ | names where it used to point, moved to the warehouse 2026-09-11
+work-os/brand-os/messaging/trust-is-the-product--POINTER.md :: writing-guide-copies--moved-2026-09-11/ | a warehouse folder, outside the lab on purpose
+work-os/brand-os/engagement-os/plans/agents/INVENTORY.md | dated Step 1 snapshot of 2026-09-08; lists what existed that day
+work-os/brand-os/engagement-os/plans/agents/writer/INVENTORY.md | dated Step 1 snapshot of 2026-09-08; lists what existed that day
