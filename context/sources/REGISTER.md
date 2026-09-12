@@ -1,7 +1,7 @@
 ---
 name: source-register
 what: Retrieval's list of what it may depend on. One record per source the lab treats as knowledge, with where it is now, what kind it is, who owns it, where this copy stands, how much authority its records carry, what jobs it may inform, and what it must never establish on its own.
-status: live since 2026-09-12. Build step 2 (AD-06) complete at his word, 2026-09-12 01:44 (AD-19). Retrieval itself is not built and step 3 has not started.
+status: live since 2026-09-12. Build step 2 (AD-06) complete at his word, 2026-09-12 01:44 (AD-19), and closed after the acceptance review at his word, 02:10 (AD-20, AD-21). Retrieval itself is not built and step 3 has not started.
 home: context/sources/ (proposed, AD-16). The same idea as intent/STANDING.md: the list changes, the reader does not.
 reads_this: context/sources/check.py (register, health, coverage, freshness, source discovery, resolve); one line on the facts sheet; context-check section G
 proof: context/sources/tests/check_tests.py (planted faults: missing, moved, duplicate id, competing location, nested location, broken location, an archive-only folder, bad words, unregistered folder and repo)
@@ -354,20 +354,20 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 
 ### upskill-records
 - id: upskill-records
-- kind: the Telegraph private instruction package: records (gates, governance decisions, open items, learning), governance doctrine, and research with its datasets
-- location: work-os/upskill-advisor/records; work-os/upskill-advisor/governance; work-os/upskill-advisor/research
-- pattern: *.md; *.json
+- kind: the Telegraph private instruction package's records: gates, governance decisions, open items, learning
+- location: work-os/upskill-advisor/records
+- pattern: *.md
 - owner: upskill-advisor
 - standing: canonical
 - tier: mixed
-- tier-field: decisions.md rows; open-items.md "Needs Venkat" section; research files are system
+- tier-field: decisions.md rows; open-items.md "Needs Venkat" section
 - date-field: dates in file names and rows
 - status: live
 - use: evidentiary
-- may-inform: Telegraph's history, gates passed, what still needs him; the research behind the signal work (job postings as intelligence, the retro sets)
+- may-inform: Telegraph's history, gates passed, what still needs him
 - not-alone: what governs telegraph-plus (unruled since 2026-09-07); a current Telegraph decision (telegraph-plus is the current line)
 - read-by: facts.py (Telegraph items needing Venkat), sessions by hand
-- notes: extended 2026-09-12 to governance and research after source discovery flagged both (14 markdown files, 6 data files counted; the two under research/_archive are skipped, they are marked contaminated and ungated). The widening was Alfred's, not his; it waits on his yes or no (acceptance review, 2026-09-12 01:55). The telegraph/ repo and plans/ beside them are superseded and not registered.
+- notes: a session widened this record to governance/ and research/ on 2026-09-12 to close two discovery findings. Reverted at his word, 02:10 (AD-21): "a session cannot silently expand what Retrieval is allowed to depend on." Both folders are discovery candidates again and stay that way until he registers or accepts them. The telegraph/ repo and plans/ beside them are superseded and not registered.
 - added: 2026-09-12
 - changed: 2026-09-12
 
