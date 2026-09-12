@@ -17,7 +17,8 @@ NOTE = (
     "implication-lens footer (lab hook): end this reply with the implication-lens footer "
     "from .claude/skills/implication-lens/SKILL.md, in footer mode: a `---` rule with a blank "
     "line above and below, no `Alfred —` line, one line per field, fields in the skill's order. "
-    "Run the skill's first check before writing it. If nothing earns a line, end with "
+    "The footer reads the whole session so far, not only this reply. Run the skill's first check "
+    "before writing it. If nothing earns a line, end with "
     "\"Nothing here beyond the task.\" This footer replaces the inline deeper idea; do not add "
     "a second one in the body."
 )

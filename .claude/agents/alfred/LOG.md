@@ -78,3 +78,17 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-12 01:35 | CLOSE | ran | 2026-09-12-0134-source-register-built-3e8f.md; day review not due (not after 5 PM; 09-11's exists) | facts.py close
 2026-09-12 01:43 | D6 | ran | 2 closed (F-20260910-1630-2 keys scrubbed from 11 commits and pushed; F-20260912-0113-1 ruled, DECISIONS 038); 2 opened (SPOKES rule line: Venkat; front-door remote line: Alfred) | evidence/receipts/2026-09-12-0143-lab-root-pushed-keys-scrubbed-7c21.md
 2026-09-12 01:43 | CLOSE | ran | 2026-09-12-0143-lab-root-pushed-keys-scrubbed-7c21.md; lab root on GitHub private, main fc8be82, 0 key patterns in history | git rev-list, git log -p grep
+2026-09-12 01:46 | D6 | ran | his word 01:44: AD-17 and AD-18 approved with two clarifications (AD-19); step 2 complete; F-20260912-0134-1 closed; seeds not captured; step 3 waits | evidence/receipts/2026-09-12-0146-step-two-approved-f640.md
+2026-09-12 01:46 | CLOSE | ran | 2026-09-12-0146-step-two-approved-f640.md; day review not due | facts.py close
+2026-09-12 01:49 | D6 | ran | 6 opened (F-20260912-0149-1 to 6: lens always-on pick, 8 stale "AI Advisory Search" lines, "26 skills" is 28, run-count fix is 23 not 12, keep trial results, archive-checklist follow-up has no home); 0 closed | R-2026-09-12-0149-6df3
+2026-09-12 01:49 | D7 | ran | 1 line appended to docs/about-me/how-i-work--observed.md (mid-turn "write for cognitive overload minimization"; "1 line responses" for footers)
+2026-09-12 01:49 | CLOSE | ran | 2026-09-12-0149-implication-lens-built-tested-6df3.md; day review not due | facts.py close
+2026-09-12 01:50 | D6 | ran | 6 follow-ups opened (warehouse boundary; drivers proof; sixth question; accepted lines review; two missing register tests; how-i-work version), 1 closed (F-20260911-2259-3 by AD-06); 4 seed candidates listed, none written | facts.py loops
+2026-09-12 01:50 | D7 | ran | 1 observation line appended (capitals after an outcome-framed report; wanted the actions in order) | docs/about-me/how-i-work--observed.md
+2026-09-12 01:50 | CLOSE | ran | 2026-09-12-0150-capability-layer-built-and-live-b4b8.md; day review not due | facts.py close
+2026-09-12 01:52 | D6 | ran | 0 closed; 1 opened (F-20260912-0151-1, D- number means three things: Venkat); standards plan overtaken by AD-02/03/14, not carried | evidence/receipts/2026-09-12-0151-standards-plan-overtaken-5b7b.md
+2026-09-12 01:52 | D7 | ran | 1 observation line appended (parallel sessions; silent dismissal of overtaken questions) | docs/about-me/how-i-work--observed.md
+2026-09-12 01:52 | CLOSE | ran | 2026-09-12-0151-standards-plan-overtaken-5b7b.md; day review not due (not after 5 PM; 09-11's exists) | facts.py close
+2026-09-12 01:54 | D6 | ran | 1 closed (F-20260912-0149-1, his word "2"); 2 opened (F-20260912-0154-1 first live footer check, F-20260912-0154-2 week verdict); seeds A-LIVE-307..310 at his word | R-2026-09-12-0154-cc95
+2026-09-12 01:54 | RULING | his | lens footer on every reply (option 2), whole-session scope; how-i-work.md line 72 changed at his word
+2026-09-12 01:54 | CLOSE | ran | 2026-09-12-0154-lens-footer-wired-seeds-cc95.md; day review not due | facts.py close

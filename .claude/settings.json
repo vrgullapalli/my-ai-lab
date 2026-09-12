@@ -20,6 +20,11 @@
             "type": "command",
             "command": "/Users/venkatgullapalli/Documents/my-ai-lab/.claude/hooks/unlazy-trigger.py",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/Users/venkatgullapalli/Documents/my-ai-lab/.claude/hooks/implication-lens-footer.py",
+            "timeout": 5
           }
         ]
       }

@@ -3,16 +3,18 @@ name: implication-lens
 description: Use when Venkat types /implication-lens to ask what the work or discussion in front of him might mean beyond the task itself - a deeper idea, a commercial capability it points to, the next small lab test, what should become reusable, or something worth saying publicly. Experimental. Invoked by hand only; never applied to every reply.
 disable-model-invocation: true
 metadata:
-  status: "experimental, since 2026-09-12; on trial to see if it earns broader use"
+  status: "on every reply through the footer hook since 2026-09-12 01:52 (his word, option 2: judge it on a week of live replies); still experimental. Trial record: evidence/receipts/2026-09-12-0149-implication-lens-built-tested-6df3.md"
 ---
 
 # Implication lens
 
 > **Base directory:** all relative paths in this skill resolve from the lab root
 > (`/Users/venkatgullapalli/Documents/my-ai-lab/`). This skill writes nothing.
-> `disable-model-invocation: true` keeps it off unless Venkat starts it. Do not make it a rule.
+> `disable-model-invocation: true` means Claude cannot start it from a word in a prompt. Since
+> 2026-09-12 the hook `.claude/hooks/implication-lens-footer.py` asks every reply to end with
+> the footer; the hook is a reminder, the skill stays the one definition.
 
-One question: what would Venkat miss in the work that is already in this conversation? Move through five smaller ones:
+One question: what would Venkat miss in the work that is already in this conversation? The unit is the whole session, not the last exchange (his word, 2026-09-12 01:52): read back over everything the session did, decided, and found before writing a line. Move through five smaller ones:
 
 1. What did we notice?
 2. What might it mean?
@@ -73,7 +75,7 @@ In a footer, leave out the `Alfred —` line (the reply above already carries it
 
 ## What each field must do
 
-**First, check the work, before looking past it.** Run one quick check on what is in view: a count, a search, a file read, a diff. Look for a flaw in the conclusion or in the proposed fix. In the trial of 2026-09-12, every answer that beat the plain version had done this (a recount found a second wrong number; a search found a checklist that did not exist; a transcript showed Alfred had endorsed the order he was now questioning). A lens that only reasons about the work misses what a two-minute check finds. Whatever the check turns up feeds the fields below; it is not a field of its own.
+**First, check the work, before looking past it.** The work is the whole session so far, not only the last reply. Run one quick check on it: a count, a search, a file read, a diff. Look for a flaw in the conclusion or in the proposed fix. In the trial of 2026-09-12, every answer that beat the plain version had done this (a recount found a second wrong number; a search found a checklist that did not exist; a transcript showed Alfred had endorsed the order he was now questioning). A lens that only reasons about the work misses what a two-minute check finds. Whatever the check turns up feeds the fields below; it is not a field of its own.
 
 **Deeper idea.** The most useful thing that is not obvious. Look for a hidden dependency, a second-order effect, an assumption, a failure mode, a tension, what must be true, or a simpler problem underneath. It must be new to this conversation, including the deeper-idea line Alfred's replies already carry. If it restates the work, it failed.
 

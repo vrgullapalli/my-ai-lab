@@ -22,6 +22,17 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [x] **Career model read-only scan** at his ask 23:01 (09-11). One report written, `docs/reports/2026-09-12--career-model-capability-scan.md`. Nothing approved. His yes or no on the hand-test rule is open. Receipt R-2026-09-12-0113-39fb.
 - [x] **Market signal to action scan** at his ask 23:37 (09-11), saved as a report at his word 23:46. `docs/reports/2026-09-11--market-signal-to-action-scan.md`. 0 of 21 market-signal routines exist; signals are not in the seedbank. Receipt R-2026-09-12-0116-565d.
 - [x] **Hand test** at his word 23:55: context changed all three picks (blind verdict 3 of 3 "not present"). `docs/reports/2026-09-12--hand-test-signals-against-lab-context.md`; plan saved to `docs/plans/` at his word 00:02. His ruling on the routines is next (F-20260912-0116-1).
-- [x] **Build step 2, the source register** at his ask 01:23 (09-12). 23 sources with standing and use limits, resolve by id, health sensor, tests. His ruling on AD-17 and AD-18 is open. Receipt R-2026-09-12-0134-3e8f.
+- [x] **Build step 2, the source register** at his ask 01:23 (09-12). 23 sources with standing and use limits, resolve by id, health sensor, tests. AD-17 and AD-18 approved at his word 01:44 (AD-19); step 2 complete. Receipts R-2026-09-12-0134-3e8f and the 01:46 one.
 - [x] **Lab root committed and pushed** at his word 01:15 and 01:18. GitHub private, main fc8be82. Receipt R-2026-09-12-0143-7c21.
 - [x] **Hand-test rule ruled** 01:19, DECISIONS 038. SPOKES.md line waits on his yes.
+- [x] **implication-lens skill** at his ask 00:32 (09-12): built, five fields at his word 00:48, tested twice against plain answers (blind grader: skill 1 of 5 both rounds; "Nothing here" 2 of 2 on trivial work in round two). Hook and test written, not registered; his pick 1 or 2 is next (F-20260912-0149-1). Receipt R-2026-09-12-0149-6df3.
+
+## 2026-09-12, early morning (session ce5880c7; the list above is still 2026-09-11's, not rolled)
+
+- [x] **Shared capability layer**: map, definitions, decisions, check.py in `docs/architecture/`. His word 00:53. Committed by another session at 01:17.
+- [x] **Made it operational**: facts sheet line, context-check section G, five questions in the front door, prompt-hook trigger. His word 01:08. `source-layer` folded into retrieval (AD-12).
+- [x] **Three approvals and the gate** recorded (AD-14, AD-15); `capability-architecture` live. His word 01:16 and 01:17. Seeds A-LIVE-302, 303.
+- [x] **Build step 2, source register**: started here 01:21; finished and receipted by session my-ai-lab-53 at 01:34; approved by him at 01:44 (AD-19).
+- [ ] **Warehouse boundary**: the registered warehouse source reaches `old-mac-documents/`. His word "narrow" or "leave" (F-20260912-0150-1).
+- [ ] **Open routine still owed for today** (F-20260912-0134-3).
+- [x] **Lens footer wired** at his word 01:52 (option 2). Hook registered, whole-session scope, `how-i-work.md` line 72 folded in, seeds A-LIVE-307..310. Live check is next (F-20260912-0154-1). Receipt R-2026-09-12-0154-cc95.
