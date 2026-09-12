@@ -371,6 +371,25 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 - added: 2026-09-12
 - changed: 2026-09-12
 
+### editorial-work
+- id: editorial-work
+- kind: editorial work in progress: article pieces with their gate records and research files, gate outputs, and ARCHIE's idea runs
+- location: work-os/brand-os/engagement-os/editorial/pieces; work-os/brand-os/engagement-os/outputs; work-os/brand-os/engagement-os/agents/archie/outputs
+- pattern: *.md
+- owner: engagement-os
+- standing: canonical
+- tier: mixed
+- tier-field: a piece's 00-run-record.md gate table ("locked by Venkat" is his word; "pending" is Alfred's draft); every draft and every ARCHIE output is generated
+- date-field: the date in each file name
+- status: live
+- use: evidentiary
+- may-inform: what is being written and at which gate; what an article's research still needs; which ideas ARCHIE already ran and which it killed; whether a signal connects to work in progress
+- not-alone: a fact about the world (research files quote outside pages that were not all opened); his view (only a gate line marked locked by him carries it; a draft or an ARCHIE output does not); anything public (the publishing chain and his word)
+- read-by: signal reasoning and ARCHIE by hand; retrieval when built (test T2); nothing reads it by script yet
+- notes: registered 2026-09-12 at his word, 02:24 (AD-22), because retrieval test T2 needs it: the Lundbeck signal must reach the article at gate 2. Not registered because it exists. The editorial folder's own rules (README, WORKFLOW, LAYER-MAP, VISIBLE-VALUE-STANDARD) are procedures and are not counted. 18 files on 2026-09-12.
+- added: 2026-09-12
+- changed: 2026-09-12
+
 ### concepts
 - id: concepts
 - kind: settled wording and the recovered profile notes
