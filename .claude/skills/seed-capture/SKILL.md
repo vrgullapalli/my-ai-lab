@@ -34,7 +34,7 @@ Pick the mode from what Venkat said. When in doubt, Scan — it writes nothing.
 
 | Mode | Triggers | What runs | Writes |
 |---|---|---|---|
-| **Scan** | every close routine (`alfred-close`, 2026-09-10) · "scan this for seeds" · "what seeds are here" · "identify seed candidates" · "any seeds in this?" · a sweep that turns up more than five survivors | Steps 1–2 only. Return at most five ranked candidates; for each: the claim as a sentence · attribution class · source anchor (path + line, or "not on disk") · tension · which of the four tests pass · what is missing. If more than five passed, say how many. Rank by how many tests pass, then by how clearly the sentence carries the rule. | **Nothing.** Capture happens only on his pick. If the source is not on disk, say so: Scan can propose from a paste; Capture cannot write until the record exists. |
+| **Scan** | every close routine (`alfred-close`, 2026-09-10) · "scan this for seeds" · "what seeds are here" · "identify seed candidates" · "any seeds in this?" · a sweep that turns up more than five survivors | Steps 1–2, plus step 5 as a scan (wording that got fixed, and wording that could be created through the two lenses in `references/wording-lenses.md`; at most three per lens). Return at most five ranked seed candidates; for each: the claim as a sentence · attribution class · source anchor (path + line, or "not on disk") · tension · which of the four tests pass · what is missing. If more than five passed, say how many. Rank by how many tests pass, then by how clearly the sentence carries the rule. | **Nothing.** Capture happens only on his pick. If the source is not on disk, say so: Scan can propose from a paste; Capture cannot write until the record exists. |
 | **Capture** | `/seed-capture` · his pick at the close routine · "capture this as a seed" · his pick from a Scan ("approve 1, 3, 4", "all eight") | Steps 1–6 (or 3–6 after a Scan). | Seed files, README count, `memory/concepts.md` (step 5). |
 | **Missed** | "that should have been a seed" · "you missed X" · "why isn't X a seed?" | One row in `/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/missed.md` (see Rules). No seed is written unless he also says to capture it. | `/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/missed.md`, one row. |
 
@@ -80,7 +80,13 @@ Pick the mode from what Venkat said. When in doubt, Scan — it writes nothing.
 4. **Update the `session/` count** in the `/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/README.md` table. Nothing else
    in that file.
 
-5. **Ask once: "did any wording get fixed today?"** Four classes. "Label" was too
+5. **Ask once: "did any wording get fixed today?"** Four classes. Then the second part,
+   added 2026-09-12 at Venkat's word (01:54 and 02:04): **"what wording could be created?"**
+   Run the two lenses in `references/wording-lenses.md` (Chappelle: the true thing nobody
+   said flat, edge at situations never people; Godin: one idea per line, a reframe you can
+   act on). At most three per lens. Each line says whose it is: his, adapted, or new. A new
+   line is kept only when he picks it, recorded `endorsed`. Canon section 8 governs humor.
+   In Scan mode this shows the list and writes nothing. "Label" was too
    narrow a container (Venkat, 2026-08-19) — a coined noun is only one of the ways
    language gets settled in a session. All four land in `memory/concepts.md` with a
    pointer. **The container word is his to name; it stays Unknown until he does.**
