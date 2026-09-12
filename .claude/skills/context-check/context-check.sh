@@ -136,5 +136,9 @@ rule "G. Do the capability map, the definitions, and the lab agree?"
 echo "(docs/architecture/check.py: the registry standard as a test. ids, statuses, paths, definitions, competing records)"
 echo
 python3 docs/architecture/check.py 2>&1 | sed 's/^/  /'
+echo
+echo "(context/sources/check.py: retrieval's source register. ids, words, locations, health, coverage, source discovery)"
+echo
+python3 context/sources/check.py 2>&1 | sed 's/^/  /'
 
 rule "Done — nothing was changed."

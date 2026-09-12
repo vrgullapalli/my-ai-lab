@@ -10,6 +10,7 @@ work done. Loaded every session.
 | `how-i-work.md` | How work should be done with him |
 | `CLAUDE.md` | Session instructions |
 | `intent/STANDING.md` | The current drivers of the lab. Exists. They change; the machinery that reads them does not (Venkat, 2026-09-11) |
+| `sources/REGISTER.md` | Retrieval's list of what it may depend on: 23 sources (20 inside the lab, 3 outside), each with owner, standing, authority tier, how dates are read, and use limits (what it may inform, what it must never establish alone). Exists since 2026-09-12 (build step 2). `sources/check.py` beside it proves the register, watches source health, counts coverage, runs source discovery, and resolves an id to its current location; `sources/tests/` proves the check can fail |
 
 `how-i-work.md` exists since 2026-09-11, from Venkat's own text, and loads every session through an import line in the lab's CLAUDE.md (live 23:37). `who-i-am.md`, `how-i-talk.md`, and `CLAUDE.md` here do not exist yet. `intent/STANDING.md` does exist.
 

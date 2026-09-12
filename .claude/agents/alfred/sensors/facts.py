@@ -259,6 +259,19 @@ def architecture_check_line():
         return f"ALERT architecture check: could not run ({type(exc).__name__})"
 
 
+def sources_line():
+    """One line from context/sources/check.py: the source register, coverage, freshness, and source
+    discovery (2026-09-12, build step 2 under retrieval). Its number, not Alfred's."""
+    script = os.path.join(LAB, "context", "sources", "check.py")
+    if not os.path.isfile(script):
+        return "ALERT sources: script missing (context/sources/check.py)"
+    try:
+        r = subprocess.run([sys.executable, script, "--summary"], capture_output=True, text=True, timeout=180)
+        return r.stdout.strip() or "ALERT sources: no output"
+    except Exception as exc:
+        return f"ALERT sources: could not run ({type(exc).__name__})"
+
+
 def waiting_line():
     """The count of things waiting on Venkat's word and the oldest one, from waiting.py
     (added to the morning brief at his word, 2026-09-10 16:42)."""
@@ -387,6 +400,7 @@ def open_sheet():
     out.extend(capture_lines())
     out.append(skill_check_line())
     out.append(architecture_check_line())
+    out.append(sources_line())
     out.append(waiting_line())
 
     if lines and os.path.isfile(STANDING):

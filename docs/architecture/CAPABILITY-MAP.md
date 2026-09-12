@@ -2,7 +2,7 @@
 name: capability-map
 what: The map of the lab's shared system capabilities, the registry that records them, and the registry standard every registry in the lab should follow.
 status: living. Started 2026-09-12 at Venkat's word ("Establish the shared capability layer"). The registry block is the canonical record; a script reads it.
-home: docs/architecture/ (assumed home, waiting on Venkat's yes; see ARCHITECTURE-DECISIONS.md AD-09)
+home: docs/architecture/ (his word, 2026-09-12 01:16; AD-14)
 reads_this: docs/architecture/check.py (proves every entry has a definition, a valid status, and paths that exist; runs in context-check section G and on the facts sheet at every session start)
 related: [CAPABILITY-DEFINITIONS.md, ARCHITECTURE-DECISIONS.md, context/intent/STANDING.md, docs/reports/2026-09-11--ai-native-possibility-brief.md]
 tags: his-word (Venkat said it, dated) · observed (seen on disk or measured today) · proposed (Alfred's design, waiting on his yes)
@@ -31,13 +31,13 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 | Evaluation and observability | One capability | `facts.py`, `waiting.py`, `context-check`, `skill-check`, `dead-pointers`, `verify.sh`, `check_hub.py`. "Scripts decide what is true" is the lab's best idea and it is enforced | `measurement` |
 | Capability architecture | One capability, the meta one | This map, the definitions, the decisions, and the check script that proves they agree | `capability-architecture` |
 
-**Nine entries. Six live or degraded, two planned, one building.** Small on purpose. A tenth, `source-layer`, was added and removed the same day: it is retrieval's own list of sources, a store with one consumer (AD-12).
+**Nine entries. Seven live or degraded, two planned.** Small on purpose. A tenth, `source-layer`, was added and removed the same day: it is retrieval's own list of sources, a store with one consumer (AD-12).
 
 ## 2. The registry (canonical record)
 
 **How to read it.** One record per capability. Each is a heading plus `- key: value` lines, the same shape a seed file uses. `check.py` parses exactly this block, between the two `registry` markers. Paths are relative to the lab root.
 
-**Status words** (proposed): `planned` (defined, not built) · `building` (work in progress) · `live` (running, sensors green) · `degraded` (running, a known fault the sensors show) · `retired` (kept as a record, no longer used; a dated line says what replaced it).
+**Status words** (his word, 2026-09-12 01:16): `planned` (defined, not built) · `building` (work in progress) · `live` (running, sensors green) · `degraded` (running, a known fault the sensors show) · `retired` (kept as a record, no longer used; a dated line says what replaced it).
 
 <!-- registry:start -->
 
@@ -51,6 +51,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - consumers: every session, every skill, every agent, every hook
 - sensors: .claude/hooks/tests (root lock); .claude/skills/context-check/context-check.sh (secrets, uncommitted)
 - defined-in: CAPABILITY-DEFINITIONS.md#authority
+- proof: .claude/hooks/tests/root-lock-tests.py (37 of 37 on 2026-09-12); live before the gate of 2026-09-12, not re-proven
 - related: measurement, evidence-record
 - added: 2026-09-12
 - changed: 2026-09-12
@@ -65,6 +66,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - consumers: alfred-close, alfred-open, seed-capture, facts.py, claim-verification, retrieval (planned)
 - sensors: .claude/agents/alfred/sensors/facts.py (unreceipted sessions, capture age, log gap); .claude/agents/alfred/sensors/session-sync.py (render log)
 - defined-in: CAPABILITY-DEFINITIONS.md#evidence-record
+- proof: .claude/agents/alfred/sensors/tests/facts_tests.py (unreceipted-session case); live before the gate of 2026-09-12, not re-proven
 - related: continuity, measurement
 - added: 2026-09-12
 - changed: 2026-09-12
@@ -80,6 +82,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - consumers: Alfred, alfred-open, alfred-close, every first session of the day
 - sensors: .claude/agents/alfred/sensors/facts.py (open follow-ups, next action, unreceipted sessions); .claude/agents/alfred/sensors/waiting.py (three trackers as one view)
 - defined-in: CAPABILITY-DEFINITIONS.md#continuity
+- proof: .claude/agents/alfred/sensors/tests/facts_tests.py (follow-up open and close cases); live before the gate of 2026-09-12, not re-proven
 - related: evidence-record, drivers
 - fault: "waiting on Venkat" lives in three trackers (receipts, TODAY.md, work-os/upskill-advisor/records/open-items.md). One fact, three homes. Observed 2026-09-11.
 - added: 2026-09-12
@@ -95,6 +98,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - consumers: alfred-open, the alfred agent (duty pass), implication-lens, hand tests, retrieval (planned, for weighting)
 - sensors: .claude/agents/alfred/sensors/facts.py (drivers changed since last open); per-driver proof lines named inside the file
 - defined-in: CAPABILITY-DEFINITIONS.md#drivers
+- proof: none written; live before the gate of 2026-09-12. A planted-fault proof is owed
 - related: continuity, context-assembly
 - added: 2026-09-12
 - changed: 2026-09-12
@@ -109,6 +113,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - consumers: alfred-open, alfred-close, the alfred agent, unlazy, Venkat (the facts sheet)
 - sensors: .claude/agents/alfred/sensors/tests; .claude/hooks/tests; .claude/skills/prove-it-can-fail (the check that a check can fail)
 - defined-in: CAPABILITY-DEFINITIONS.md#measurement
+- proof: .claude/agents/alfred/sensors/tests/facts_tests.py and .claude/skills/context-check/tests/skill_check_tests.py; live before the gate of 2026-09-12
 - related: authority, evidence-record, capability-architecture
 - added: 2026-09-12
 - changed: 2026-09-12
@@ -123,6 +128,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - consumers: market signals, daily briefing, matching roles scan, weekend read
 - sensors: work-os/scheduled-tasks/market-signals/verify.sh (live matches file); .claude/agents/alfred/sensors/facts.py (briefs pulled today)
 - defined-in: CAPABILITY-DEFINITIONS.md#scheduled-routines
+- proof: work-os/scheduled-tasks/market-signals/verify.sh (all 21 matched 2026-09-09); no planted-fault proof; live before the gate of 2026-09-12
 - related: retrieval
 - fault: the lab records 29 routine ids; the account listed 2 on 2026-09-11 at 15:20. verify.sh cannot run. Briefs never read lab context (hand test, 2026-09-12).
 - added: 2026-09-12
@@ -133,10 +139,11 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - family: Memory and state
 - status: planned
 - job: Find the best relevant knowledge the system already has across registered sources and return it with enough source, freshness, authority, and evidence information to use safely.
-- canonical-store: none of its own. Sources stay canonical where they live. Any index is derived and rebuildable. Its source register (build step 2) is its own list of what it may read, not a separate capability.
-- access: not decided; one call from a session or a script (build step 3)
+- canonical-store: context/sources/REGISTER.md (its list of what it may depend on, with standing and use limits; sources stay canonical where they live; any index is derived and rebuildable)
+- access: not decided for retrieval itself (build step 3). For the register: python3 context/sources/check.py resolve <id> is the one path from a source id to its current location, status, standing, and use limits
 - consumers: Alfred, ARCHIE, signal reasoning, career model, project work, Telegraph+, context-assembly, seed-capture repeat check
-- sensors: coverage; freshness; source discovery; quality (a fixed question set); unused consumers; integrity (every pointer resolves)
+- sensors: context/sources/check.py (register integrity, source health, coverage, freshness, source discovery; built 2026-09-12); planned: quality (a fixed question set), unused consumers, pointer resolution
+- proof: context/sources/tests/check_tests.py (24 planted faults caught 2026-09-12: missing, moved, duplicate id, competing location, broken location, bad words, unregistered folder and repo). Retrieval itself is still planned; this proves its store
 - defined-in: CAPABILITY-DEFINITIONS.md#retrieval
 - related: context-assembly, evidence-record, drivers
 - proving-case: market signals first (hand test 2026-09-12), then Alfred, ARCHIE, and career-model questions (build step 4)
@@ -160,16 +167,18 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 ### capability-architecture
 - id: capability-architecture
 - family: Capability architecture
-- status: building
+- status: live
 - job: Keep the map, the definitions, and the decisions true to each other and to the lab, so a new capability is added on purpose and an old one retires in the open.
 - canonical-store: docs/architecture
 - access: read by people and sessions; check.py runs in context-check section G and puts one line on the facts sheet at every session start; by hand any time
 - consumers: Alfred, any session that proposes a new system, the facts sheet (every session start), context-check
 - sensors: docs/architecture/check.py (registry and definitions agree; statuses valid; paths exist); .claude/skills/context-check/dead-pointers.py (paths named in live files)
 - defined-in: CAPABILITY-DEFINITIONS.md#capability-architecture
+- proof: docs/architecture/ARCHITECTURE-DECISIONS.md AD-13 and conflict 11; planted faults caught on the facts sheet and in context-check section G, 2026-09-12 01:10; files restored to matching checksums
 - related: measurement
 - added: 2026-09-12
 - changed: 2026-09-12
+- status-history: 2026-09-12 building to live, his word 01:16
 
 <!-- registry:end -->
 
@@ -180,7 +189,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - **Session capture (`session-sync.py`).** Part of `evidence-record`; it is how transcripts get there.
 - **unlazy and the root lock.** Part of `authority`; they are the two things that refuse.
 - **Publishing chain, dossier, committee, target scan.** Domain workflows inside engagement-os.
-- **The source register** (build step 2). Retrieval's list of what it may read. One consumer, so a store, not a capability. Registered this morning as `source-layer`, removed at 01:20 (AD-12). Its definition lives under retrieval.
+- **The source register** (build step 2, built 2026-09-12). Retrieval's list of what it may depend on: 23 sources, each with standing and use limits. One consumer, so a store, not a capability. Registered this morning as `source-layer`, removed at 01:20 (AD-12). Its definition lives under retrieval.
 - **Standing reasoning and the learning loop** (build steps 6 and 7). Not defined yet, so not registered. A planned entry needs at least a job line and one consumer.
 
 ## 3. Registry standard
@@ -193,6 +202,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - **Relationships by stable reference.** `related:` and `consumers:` name ids or paths, never prose descriptions.
 - **Source or location** where the thing lives, as a path relative to the lab root, so a script can test it.
 - **Timestamps** where useful: `added`, `changed`, and for status moves, the date and who decided.
+- **Live needs proof.** A live or degraded entry carries `- proof:` naming where the failure proof is (his gate, 2026-09-12 01:17; AD-15). Entries live before the gate say so.
 - **Add, change, retire.** Add is a new record. Change edits the record and bumps `changed`. Retire sets `status: retired` and adds one dated line saying what replaced it. Nothing is deleted.
 - **Machine-readable.** A ten-line script can parse it without a library the machine does not have. Here that means front matter, `- key: value` records, markdown tables, JSON lines, or YAML where a reader exists.
 - **No duplicate source of truth.** If a second file must hold the same fact, it is generated from the first, or it is a bug.

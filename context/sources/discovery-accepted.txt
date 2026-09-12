@@ -1,0 +1,13 @@
+# source discovery: candidates a person has looked at and left unregistered on purpose. One per line:
+#   <path, repo, or domain> | <reason>
+# Counted, not listed. Started 2026-09-12. Lines marked "Alfred" await Venkat's review.
+.claude | procedures and agents, not knowledge; the registry standard says skills are procedures (Alfred, 2026-09-12)
+work-os/projects/_archive | two superseded Telegraph predecessors, retained for learning, not use (STATUS.md); Alfred, 2026-09-12
+work-os/upskill-advisor/telegraph | superseded repo (CLAUDE.md, "Where things are"); Alfred, 2026-09-12
+work-os/upskill-advisor/plans | plans and research for a superseded line; upskill-advisor/records is registered instead; Alfred, 2026-09-12
+work-os/projects/worthy-tool-v2 | a shipped tool, cold since 2026-08-29; code, not knowledge; Alfred, 2026-09-12
+work-os/projects/decision-foundry | a project repo with no knowledge role yet; Alfred, 2026-09-12
+work-os/brand-os/engagement-os | the engagement-os repo as a whole; its knowledge folders are registered one by one (seeds, targets, assets, concepts); Alfred, 2026-09-12
+work-os/brand-os | the brand-os repo as a whole; its knowledge folders are registered one by one (model, voice, positioning); Alfred, 2026-09-12
+work-os/projects/telegraph-plus | registered as a source; listed here so the repo check does not name it twice; Alfred, 2026-09-12
+claude.ai | the routines' own pages and artifact links, not a knowledge source; Alfred, 2026-09-12

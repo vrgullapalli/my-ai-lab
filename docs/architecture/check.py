@@ -17,6 +17,7 @@ Checks (2026-09-12, the registry standard made testable):
   7. Every id in related: is a registry id (relationships by stable reference).
   8. No two entries claim the same canonical-store path (competing canonical records).
   9. No other live markdown file in the lab carries a registry block (a second copy of the registry).
+ 10. A live or degraded entry carries '- proof:' (the building-to-live gate, AD-15).
 
 Every finding is one line with the seven fields of the sensor standard:
   [materiality] what | system | evidence | why | next | status
@@ -116,6 +117,10 @@ def run(folder):
             findings.append(finding(f"heading '{r['_heading']}' differs from id '{rid}'", where,
                                     "the heading is how a reader finds the record; the id is how a script does",
                                     "make them the same word"))
+        if r.get("status") in ("live", "degraded") and not r.get("proof"):
+            findings.append(finding(f"{rid}: {r['status']} with no '- proof:' line", where,
+                                    "the building-to-live gate needs operational behavior, failure proof, and a valid contract (AD-15)",
+                                    "add '- proof:' naming where the failure proof is, or set the status back to building"))
         for k in REQUIRED:
             if not r.get(k):
                 findings.append(finding(f"{rid}: missing '{k}'", where,

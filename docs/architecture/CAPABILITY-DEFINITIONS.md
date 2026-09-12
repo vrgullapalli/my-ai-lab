@@ -2,7 +2,7 @@
 name: capability-definitions
 what: One definition per registered shared capability, all in the same shape. Holds the shared system standard (the shape) and the sensor standard (how each one is watched).
 status: living. Started 2026-09-12 at Venkat's word. Retrieval is defined, not built. Context assembly is a planned entry with only a job, consumers, and the AI test filled in. The source register is part of retrieval, not a capability (AD-12).
-home: docs/architecture/ (assumed home, waiting on Venkat's yes; AD-09)
+home: docs/architecture/ (his word, 2026-09-12 01:16; AD-14)
 read_with: CAPABILITY-MAP.md (the registry; ids here match ids there, checked by check.py)
 tags: his-word · observed · proposed
 ---
@@ -27,6 +27,8 @@ tags: his-word · observed · proposed
 | Evaluation | How we know it works, with a number where possible |
 | Evidence produced | What record it leaves |
 | Sensors needed | Which conditions from the sensor standard it is watched for |
+
+**The building-to-live gate** (his word, 2026-09-12 01:17). A capability moves from building to live only when three things hold: operational behavior (it runs from an existing path, not because someone remembers), failure proof (planted faults were caught and the proof is written down), and a valid contract (the definition is complete and `check.py` passes). The registry entry records where the proof is in `- proof:`. The check refuses a live or degraded entry without one.
 
 **Plus one line every definition carries** (from the core rule): **AI test.** What should this become now that AI exists, and what would stay the same if AI were removed. If the answer is "mostly the same," the definition says "challenged" and why.
 
@@ -183,7 +185,7 @@ Blank means not needed yet.
 - **Deterministic.** Coverage: the index holds every file of every registered source, proven by count. Pointer resolution. Dates. Exact and keyword search. Reading the authority tier from the record's own fields. Writing each answered question back as a record (what was asked, by whom, what came back, what was used).
 - **AI.** Understanding the question. Matching by meaning. Ranking. Saying when two results conflict and what the conflict is. Saying when the results do not answer the question.
 - **Human.** Rules on authority tiers. Rules on which sources are registered. Settles a conflict between two rulings.
-- **Canonical store.** None of its own. Sources stay canonical where they live. The index is derived and can be rebuilt from the source register at any time. The write-back record's home is decided at build (candidates: a log beside the index, or a section in the session receipt).
+- **Canonical store.** None of its own. Sources stay canonical where they live. Its list of what it may read is `context/sources/REGISTER.md`. The index, when built, is derived and can be rebuilt from that register at any time. The write-back record's home is decided at build (candidates: a log beside the index, or a section in the session receipt).
 - **Access.** One call, from a session or a script. Not a service. Decided at build.
 - **Failure.** Never invents a source. If the index is stale, results say "index built <date>, newest change <date>." If an unregistered source is met, it is reported to source discovery, never read silently. If nothing matches, it says so and lists what it searched.
 - **Evaluation.** A fixed question set with known answers, run before and after any change. Seeds for the set come from the hand test: the Lundbeck signal should find the article at gate 2 and its research check; "green checks" should find seed A-LIVE-187; Eversana should find the `eversana-intouch` dossier and its angle map. Baseline to beat: `find-similar.py` scored 40 of 41 claims under 0.4 and missed A-LIVE-187. Measures: hit rate in the top 5, coverage of registered sources, time to answer. `DONE.md` already asks for this: "Retrieval performance is measured."
@@ -193,15 +195,20 @@ Blank means not needed yet.
 - **Not defined around signals.** Signals are the first proving case because the hand test already exists. The question set must hold Alfred, ARCHIE, and career-model questions before v0.1 is called working (build step 4).
 - **AI test.** Passes clearly. Without AI this is `grep` plus word overlap, and the hand test showed word overlap misses matches by idea. The lab's own scan of the career model reached the same place: "retrieval plus write-back covers the gaps" and no rebuild is needed.
 
-#### Source register (build step 2, the first half of retrieval)
+#### Source register (build step 2, built 2026-09-12; the first half of retrieval)
 
-- **What it is.** Retrieval's own list of what it may read: each source's location, kind, owner, authority tier, and freshness. A store, not a capability. It has one consumer, retrieval, and the source discovery sensor compares against it. Registered this morning as `source-layer`; folded in here at 01:20 (AD-12) because the standard asks a capability to have consumers beyond its owner.
-- **What a source is** (proposed): a folder, file set, repo, or store the lab treats as knowledge. Candidates already known: the seedbank (790 files), receipts, transcripts, the career model, the points-of-view library, the drivers file, the rulings files, target dossiers, scheduled-task outputs, the writing canon.
-- **Authority tiers** (proposed, reusing the seedbank spec's tags): his ruling · his words · system · proposed · superseded. A retrieval result carries the tier of its source and of its record.
-- **It follows the registry standard** when built. Its sensors are retrieval's: coverage, freshness, integrity, and source discovery.
-- **AI test.** A register of paths is a script's job and stays one. The judgment is in what retrieval does with it.
+- **What it is.** Retrieval's own list of what it may depend on: each source's location, kind, owner, standing, authority tier, how its dates are read, and its use limits. A store, not a capability (AD-12). It lives at `context/sources/REGISTER.md` (AD-16) in the same record shape as the capability registry. Its check, `context/sources/check.py`, proves the register (unique ids, required fields, allowed words, no two sources claiming one location), watches source health (missing, moved, unreadable, empty), measures coverage and freshness per source, runs source discovery, and resolves an id to its current location.
+- **What a source is:** a folder, file set, or file the lab treats as knowledge. Twenty-three registered on 2026-09-12: twenty inside the lab (seeds, receipts, audits, transcripts, Alfred's log, the drivers, the rulings files, root doctrine, the about-me drafts, the career model, the voice canon, positioning and audience, target dossiers, assets, routine outputs, lab reports and plans, Telegraph+, the Telegraph instruction package, the concept and profile notes, and the architecture folder) and three outside it (the public site on the Desktop, the career-advisor snapshot from the iMac, and the warehouse). Outside sources are recorded by absolute path: existence is checked, files are not counted, nothing is copied in.
+- **Stable identity** (AD-17). Consumers ask by id, never by path: `python3 context/sources/check.py resolve career-model` is the one deterministic path from id to current location, status, standing, and use limits. A path written into a consumer's own file is a copy that goes stale.
+- **Standing** (AD-17): canonical · replica (with `canonical-at`) · historical · unavailable. Status keeps the registry standard's five words; only live and degraded may be read.
+- **Authority tiers** (reusing the seedbank spec's tags): his-ruling · his-words · endorsed · system · proposed · generated · mixed. `mixed` means each record carries its own tier in a named field, and the register says which field. A retrieval result carries the tier of its source and of its record.
+- **Use limits** (AD-17). The strength of the action must not exceed the strength of the evidence. Each source carries `use` (authoritative · evidentiary · contextual · exploratory, the ceiling), `may-inform` (the jobs it may reasonably influence), and `not-alone` (what it must never establish by itself). Job limits, not a grade. The script proves they are present and the words are allowed; the AI reads them before leaning on a source; nothing scores them.
+- **Admission.** Seven questions in the register's header (what job, what it represents, how authoritative, how current, can it be traced, is it distinct, what it cannot tell us), answered in the record. Discovery proposes; a person answers and adds. Nothing registers itself.
+- **The career model** is registered as authoritative for what he has done and which capability matches, and not-alone for where he is heading. Its record carries his hand-test rule: every match cites the capability id and the supporting extract, records the match where the work happens, and states what the model could not answer; nothing updates the canonical model on its own.
+- **It follows the registry standard.** Its sensors are retrieval's: integrity, health, coverage, freshness, and source discovery, all in `context/sources/check.py`, one line on the facts sheet and in context-check section G. Proof: `context/sources/tests/check_tests.py`, 24 planted-fault checks, all caught on 2026-09-12.
+- **AI test.** A register of paths is a script's job and stays one. What AI changes: the register carries use limits so that the question "is this source appropriate for this job" can be reasoned, per job, instead of answered by whether the file is reachable. Without AI the limits would be a policy nobody reads at the moment of use.
 
-#### Source discovery sensor (planned, part of retrieval; reads the source register)
+#### Source discovery sensor (first version built 2026-09-12, part of retrieval; reads the source register)
 
 - **Job** (his words). Notice signs of useful sources that are not registered.
 - **It may flag:** unknown files and folders outside any registered source; repos not in the register (`facts.py repos()` already finds every git repo); URLs or domains repeated across live files; datasets (CSV, JSON lines, JSON); document collections (a folder of many same-kind files); broken paths that point at useful material (`dead-pointers.py` already lists these; 420 live mentions on 2026-09-10).
@@ -209,7 +216,7 @@ Blank means not needed yet.
 - **Deterministic.** All the counting and listing above.
 - **AI.** Whether a flagged thing looks useful, and to which consumer. That sets the suggested next move.
 - **Human.** Register, accept, or ignore.
-- **Reuse, observed.** Three of its six checks already exist as sensors: repo detection (`facts.py`), broken paths (`dead-pointers.py`), and files nothing points at (`context-check`, 1,061 on 2026-09-11). The new parts are the URL count, the dataset and collection check, and the compare against the register.
+- **What the first version does** (`context/sources/check.py`): finds git repos not under any registered source; folders holding ten or more markdown files that no registered source covers; data files (CSV, JSON, JSON lines) outside registered sources; web domains named twenty or more times across live files; and the count of unreviewed broken paths from `dead-pointers.py`. Each finding is one line in the seven-field pattern, materiality "show at open." Reviewed and left on purpose goes in `context/sources/discovery-accepted.txt` with a reason. Its first two findings (the Telegraph governance folder and eight research data files) were resolved on 2026-09-12 by extending the `upskill-records` record, not by a new one.
 
 ### context-assembly (planned, build step 5)
 
@@ -219,7 +226,7 @@ Blank means not needed yet.
 - **Everything else** is written when built.
 - **AI test.** Passes clearly. Picking the right slice for this task is interpretation. Today the front door loads 243 lines plus 79 every session and a 140KB voice profile is read whole or not at all.
 
-### capability-architecture (building)
+### capability-architecture (live since 2026-09-12 01:16)
 
 - **Job.** Keep the map, the definitions, and the decisions true to each other and to the lab.
 - **Consumers.** Alfred, any session that proposes a new system, the facts sheet at every session start, context-check section G.
