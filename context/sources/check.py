@@ -13,7 +13,8 @@ Deterministic; reports, never fixes, never registers a source.
 Register (the registry standard on this register):
   ids unique and equal to headings; required fields present; status, standing, use, and tier from the allowed words;
   a replica names canonical-at, and never another registered id (one identity per source); added and changed are dates;
-  no two sources claim one location.
+  no two sources claim one location, and no location sits inside another source's location (one home per file).
+  A folder named _archive inside a location is never walked: what is archived is not evidence.
 Health (for every live or degraded source):
   missing (location not there; says where a file or folder of that name is now, if one exists);
   unreadable (there, but this user cannot read it); empty (there, but no file matches the pattern);
@@ -41,7 +42,7 @@ TIERS = {"his-ruling", "his-words", "endorsed", "system", "proposed", "generated
 REQUIRED = ("id", "kind", "location", "pattern", "owner", "standing", "tier", "date-field", "status",
             "use", "may-inform", "not-alone", "read-by", "added", "changed")
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
-SKIP_DIRS = {".git", "node_modules", "__pycache__", ".playwright-mcp", ".remember", ".unlazy", ".DS_Store", ".next", "out"}
+SKIP_DIRS = {".git", "node_modules", "__pycache__", ".playwright-mcp", ".remember", ".unlazy", ".DS_Store", ".next", "out", "_archive"}
 DOC_FOLDER_MIN, DOMAIN_MIN = 10, 20
 DOMAIN = re.compile(r"https?://([a-zA-Z0-9.-]+)")
 
@@ -179,6 +180,13 @@ def integrity(lab, records):
         if len(owners) > 1:
             findings.append(finding(f"two sources claim one location: {loc} ({', '.join(owners)})", "REGISTER.md location fields",
                                     "one home per fact; a file counted twice is weighed twice", "give the location to one source"))
+    full = {loc: os.path.normpath(lab.where(loc)[0]) for loc in seen}
+    for inner in sorted(seen):
+        for outer in sorted(seen):
+            if inner != outer and full[inner].startswith(full[outer] + os.sep) and seen[inner] != seen[outer]:
+                findings.append(finding(f"one source's location sits inside another's: {inner} ({', '.join(seen[inner])}) inside {outer} ({', '.join(seen[outer])})",
+                                        "REGISTER.md location fields", "one home per fact; a file inside both is counted twice and weighed twice",
+                                        "give the inner path to one source, or drop it from the other"))
     return findings
 
 

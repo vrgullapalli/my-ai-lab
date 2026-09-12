@@ -4,7 +4,7 @@ what: Retrieval's list of what it may depend on. One record per source the lab t
 status: live since 2026-09-12. Build step 2 (AD-06) complete at his word, 2026-09-12 01:44 (AD-19). Retrieval itself is not built and step 3 has not started.
 home: context/sources/ (proposed, AD-16). The same idea as intent/STANDING.md: the list changes, the reader does not.
 reads_this: context/sources/check.py (register, health, coverage, freshness, source discovery, resolve); one line on the facts sheet; context-check section G
-proof: context/sources/tests/check_tests.py (planted faults: missing, moved, duplicate id, competing location, broken location, bad words, unregistered folder and repo)
+proof: context/sources/tests/check_tests.py (planted faults: missing, moved, duplicate id, competing location, nested location, broken location, an archive-only folder, bad words, unregistered folder and repo)
 part_of: retrieval (docs/architecture/CAPABILITY-DEFINITIONS.md#retrieval, "Source register"). A store, not a capability (AD-12).
 rules: sources stay canonical where they live. Nothing here is a copy. Adding a source is an edit here plus a run of the check. Retiring one sets status retired and adds a dated line; nothing is deleted.
 ---
@@ -39,7 +39,7 @@ It prints the current location and whether it exists, the status, the standing, 
 
 Seven questions, answered in the record, not in a rules engine. What job could it help with (`may-inform`). What does it actually represent (`kind`). How authoritative is it for that job (`tier`, `use`). Is it current enough (`date-field`, `standing`). Can it be traced (`location`, `pattern`, and anchors inside). Is it distinct from a source already here (if not, extend that record). What can it not safely tell us (`not-alone`). Then run the check. Source discovery proposes candidates; a person answers the seven and adds the record. Nothing registers itself.
 
-**Not registered yet, on purpose:** most of what sits outside the lab root (the iMac, the two peer folders `~/Documents/os-factory` and `~/Documents/claude-cowork`), and the `.claude/` folder, which holds procedures, not knowledge. Source discovery reports what it sees inside the lab; a person decides. Reviewed and left: `discovery-accepted.txt`.
+**Not registered yet, on purpose:** most of what sits outside the lab root (the iMac, the two peer folders `~/Documents/os-factory` and `~/Documents/claude-cowork`), the `.claude/` folder, which holds procedures, not knowledge, and three parts of the warehouse: `old-mac-documents` (client material), `_backups` (snapshots of the whole lab), and `research-sources` (other people's articles). A folder named `_archive` inside a registered location is never counted. Source discovery reports what it sees inside the lab; a person decides. Reviewed and left: `discovery-accepted.txt`.
 
 <!-- register:start -->
 
@@ -110,7 +110,7 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 - status: live
 - use: evidentiary
 - may-inform: what was said, by whom, and when, with an anchor; the origin of a seed, a correction, or a claim
-- not-alone: a decision (it must appear in a receipt or a ruling to count); anything public (two raw session logs hold real-looking API keys, TODAY.md 2026-09-10); his position when a later line reverses it
+- not-alone: a decision (it must appear in a receipt or a ruling to count); anything public (two raw session logs once held real-looking API keys; scrubbed 2026-09-12 01:43, receipt R-2026-09-12-0143-7c21, and a search finds none today); his position when a later line reverses it
 - read-by: seed-capture (anchors), alfred-close (late receipts), claim checks
 - notes: 266 files on 2026-09-12; SYNC-LOG.md and USAGE.jsonl in the same folder are about the capture, not records. The 154 transcripts from before 2026-09-05 have no raw source left; these renders are the only copy.
 - added: 2026-09-12
@@ -153,7 +153,7 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 ### rulings
 - id: rulings
 - kind: rulings and decision logs, dated and numbered
-- location: RULINGS-IN-FORCE.md; work-os/brand-os/DECISIONS.md; work-os/projects/telegraph-plus/records/views/DECISIONS.md; docs/architecture/ARCHITECTURE-DECISIONS.md
+- location: RULINGS-IN-FORCE.md; work-os/brand-os/DECISIONS.md
 - pattern: *.md
 - owner: each file's domain; brand-os/DECISIONS.md is the front door for rulings about Venkat (ruling 034)
 - standing: canonical
@@ -165,6 +165,7 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 - may-inform: any judgment about a rule, the voice, publishing, the lab's shape; whether something needs his word
 - not-alone: a row marked proposed or assumed (it is Alfred's design until he says yes, twice for a rule); a superseded row (read the newest row on the subject; 036 is corrected by 037)
 - read-by: sessions by hand; nothing reads them by script yet
+- notes: the Telegraph decisions file and the architecture decisions file are rulings too, but each is read through its own source (telegraph-plus, architecture) so no file is counted twice (fixed 2026-09-12 after the acceptance review).
 - added: 2026-09-12
 - changed: 2026-09-12
 
@@ -366,7 +367,7 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 - may-inform: Telegraph's history, gates passed, what still needs him; the research behind the signal work (job postings as intelligence, the retro sets)
 - not-alone: what governs telegraph-plus (unruled since 2026-09-07); a current Telegraph decision (telegraph-plus is the current line)
 - read-by: facts.py (Telegraph items needing Venkat), sessions by hand
-- notes: extended 2026-09-12 to governance and research after source discovery flagged both (14 markdown files, 8 data files). The telegraph/ repo and plans/ beside them are superseded and not registered.
+- notes: extended 2026-09-12 to governance and research after source discovery flagged both (14 markdown files, 6 data files counted; the two under research/_archive are skipped, they are marked contaminated and ungated). The widening was Alfred's, not his; it waits on his yes or no (acceptance review, 2026-09-12 01:55). The telegraph/ repo and plans/ beside them are superseded and not registered.
 - added: 2026-09-12
 - changed: 2026-09-12
 
@@ -447,8 +448,8 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 
 ### warehouse
 - id: warehouse
-- kind: everything moved out of the lab, in dated folders, each with a note on what replaced it; plus the old Mac documents
-- location: ~/Documents/_warehouse
+- kind: what moved out of the lab, in dated folders, each with a note on what replaced it
+- location: ~/Documents/_warehouse/README.md; ~/Documents/_warehouse/_archive; ~/Documents/_warehouse/_audit; ~/Documents/_warehouse/_templates; ~/Documents/_warehouse/agents-from-lab-2026-09-09; ~/Documents/_warehouse/alfred--before-charter-v2--2026-09-09; ~/Documents/_warehouse/career-advisor--recovered-handoff--2026-09-10; ~/Documents/_warehouse/engagement-os-archived-2026-09-10; ~/Documents/_warehouse/hooks-archived-2026-09-10; ~/Documents/_warehouse/skills-archived-2026-09-10; ~/Documents/_warehouse/unlazy-ledgers; ~/Documents/_warehouse/vscode-markdown-style-2026-09-11; ~/Documents/_warehouse/writing-guide-copies--moved-2026-09-11
 - pattern: *.md
 - owner: Venkat
 - standing: historical
@@ -458,9 +459,9 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 - status: live
 - use: exploratory
 - may-inform: what replaced what, and why; the wording of a superseded file when a live one still cites it; the history of a decision
-- not-alone: anything current; anything public (old-mac-documents holds named clients, RFPs, and a 2020 non-compete; a client name never leaves it); a rule
+- not-alone: anything current; anything public; a rule
 - read-by: sessions by hand; snapshot.sh writes into it; nothing reads it by script
-- notes: outside the lab on purpose: nothing there is a git repository and nothing there is published (CLAUDE.md). The career-advisor snapshot inside it has its own record above.
+- notes: narrowed to the dated lab-move folders at his word, 2026-09-12 01:55 (AD-20); it was the whole warehouse root. Left out: old-mac-documents (named clients, RFPs, a 2020 non-compete; retrieval never reads it), _backups (snapshots of the whole lab, a second copy of every source here), research-sources (other people's articles; a separate decision), and the career-advisor snapshot, which has its own record above. Outside the lab on purpose: nothing there is a git repository and nothing there is published (CLAUDE.md).
 - added: 2026-09-12
 - changed: 2026-09-12
 

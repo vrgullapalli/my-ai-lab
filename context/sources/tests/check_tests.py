@@ -2,8 +2,8 @@
 """check_tests.py — proves context/sources/check.py can fail (the prove-it-can-fail rule).
 
 Builds a small lab in a temp folder, registers two sources, and plants one fault at a time:
-missing location, moved location, duplicate id, two sources claiming one location, a location with
-nothing matching its pattern, a bad word, a replica with no canonical-at, an unavailable source that is
+missing location, moved location, duplicate id, two sources claiming one location, one location nested
+inside another's, a folder whose only files sit under _archive, a location with nothing matching its pattern, a bad word, a replica with no canonical-at, an unavailable source that is
 reachable, an unregistered folder of markdown, an unregistered git repo. Each must be caught. The clean
 register must pass. Last, the real register must pass.
 
@@ -88,6 +88,20 @@ check("duplicate id is caught", code == 1 and "id 'notes' appears 2 times" in ou
 write_register(lab, *good, record("notes-again", "notes"))
 code, out = run(lab=lab)
 check("two sources claiming one location is caught", code == 1 and "two sources claim one location: notes (notes, notes-again)" in out, out)
+
+# 4b. one source's location sits inside another's (a file counted under two ids)
+write_register(lab, *good, record("note-a", "notes/a.md", "a.md"))
+code, out = run(lab=lab)
+check("a location nested inside another source's is caught",
+      code == 1 and "one source's location sits inside another's: notes/a.md (note-a) inside notes (notes)" in out, out)
+
+# 4c. archived files are not evidence: a folder whose only markdown sits under _archive is empty
+os.makedirs(os.path.join(lab, "arch", "_archive"))
+open(os.path.join(lab, "arch", "_archive", "old.md"), "w").write("old")
+write_register(lab, *good, record("arch", "arch"))
+code, out = run(lab=lab)
+check("a folder with files only under _archive is caught as empty", code == 1 and "arch: location holds no file matching *.md: arch" in out, out)
+shutil.rmtree(os.path.join(lab, "arch"))
 
 # 5. broken location: it exists but nothing inside matches the pattern
 write_register(lab, good[0], record("notes", "notes", pattern="*.csv"))

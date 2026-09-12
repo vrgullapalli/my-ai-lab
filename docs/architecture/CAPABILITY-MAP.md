@@ -143,7 +143,7 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - access: not decided for retrieval itself (build step 3). For the register: python3 context/sources/check.py resolve <id> is the one path from a source id to its current location, status, standing, and use limits
 - consumers: Alfred, ARCHIE, signal reasoning, career model, project work, Telegraph+, context-assembly, seed-capture repeat check
 - sensors: context/sources/check.py (register integrity, source health, coverage, freshness, source discovery; built 2026-09-12); planned: quality (a fixed question set), unused consumers, pointer resolution
-- proof: context/sources/tests/check_tests.py (25 planted faults caught 2026-09-12: missing, moved, duplicate id, competing location, broken location, bad words, unregistered folder and repo). Retrieval itself is still planned; this proves its store
+- proof: context/sources/tests/check_tests.py (27 planted faults caught 2026-09-12: missing, moved, duplicate id, competing location, nested location, broken location, archive-only folder, bad words, unregistered folder and repo). Retrieval itself is still planned; this proves its store
 - defined-in: CAPABILITY-DEFINITIONS.md#retrieval
 - related: context-assembly, evidence-record, drivers
 - build-steps: step 2 (source register) complete, his word 2026-09-12 01:44 (AD-19); step 3 (retrieval v0.1) not started
