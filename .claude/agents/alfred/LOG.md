@@ -44,3 +44,16 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-10 16:27 | CLOSE | ran | 2026-09-10-1627-skills-unlazy-root-lock-routines-4751.md | facts.py close
 2026-09-10 16:33 | D6 | ran | 6 rulings logged; 5 follow-ups closed by his word, 1 kept open by sensor; 2 new | evidence/receipts/2026-09-10-1633-rulings-on-the-waiting-list-17de.md
 2026-09-10 16:36 | D6 | ran | field note archived at his word; AS-006 brief APPROVED->REJECTED, page kept in warehouse | work-os/brand-os/engagement-os/assets/briefs/AS-006--brief--2026-08-30.md
+2026-09-10 23:33 | D6 | ran | seeds A-LIVE-196..200 written at his pick ("1-5. all of them"); seedbank session count 200 | work-os/brand-os/engagement-os/seedbank/session/
+2026-09-11 00:05 | D6 | ran | seedbank workflow spec drafted at his ask; adds no rule; each rule tagged by source | work-os/brand-os/engagement-os/seedbank/SPEC--seedbank-workflow--draft--2026-09-11.md
+2026-09-11 01:26 | D6 | ran | Mia Kiraki study complete: 74 article analyses + CONNECTIONS.md + ADAPT-AND-EXTEND.md (proposals only) | work-os/brand-os/engagement-os/references/mia-kiraki/
+2026-09-11 15:20 | D1 | ran | threats true: telegraph-plus 11 unpushed (was 10); log gap 13h; snapshot 1d | facts.py open
+2026-09-11 15:20 | D2 | ran | 21 follow-ups open, all from 09-10; Telegraph needs him: 2 (6d); no stale counts found | facts.py loops
+2026-09-11 15:20 | D3 | ran | ALARM: account lists 2 routines; lab records 29 ids; daily-briefing id returns not found; verify.sh cannot run | RemoteTrigger list/get
+2026-09-11 15:20 | D5 | not due | last review 09-09 14:12; next due 09-16 | .claude/agents/alfred/LOG.md
+2026-09-11 15:25 | D6 | ran | 2 late receipts written (sessions 984f2542, fe516b84); day review 09-10 written late; to-do rolled, 12 carried; waiting page republished (25) | evidence/receipts/
+2026-09-11 15:25 | OPEN | ran | next action: rule on the 28 missing cloud routines | facts.py open
+2026-09-11 21:42 | RULING | ran | Gabriel label retired at his word after it answered a prompt on its own (session 0d4e3709, 21:36, prompt said 'advisor'); edited CLAUDE.md, CHARTER.md, RULINGS-IN-FORCE.md; nothing deleted, files were already in warehouse | git diff
+2026-09-11 21:44 | D6 | ran | 3 follow-ups opened (commit the rule files; old sessions may still answer as Gabriel; mark audit rows resolved), 0 closed; 32 still open from before | evidence/receipts/2026-09-11-2141-gabriel-label-retired-663d.md
+2026-09-11 21:44 | D7 | ran | 1 observation line appended (notices an unasked voice; archived means gone) | docs/about-me/how-i-work--observed.md
+2026-09-11 21:44 | CLOSE | ran | 2026-09-11-2141-gabriel-label-retired-663d.md; day review 2026-09-11 written | facts.py close

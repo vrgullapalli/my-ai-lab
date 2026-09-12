@@ -49,7 +49,9 @@ directly against Earned Trust.
 These are not wrong. They are **about a repository that no longer exists.** They govern:
 
 - Phases 2.5, 3, 5 and 6 — a phase machine that is gone
-- Alfred, Gabriel, and the Governance shadow runtime — agents that are deleted
+- Alfred, Gabriel, and the Governance shadow runtime — the old versions. Alfred was rebuilt
+  (charter v2, 2026-09-09). Gabriel's files were archived to the warehouse on 2026-09-09 and
+  his label retired on 2026-09-11 (see below). The shadow runtime is gone.
 - Codex write boundaries in `AGENTS.md`, `work/plans/codex-led/` — gone
 - `DONE.md`, `PLAN.md`, `blueprint-v2.2.md`, `state/open-loops.md` — gone
 - Positioning canon paths that moved to `brand/` three times over
@@ -108,6 +110,14 @@ fired, and rulings written to expire became permanent by accident.
 expires by default and comes back for a yes or no.**
 
 Same principle as Telegraph+: *a belief must continuously earn the right to survive.*
+
+---
+
+## Rulings made after this page was derived
+
+| Date | The ruling | Where it now lives |
+|---|---|---|
+| 2026-09-11 | **No Gabriel label.** Every message is `Alfred —`. An independent view is said in plain words and is evidence, never permission. Reason: the label answered a prompt on its own because the prompt said "advisor." | `CLAUDE.md`, "Who is speaking"; Alfred's `CHARTER.md`, "One interface, one voice" |
 
 ---
 
