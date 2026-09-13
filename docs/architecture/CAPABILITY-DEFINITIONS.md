@@ -1,9 +1,9 @@
 ---
 name: capability-definitions
 what: One definition per registered shared capability, all in the same shape. Holds the shared system standard (the shape) and the sensor standard (how each one is watched).
-status: living. Started 2026-09-12 at Venkat's word. Retrieval is defined, not built. Context assembly is a planned entry with only a job, consumers, and the AI test filled in. The source register is part of retrieval, not a capability (AD-12).
+status: living. Started 2026-09-12 at Venkat's word. Retrieval is building with v0.1 implemented and under close-out evaluation. Context assembly remains planned. Operating Scope is a cross-cutting contract. Minimum Persistent State is the next implementation slice of the existing continuity / Memory and state capability, not a new capability entry. The source register is part of retrieval, not a capability (AD-12).
 home: docs/architecture/ (his word, 2026-09-12 01:16; AD-14)
-read_with: CAPABILITY-MAP.md (the registry; ids here match ids there, checked by check.py)
+read_with: CAPABILITY-MAP.md (the registry; ids here match ids there, checked by check.py); ARCHITECTURE-DECISIONS.md; LAB-OPERATING-MODEL.md
 tags: his-word · observed · proposed
 ---
 
@@ -31,6 +31,8 @@ tags: his-word · observed · proposed
 **The building-to-live gate** (his word, 2026-09-12 01:17). A capability moves from building to live only when three things hold: operational behavior (it runs from an existing path, not because someone remembers), failure proof (planted faults were caught and the proof is written down), and a valid contract (the definition is complete and `check.py` passes). The registry entry records where the proof is in `- proof:`. The check refuses a live or degraded entry without one.
 
 **Plus one line every definition carries** (from the core rule): **AI test.** What should this become now that AI exists, and what would stay the same if AI were removed. If the answer is "mostly the same," the definition says "challenged" and why.
+
+**Foundational capability rule** (his word, 2026-09-13). A foundational capability exists because the architecture requires the job. Tests, experiments, and downstream use evaluate the current implementation and its assumptions; they do not make a required capability repeatedly earn or prove its right to exist. A failed implementation first asks which implementation layer or assumption failed.
 
 ## Sensor standard
 
@@ -76,6 +78,40 @@ tags: his-word · observed · proposed
 | capability-architecture | check.py passes | ids and paths agree | | entry with no definition | `changed` age | registered, no consumer | |
 
 Blank means not needed yet.
+
+---
+
+## Operating Scope contract
+
+**Job.** Tell shared capabilities which world a job is occurring in, what context belongs there, and what may cross into or out of it.
+
+**Architectural role.** Operating Scope is a cross-cutting boundary, not a separate capability entry. It exists because the same capabilities will operate across materially different privacy, confidentiality, authority, state, and disclosure boundaries. Tests refine its implementation; they do not decide whether a necessary boundary should exist.
+
+**Initial scopes.**
+
+- **AI Lab** — architecture, experiments, system state, capability development, receipts, decisions, reliability work.
+- **Professional / Advisory** — clients, prospects, engagements, deliverables, professional relationships and commitments.
+- **Career / Portfolio** — career model, opportunities, capability development, portfolio work, products, reputation, income directions and professional network.
+- **Public / Content** — site, articles, newsletters, social content, public positioning, public proof and approved public intellectual assets.
+- **Personal** — personal projects, household, family, personal planning, personal calendar, personal commitments and other private context.
+
+**What scope controls.** Permitted sources; relevant state and memory; confidentiality boundaries; allowed actors and consumers; permitted actions; what may cross scopes; what must stay out; applicable authority.
+
+**Cross-scope rule.** Technical access does not equal permission to use. Information crosses scopes only when the job legitimately requires it, the relationship is allowed, and authority permits it. Share the minimum detail the receiving scope needs.
+
+**Inference.** The long-term system should infer scope from the active job, project, actor, source, conversation, goal, recent state and contemplated action. When confidence is high and consequence is low, it may proceed. When ambiguity materially affects privacy, confidentiality, public disclosure, access or authority, it stops, degrades or asks.
+
+**Connections.** Email, calendar, Drive, Dropbox, Slack, web, APIs, CRM and future applications are connections / sources / action surfaces. Access to the connection does not grant every scope or actor permission to every record in it.
+
+**Actors.** Alfred, ARCHIE, future specialist agents, automations and Venkat operate through shared capabilities inside applicable scope and authority. Adding an actor does not create a new capability stack.
+
+**Memory and state.** Persistent state keeps scope where material. A fact does not become universally available because it is persistent.
+
+**Failure.** Do not silently cross a material boundary. Withhold unnecessary detail, degrade, or request authority.
+
+**Evaluation.** Relevant context remains available; private/confidential context stays separated; allowed cross-scope use works; routine work does not require constant manual labeling; new actors and connections inherit the same boundary model.
+
+**v0.1 implementation acceptance.** The five initial scopes can be represented; Retrieval can receive or infer AI Lab scope first; hard restrictions can block inappropriate access; permitted cross-scope use is possible; future connections and actors have a clear boundary model. Do not build a large policy engine now.
 
 ---
 
@@ -129,6 +165,26 @@ Blank means not needed yet.
 - **Sensors.** Health, missing, freshness, quality, as in the table.
 - **AI test.** Challenged. Today this would work almost the same without AI: a regex finds `F-` lines, a hand-kept list rolls forward, a sheet prints counts. The AI part is one prepared next action. What it should become: the AI reads the follow-ups, the drivers, and what changed, and decides what matters now; TODAY.md becomes a view. **Fault, observed:** "waiting on Venkat" lives in three trackers.
 
+#### Minimum Persistent State v0.1 implementation slice
+
+Minimum Persistent State is the next implementation slice of `continuity` / Memory and state, not a new capability entry.
+
+- **Job.** Maintain a compact, current, source-backed representation of what is currently true, active, decided, unresolved, waiting, owned, or superseded so the lab stops rebuilding operational truth from raw records.
+- **Why now.** The observed jobs repeatedly reconstruct what Venkat approved, current lab state, which session did what, which ruling is current, what is waiting, and what should carry forward.
+- **Initial consumers.** Alfred, the morning brief / open routine, session start and close, context assembly, capability development and project continuation.
+- **Minimum state objects.** Current decisions/rulings; active work; material session/work ownership; open loops; waiting-on-Venkat items; current capability/project status where useful; explicit commitments/carry-forward; supersession; current drivers/goals by reference.
+- **Record minimum.** What it is; current status; operating scope; source/provenance; last established/changed date; authority; supersession where applicable.
+- **Output.** A compact Current State Package: active, decided, changed, open, waiting, ownership, superseded, carry-forward and provenance. A consumer receives only the fields it needs.
+- **Deterministic.** File/repo state, session ids, timestamps, sensor results, explicit status fields, ownership markers, receipt existence, open/closed flags and explicit supersession.
+- **AI.** Interpret which changes are material; summarize current state; connect state across sources; identify likely stale/conflicting state; propose what deserves attention. AI does not silently turn inference into authoritative state.
+- **Human.** Material rulings, closure where judgment is required, scope/authority changes and consequential ambiguous conflicts.
+- **Update triggers.** Approved/superseded decision; work begins/hands off/completes; open loop created/resolved; material limitation accepted; project phase changes; explicit commitment made. Do not rewrite state for trivial events.
+- **State is not history.** Keep current state plus enough provenance to reconstruct why; raw transcripts and receipts remain evidence.
+- **Failure.** Expose conflicting or stale state; reconstruct missing state from evidence where feasible; surface parallel ownership conflict; keep human-owned items waiting rather than re-queuing them as fresh work without new information.
+- **Evaluation.** Alfred knows what was approved; current vs superseded rulings resolve; open loops and waiting items survive sessions; parallel ownership is distinguishable; new sessions resume without rereading whole folders; material state traces to evidence.
+- **v0.1 acceptance.** Current decisions resolve without raw-history reconstruction; active work/ownership are visible; open/waiting items persist; superseded state no longer silently governs; state points to evidence; the morning brief and context assembly can consume it; obvious duplicate work is avoidable.
+- **Stopping rule.** Build only enough State for current lab continuity, the morning brief and context assembly. Do not build universal memory, event sourcing, a graph database, personal/professional state integration, goal-management software or another agent.
+
 ### drivers
 
 - **Job.** Hold what Venkat is working toward right now, so sensors and the open routine know what matters and what would threaten it.
@@ -177,23 +233,30 @@ Blank means not needed yet.
 - **Sensors.** Health, integrity, drift, missing, freshness, unused, quality, as in the table. Most exist; "recorded but not in account" is the one that was missing on 2026-09-11.
 - **AI test.** Challenged, by evidence. The hand test on 2026-09-12 read one week of briefs with the lab in view. The blind judge found all 3 new moves "not present" among the briefs' 21. The briefs' moves were "search more" and "ask someone." So the AI in the routine is real, but the process is a pipeline: gather, then reason blind, then stop at a page nobody reads. What it should become: the routine gathers; the reasoning runs in the lab with retrieval in view. That is why retrieval is build step 3 and the routines wait.
 
-### retrieval (building; v0.1 built 2026-09-12, 5 of 7 frozen tests pass blind; see docs/reports/2026-09-12--retrieval-v0-1-first-runs.md)
+### retrieval (building; v0.1 implemented 2026-09-12 and under close-out evaluation)
 
-- **Job** (his words, 2026-09-12). Find the best relevant knowledge the system already has across registered sources and return it with enough source, freshness, authority, and evidence information to use safely.
-- **Consumers.** Alfred, ARCHIE, signal reasoning, the career model, project work, Telegraph+, context assembly. Also seed-capture's repeat check, which today uses word overlap (`find-similar.py`).
-- **Inputs and outputs.** In: a question or claim, who is asking, and an optional scope (which sources). Out: a ranked short list. Each result carries: what it is, where (path and anchor), which registered source, how fresh (date), its authority tier, the evidence behind it, and a flag when two results disagree. "Nothing found" is a valid answer and says which sources were searched.
-- **Deterministic.** Coverage: the index holds every file of every registered source, proven by count. Pointer resolution. Dates. Exact and keyword search. Reading the authority tier from the record's own fields. Writing each answered question back as a record (what was asked, by whom, what came back, what was used).
-- **AI.** Understanding the question. Matching by meaning. Ranking. Saying when two results conflict and what the conflict is. Saying when the results do not answer the question.
-- **Human.** Rules on authority tiers. Rules on which sources are registered. Settles a conflict between two rulings.
-- **Canonical store.** None of its own. Sources stay canonical where they live. Its list of what it may read is `context/sources/REGISTER.md`. The index, when built, is derived and can be rebuilt from that register at any time. The write-back record's home is decided at build (candidates: a log beside the index, or a section in the session receipt).
-- **Access.** One call, from a session or a script. Not a service. Decided at build.
-- **Failure.** Never invents a source. If the index is stale, results say "index built <date>, newest change <date>." If an unregistered source is met, it is reported to source discovery, never read silently. If nothing matches, it says so and lists what it searched.
-- **Evaluation.** A fixed question set with known answers, run before and after any change. The set is `context/sources/tests/RETRIEVAL-TESTS.md`, seven tests approved 2026-09-12 02:24 (AD-22) with the boundary rule that Retrieval returns the evidence package and the consumer makes the judgment; `context/sources/tests/reachability.py` proves each test's files sit inside the eligible set. Seeds for the set come from the hand test: the Lundbeck signal should find the article at gate 2 and its research check; "green checks" should find seed A-LIVE-187; Eversana should find the `eversana-intouch` dossier and its angle map. Baseline to beat: `find-similar.py` scored 40 of 41 claims under 0.4 and missed A-LIVE-187. Measures: hit rate in the top 5, coverage of registered sources, time to answer. `DONE.md` already asks for this: "Retrieval performance is measured."
-- **Evidence.** Write-back records. A coverage report. Dated evaluation runs in `docs/reports/`.
-- **Sensors.** Coverage (index vs registered files). Freshness (index vs newest change). Source discovery (below). Quality (question-set hit rate). Unused (a registered consumer that never asks). Integrity (every returned pointer resolves).
-- **What retrieval may eventually use** (his list): exact search, keyword search, semantic search, metadata, freshness, authority, conflict detection, ranking, evidence-backed results. **v0.1 (2026-09-12) implements:** exact and keyword candidates, metadata and record marks, current-versus-superseded rows, pointer state, conflict flags, a missing-evidence state, the register boundary, and semantic selection by the model reading a one-line index. Four blind runs: the meaning test failed every time, so semantic search by a model reading one-liners is measured and found short; the method that replaces it is his call.
-- **Not defined around signals.** Signals are the first proving case because the hand test already exists. The question set must hold Alfred, ARCHIE, and career-model questions before v0.1 is called working (build step 4).
-- **AI test.** Passes clearly. Without AI this is `grep` plus word overlap, and the hand test showed word overlap misses matches by idea. The lab's own scan of the career model reached the same place: "retrieval plus write-back covers the gaps" and no rebuild is needed.
+- **Architectural necessity.** Retrieval is a required foundational shared capability. Its existence follows from the lab's need to access and qualify existing evidence across jobs, sources, actors and scopes. Tests evaluate the implementation and its assumptions; a failing implementation does not make Retrieval re-justify its existence.
+- **Job.** Find the evidence already available to the system that could materially affect the current job, within the applicable operating scope and hard source boundaries, and return it with provenance, limits, conflicts, and material gaps intact.
+- **Relevant evidence.** Evidence is relevant when, given the job, consumer, scope and task context, it could support, weaken, constrain, contradict, update or expose a material gap in the downstream judgment. Relevance is not just topic similarity. Retrieval should find the evidence that deserves to be in the room when the judgment is made.
+- **Consumers.** Alfred, ARCHIE, signal reasoning, career / portfolio reasoning, project work, Telegraph+, context assembly, content/research workflows, seed-capture's repeat check, and future actors/capabilities that need governed evidence.
+- **Inputs.** Job/question; consumer; Operating Scope; relevant task context; optional source scope; hard constraints such as privacy, security, confidentiality and prohibited sources. The human should not need to specify all of these manually forever.
+- **Output.** A **Governed Evidence Package**, not the final judgment. Where material it carries: actual evidence; stable source id; path/anchor/record id; source/date/freshness; canonical/replica/historical/unavailable state; current/corrected/superseded relationship; pointer state; authority/tier; use ceiling and `not-alone`; claimed vs observed marks; conflicts; corrections; unresolved pointers; missing evidence; incomplete coverage; and what was searched when absence matters. Valid package states include strong, partial, conflicting, weak-with-limits, no adequate evidence, and unresolved gap.
+- **Deterministic.** Hard source/scope eligibility; security/privacy/prohibited boundaries; source identity/location; source and index coverage; source-health facts; dates and known metadata; exact ids/entities and lexical matches where reliable; deterministic fetch of underlying evidence; provenance; pointer state; explicit correction/supersession; refusal outside hard boundaries.
+- **AI.** Understand the job and task/scope context; plan likely evidence spaces; recognize conceptual relationships despite different wording; rank/select evidence; recognize possible conflicts and likely gaps; assess likely incompleteness; explain why evidence may matter. AI may not manufacture evidence that was not retrieved from an eligible source.
+- **Human.** Source admission/removal; hard source boundaries; material cross-scope permission changes; source-authority policy; changes to the Retrieval contract; disputed frozen capability tests; consequential judgments beyond delegated authority.
+- **Canonical store.** None for knowledge. Sources stay canonical where they live. `context/sources/REGISTER.md` is Retrieval's governed list of what it may depend on. Derived indexes/runs are rebuildable implementation artifacts, not canonical knowledge.
+- **Access.** `python3 context/sources/retrieve.py` for deterministic index/search/fetch plus the Retrieval skill/model for meaning-based selection. The register resolves stable source ids through `python3 context/sources/check.py resolve <id>`. Retrieval remains callable from sessions/scripts, not a required service.
+- **Operating flow.** 1) establish job/consumer/scope/context; 2) apply hard eligibility; 3) query planning/routing; 4) candidate discovery using the minimum appropriate exact/entity/lexical/semantic/metadata/relationship methods; 5) rank/select evidence that could materially affect the job; 6) deterministically fetch the real records; 7) qualify provenance, authority, freshness, status, limits, conflicts and gaps; 8) return the Governed Evidence Package. Retrieval stops before interpretation, judgment, decision, action and consumer-specific write-back.
+- **Failure.** Do not read or expose prohibited/out-of-scope evidence. Report unavailable, stale/historical, broken-pointer and partial states. Preserve meaningful conflict. Return weak evidence only with its limits. Return an insufficient-evidence state rather than promoting weak matches because something must be found. Do not claim completeness when selection cannot support it.
+- **Evaluation.** The frozen known-answer set remains `context/sources/tests/RETRIEVAL-TESTS.md`. Evaluation measures implementation quality: relevant-evidence recall; eligible-evidence precision; scope correctness; authority correctness; conflict preservation; evidence sufficiency; refusal correctness; and operational usability (latency/cost/resources). Tests do not decide whether Retrieval deserves to exist.
+- **Current evidence.** The baseline implementation reached 6 of 7 frozen tests after AD-23, with T2 the meaning-match failure. The 100-record blind test then selected A-LIVE-187 twice and made the intended inference. The staged experiment reproduced that stage-one success under two salts, then dropped the seed in an unvalidated second-level reduction; see `docs/reports/2026-09-12--retrieval-v0-1-staged-selection.md`. This localizes the current issue to selection/attention at scale rather than the capability contract.
+- **v0.1 acceptance.** Governed Evidence Packages work on representative jobs; hard boundaries hold; underlying evidence is fetched; provenance/material limits travel; conflicts/gaps can survive; insufficient evidence is representable; important failures are visible; architecture/safety checks remain valid; known limitations are recorded; Minimum Persistent State and Dynamic Context Assembly can safely consume the interface.
+- **v0.1 does not require.** Perfect semantic recall; optimal ranking; production latency; minimum token cost; embeddings; a vector database; final reranking design; fixed candidate/group sizes; every source/connector/scope/actor; every failure solved.
+- **Stopping rule.** Once the implementation is sufficient for downstream use, stop improving Retrieval in isolation. Record non-blocking limitations and let downstream use determine their priority. Stopping implementation work means sufficient for the current stage, not optional or complete forever.
+- **Change control.** The capability contract changes only when evidence shows the job, output, responsibility boundary, scope behavior, failure behavior or evaluation contract is wrong/incomplete. Models, prompts, embeddings, vector stores, lexical search, rerankers, staged selection, candidate limits, K values, chunking, indexes, caching and performance work are implementation changes unless they alter the contract.
+- **Evidence.** Dated evaluation reports in `docs/reports/`, run ledgers, source-register checks and the Governed Evidence Packages returned in tests/real jobs. Consumer write-back remains the consumer's responsibility.
+- **Sensors.** Source/register integrity, health, coverage, freshness and discovery; index coverage/freshness; pointer integrity; quality against frozen tests; eventually unused consumers, miss patterns, context impact and outcomes when real usage makes them meaningful.
+- **AI test.** Passes clearly. Without AI, exact/lexical retrieval still works, but meaning-based relationships that matter to current jobs are missed. AI is part of the core design for interpreting the job, conceptual matching and evidence selection; deterministic mechanisms still establish facts, boundaries and fetch.
 
 #### Source register (build step 2, built 2026-09-12; the first half of retrieval)
 
@@ -218,13 +281,20 @@ Blank means not needed yet.
 - **Human.** Register, accept, or ignore.
 - **What the first version does** (`context/sources/check.py`): finds git repos not under any registered source; folders holding ten or more markdown files that no registered source covers; data files (CSV, JSON, JSON lines) outside registered sources; web domains named twenty or more times across live files; and the count of unreviewed broken paths from `dead-pointers.py`. Each finding is one line in the seven-field pattern, materiality "show at open." Reviewed and left on purpose goes in `context/sources/discovery-accepted.txt` with a reason. Its first two findings (the Telegraph governance folder and the research data files) were closed on 2026-09-12 by a session extending the `upskill-records` record; he reverted that at 02:10 (AD-21): a session cannot widen what retrieval may depend on. Both are candidates again, shown as "to review" on the facts sheet until his word.
 
-### context-assembly (planned, build step 5)
+### context-assembly (planned; next after Minimum Persistent State)
 
-- **Job.** Put together the right slice of what the lab knows for the task in front of it, instead of loading the same fixed files every time.
-- **Consumers.** Every session, Alfred, ARCHIE, the writing skills.
-- **Depends on.** Retrieval and the drivers. A small ruled core that only Venkat edits stays fixed and always loads.
-- **Everything else** is written when built.
-- **AI test.** Passes clearly. Picking the right slice for this task is interpretation. Today the front door loads 243 lines plus 79 every session and a 140KB voice profile is read whole or not at all.
+- **Job.** Assemble the minimum context a current job needs from retrieved evidence, current State, Memory, drivers/goals, rules and relevant task context, while preserving material constraints, conflicts and gaps.
+- **Consumers.** Every session where dynamic context helps, Alfred, ARCHIE, writing/content workflows, signal reasoning, Career / Portfolio work and future specialist actors.
+- **Inputs.** Job, consumer, Operating Scope, Governed Evidence Package(s), Current State Package, relevant memory/driver/core rules, and explicit constraints.
+- **Output.** A task-specific context package: what the consumer needs now, why each part is included, material exclusions/limits, unresolved conflicts/gaps, and source/provenance references sufficient to inspect it.
+- **Depends on.** Retrieval; Minimum Persistent State / continuity; drivers; a small ruled core that remains fixed where appropriate. It should not become another knowledge store.
+- **Deterministic.** Hard scope/authority boundaries; required ruled core; known metadata; package size/count facts where useful.
+- **AI.** Decide which evidence, state, memory, assumptions and constraints are material for this job; remove noise; preserve conflict; explain material omissions where needed.
+- **Human.** Changes to material scope/authority, permanent ruled core, or disputed context requirements with consequence.
+- **Failure.** Do not silently omit a required constraint/conflict; do not load everything "just in case"; expose uncertainty when it cannot tell whether context is sufficient.
+- **Evaluation.** Representative jobs test required-context recall, irrelevant-context load, conflict/constraint preservation and downstream usefulness. The morning brief is the first integration proving loop, not the definition of Context Assembly.
+- **v0.1 stopping rule.** Build the smallest implementation that supports the morning brief and at least one other consumer. Do not build a universal context platform before use shows it is needed.
+- **AI test.** Passes clearly. Picking the right slice for the current job is interpretation. Remove AI and the system falls back to fixed context loading, which is exactly the challenged current design.
 
 ### capability-architecture (live since 2026-09-12 01:16)
 

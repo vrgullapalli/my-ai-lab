@@ -31,11 +31,18 @@ never quotes a file the script did not fetch, and never reads outside the regist
    question and missed the meaning test twice; a pass over the sources that can hold the answer is smaller and
    sharper. Use no scope only when the question gives no clue at all.
 
-1. **Candidates and the compact index.**
+1. **Write the idea behind the question, then get candidates.** (The semantic candidate-selection step,
+   his word 2026-09-12 04:23: "find conceptually related evidence that exact and keyword matching miss.")
+   Before any search, write five to eight plain statements of what the question is about: the mechanism, the
+   failure, the lesson, how a buyer would say it, and how Venkat would say it. Six to fifteen words each. Describe
+   the idea, never a file or an answer. Save them as a JSON list, `ideas.json`. The script scores each statement's
+   words and two-word phrases against every record's title, gist, and text, so a record that holds the idea in
+   different words reaches the must-consider list. The model writes the statements; the script does the matching.
    ```
    python3 context/sources/retrieve.py index          # only if the index is older than the newest source change
-   python3 context/sources/retrieve.py candidates "<the question, as asked>" --scope id,id --scoped-out <file>
+   python3 context/sources/retrieve.py candidates "<the question, as asked>" --scope id,id --scoped-out <file> --expansions ideas.json
    ```
+   The candidates line reports how many must-consider records were reached by the idea alone.
    The command prints the deterministic candidates (exact ids and names, keyword overlap), the size of the full
    compact index, and the size of the scoped file it wrote: one line per record,
    `ref | source | date | tier | ceiling | title — gist`. That scoped size is the cost of this pass; record it.
@@ -86,8 +93,9 @@ never quotes a file the script did not fetch, and never reads outside the regist
 ## Proof, and where v0.1 stands
 
 `python3 context/sources/tests/run_tests.py --selections <file>` fetches every test's picks deterministically and
-scores the seven pass conditions on the package. Four blind runs on 2026-09-12: final 5 of 7. T2 (the meaning
-match to seed A-LIVE-187) failed every run; T4 failed on one file's rank every run. Details, sizes, and costs:
-`docs/reports/2026-09-12--retrieval-v0-1-first-runs.md`. **Status: building, not trusted for the meaning job.**
+scores the seven pass conditions on the package. Six blind runs on 2026-09-12: final 6 of 7 with idea statements
+(run 5f, 04:33). T2 (the meaning match to seed A-LIVE-187) failed every run, six of six; T4 passes under AD-23.
+Details, sizes, and costs: `docs/reports/2026-09-12--retrieval-v0-1-first-runs.md` and
+`docs/reports/2026-09-12--retrieval-v0-1-semantic-candidates.md`. **Status: building, not trusted for the meaning job.**
 A consumer may use the package for exact, ruling, career-model, conflict, and missing-evidence questions, and
 must treat a meaning match as unproven until he rules on the method or the test.

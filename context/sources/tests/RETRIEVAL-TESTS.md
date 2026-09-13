@@ -1,7 +1,7 @@
 ---
 name: retrieval-tests
 what: The known-answer test set for shared Retrieval (build step 3, AD-06). Seven jobs across five consumers. Retrieval v0.1 is the minimum behavior that passes these, not a search method.
-status: approved by his word, 2026-09-12 02:24 (AD-22), with one boundary rule: Retrieval returns the evidence package; the consumer makes the judgment. Frozen at 02:31 after reachability.py returned 24 of 24 known-answer files inside the eligible set (planted fault: 2 of 26, exit 1). No retrieval code exists yet. A change to a test is his word, recorded in a decision row.
+status: approved by his word, 2026-09-12 02:24 (AD-22), with one boundary rule: Retrieval returns the evidence package; the consumer makes the judgment. Frozen at 02:31 after reachability.py returned 24 of 24 known-answer files inside the eligible set (planted fault: 2 of 26, exit 1). Retrieval v0.1 now exists and is building; the baseline reached 6 of 7 after AD-23, and T2 remains the frozen meaning-match case under final staged-selection close-out. A change to a test is his word, recorded in a decision row. Changed once: T4 at 04:23 (AD-23); T2 stands unweakened.
 home: context/sources/tests/ (beside the register's own tests; Retrieval has no store of its own and its one home today is the register). Moved from docs/architecture/ at 02:24; that folder is the capability record and the register counts it as authoritative.
 part_of: retrieval (docs/architecture/CAPABILITY-DEFINITIONS.md#retrieval, "Evaluation")
 reads_this: context/sources/tests/reachability.py (are the known-answer files inside the eligible source set); the retrieval runner, when built, writes dated runs to docs/reports/
@@ -20,6 +20,17 @@ tags: observed (a file read or a count run on 2026-09-12) · inferred (my readin
 **Scope rule for every test.** Retrieval reads only registered sources with status live or degraded. A result from anywhere else fails the test, however good it looks.
 
 ---
+
+## Current implementation state (2026-09-13)
+
+These tests define required capability behavior, not a preferred search method.
+
+- Retrieval v0.1 is implemented and remains `building` while T2 closes out.
+- Baseline after AD-23: **6 of 7** frozen tests pass; T2 is the remaining meaning-match failure.
+- The 100-record blind selection test picked A-LIVE-187 in both runs and made the intended inference from the existing representation.
+- The staged-selection experiment then picked A-LIVE-187 in stage one under two different salts, but an unvalidated second-level reduction dropped it both times. This is implementation evidence about selection/attention at scale, not a reason to weaken T2 or redefine Retrieval.
+- The current close-out may change implementation mechanics while keeping this frozen capability-level test set unchanged unless Venkat explicitly rules that a test itself is wrong.
+- Evaluation tests the implementation. Retrieval's architectural necessity is already settled.
 
 ## T1. Signal to company, exact relationship
 
@@ -63,11 +74,11 @@ tags: observed (a file read or a count run on 2026-09-12) · inferred (my readin
 - **Consumer:** ARCHIE.
 - **Known relevant sources:** `seeds`: spoken seeds S08, S15, S09 (S08 names S09, S15, S16, S05 as connections) and A-LIVE-020. `positioning`: the v5 brief and README. `rulings`: D-003, "'Data strategy consultant' is retired and cannot return without an explicit new ruling." `audits`: the 2026-09-10 rule audit's brand-os file. [observed]
 - files: work-os/brand-os/engagement-os/seedbank/spoken/08-data-strategy-defined.md; work-os/brand-os/engagement-os/seedbank/spoken/15-orgs-dont-understand-data-strategy.md; work-os/brand-os/engagement-os/seedbank/spoken/09-test-the-data-model.md; work-os/brand-os/engagement-os/seedbank/session/A-LIVE-020-offers-are-the-bottleneck-not-positioning.md; work-os/brand-os/positioning/context-brief--positioning-v5--2026-09-02.md; work-os/brand-os/positioning/README.md; RULINGS-IN-FORCE.md; evidence/audits/2026-09-10-rule-audit/04-brand-os.md
-- **Retrieval must return:** at most ten results; the three linked spoken seeds; the positioning brief; D-003 flagged as a rule that constrains the topic, not as one more hit; each with source id and tier.
+- **Retrieval must return:** at most ten results; the three linked spoken seeds; the current canonical positioning context with the relevant throughline (the canon `positioning/README.md`, or the v5 brief it carries; his word 2026-09-12 04:23, AD-23); D-003 flagged as a rule that constrains the topic, not as one more hit; each with source id and tier.
 - **Consumer judgment, not Retrieval's:** the angle to take, and how the retired identity shapes the piece.
 - **Known failure to avoid:** the flood. 16 seed files contain the words "data strategy" (count, 2026-09-12); 826 seed files exist. The other failure: D-003 missing, so the writer is never told the identity is retired.
 - **Retrieval behavior required:** keyword match to find candidates; meaning and the seeds' own links to rank them; a cap; a constraining ruling surfaced as a constraint.
-- **Pass condition:** ten or fewer results; S08, S15, and the v5 brief in the top 5; D-003 present and marked as a rule; nothing from `_archive` or the seedbank's own README, INDEX, or missed.md.
+- **Pass condition:** ten or fewer results; S08, S15, and the positioning canon (README) or the v5 brief in the top 5, with the throughline ("what has to surround a capability") in its fetched evidence; D-003 present and marked as a rule; nothing from `_archive` or the seedbank's own README, INDEX, or missed.md. (Changed at his word, 04:23, AD-23: four blind picks chose the canon over the old brief.)
 
 ## T5. Career model, need to proof
 

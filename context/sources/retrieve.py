@@ -23,7 +23,7 @@ rank them, say why each matches, flag conflicts. It never fetches, never quotes 
 
   python3 context/sources/retrieve.py index
   python3 context/sources/retrieve.py sources                                  # the 24 readable sources in one line each, for the model's first stage
-  python3 context/sources/retrieve.py candidates "<query>" [--scope id,id] [--top N] [--scoped-out file]
+  python3 context/sources/retrieve.py candidates "<query>" [--scope id,id] [--top N] [--scoped-out file] [--expansions ideas.json]
   python3 context/sources/retrieve.py fetch --query "<query>" --picks picks.json [--out package.json]
   python3 context/sources/retrieve.py stats
 """
@@ -286,8 +286,20 @@ def stats_line():
 ALWAYS_IN_SCOPE = ["rulings", "root-doctrine", "drivers", "architecture"]  # small, rule-bearing; a scope never drops them (runs 3 of 2026-09-12: two tests lost their ruling by scoping it out)
 
 
-def candidates(lab, query, scope=None, top=40, scoped_out=None):
+def bigrams(text):
+    t = [w for w in re.findall(r"[a-z][a-z0-9\-']{2,}", text.lower()) if w not in STOP]
+    return {t[i] + " " + t[i + 1] for i in range(len(t) - 1)}
+
+
+def candidates(lab, query, scope=None, top=40, scoped_out=None, expansions=None):
+    """Deterministic candidates. Exact terms and keywords come from the query. `expansions` are the model's
+    plain statements of the idea behind the question (semantic candidate selection, 2026-09-12 04:23): each is
+    scored by shared words and shared two-word phrases, so a record that holds the idea in other words than the
+    query's can reach the must-consider list. The model wrote the statements; the script did the matching."""
     idx = load_index()
+    expansions = [e for e in (expansions or []) if e.strip()]
+    exp_tokens = [tokens(e) for e in expansions]
+    exp_bigrams = [bigrams(e) for e in expansions]
     if scope:
         scope = list(dict.fromkeys(list(scope) + ALWAYS_IN_SCOPE))
         idx = [r for r in idx if r["source"] in scope]
@@ -312,26 +324,43 @@ def candidates(lab, query, scope=None, top=40, scoped_out=None):
         hits_body = {t for t in q_tokens if t in body}
         weight = 1.0 if len(body) < 20000 else (0.5 if len(body) < 100000 else 0.25)  # a big file holds every word; that is not evidence
         score = 10 * len(hits_exact) + 2 * len(hits_head) + len(hits_body) * weight
+        sem = 0.0
+        sem_hits = []
+        if expansions:
+            head_tokens, head_bigrams = tokens(head), bigrams(head)
+            body_bigrams = bigrams(body[:40000]) if r["kind"] == "file" else head_bigrams
+            for e, et, eb in zip(expansions, exp_tokens, exp_bigrams):
+                h = 3 * len(et & head_tokens) + 6 * len(eb & head_bigrams)
+                bd = (len({t for t in et if t in body}) + 3 * len(eb & body_bigrams)) * weight
+                if h or bd:
+                    sem += h + bd
+                    sem_hits.append(e[:60])
+        score += sem
         if score:
-            scored.append((score, r, hits_exact, sorted(hits_head | hits_body)))
+            scored.append((score, r, hits_exact, sorted(hits_head | hits_body), sem, sem_hits))
     scored.sort(key=lambda x: (-x[0], x[1]["date"]), reverse=False)
+    if expansions:
+        top = max(top, 60)
     out = [{"ref": r["ref"], "source": r["source"], "date": r["date"], "tier": r["tier"], "ceiling": r["ceiling"],
-            "title": r["title"], "score": s, "exact": e, "keywords": k} for s, r, e, k in scored[:top]]
+            "title": r["title"], "score": round(s, 1), "exact": e, "keywords": k, "semantic": round(sem, 1), "semantic_hits": sh}
+           for s, r, e, k, sem, sh in scored[:top]]
+    reached_by_idea = sum(1 for c in out if c["semantic"] > c["score"] - c["semantic"])  # the idea statements outscored the query's own words
     compact, size = COMPACT, None
     if scope:
         compact = scoped_out or os.path.join(INDEX_DIR, "compact-scoped.txt")
         line = lambda r: f"{r['ref']} | {r['source']} | {r['date']} | {r['tier']} | {r['ceiling']} | {r['title']} — {r['gist']}\n"
         by_ref = {r["ref"]: r for r in idx}
         with open(compact, "w") as f:
-            f.write(f"# must consider: {len(out)} deterministic candidates (exact ids and names, keyword overlap), best score first\n")
+            f.write(f"# must consider: {len(out)} deterministic candidates (exact ids and names, keyword overlap, and the idea statements' words and phrases), best score first\n")
             for c in out:
                 f.write(line(by_ref[c["ref"]]))
             f.write(f"# all {len(idx)} records in scope {','.join(scope)}\n")
             for r in idx:
                 f.write(line(r))
         size = {"records": len(idx), "bytes": os.path.getsize(compact), "tokens_est": os.path.getsize(compact) // 4, "scope": scope, "must_consider": len(out)}
-    return {"query": query, "exact_terms": exact, "keyword_terms": sorted(q_tokens), "scope": scope,
-            "candidates": out, "index_records": len(idx), "compact": rel(lab, compact), "scoped_size": size, "stats": stats_line()}
+    return {"query": query, "exact_terms": exact, "keyword_terms": sorted(q_tokens), "scope": scope, "expansions": expansions,
+            "reached_by_idea_only": reached_by_idea, "candidates": out, "index_records": len(idx), "compact": rel(lab, compact),
+            "scoped_size": size, "stats": stats_line()}
 
 
 def eligible_paths(lab, records):
@@ -482,15 +511,18 @@ def main():
         print(f"sources: {n} readable; pick the ids that could hold evidence for the question, then run candidates --scope id,id")
         return 0
     if cmd == "candidates":
-        q = next((a for a in rest if not a.startswith("--") and rest[rest.index(a) - 1] not in ("--scope", "--top", "--out", "--scoped-out")), None) if rest else None
+        q = next((a for a in rest if not a.startswith("--") and rest[rest.index(a) - 1] not in ("--scope", "--top", "--out", "--scoped-out", "--expansions")), None) if rest else None
         if not q:
             print("usage: retrieve.py candidates \"<query>\" [--scope id,id] [--top N] [--out file]"); return 2
         scope = opt("--scope")
-        res = candidates(lab, q, scope.split(",") if scope else None, int(opt("--top", 40)), opt("--scoped-out"))
+        exp = json.load(open(opt("--expansions"))) if opt("--expansions") else None
+        res = candidates(lab, q, scope.split(",") if scope else None, int(opt("--top", 40)), opt("--scoped-out"), exp)
         out = opt("--out")
         if out:
             json.dump(res, open(out, "w"), indent=1, ensure_ascii=False)
-        print(f"candidates: {len(res['candidates'])} for {res['exact_terms']} + {len(res['keyword_terms'])} keywords; {res['stats']}")
+        print(f"candidates: {len(res['candidates'])} for {res['exact_terms']} + {len(res['keyword_terms'])} keywords"
+              + (f" + {len(res['expansions'])} idea statements ({res['reached_by_idea_only']} candidates reached by the idea alone)" if res['expansions'] else "")
+              + f"; {res['stats']}")
         if res["scoped_size"]:
             z = res["scoped_size"]
             print(f"scoped pass: {z['records']} records, {z['bytes']} bytes, ~{z['tokens_est']} tokens in {res['compact']} (scope {','.join(z['scope'])})")

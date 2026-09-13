@@ -119,7 +119,9 @@ def score(t, pkg):
         top5 = paths(pkg, 5)
         need(f"{SEEDS}/spoken/08-data-strategy-defined.md" in top5, "S08 in top 5")
         need(f"{SEEDS}/spoken/15-orgs-dont-understand-data-strategy.md" in top5, "S15 in top 5")
-        need("work-os/brand-os/positioning/context-brief--positioning-v5--2026-09-02.md" in top5, "positioning v5 brief in top 5")
+        canon = [r for r in pkg["results"][:5] if r["ref"] in ("work-os/brand-os/positioning/README.md", "work-os/brand-os/positioning/context-brief--positioning-v5--2026-09-02.md")]
+        need(bool(canon), "the current canonical positioning context in top 5 (README or the v5 brief; AD-23)")
+        need(any("surround a capability" in "\n".join(r["evidence"]).lower() for r in canon), "its fetched evidence carries the throughline")
         d3 = next((r for r in pkg["results"] if r["ref"] == "RULINGS-IN-FORCE.md#row:D-003"), None)
         need(d3 is not None and d3["kind"] == "row" and d3["source"] == "rulings", "D-003 present as a rulings row (a rule, not context)")
         bad = [p for p in paths(pkg) if "_archive" in p or (p.startswith(SEEDS) and os.path.basename(p) in ("README.md", "INDEX.md", "missed.md"))]

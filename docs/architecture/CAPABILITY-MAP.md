@@ -1,10 +1,10 @@
 ---
 name: capability-map
 what: The map of the lab's shared system capabilities, the registry that records them, and the registry standard every registry in the lab should follow.
-status: living. Started 2026-09-12 at Venkat's word ("Establish the shared capability layer"). The registry block is the canonical record; a script reads it.
+status: living. Started 2026-09-12 at Venkat's word ("Establish the shared capability layer"). Retrieval is building and under v0.1 close-out evaluation; context assembly is planned; Minimum Persistent State is the next implementation slice of the existing continuity / Memory and state capability. The registry block is the canonical record; a script reads it.
 home: docs/architecture/ (his word, 2026-09-12 01:16; AD-14)
 reads_this: docs/architecture/check.py (proves every entry has a definition, a valid status, and paths that exist; runs in context-check section G and on the facts sheet at every session start)
-related: [CAPABILITY-DEFINITIONS.md, ARCHITECTURE-DECISIONS.md, context/intent/STANDING.md, docs/reports/2026-09-11--ai-native-possibility-brief.md]
+related: [CAPABILITY-DEFINITIONS.md, ARCHITECTURE-DECISIONS.md, LAB-OPERATING-MODEL.md, context/intent/STANDING.md, docs/reports/2026-09-11--ai-native-possibility-brief.md]
 tags: his-word (Venkat said it, dated) · observed (seen on disk or measured today) · proposed (Alfred's design, waiting on his yes)
 ---
 
@@ -25,13 +25,25 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 | Context | Family. Holds one live record and one planned capability | The front door loads the same fixed files every session. Nothing picks context for the task at hand. Remove AI and the loading is identical, so the design is challenged (AD-01) | `drivers` (live), `context-assembly` (planned) |
 | Authority and control | One capability | Three safety minimums, `AUTHORITY.md`, two hooks that refuse. Deterministic on purpose: guardrails are allowed to be scripts | `authority` |
 | Evidence | One capability | Transcripts with stable anchors, receipts that are never edited, audits, an append-only log. Every other system cites into it | `evidence-record` |
-| Memory and state | One live capability, one planned | Follow-ups, the to-do list, and the next-action line carry state between sessions. The seedbank and the career model are memory too, but they are sources, owned by brand-os. Retrieval will read them | `continuity` (live), `retrieval` (planned) |
+| Memory and state | One degraded/live continuity capability being strengthened, plus Retrieval building | Continuity carries current work across sessions but still reconstructs too much state. Minimum Persistent State is the next implementation slice inside `continuity`, not a new registry entry. Retrieval is a shared governed evidence-access capability and remains building until v0.1 close-out. | `continuity` (degraded), `retrieval` (building) |
 | Execution | Family, plus one shared runner | Skills and agents are procedures. Claude Code runs them. The one thing the lab itself runs unattended is the set of cloud routines | `scheduled-routines` |
 | Coordination | Family only | Alfred is the interface, and agents are not registered. Coordination happens through files: the open and close routines, receipts, follow-ups. Those are already `continuity` and `evidence-record` | none |
 | Evaluation and observability | One capability | `facts.py`, `waiting.py`, `context-check`, `skill-check`, `dead-pointers`, `verify.sh`, `check_hub.py`. "Scripts decide what is true" is the lab's best idea and it is enforced | `measurement` |
 | Capability architecture | One capability, the meta one | This map, the definitions, the decisions, and the check script that proves they agree | `capability-architecture` |
 
-**Nine entries. Seven live or degraded, two planned.** Small on purpose. A tenth, `source-layer`, was added and removed the same day: it is retrieval's own list of sources, a store with one consumer (AD-12).
+**Nine entries. Seven live or degraded, one building, one planned.** Small on purpose. Minimum Persistent State is an implementation slice of `continuity`, not a tenth capability. `source-layer` was added and removed the same day: it is Retrieval's own source register, a store with one consumer (AD-12).
+
+## 1A. Cross-cutting boundaries and operating model
+
+The registry answers **what shared capabilities exist**. It does not register every actor, scope, connector or workflow.
+
+- **Observed + intended jobs.** Architecture uses both the jobs Venkat actually asks the lab to do and the jobs the lab is deliberately being built toward. Observed jobs diagnose current friction; intended jobs keep the system from merely automating today's workflow.
+- **Operating Scope.** Initial scopes are AI Lab, Professional / Advisory, Career / Portfolio, Public / Content, and Personal. Scope is a cross-cutting boundary, not a capability entry. Technical access does not equal permission to use.
+- **Actors.** Venkat, Alfred, ARCHIE, future specialist agents and automations consume or exercise shared capabilities. An actor is not a capability.
+- **Connections.** Email, calendar, Drive, Dropbox, web, APIs, CRM and future applications are sources and/or action surfaces. A connection is not a capability stack.
+- **Minimum Persistent State.** The next implementation slice strengthens `continuity` / Memory and state so current decisions, active work, ownership, open/waiting items, supersession and carry-forward stop being reconstructed from raw evidence each session.
+- **First integration proving loop.** Morning Brief + One Prepared Next Action is the first place Retrieval, State, Context, Evidence, Authority and Coordination should work together. It is a proving loop, not a capability.
+- **Default build pattern.** Operational Spec → one `/goal` → one review. Tests evaluate implementation and assumptions; required foundational capabilities do not repeatedly audition for existence.
 
 ## 2. The registry (canonical record)
 
@@ -138,32 +150,33 @@ Eight families were named for inspection (his word, 2026-09-12). A family is a l
 - id: retrieval
 - family: Memory and state
 - status: building
-- job: Find the best relevant knowledge the system already has across registered sources and return it with enough source, freshness, authority, and evidence information to use safely.
-- canonical-store: context/sources/REGISTER.md (its list of what it may depend on, with standing and use limits; sources stay canonical where they live; any index is derived and rebuildable)
-- access: python3 context/sources/retrieve.py (index, sources, candidates, fetch, stats) plus the retrieval skill for the model's part; one call from a session or a script, not a service (built 2026-09-12). For the register: python3 context/sources/check.py resolve <id> is the one path from a source id to its current location, status, standing, and use limits
-- consumers: Alfred, ARCHIE, signal reasoning, career model, project work, Telegraph+, context-assembly, seed-capture repeat check
-- sensors: context/sources/check.py (register integrity, source health, coverage, freshness, source discovery; built 2026-09-12); context/sources/tests/reachability.py (known-answer files inside the eligible set); context/sources/tests/run_tests.py (quality: the seven frozen tests, scored on the package); context/sources/retrieve.py (stats: the size of the full-index semantic pass); planned: unused consumers
-- proof: context/sources/tests/check_tests.py (27 planted faults caught 2026-09-12). Retrieval v0.1: four blind runs against the seven frozen tests, final 5 of 7 (T2 meaning match and T4 one file's rank failed every run); positive control 7 of 7, negative control 0 of 7; boundary refusal proven. docs/reports/2026-09-12--retrieval-v0-1-first-runs.md
-- defined-in: CAPABILITY-DEFINITIONS.md#retrieval
-- related: context-assembly, evidence-record, drivers
-- build-steps: step 2 (source register) complete, his word 2026-09-12 01:44 (AD-19); step 3 (retrieval v0.1) built 2026-09-12 02:30 to 03:00 at his word (AD-22), 5 of 7 frozen tests pass blind; not called working: the meaning test (T2) needs a different semantic method or a changed test, his call
-- proving-case: market signals first (hand test 2026-09-12), then Alfred, ARCHIE, and career-model questions (build step 4)
+- job: Find the evidence already available to the system that could materially affect the current job, within applicable scope and hard source boundaries, and return a Governed Evidence Package with provenance, limits, conflicts, and material gaps intact.
+- canonical-store: context/sources/REGISTER.md (governed list of what it may depend on; sources remain canonical where they live; indexes/runs are derived and rebuildable)
+- access: python3 context/sources/retrieve.py plus the retrieval skill/model; python3 context/sources/check.py resolve <id> for stable source resolution
+- consumers: Alfred, ARCHIE, signal reasoning, Career / Portfolio reasoning, project work, Telegraph+, context-assembly, content/research workflows, seed-capture repeat check
+- sensors: context/sources/check.py; context/sources/tests/reachability.py; context/sources/tests/run_tests.py; context/sources/retrieve.py stats; planned miss/unused/context-impact/outcome sensing when real usage supports it
+- proof: context/sources/tests/check_tests.py (27 planted faults caught 2026-09-12); Retrieval v0.1 baseline 6 of 7 frozen tests after AD-23; T2 failed large-set blind runs but passed the 100-record blind test twice and stage-one staged selection under two salts before an unvalidated second-level cut dropped it. See docs/reports/2026-09-12--retrieval-v0-1-first-runs.md, docs/reports/2026-09-12--retrieval-v0-1-semantic-candidates.md, docs/reports/2026-09-12--retrieval-v0-1-staged-selection.md
+- defined-in: CAPABILITY-DEFINITIONS.md#retrieval-building-v01-implemented-2026-09-12-and-under-close-out-evaluation
+- related: context-assembly, continuity, evidence-record, drivers
+- build-steps: source register complete; v0.1 implemented; current work is bounded close-out evaluation, then Minimum Persistent State and context assembly consume the interface
+- proving-case: frozen tests span Signals, Alfred, ARCHIE and Career Model; the morning brief is the first integrated downstream loop after State begins
 - added: 2026-09-12
-- changed: 2026-09-12
+- changed: 2026-09-13
 
 ### context-assembly
 - id: context-assembly
 - family: Context
 - status: planned
-- job: Put together the right slice of what the lab knows for the task in front of it, instead of loading the same fixed files every time.
-- canonical-store: none of its own; reads drivers, retrieval, and the ruled core files
-- access: not decided (build step 5)
-- consumers: every session, Alfred, ARCHIE, the writing skills
-- sensors: not decided; at least: which files were loaded and whether they were used
-- defined-in: CAPABILITY-DEFINITIONS.md#context-assembly
-- related: retrieval, drivers
+- job: Assemble the minimum evidence, current state, memory, rules, goals and constraints the current job needs, while preserving material conflicts and gaps and excluding noise.
+- canonical-store: none of its own; reads retrieval, continuity / Minimum Persistent State, drivers and the ruled core
+- access: not decided; build after Minimum Persistent State is sufficient for the first proving loop
+- consumers: every session where dynamic context helps, Alfred, ARCHIE, writing/content workflows, signal reasoning, Career / Portfolio work, future specialist actors
+- sensors: to be defined at build; at minimum required-context recall, irrelevant-context load, material conflict/constraint preservation, and loaded-but-unused context
+- defined-in: CAPABILITY-DEFINITIONS.md#context-assembly-planned-next-after-minimum-persistent-state
+- related: retrieval, continuity, drivers
+- proving-case: Morning Brief + One Prepared Next Action first, then at least one other consumer before v0.1 closes
 - added: 2026-09-12
-- changed: 2026-09-12
+- changed: 2026-09-13
 
 ### capability-architecture
 - id: capability-architecture
