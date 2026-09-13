@@ -139,6 +139,21 @@ with open(os.path.join(REC, "2026-09-10-1700-fourth-a1b2.md"), "w") as f:
 rc, out = run("loops")
 check("loops: a later receipt closes an audit follow-up", "F-20260910-1230-1" not in out, out[:300])
 
+# unlazy ledger line: an empty .unlazy/ (only a locks/ folder) is not an open ledger; a ledger file is (2026-09-13)
+unl = os.path.join(tmp, "unlazy-empty"); os.makedirs(os.path.join(unl, "locks"))
+gates_missing = os.path.join(tmp, "no-GATES.md")
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True,
+                   env=dict(ENV, ALFRED_UNLAZY_DIR=unl, ALFRED_GATES_FILE=gates_missing), timeout=60)
+check("open: an empty .unlazy/ with only locks/ does not report an open ledger", "gates ledger is open" not in r.stdout, r.stdout)
+os.makedirs(os.path.join(unl, "scope-1")); open(os.path.join(unl, "scope-1", "PLAN.md"), "w").write("# plan\n")
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True,
+                   env=dict(ENV, ALFRED_UNLAZY_DIR=unl, ALFRED_GATES_FILE=gates_missing), timeout=60)
+check("open: a ledger file under .unlazy/ reports an open ledger (planted fault)", "gates ledger is open" in r.stdout, r.stdout)
+gates = os.path.join(tmp, "GATES.md"); open(gates, "w").write("# Gates\n")
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True,
+                   env=dict(ENV, ALFRED_UNLAZY_DIR=os.path.join(tmp, "no-unlazy"), ALFRED_GATES_FILE=gates), timeout=60)
+check("open: GATES.md at the root reports an open ledger (planted fault)", "gates ledger is open" in r.stdout, r.stdout)
+
 print(f"\n{'all passed' if not failures else str(failures) + ' failed'}  (scratch folder: {tmp})")
 if failures:
     sys.exit(1)

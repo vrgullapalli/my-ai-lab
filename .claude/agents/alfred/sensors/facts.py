@@ -35,6 +35,21 @@ UNRECEIPTED = os.path.join(STATE, "unreceipted")
 LOG = os.path.join(ALFRED, "LOG.md")
 RECEIPTS = os.environ.get("ALFRED_RECEIPTS_DIR") or os.path.join(LAB, "evidence", "receipts")
 AUDITS = os.environ.get("ALFRED_AUDITS_DIR") or os.path.join(LAB, "evidence", "audits")   # follow-ups in audits count too (Venkat, 2026-09-11)
+GATES_FILE = os.environ.get("ALFRED_GATES_FILE") or os.path.join(LAB, "GATES.md")           # tests point these elsewhere
+UNLAZY_DIR = os.environ.get("ALFRED_UNLAZY_DIR") or os.path.join(LAB, ".unlazy")
+
+
+def ledger_open():
+    """An unlazy ledger is open when GATES.md sits at the root, or when .unlazy/ holds a ledger file.
+    The folder alone is not a ledger: the stop hook leaves an empty .unlazy/locks/ behind after a ledger is
+    retired, and until 2026-09-13 that empty folder made the sheet report a ledger that was not there."""
+    if os.path.isfile(GATES_FILE):
+        return True
+    for root, dirs, files in os.walk(UNLAZY_DIR):
+        dirs[:] = [d for d in dirs if d != "locks"]
+        if any(not f.startswith(".") for f in files):
+            return True
+    return False
 SNAPSHOTS = os.path.expanduser("~/Documents/_warehouse/_backups/snapshots")
 OFFSITE = os.path.expanduser("~/Library/CloudStorage/Dropbox-Telisina/Venkat Gullapalli/my-ai-lab-backups")
 TASKS = os.path.join(LAB, "work-os", "scheduled-tasks")
@@ -394,7 +409,7 @@ def open_sheet():
         missed = len(re.findall(r"^\| 20\d\d-", read(os.path.join(SEEDS, "missed.md")), re.M))
         out.append(f"seed files: {count}; newest live-session seed {newest} days ago; missed-seed rows: {missed}")
 
-    if os.path.isfile(os.path.join(LAB, "GATES.md")) or os.path.isdir(os.path.join(LAB, ".unlazy")):
+    if ledger_open():
         out.append("unlazy: a gates ledger is open at the lab root (GATES.md or .unlazy/)")
 
     out.extend(capture_lines())

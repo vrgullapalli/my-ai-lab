@@ -1,7 +1,7 @@
 ---
 name: capability-map
 what: The map of the lab's shared system capabilities, the registry that records them, and the registry standard every registry in the lab should follow.
-status: living. Started 2026-09-12 at Venkat's word ("Establish the shared capability layer"). Retrieval is building and under v0.1 close-out evaluation; context assembly is planned; Minimum Persistent State is the next implementation slice of the existing continuity / Memory and state capability. The registry block is the canonical record; a script reads it.
+status: living. Started 2026-09-12 at Venkat's word ("Establish the shared capability layer"). Retrieval is building and under v0.1 close-out evaluation; context assembly is planned; State v0.1 (Minimum Persistent State) is designed and not implemented (2026-09-13); it is the next implementation slice of the existing continuity / Memory and state capability. The registry block is the canonical record; a script reads it.
 home: docs/architecture/ (his word, 2026-09-12 01:16; AD-14)
 reads_this: docs/architecture/check.py (proves every entry has a definition, a valid status, and paths that exist; runs in context-check section G and on the facts sheet at every session start)
 related: [CAPABILITY-DEFINITIONS.md, ARCHITECTURE-DECISIONS.md, LAB-OPERATING-MODEL.md, context/intent/STANDING.md, docs/reports/2026-09-11--ai-native-possibility-brief.md]
@@ -97,8 +97,9 @@ The registry answers **what shared capabilities exist**. It does not register ev
 - proof: .claude/agents/alfred/sensors/tests/facts_tests.py (follow-up open and close cases); live before the gate of 2026-09-12, not re-proven
 - related: evidence-record, drivers
 - fault: "waiting on Venkat" lives in three trackers (receipts, TODAY.md, work-os/upskill-advisor/records/open-items.md). One fact, three homes. Observed 2026-09-11.
+- build-steps: State v0.1 designed 2026-09-13 (docs/reports/2026-09-13--state-v0-1-design.md; the spec is in the definition); not implemented; five acceptance tests proposed; the home and the ledger fork wait on his word; at implementation the ledger joins canonical-store and its check joins sensors
 - added: 2026-09-12
-- changed: 2026-09-12
+- changed: 2026-09-13
 
 ### drivers
 - id: drivers
