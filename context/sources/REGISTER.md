@@ -1,7 +1,7 @@
 ---
 name: source-register
-what: Retrieval's list of what it may depend on. One record per source the lab treats as knowledge, with where it is now, what kind it is, who owns it, where this copy stands, how much authority its records carry, what jobs it may inform, and what it must never establish on its own.
-status: live since 2026-09-12. Build step 2 (AD-06) complete at his word, 2026-09-12 01:44 (AD-19), and closed after the acceptance review at his word, 02:10 (AD-20, AD-21). Retrieval itself is not built and step 3 has not started.
+what: Retrieval's governed list of what it may depend on. One record per source the lab treats as knowledge, with where it is now, what kind it is, who owns it, where this copy stands, how much authority its records carry, what jobs it may inform, and what it must never establish on its own. The register governs source admission and hard source boundaries; Operating Scope further constrains whether an admitted source may be used for the current job.
+status: live since 2026-09-12. Build step 2 (AD-06) is complete and closed (AD-19 to AD-21). Retrieval v0.1 was built on 2026-09-12 and closed for downstream use on 2026-09-13 at 6 of 7 frozen tests, with the meaning-recall limitation recorded (docs/reports/2026-09-13--retrieval-v0-1-close-out.md); its registry status is live at his word (2026-09-13, AD-36). The Source Register itself is live and unchanged in role.
 home: context/sources/ (proposed, AD-16). The same idea as intent/STANDING.md: the list changes, the reader does not.
 reads_this: context/sources/check.py (register, health, coverage, freshness, source discovery, resolve); one line on the facts sheet; context-check section G
 proof: context/sources/tests/check_tests.py (planted faults: missing, moved, duplicate id, competing location, nested location, broken location, an archive-only folder, bad words, unregistered folder and repo)
@@ -11,7 +11,7 @@ rules: sources stay canonical where they live. Nothing here is a copy. Adding a 
 
 # Source register
 
-**What this answers.** For retrieval, and for any session before it leans on a file: what sources may it depend on, where are they now, what are they good for, and when should they not influence a judgment.
+**What this answers.** For Retrieval, and for any consumer before it leans on a source: what sources may it depend on, where are they now, what are they good for, and what are their maximum use limits. Admission here does not grant universal use: the current job's Operating Scope, privacy/confidentiality rules and authority may narrow the eligible set further.
 
 **How to read it.** One record per source, a heading plus `- key: value` lines, between the two `register` markers. `check.py` parses exactly that. Paths are relative to the lab root, split by `;`. A path that starts with `~` or `/` is outside the lab: its existence is checked, its files are not counted. `pattern` is what counts as a record inside the location.
 
@@ -40,6 +40,12 @@ It prints the current location and whether it exists, the status, the standing, 
 Seven questions, answered in the record, not in a rules engine. What job could it help with (`may-inform`). What does it actually represent (`kind`). How authoritative is it for that job (`tier`, `use`). Is it current enough (`date-field`, `standing`). Can it be traced (`location`, `pattern`, and anchors inside). Is it distinct from a source already here (if not, extend that record). What can it not safely tell us (`not-alone`). Then run the check. Source discovery proposes candidates; a person answers the seven and adds the record. Nothing registers itself.
 
 **Not registered yet, on purpose:** most of what sits outside the lab root (the iMac, the two peer folders `~/Documents/os-factory` and `~/Documents/claude-cowork`), the `.claude/` folder, which holds procedures, not knowledge, and three parts of the warehouse: `old-mac-documents` (client material), `_backups` (snapshots of the whole lab), and `research-sources` (other people's articles). A folder named `_archive` inside a registered location is never counted. Source discovery reports what it sees inside the lab; a person decides. Reviewed and left: `discovery-accepted.txt`.
+
+## Current Retrieval relationship
+
+The Source Register is live infrastructure under Retrieval. Retrieval v0.1 closed for downstream use on 2026-09-13 and is `live` at his word (AD-36), with the meaning-recall limitation on record. The register remains the deterministic admission/boundary layer regardless of which search or reranking mechanism Retrieval uses.
+
+The register answers **may Retrieval depend on this source at all?** Operating Scope and job-specific authority answer **may this source participate in this job?** Evidence qualification later answers **what may the retrieved item support?** Keep those three questions separate.
 
 <!-- register:start -->
 
@@ -421,11 +427,11 @@ Seven questions, answered in the record, not in a rules engine. What job could i
 - date-field: dates in rows and records
 - status: live
 - use: authoritative
-- may-inform: whether a shared system exists and what covers a job; the three standards; the build sequence
+- may-inform: whether a shared system exists and what covers a job; the three standards; architecture decisions; the build sequence; how capabilities, scopes, actors, connections and proving loops fit together through LAB-OPERATING-MODEL.md
 - not-alone: rulings about Venkat himself; a row marked proposed or assumed, until his word
 - read-by: docs/architecture/check.py, sessions before adding a system
 - added: 2026-09-12
-- changed: 2026-09-12
+- changed: 2026-09-13
 
 ### public-site
 - id: public-site

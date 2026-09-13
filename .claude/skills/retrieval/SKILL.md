@@ -96,6 +96,26 @@ never quotes a file the script did not fetch, and never reads outside the regist
 scores the seven pass conditions on the package. Six blind runs on 2026-09-12: final 6 of 7 with idea statements
 (run 5f, 04:33). T2 (the meaning match to seed A-LIVE-187) failed every run, six of six; T4 passes under AD-23.
 Details, sizes, and costs: `docs/reports/2026-09-12--retrieval-v0-1-first-runs.md` and
-`docs/reports/2026-09-12--retrieval-v0-1-semantic-candidates.md`. **Status: building, not trusted for the meaning job.**
-A consumer may use the package for exact, ruling, career-model, conflict, and missing-evidence questions, and
-must treat a meaning match as unproven until he rules on the method or the test.
+`docs/reports/2026-09-12--retrieval-v0-1-semantic-candidates.md`.
+
+**Status: v0.1 closed for downstream use, 2026-09-13, at 6 of 7** (`docs/reports/2026-09-13--retrieval-v0-1-close-out.md`).
+The close-out ranked the reused stage-one picks once at 172 records under two salts, then the 112 group winners
+alone as the one corrective pass: the seed was never in the ten, the article file written from it always was
+(ranks 5, 3, 2, 3). The staged path (`context/sources/tests/staged_experiment.py`) stays an experiment beside the
+tests; the five steps above are the path. Live at his word, 2026-09-13 (AD-36), with T2 kept frozen as written.
+
+## For consumers (State, Context Assembly, Alfred, ARCHIE)
+
+- **What you get** is `package.json`: `results[]` in rank order, each with `ref`, `source`, `date`, `tier`, `ceiling`,
+  `evidence[]` (lines the script pulled; the model adds none), `marks`, `limits`, `supersession`, `pointers[]`, `age_days`;
+  then `refused[]`, `conflicts` (model-flagged and script candidates), `missing_evidence` (script floor and model state),
+  `searched[]` (every source read: the completeness scope), `index`, and `semantic_pass`.
+- **Trust by question type.** Exact names, ruling numbers, corrections, career-model ids, cross-source conflicts, and
+  honest misses pass the frozen tests. A meaning match does not: one seed among 819 was found blind only inside a
+  list of about a hundred. Treat a meaning-match package as partial, read `searched[]` as what was covered, and
+  expect the developed form of an idea (an article file) before the seed it came from.
+- **Keep the rules.** Ask by register id, never by path. Lower a ceiling for the job, never raise it. A claimed figure
+  stays claimed. A non-empty `refused[]` is a model error to log. The judgment is yours; the package is evidence.
+- **Cost.** A scoped pass reads 90 KB to 660 KB and takes one to six minutes. Fine for a routine or a brief, not for
+  anything interactive. Rebuild the index when the sheet says sources are newer than it:
+  `python3 context/sources/retrieve.py index`.

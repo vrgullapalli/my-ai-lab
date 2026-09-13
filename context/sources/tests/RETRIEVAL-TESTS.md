@@ -1,7 +1,7 @@
 ---
 name: retrieval-tests
 what: The known-answer test set for shared Retrieval (build step 3, AD-06). Seven jobs across five consumers. Retrieval v0.1 is the minimum behavior that passes these, not a search method.
-status: approved by his word, 2026-09-12 02:24 (AD-22), with one boundary rule: Retrieval returns the evidence package; the consumer makes the judgment. Frozen at 02:31 after reachability.py returned 24 of 24 known-answer files inside the eligible set (planted fault: 2 of 26, exit 1). Retrieval v0.1 now exists and is building; the baseline reached 6 of 7 after AD-23, and T2 remains the frozen meaning-match case under final staged-selection close-out. A change to a test is his word, recorded in a decision row. Changed once: T4 at 04:23 (AD-23); T2 stands unweakened.
+status: approved by his word, 2026-09-12 02:24 (AD-22), with one boundary rule: Retrieval returns the evidence package; the consumer makes the judgment. Frozen at 02:31 after reachability.py returned 24 of 24 known-answer files inside the eligible set (planted fault: 2 of 26, exit 1). Retrieval v0.1 was closed for downstream use on 2026-09-13 at 6 of 7 (docs/reports/2026-09-13--retrieval-v0-1-close-out.md); T2 remains the frozen meaning-match case, failed on every path tried, and is recorded as a known limitation, not weakened. A change to a test is his word, recorded in a decision row. Changed once: T4 at 04:23 (AD-23); T2 stands unweakened.
 home: context/sources/tests/ (beside the register's own tests; Retrieval has no store of its own and its one home today is the register). Moved from docs/architecture/ at 02:24; that folder is the capability record and the register counts it as authoritative.
 part_of: retrieval (docs/architecture/CAPABILITY-DEFINITIONS.md#retrieval, "Evaluation")
 reads_this: context/sources/tests/reachability.py (are the known-answer files inside the eligible source set); the retrieval runner, when built, writes dated runs to docs/reports/
@@ -21,15 +21,16 @@ tags: observed (a file read or a count run on 2026-09-12) · inferred (my readin
 
 ---
 
-## Current implementation state (2026-09-13)
+## Current implementation state (2026-09-13, close-out)
 
 These tests define required capability behavior, not a preferred search method.
 
-- Retrieval v0.1 is implemented and remains `building` while T2 closes out.
-- Baseline after AD-23: **6 of 7** frozen tests pass; T2 is the remaining meaning-match failure.
-- The 100-record blind selection test picked A-LIVE-187 in both runs and made the intended inference from the existing representation.
-- The staged-selection experiment then picked A-LIVE-187 in stage one under two different salts, but an unvalidated second-level reduction dropped it both times. This is implementation evidence about selection/attention at scale, not a reason to weaken T2 or redefine Retrieval.
-- The current close-out may change implementation mechanics while keeping this frozen capability-level test set unchanged unless Venkat explicitly rules that a test itself is wrong.
+- Retrieval v0.1 is closed for downstream use (his goal of 2026-09-13 05:29; the close-out report is `docs/reports/2026-09-13--retrieval-v0-1-close-out.md`). The registry entry is `live` at his word, 2026-09-13 05:57 (AD-36). The registry entry stays `building` until his word on the status.
+- Result: **6 of 7** frozen tests pass, the same as the baseline after AD-23, with no regression. T2 is the one failure.
+- T2's record: the seed A-LIVE-187 was picked blind inside a list of about a hundred (2 of 2) and inside its stage-one group of about 94 (2 of 2), and never in a final rank among winners (0 of 4 on 2026-09-13: one-level unions of 172 under two salts, then the 112 winners alone) or in a full scoped pass (0 of 6). The article's locked gate-one file, the seed written up, was in the ten every time. The research file was never picked in any run.
+- The one-level union and the corrective pass are recorded in `staged_experiment.py`; the staged path is an experiment beside these tests, not the default.
+- Known limitation for consumers: a meaning-match package is partial until proven otherwise; the package's `searched` list is the completeness scope, not the model's state.
+- Ruled 2026-09-13 05:57, his words: "Keep T2 frozen as written. Do not substitute the gate-one file for the research/origin file. The fact that Retrieval consistently finds the downstream outcome but not the named origin is useful evidence about the current implementation." F-20260913-0502-6 is closed by that ruling.
 - Evaluation tests the implementation. Retrieval's architectural necessity is already settled.
 
 ## T1. Signal to company, exact relationship
@@ -145,3 +146,4 @@ Each behavior is tied to the tests that require it. Nothing else is in v0.1.
 - **No Telegraph test.** Both Telegraph sources are registered with no known-answer case. Deferred at his word, 02:24.
 - **No time-to-answer measure.** Needs code to exist first.
 - **The blind grader is not defined** for the "why it matches" lines in T2 and T4. The hand test's shape, a helper that sees only two labeled lists, would work.
+- **Evaluation pattern, kept here at his word (2026-09-13):** a record that wins its group of about a hundred loses the final contest among group winners (4 of 4 on 2026-09-13, at 172 and at 112 records); a funnel's final stage needs its own test, because every loser there was already someone's best pick. Seed A-LIVE-329 holds the same idea; this line is the evaluation rule.

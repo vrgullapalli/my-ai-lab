@@ -149,16 +149,16 @@ The registry answers **what shared capabilities exist**. It does not register ev
 ### retrieval
 - id: retrieval
 - family: Memory and state
-- status: building
+- status: live
 - job: Find the evidence already available to the system that could materially affect the current job, within applicable scope and hard source boundaries, and return a Governed Evidence Package with provenance, limits, conflicts, and material gaps intact.
-- canonical-store: context/sources/REGISTER.md (governed list of what it may depend on; sources remain canonical where they live; indexes/runs are derived and rebuildable)
+- canonical-store: context/sources/REGISTER.md (governed list of what it may depend on; sources remain canonical where they live; the derived index and run records under context/sources/index are rebuildable, not canonical)
 - access: python3 context/sources/retrieve.py plus the retrieval skill/model; python3 context/sources/check.py resolve <id> for stable source resolution
 - consumers: Alfred, ARCHIE, signal reasoning, Career / Portfolio reasoning, project work, Telegraph+, context-assembly, content/research workflows, seed-capture repeat check
 - sensors: context/sources/check.py; context/sources/tests/reachability.py; context/sources/tests/run_tests.py; context/sources/retrieve.py stats; planned miss/unused/context-impact/outcome sensing when real usage supports it
-- proof: context/sources/tests/check_tests.py (27 planted faults caught 2026-09-12); Retrieval v0.1 baseline 6 of 7 frozen tests after AD-23; T2 failed large-set blind runs but passed the 100-record blind test twice and stage-one staged selection under two salts before an unvalidated second-level cut dropped it. See docs/reports/2026-09-12--retrieval-v0-1-first-runs.md, docs/reports/2026-09-12--retrieval-v0-1-semantic-candidates.md, docs/reports/2026-09-12--retrieval-v0-1-staged-selection.md
-- defined-in: CAPABILITY-DEFINITIONS.md#retrieval-building-v01-implemented-2026-09-12-and-under-close-out-evaluation
+- proof: context/sources/tests/check_tests.py (27 planted faults caught 2026-09-12); boundary refusal proven (run_tests.py --prove-boundary); Retrieval v0.1 closed for downstream use 2026-09-13 at 6 of 7 frozen tests, no regression; T2 (meaning match to one seed) failed on every path tried and is a recorded limitation; live since 2026-09-13 at his word with that limitation on record (AD-36). See docs/reports/2026-09-13--retrieval-v0-1-close-out.md and the three 2026-09-12 retrieval reports
+- defined-in: CAPABILITY-DEFINITIONS.md#retrieval
 - related: context-assembly, continuity, evidence-record, drivers
-- build-steps: source register complete; v0.1 implemented; current work is bounded close-out evaluation, then Minimum Persistent State and context assembly consume the interface
+- build-steps: source register complete; v0.1 implemented and closed for downstream use (2026-09-13); live at his word 2026-09-13 (AD-36); next, Minimum Persistent State and context assembly consume the interface
 - proving-case: frozen tests span Signals, Alfred, ARCHIE and Career Model; the morning brief is the first integrated downstream loop after State begins
 - added: 2026-09-12
 - changed: 2026-09-13
@@ -172,7 +172,7 @@ The registry answers **what shared capabilities exist**. It does not register ev
 - access: not decided; build after Minimum Persistent State is sufficient for the first proving loop
 - consumers: every session where dynamic context helps, Alfred, ARCHIE, writing/content workflows, signal reasoning, Career / Portfolio work, future specialist actors
 - sensors: to be defined at build; at minimum required-context recall, irrelevant-context load, material conflict/constraint preservation, and loaded-but-unused context
-- defined-in: CAPABILITY-DEFINITIONS.md#context-assembly-planned-next-after-minimum-persistent-state
+- defined-in: CAPABILITY-DEFINITIONS.md#context-assembly
 - related: retrieval, continuity, drivers
 - proving-case: Morning Brief + One Prepared Next Action first, then at least one other consumer before v0.1 closes
 - added: 2026-09-12
