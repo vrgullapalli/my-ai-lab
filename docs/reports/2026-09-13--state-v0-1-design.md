@@ -1,5 +1,5 @@
 ---
-title: State v0.1, the design and its acceptance tests (review-ready; nothing implemented)
+title: State v0.1, the design and its acceptance tests (approved and implemented 2026-09-13, AD-37; the tests are frozen at context/state/tests/STATE-TESTS.md)
 date: 2026-09-13
 author: Alfred (session 11ed46ab), at Venkat's word (the /goal of 06:30: "Design the smallest robust State v0.1 and its acceptance tests. Do not implement State.")
 kind: a design, read against the registries and receipts that exist today; the canonical operational spec is in docs/architecture/CAPABILITY-DEFINITIONS.md under continuity; this report holds the model, the package, the boundaries, the plan, and the five tests

@@ -49,6 +49,7 @@ check("open: counts sessions with no transcript", "with no transcript in the lab
 check("open: carries the skill check line", "skill check: " in out and "skills and" in out, out)
 check("open: carries the architecture check line", "architecture check: " in out and "registry entries" in out, out)
 check("open: carries the source register line", "sources: " in out and "registered" in out, out)
+check("open: carries the State line from state.py check", "state: " in out and "current lines" in out, out)
 
 # capture with an empty sessions folder: the sheet says no run is logged, and does not crash
 empty = os.path.join(tmp, "no-sessions")

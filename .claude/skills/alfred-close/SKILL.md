@@ -112,6 +112,20 @@ and the receipt says so.
    ```
    Keep the headings exactly as written; the facts script reads them.
 
+6b. **Write State** (State v0.1, 2026-09-13, AD-37). After the receipt exists, the ledger at
+   `context/state/STATE.jsonl` gets its lines, so the next session starts from the record:
+   ```bash
+   python3 context/state/state.py from-receipt evidence/receipts/<the receipt>.md --by alfred-close/<session id>
+   ```
+   That writes, by script, the loops the receipt opened and closed and the commitment in "Next session
+   starts with". Then the judgment part, one `append` per line: a decision he made (`kind: decision`,
+   `authority: his-word`, the `#row:` anchor of where it is recorded, and the receipt path), a material
+   change with its source, a supersession the wording left implicit (marked `proposed`), and the work
+   this session held (`release --status done|paused|handed-off`). Never `his-word` without an anchor;
+   the script refuses it. Then `python3 context/state/state.py current` regenerates the view, and
+   `check --summary` must print `findings 0`. A material decision in the receipt with no State line is
+   the alarm the open routine reads.
+
 7. **Keep the lists.** Tick finished items in `.claude/agents/alfred/TODAY.md` and add any new
    one he asked for today. Append the log lines:
    `D6` (commissions and their states), `D7` (observation lines appended, or `none`), and

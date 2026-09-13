@@ -39,6 +39,20 @@ GATES_FILE = os.environ.get("ALFRED_GATES_FILE") or os.path.join(LAB, "GATES.md"
 UNLAZY_DIR = os.environ.get("ALFRED_UNLAZY_DIR") or os.path.join(LAB, ".unlazy")
 
 
+def state_line():
+    """One line from State's own check (context/state/state.py check --summary): counts, conflicts, stale, findings.
+    The check decides; this only carries its line. If the script is missing or fails to run, say so; never guess."""
+    script = os.path.join(LAB, "context", "state", "state.py")
+    if not os.path.isfile(script):
+        return "state: no ledger script at context/state/state.py"
+    try:
+        r = subprocess.run([sys.executable, script, "check", "--summary"], capture_output=True, text=True, timeout=120, cwd=LAB)
+        line = (r.stdout.strip().split("\n") or [""])[-1]
+        return line or "ALERT state: the check printed nothing"
+    except Exception as exc:
+        return f"ALERT state: check could not run ({type(exc).__name__})"
+
+
 def ledger_open():
     """An unlazy ledger is open when GATES.md sits at the root, or when .unlazy/ holds a ledger file.
     The folder alone is not a ledger: the stop hook leaves an empty .unlazy/locks/ behind after a ledger is
@@ -415,6 +429,7 @@ def open_sheet():
     out.extend(capture_lines())
     out.append(skill_check_line())
     out.append(architecture_check_line())
+    out.append(state_line())
     out.append(sources_line())
     out.append(waiting_line())
 

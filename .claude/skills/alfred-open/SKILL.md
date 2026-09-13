@@ -35,6 +35,17 @@ for more than an hour. Lines that start with `ALERT` are the ones worth his atte
 
 ## Steps
 
+0. **Read State first** (State v0.1, 2026-09-13, AD-37). Before anything else, ask the ledger what is
+   currently true, so the brief starts from the record and not from a re-read of folders:
+   ```bash
+   python3 context/state/state.py package --scope ai-lab --consumer brief --fields active,changed,open,waiting,decided,carry_forward
+   python3 context/state/state.py check
+   ```
+   The package's `carry_forward` holds the newest "next session starts with"; `waiting` is the three
+   homes as one list with a source on each item; `active` says who holds what. Anything the check lists
+   as a conflict or stale goes into the brief's "at risk" lines; never fix a line, append a corrected one.
+   What the package cannot answer, the steps below still find; State is the index, the receipts are the record.
+
 1. **Catch sessions that ended without a receipt.** For each `ALERT sessions that changed
    files but wrote no receipt` line, run `alfred-close` in late mode with that note
    (`.claude/agents/alfred/state/unreceipted/<id>.json`). It lists the files changed and the

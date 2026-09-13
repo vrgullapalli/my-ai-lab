@@ -1,7 +1,7 @@
 ---
 name: capability-map
 what: The map of the lab's shared system capabilities, the registry that records them, and the registry standard every registry in the lab should follow.
-status: living. Started 2026-09-12 at Venkat's word ("Establish the shared capability layer"). Retrieval is building and under v0.1 close-out evaluation; context assembly is planned; State v0.1 (Minimum Persistent State) is designed and not implemented (2026-09-13); it is the next implementation slice of the existing continuity / Memory and state capability. The registry block is the canonical record; a script reads it.
+status: living. Started 2026-09-12 at Venkat's word ("Establish the shared capability layer"). Retrieval is building and under v0.1 close-out evaluation; context assembly is planned; State v0.1 (Minimum Persistent State) is implemented (2026-09-13, AD-37) as the implementation slice of the existing continuity / Memory and state capability. The registry block is the canonical record; a script reads it.
 home: docs/architecture/ (his word, 2026-09-12 01:16; AD-14)
 reads_this: docs/architecture/check.py (proves every entry has a definition, a valid status, and paths that exist; runs in context-check section G and on the facts sheet at every session start)
 related: [CAPABILITY-DEFINITIONS.md, ARCHITECTURE-DECISIONS.md, LAB-OPERATING-MODEL.md, context/intent/STANDING.md, docs/reports/2026-09-11--ai-native-possibility-brief.md]
@@ -88,16 +88,16 @@ The registry answers **what shared capabilities exist**. It does not register ev
 - family: Memory and state
 - status: degraded
 - job: Carry where we are, what is open, and what comes next across sessions, so nothing depends on Venkat remembering.
-- canonical-store: .claude/agents/alfred/TODAY.md; .claude/agents/alfred/state
+- canonical-store: .claude/agents/alfred/TODAY.md; .claude/agents/alfred/state; context/state/STATE.jsonl (State v0.1, the append-only ledger of overlays no registry holds: supersession links, ownership, commitments, materiality; context/state/CURRENT.md beside it is a generated view)
 - reads: follow-up lines and the next-action line inside evidence/receipts, which evidence-record owns
 - access: facts.py open and loops; alfred-open and alfred-close
 - consumers: Alfred, alfred-open, alfred-close, every first session of the day
-- sensors: .claude/agents/alfred/sensors/facts.py (open follow-ups, next action, unreceipted sessions); .claude/agents/alfred/sensors/waiting.py (three trackers as one view)
+- sensors: .claude/agents/alfred/sensors/facts.py (open follow-ups, next action, unreceipted sessions); .claude/agents/alfred/sensors/waiting.py (three trackers as one view); context/state/state.py (check: refusals, conflicts, stale; one line on the facts sheet)
 - defined-in: CAPABILITY-DEFINITIONS.md#continuity
-- proof: .claude/agents/alfred/sensors/tests/facts_tests.py (follow-up open and close cases); live before the gate of 2026-09-12, not re-proven
+- proof: .claude/agents/alfred/sensors/tests/facts_tests.py (follow-up open and close cases); live before the gate of 2026-09-12, not re-proven. State v0.1: context/state/tests/check_tests.py (21 checks, planted faults and writer refusals, all caught 2026-09-13) and context/state/tests/run_tests.py (S1 to S5, 5 of 5 on 2026-09-13)
 - related: evidence-record, drivers
 - fault: "waiting on Venkat" lives in three trackers (receipts, TODAY.md, work-os/upskill-advisor/records/open-items.md). One fact, three homes. Observed 2026-09-11.
-- build-steps: State v0.1 designed 2026-09-13 (docs/reports/2026-09-13--state-v0-1-design.md; the spec is in the definition); not implemented; five acceptance tests proposed; the home and the ledger fork wait on his word; at implementation the ledger joins canonical-store and its check joins sensors
+- build-steps: State v0.1 designed and approved 2026-09-13 (AD-37; docs/reports/2026-09-13--state-v0-1-design.md; the spec is in the definition) and implemented the same day: ledger seeded from the registries (310 derived lines), the five frozen tests in context/state/tests/STATE-TESTS.md pass, 21 planted-fault and refusal checks caught, the open and close skills read and write it, one line on the facts sheet. Ready for its first consumer, the morning brief (AD-30). The three-homes fault stands; State reads the three as one list
 - added: 2026-09-12
 - changed: 2026-09-13
 
