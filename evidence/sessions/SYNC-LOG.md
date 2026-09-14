@@ -249,3 +249,9 @@ One line per run of `tools/codex-session-sync.py`. Never commits; Venkat commits
 | 2026-09-14 15:18 | all | 0 | 1 | 0 | 0 | — |
 | 2026-09-14 15:18 | all | 0 | 1 | 0 | 0 | — |
 | 2026-09-14 15:18 | all | 0 | 1 | 0 | 0 | — |
+| 2026-09-14 15:20 | hook | 0 | 1 | 0 | 0 | — |
+| 2026-09-14 15:20 | all | 0 | 1 | 0 | 0 | — |
+| 2026-09-14 15:20 | hook | 0 | 1 | 0 | 0 | MASKED (secret-like string, 1 hit/s blanked): add811c9-9f73-4917-be44-6f7a030e915c.jsonl |
+| 2026-09-14 15:21 | hook | 0 | 1 | 0 | 0 | — |
+| 2026-09-14 15:21 | hook | 0 | 1 | 0 | 0 | — |
+| 2026-09-14 15:22 | hook | 0 | 1 | 0 | 0 | — |
