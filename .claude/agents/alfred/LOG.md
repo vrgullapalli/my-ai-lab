@@ -92,3 +92,43 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-12 01:54 | D6 | ran | 1 closed (F-20260912-0149-1, his word "2"); 2 opened (F-20260912-0154-1 first live footer check, F-20260912-0154-2 week verdict); seeds A-LIVE-307..310 at his word | R-2026-09-12-0154-cc95
 2026-09-12 01:54 | RULING | his | lens footer on every reply (option 2), whole-session scope; how-i-work.md line 72 changed at his word
 2026-09-12 01:54 | CLOSE | ran | 2026-09-12-0154-lens-footer-wired-seeds-cc95.md; day review not due | facts.py close
+2026-09-12 01:58 | COMMIT | his word | root 2b9f259 (audit folder); engagement-os 8aeb771 (A-LIVE-307..310, README count) | F-20260912-0149-5 closed
+2026-09-12 02:15 | D6 | ran | 3 follow-ups opened (topics pick; commit the lens change; lens pick rate), 0 closed; 4 seeds written at his pick, 3 candidates listed | facts.py loops
+2026-09-12 02:15 | D7 | ran | 1 observation line appended (one-line steers; a named lens applies to the set) | docs/about-me/how-i-work--observed.md
+2026-09-12 02:15 | CLOSE | ran | 2026-09-12-0215-wording-lens-wired-and-topics-70d5.md; day review not due | facts.py close
+2026-09-12 02:17 | D6 | ran | wording picks at his delegation (02:16): 3 lines to engagement-os/memory/concepts.md, two endorsed and one his | receipt R-2026-09-12-0215-70d5
+2026-09-12 02:21 | D6 | ran | 2 follow-ups opened (orphan count; ignored references folder), 1 closed (F-20260910-1627-6, all five repos at 0 by 23:47); 3 seed and 3 wording candidates listed, none written | facts.py loops
+2026-09-12 02:21 | D7 | ran | 1 observation line appended (questions the number explained away; took both options in sequence) | docs/about-me/how-i-work--observed.md
+2026-09-12 02:21 | CLOSE | ran | 2026-09-12-0220-context-check-guide-move-55af.md; day review not due | facts.py close
+2026-09-12 02:33 | D6 | ran | wording lenses removed at his word 02:32; archived to _warehouse/wording-lenses-removed-2026-09-12 (checksum matched), 4 skills edited, pointer left | .claude/skills/seed-capture/references/wording-lenses.md
+2026-09-13 05:02 | D6 | commissions | opened F-20260913-0502-1..7 (cap choice: Venkat; seven staged tests: Alfred; commit checkpoint: Venkat; four small defects: Alfred; brief as proving ground: Venkat; T2 second answer: Venkat; open routine owed again: Alfred); closed F-20260912-0154-1 (footer seen on every reply) | receipt 2026-09-13-0502-retrieval-built-staged-jobs-b134.md
+2026-09-13 05:02 | D7 | observations | none new at close; two rows appended at 02:24 on 09-12 (test absorbed the consumer's judgment; file placed beside its definition) | docs/about-me/how-i-work--observed.md
+2026-09-13 05:02 | CLOSE | ran | 2026-09-13-0502-retrieval-built-staged-jobs-b134.md; day review 2026-09-12 written late; GATES.md stays open (15 met, 2 handed off) | facts.py close
+2026-09-13 05:42 | D1 | ran | 4 drivers read; true threats: driver 2 unpushed root 8 and telegraph-plus 11, driver 1 sessions without receipts 13 (now receipted), driver 4 nothing shipping; driver 3 Telegraph 2 items 8 days | facts.py open
+2026-09-13 05:42 | D2 | ran | 92 open follow-ups from receipts; Telegraph needs-Venkat 2 items, file 9 days old (updated 2026-09-04); stale: 13 unreceipted notes cleared by R-2026-09-13-0540-e587; no separate list started | facts.py loops
+2026-09-13 05:42 | D3 | ran | session capture ran 0 h ago, launchd com.venkat.session-sync loaded (exit 0), 0 sessions without transcript; skill check 4 files 5 problems; architecture check 3 findings (retrieval path, two anchors); cloud routines Unknown: 0 of 7 pages today, verify.sh needs RemoteTrigger json this session cannot fetch, last live count 09-11 was 2 of 29 | facts.py open, skill-check.py, check.py, Artifact list
+2026-09-13 05:42 | D5 | not due | last review 09-09 14:12; next due 09-16 | .claude/agents/alfred/LOG.md
+2026-09-13 05:42 | D6 | late | R-2026-09-13-0540-e587 for 12 sessions: 8 opened (F-20260913-0540-1..8), 3 closed (F-20260912-0150-1, F-20260912-0134-3, F-20260913-0502-7); 13 notes moved to unreceipted/done | evidence/receipts/2026-09-13-0540-combined-late-receipt-twelve-sessions-e587.md
+2026-09-13 05:42 | OPEN | ran | next action: push telegraph-plus and the lab root | facts.py open
+2026-09-13 05:45 | D6 | ran | opened F-20260913-0545-1..5; closed F-20260913-0502-1, -2, -7 | receipt 4e1f
+2026-09-13 05:45 | D7 | ran | none | no correction this session
+2026-09-13 05:45 | CLOSE | ran | 2026-09-13-0545-retrieval-v0-1-closed-4e1f.md | facts.py close
+2026-09-13 06:02 | D6 | ran | closed F-20260913-0502-6, -0545-1, -0545-5, -0540-2; opened F-20260913-0602-1..3 | receipt 4f7b
+2026-09-13 06:02 | CLOSE | ran | 2026-09-13-0602-retrieval-live-tool-reverted-4f7b.md | facts.py close
+2026-09-13 06:38 | D6 | ran | closed F-20260913-0602-1; opened F-20260913-0638-1..3 | receipt 2b87
+2026-09-13 06:38 | CLOSE | ran | 2026-09-13-0638-pushed-sensor-fixed-state-designed-2b87.md | facts.py close
+2026-09-13 08:10 | D6 | ran | closed F-20260913-0638-1..3; opened F-20260913-0810-1..3 | receipt 7cf7
+2026-09-13 08:10 | CLOSE | ran | 2026-09-13-0810-state-v0-1-implemented-7cf7.md | facts.py close; state lines written
+2026-09-13 08:12 | CLOSE | ran | 2026-09-13-0812-state-close-path-corrected-c135.md | facts.py close; state lines written
+2026-09-13 08:44 | CLOSE | ran | 2026-09-13-0844-state-human-tests-held-9b8b.md | facts.py close; state lines written
+2026-09-14 01:20 | D1 | ran | threats: lab root uncommitted 51 (now 52 with the new skill), unpushed 2; 5 repos no remote; snapshot 3 days | facts.py open
+2026-09-14 01:20 | D2 | ran | 102 loops open; oldest 4 days; waiting on Venkat 74 (facts) / 61 (state package) | facts.py loops; state.py package
+2026-09-14 01:20 | D3 | not run | verify.sh needs a folder of fetched routine responses; none fetched; 0 of 7 cloud pages published today | verify.sh usage
+2026-09-14 01:20 | OPEN | ran | next action: wire the brief to State, compare done | facts.py open
+2026-09-14 01:30 | D6 | ran | opened F-20260914-0125-1..5; closed the 9b8b carry-forward (step 0 compared) | receipt 19c2
+2026-09-14 01:30 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (books become tooling at once) | observed notes
+2026-09-14 01:30 | CLOSE | ran | 2026-09-14-0125-purple-cow-skill-and-open-19c2.md; late 2026-09-14-0058-three-books-added-open-cut-short-8c15.md; day review 2026-09-13 late | facts.py close; state lines written
+2026-09-14 02:45 | D6 | ran | opened F-20260914-0238-1..5 (research folder rule, handoff to researcher, pending amendments, four stale model lines: Venkat; hub sensors on facts sheet: Alfred); 0 closed | receipt 7d32
+2026-09-14 02:45 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (chat-only ask became a saved file) | observed notes
+2026-09-14 02:45 | CLOSE | ran | 2026-09-14-0238-career-model-research-handoff-7d32.md; day review not due (today's is 2026-09-13 late, written 01:30; 2026-09-14 review waits for end of day) | facts.py close; state lines written
+2026-09-14 02:41 | CLOSE | ran | late: 2026-09-14-0239-combined-late-receipt-eight-sessions-edf9.md (eight sessions, 4fb8ec54 has no transcript) | facts.py close; state lines written

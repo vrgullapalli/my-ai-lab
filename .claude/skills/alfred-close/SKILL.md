@@ -61,11 +61,12 @@ and the receipt says so.
    "<the claim>"`; a match of 0.45 or more is probably a repeat, a lower one is a candidate
    connection or conflict. Show at most five, numbered. **Write seeds only on his pick** ("1
    and 3"), or when a moment was marked "this is a seed" during the session — writing stays
-   governed by D-137. Ask seed-capture's wording question once, both parts (Venkat, 2026-09-12): "did any
-   wording get fixed today?" and "what wording could be created?", the second through the
-   two lenses in `.claude/skills/seed-capture/references/wording-lenses.md`, at most three
-   per lens, each marked his, adapted, or new. Show, write nothing; his pick governs. No
-   candidates is a normal answer.
+   governed by D-137. **Language: capture only what was actually settled, corrected,
+   adopted, or explicitly marked worth keeping** in the session (Venkat, 2026-09-12 02:26:
+   "Stop the automatic candidate-capture step"). No open wording question, and no creative
+   candidates at close. Nothing to capture is the normal answer; say nothing about wording
+   then. (The wording lenses were removed 2026-09-12 02:32, his word: "remove the lenses.
+   they are poorly applied.")
 
 4. **Duty seven — observations.** As `DUTIES.md` D7 says: anything learned about how Venkat
    works is appended, one line each, to `docs/about-me/how-i-work--observed.md`. Never to

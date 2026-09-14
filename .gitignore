@@ -38,3 +38,11 @@ work-os/projects/_archive/telegraph-native-lab/
 GATES.md
 .unlazy/
 .unlazy-hook-state.json
+
+# An eighth repository, cloned at Venkat's word on 2026-09-14 (github.com/MadsLorentzen/ai-job-search).
+# Same reason as the seven above: it keeps its own history.
+work-os/ai-job-search/
+
+# Three book PDFs he placed on 2026-09-14. Copyrighted, binary, and this repo pushes to GitHub.
+# Kept out until his word (F-20260914-0239-3). Remove this line to commit them.
+work-os/assets/*.pdf

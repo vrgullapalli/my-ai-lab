@@ -176,6 +176,7 @@ The registry answers **what shared capabilities exist**. It does not register ev
 - defined-in: CAPABILITY-DEFINITIONS.md#context-assembly
 - related: retrieval, continuity, drivers
 - proving-case: Morning Brief + One Prepared Next Action first, then at least one other consumer before v0.1 closes
+- build-steps: Context v0.1 designed 2026-09-13 (docs/reports/2026-09-13--context-v0-1-design.md; the spec is the Context v0.1 subsection under context-assembly in the definitions): one contract per kind of job, one sealed package per run, adequacy computed by script lowering the allowed action, lineage as one appended line per run. Not implemented; three decisions wait on his word
 - added: 2026-09-12
 - changed: 2026-09-13
 
