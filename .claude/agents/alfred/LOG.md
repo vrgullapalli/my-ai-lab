@@ -135,3 +135,5 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-14 02:50 | D6 | ran | opened F-20260914-0248-1 (read the briefs: Venkat), -2 (commit them: Venkat), -3 (review the two whole-market daily briefs, due this week: Alfred); 0 closed | receipt R-2026-09-14-0248-f8d1
 2026-09-14 02:50 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (evidence before design, in two prompts) | observed notes
 2026-09-14 02:50 | CLOSE | ran | 2026-09-14-0248-three-portfolio-source-briefs-f8d1.md; day review not due (before 5 PM; 2026-09-13 review exists) | facts.py close
+2026-09-14 02:56 | CLOSE | ran | 2026-09-14-0255-lab-root-committed-at-his-word-3c1e.md; commits 23ce09a (other session) and 602acfa at his word, no push | facts.py close; state lines written
+2026-09-14 02:58 | D6 | ran | correction: receipt 3c1e says 3 commits unpushed; git counts 1 (origin/main..main) after another session's push; carried to the next receipt | git rev-list
