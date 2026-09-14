@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for Alfred's session-sync sensor: the secret mask.
+"""Tests for Alfred's session-sync sensor: the secret mask, and messages sent mid-task.
 
 Run:  python3 .claude/agents/alfred/sensors/tests/session_sync_tests.py
 
@@ -13,9 +13,11 @@ pattern, pasted as a string, and requires it to miss both, so these tests would 
 before the fix. Every key here is fake.
 """
 import importlib.util
+import json
 import os
 import re
 import sys
+import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOOL = os.path.join(os.path.dirname(HERE), "session-sync.py")
