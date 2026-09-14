@@ -190,3 +190,6 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-14 15:19 | CLOSE | ran | 2026-09-14-1519-brief-wired-to-state-4992.md | facts.py close; state lines written
 2026-09-14 15:20 | D6 | ran | his "push": origin/main already equals HEAD (0 ahead after fetch), the push landed outside this session; nothing for Alfred to push | git rev-list
 2026-09-14 15:20 | CLOSE | ran | no durable change by this session since R-2026-09-14-1508-6156 (the log line only); other sessions wrote receipt aa2c, the capability map, and observed notes; day review not due (before 5 PM, he said done, not done for today) | facts.py close
+2026-09-14 15:24 | D6 | ran | opened F-20260914-1524-1..5 (sync off and copy back: Venkat; retire iCloud copy after match: Alfred at his word; prove whole after move: Alfred; snapshot to Dropbox: Venkat, gate refused it here; facts-sheet sync line: his call); closed none | receipt 9efc
+2026-09-14 15:24 | D7 | ran | one observed line appended: he checks a pasted claim against this machine, then commits in one word | how-i-work--observed.md
+2026-09-14 15:24 | CLOSE | ran | 2026-09-14-1524-lab-leaves-icloud-step-one-9efc.md | facts.py close

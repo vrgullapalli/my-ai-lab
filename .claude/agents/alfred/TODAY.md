@@ -13,6 +13,8 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 
 - [x] **Registries, checks, and sensors baseline** at his `/goal` (13:23): `docs/documentation/CURRENT-REGISTRIES-CHECKS-SENSORS.md`, 297 lines, seventeen registries, twenty-two checks, an eight-way sensing grid, gaps. Three follow-ups opened (F-20260914-1347-1 to -3). Receipt R-2026-09-14-1347-4232. (from 2026-09-14)
 
+- [ ] **Move the lab off iCloud, path unchanged** (his "go", 15:11). Step one done: lab committed and pushed, brand-os committed, snapshot 1519 written locally. Next is his: close every session, turn off "Desktop & Documents Folders" sync, run `~/lab-move-back.sh`. Then Alfred retires the iCloud copy after the match and proves the lab whole. Receipt R-2026-09-14-1524-9efc. (from 2026-09-14)
+
 ## Carried forward
 
 - [ ] **Write the three context files** (`context/who-i-am.md`, `how-i-talk.md`, `how-i-work.md`). His: "yes, its on purpose. will get to that today." `how-i-work.md` was written and wired 09-11 at his word 23:37; the other two are not started. (from 2026-09-10)
