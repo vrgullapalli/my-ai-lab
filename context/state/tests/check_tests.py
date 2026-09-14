@@ -103,5 +103,21 @@ check("the waiting loop carries owner Venkat and the commitment leads carry_forw
 rc, out = run(p2, "from-receipt", rcpt, "--by", "alfred-close/test")
 check("from-receipt run twice writes nothing new (idempotent)", rc == 0 and "0 lines written, 4 already current" in out, out)
 
+# the brief's two package filters (decided 2026-09-14 at the brief wiring) and carry_forward order
+p3 = ledger("brief-filters", good + [
+    {"id": "work:today/his-item", "kind": "work", "what": "his to-do line", "status": "active", "scope": "ai-lab", "owner": "Venkat", "established": "2026-09-13", "changed": "2026-09-13",
+     "source": ["docs/reports/2026-09-13--state-v0-1-design.md"], "authority": "system", "by": "seed/test", "when": "2026-09-13T07:00"},
+    {"id": "decision:x/derived", "kind": "decision", "what": "a derived row", "status": "current", "scope": "ai-lab", "owner": "Venkat", "established": "2026-09-13", "changed": "2026-09-13",
+     "source": ["work-os/brand-os/DECISIONS.md#row:037"], "authority": "derived", "by": "seed/test", "when": "2026-09-13T07:00"},
+    {"id": "commitment:R-1/next", "kind": "commitment", "what": "older next", "status": "open", "scope": "ai-lab", "owner": "Alfred", "established": "2026-09-13", "changed": "2026-09-13",
+     "source": ["docs/reports/2026-09-13--state-v0-1-design.md"], "authority": "system", "by": "t", "when": "2026-09-13T07:00"},
+    {"id": "commitment:R-2/next", "kind": "commitment", "what": "newest next", "status": "open", "scope": "ai-lab", "owner": "Alfred", "established": "2026-09-13", "changed": "2026-09-13",
+     "source": ["docs/reports/2026-09-13--state-v0-1-design.md"], "authority": "system", "by": "t", "when": "2026-09-13T09:00"}])
+rc, out = run(p3, "package", "--fields", "active,changed,carry_forward", "--since", "2026-09-01", "--authority", "his-word,system,proposed", "--in-hand")
+pk = json.loads(out)
+check("--in-hand drops his to-do lines from active and keeps held work", [o["id"] for o in pk["active"]] == ["work:w1"], out[:200])
+check("--authority drops derived lines from changed", all(o["authority"] != "derived" for o in pk["changed"]) and any(o["id"] == "decision:brand-os/037" for o in pk["changed"]), out[:200])
+check("carry_forward puts the newest next-session line first", pk["carry_forward"][0]["id"] == "commitment:R-2/next", out[:200])
+
 print(f"\n{'all passed' if not failures else str(failures) + ' failed'}  (scratch folder: {tmp})")
 sys.exit(1 if failures else 0)

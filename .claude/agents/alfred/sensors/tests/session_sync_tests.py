@@ -83,6 +83,65 @@ check("positive control: the old pattern misses the Google key", OLD.search(GOOG
 check("positive control: the old pattern still caught the old kinds",
       all(OLD.search(s) for s in OLD_KINDS.values()))
 
+
+# ---------------------------------------------------------- messages sent mid-task
+# Why (2026-09-11, restored 2026-09-14): a message Venkat sends while Claude is working is
+# stored as an "attachment" record of type queued_command, not a "user" record. The reader
+# skipped it, and 249 of his messages across 18 sessions were missing from the transcripts.
+def queued(uid, prompt, source_uuid, mode="prompt", origin=None):
+    return {"type": "attachment", "uuid": uid, "timestamp": "2026-09-12T04:00:00Z",
+            "attachment": {"type": "queued_command", "prompt": prompt, "source_uuid": source_uuid,
+                           "commandMode": mode, "origin": origin, "timestamp": "2026-09-12T04:00:00Z"}}
+
+
+records = [
+    {"type": "user", "uuid": "u-normal", "timestamp": "2026-09-12T03:59:00Z",
+     "message": {"role": "user", "content": "first normal message"}},
+    {"type": "assistant", "uuid": "a-reply", "timestamp": "2026-09-12T03:59:30Z",
+     "message": {"role": "assistant", "content": [{"type": "text", "text": "a normal reply"}]}},
+    queued("q-list", [{"type": "text", "text": "add the proving ground line"}], "src-1",
+           origin={"kind": "human"}),                                    # his, list form
+    queued("q-str", "is the markdown too long", "src-2", origin={"kind": "human"}),   # his, string form
+    queued("q-dup", [{"type": "text", "text": "add the proving ground line"}], "src-1",
+           origin={"kind": "human"}),                                    # the same message twice
+    queued("q-note", "<task-notification>\n<task-id>abc</task-id>NOTICE-BODY-TEXT</task-notification>",
+           "src-3", mode="task-notification"),                           # a background job finished
+    queued("q-peer", "<cross-session-message from=\"x\">roll call: what are you working on</cross-session-message>",
+           "src-4", origin={"kind": "peer", "name": "my-ai-lab-96"}),     # another session
+    queued("q-ide", [{"type": "text", "text": "<ide_opened_file>The user opened a file</ide_opened_file>"}],
+           "src-5", origin={"kind": "human"}),                           # editor notice only
+]
+
+tmp = tempfile.mkdtemp(prefix="session-sync-tests-", dir=os.environ.get("TMPDIR"))
+src = os.path.join(tmp, "00000000-test-session.jsonl")
+with open(src, "w", encoding="utf-8") as f:
+    for r in records:
+        f.write(json.dumps(r) + "\n")
+
+out = ss.render_claude(src)
+usage = json.loads(re.search(r"^- Usage: (\{.*\})$", out, re.M).group(1))
+
+print("\nsession-sync: messages sent mid-task")
+check("his list-form message is shown once, labeled mid-task, under its own anchor",
+      out.count("add the proving ground line") == 1 and '<a id="q-list"></a>\n**Venkat, mid-task**' in out)
+check("his string-form message is shown, labeled mid-task, under its own anchor",
+      "is the markdown too long" in out and '<a id="q-str"></a>\n**Venkat, mid-task**' in out)
+check("the repeat (same source id) is not shown a second time", '<a id="q-dup">' not in out)
+check("a finished background job is a marker, with none of its text",
+      "*[background task finished]*" in out and "NOTICE-BODY-TEXT" not in out)
+check("a message from another session is labeled with that session's name",
+      "**Message from another session (my-ai-lab-96)**" in out and "roll call" in out)
+check("an editor-only notice is dropped", '<a id="q-ide">' not in out and "opened a file" not in out)
+check("normal message and reply still render",
+      '<a id="u-normal">' in out and '<a id="a-reply">' in out)
+pos = [out.find(f'<a id="{a}">') for a in ("u-normal", "q-list", "q-str")]
+check("order is kept: normal message before the mid-task messages",
+      min(pos) >= 0 and pos[0] < pos[1] < pos[2], f"positions={pos}")
+check("counts: 3 Venkat turns, 2 of them mid-task",
+      usage.get("venkat_turns") == 3 and usage.get("venkat_midtask") == 2,
+      f"venkat_turns={usage.get('venkat_turns')} venkat_midtask={usage.get('venkat_midtask')}")
+check("header says how many were sent mid-task", "(2 sent mid-task)" in out)
+
 print(f"\n{'all passed' if not failures else str(failures) + ' failed'}")
 if failures:
     sys.exit(1)

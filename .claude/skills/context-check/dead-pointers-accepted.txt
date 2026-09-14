@@ -113,3 +113,4 @@ work-os/projects/telegraph-plus/CLAUDE.md :: out/ | an output folder the rule fo
 work-os/upskill-advisor/gates/gate-1.md :: evals/assertions.py | relative to the telegraph/ repo beside it; exists at telegraph/evals/assertions.py
 work-os/upskill-advisor/gates/gate-1.md :: evals/run_evals.py | relative to the telegraph/ repo beside it; exists at telegraph/evals/run_evals.py
 work-os/brand-os/audience/weekly/RUN-CONTRACT.md :: taxonomy-demand--DATE.json | DATE stands for the run date; the real file beside it is taxonomy-demand--2026-09-02.json
+.claude/skills/target-scan/SKILL.md :: url-reference.md | a file each collector must ship, named as a requirement (line 46), not a pointer to an existing file; reviewed 2026-09-14

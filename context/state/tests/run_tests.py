@@ -116,7 +116,10 @@ pkg4, _ = package(REAL, "--fields", "changed", "--since", "2026-09-12")
 ch = pkg4.get("changed", [])
 live = by_id(ch, "status:capability/retrieval")
 t2 = by_id(ch, "status:retrieval/T2-known-limitation")
-noise = [o for o in ch if any(s.startswith(("context/sources/index", "evidence/sessions")) for s in o.get("source", []))]
+# noise means a line *about* a derived index file or a re-rendered transcript (its id or what names one), not a line that
+# cites a transcript anchor as provenance; anchors are the record and belong in source (runner fix 2026-09-14)
+noise = [o for o in ch if any(s.startswith("context/sources/index") for s in o.get("source", []))
+         or any(k in (o.get("id", "") + " " + o.get("what", "")) for k in ("context/sources/index", "retrieval-index.jsonl", "compact.txt", "evidence/sessions/claude/", "evidence/sessions/codex/"))]
 rcpt_id = "2026-09-13-0602-retrieval-live-tool-reverted-4f7b"
 cites = [o for o in ch if any(rcpt_id in s for s in o.get("source", []))]
 score("S4", "a material change carries its source; a trivial one does not appear", [
@@ -143,7 +146,7 @@ rows = [
     dict(common, id="work:account-x/campaign-q4", kind="work", what="Q4 campaign plan for brand X", status="active", subject="campaign:Y", owner="Venkat", source=[scen]),
 ]
 oks = [append(L5, "alfred-close/s5", r)[0] for r in rows]
-p5, _ = package(L5, "--scope", "professional", "--subject", "brand:X")
+p5, _ = package(L5, "--scope", "professional", "--subject", "brand:X", "--since", "2026-09-01")   # the synthetic lines carry fixed dates; the window must cover them (runner fix 2026-09-14)
 d5 = p5.get("decided", [])
 cur5, old5 = by_id(d5, "decision:account-x/D2"), by_id(d5, "decision:account-x/D1")
 l5 = by_id(p5.get("open", []), "loop:account-x/L1")

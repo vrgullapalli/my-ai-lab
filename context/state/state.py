@@ -12,6 +12,10 @@ evidence anchor; a line with no resolving pointer is refused. Registries own the
 
   python3 context/state/state.py check [--summary]          the sensor: refusals and conflicts, one finding per line
   python3 context/state/state.py package --scope ai-lab [--consumer x] [--fields a,b] [--since DATE] [--subject s]
+                                          [--authority his-word,system,proposed] [--in-hand]
+      --authority keeps only lines with those authority words in changed and decided (the brief drops derived lines,
+      F-20260913-0844-1); --in-hand keeps only work someone holds, owner not Venkat, so his to-do lines stay in
+      waiting and are not shown as work in progress (F-20260913-0844-2). Both decided 2026-09-14 at the brief wiring.
   python3 context/state/state.py append --by WHO --json '{...}'   one line, validated first; refused if it lies
   python3 context/state/state.py claim ID --by WHO --what "..." [--next "..."] [--source p] [--scope s]
   python3 context/state/state.py release ID --by WHO --status done|paused|handed-off [--to OWNER]
@@ -644,6 +648,9 @@ def cmd_package(argv):
     consumer = opt(argv, "--consumer", "session")
     since = opt(argv, "--since", (dt.date.today() - dt.timedelta(days=1)).isoformat())
     subject = opt(argv, "--subject")
+    auth = opt(argv, "--authority")
+    auth = set(auth.split(",")) if auth else None
+    in_hand = "--in-hand" in argv
     fields = opt(argv, "--fields")
     fields = set(fields.split(",")) if fields else None
     lines, bad = lines_of()
@@ -659,7 +666,7 @@ def cmd_package(argv):
             other += 1
     newest = lambda xs: sorted(xs, key=lambda o: (o.get("changed", ""), o.get("when", "")), reverse=True)
     decided = []
-    for o in newest([o for o in mine.values() if o["kind"] == "decision" and o["status"] in ("current", "proposed")]):
+    for o in newest([o for o in mine.values() if o["kind"] == "decision" and o["status"] in ("current", "proposed") and (not auth or o.get("authority") in auth)]):
         decided.append(slim(o))
         for s in o.get("supersedes", []) or []:
             p = cur.get(s)
@@ -668,9 +675,10 @@ def cmd_package(argv):
     finds = check(lines, maps, bad)
     pkg = {
         "as_of": now(), "scope": scope, "consumer": consumer, "since": since,
-        "active": [dict(slim(o), since=o.get("established")) for o in newest([o for o in mine.values() if o["kind"] == "work" and o["status"] in ("active", "paused")])],
+        "active": [dict(slim(o), since=o.get("established")) for o in newest([o for o in mine.values() if o["kind"] == "work" and o["status"] in ("active", "paused")
+                                                                                and not (in_hand and str(o.get("owner", "")).lower().startswith("venkat"))])],
         "decided": decided,
-        "changed": [slim(o) for o in newest([o for o in mine.values() if o.get("changed", "") >= since])],
+        "changed": [slim(o) for o in newest([o for o in mine.values() if o.get("changed", "") >= since and (not auth or o.get("authority") in auth)])],
         "open": [dict(slim(o), age_days=age(o)) for o in newest([o for o in mine.values() if o["kind"] == "loop" and o["status"] in ("open", "waiting")])],
         "waiting": [dict(slim(o), age_days=age(o), home=o["source"][0]) for o in newest([o for o in mine.values() if o["kind"] in ("loop", "commitment") and o["status"] in ("open", "waiting")
                     and str(o.get("owner", "")).lower().startswith("venkat")])] + (waiting_homes() if scope == "ai-lab" and (not fields or "waiting" in fields) else []),
@@ -683,7 +691,9 @@ def cmd_package(argv):
         "withheld": other,
         "refused_lines": [f for f in finds if "line refused" in f],
     }
-    pkg["carry_forward"] = sorted(pkg["carry_forward"], key=lambda o: (0 if o["id"].endswith("/next") else 1, -int(o.get("established", "0").replace("-", "") or 0)))
+    pkg["carry_forward"] = sorted(pkg["carry_forward"], key=lambda o: (0 if o["id"].endswith("/next") else 1, o.get("when", ""), o.get("established", "")), reverse=False)
+    pkg["carry_forward"] = sorted(pkg["carry_forward"], key=lambda o: (1 if o["id"].endswith("/next") else 0, o.get("when", ""), o.get("established", "")), reverse=True)
+    pkg["filters"] = {"authority": sorted(auth) if auth else None, "in_hand": in_hand, "subject": subject}
     for o in pkg["active"]:
         pkg["ownership"].setdefault(o.get("owner", "?"), []).append(o["id"])
     if fields:

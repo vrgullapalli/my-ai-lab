@@ -20,6 +20,11 @@ use" is a grep and not an afternoon: the skill name on every Skill call (`[skill
 the agent type and short label on every Agent call, one line per subagent the session spawned
 (type, label, turn counts — the subagent transcripts themselves are not rendered), and a
 machine-readable usage line in every header. `--usage` rebuilds the ledger from those lines.
+Messages Venkat sends while Claude is mid-task: Claude Code stores them as `attachment` records of
+type `queued_command`, not `user` records, and this reader skipped them (249 of his messages across
+18 sessions). They render as "Venkat, mid-task"; messages from other sessions carry the sender's
+name; finished background jobs are a marker. Written 2026-09-11, lost with the uncommitted working
+copy, restored and committed 2026-09-14. Tests: `tests/session_sync_tests.py`.
 
 What it never holds: tool inputs (except the skill or agent name), tool results, system
 reminders, IDE notices, anything matching the secret patterns (each hit is replaced with
@@ -195,8 +200,9 @@ def subagent_summary(sid_dir):
 
 def render_claude(src, recent_minutes=30):
     lines, title, first_ts, last_ts, cwd, version = [], None, None, None, None, None
-    n_user = n_asst = n_tool = n_think = n_cmd = 0
+    n_user = n_asst = n_tool = n_think = n_cmd = n_mid = 0
     skills, agents, commands = [], [], []
+    queued_seen = set()
     for raw in open(src, encoding="utf-8", errors="replace"):
         try:
             o = json.loads(raw)
@@ -212,6 +218,34 @@ def render_claude(src, recent_minutes=30):
             last_ts = ts
         cwd = cwd or o.get("cwd")
         version = version or o.get("version")
+        # A message sent while Claude is mid-task is stored as an attachment, not a user record.
+        # Until 2026-09-12 this reader skipped it: 249 of Venkat's messages across 18 sessions.
+        # Written 2026-09-11, lost with the uncommitted working copy, restored 2026-09-14.
+        att = o.get("attachment") if t == "attachment" else None
+        if isinstance(att, dict) and att.get("type") == "queued_command":
+            key = att.get("source_uuid") or json.dumps(att.get("prompt"), sort_keys=True)
+            if key in queued_seen:           # the same message can be recorded twice
+                continue
+            queued_seen.add(key)
+            if att.get("commandMode") == "task-notification":
+                lines.append(marker("background task finished"))
+                continue
+            p = att.get("prompt")
+            text = p if isinstance(p, str) else "\n".join(
+                b.get("text", "") for b in (p or []) if isinstance(b, dict) and b.get("type") == "text")
+            text = STRIP_BLOCKS.sub("", text).strip()
+            if not text or text.startswith(SKIP_USER_PREFIX):
+                continue
+            origin = att.get("origin") if isinstance(att.get("origin"), dict) else {}
+            mid = uid or ("h-" + hashlib.sha1(text.encode()).hexdigest()[:12])
+            if origin.get("kind") == "peer":
+                who = f"Message from another session ({origin.get('name') or 'unnamed'})"
+                lines.append(turn(who, mid, text, quoted=True))
+            else:
+                n_user += 1
+                n_mid += 1
+                lines.append(turn("Venkat, mid-task", mid, text, quoted=True))
+            continue
         if t not in ("user", "assistant"):
             continue
         m = o.get("message") or {}
@@ -271,7 +305,7 @@ def render_claude(src, recent_minutes=30):
     st = os.stat(src)
     age_min = (datetime.datetime.now().timestamp() - st.st_mtime) / 60
     usage = {"id": sid, "source": "claude", "started": first_ts, "last": last_ts, "cwd": cwd,
-             "venkat_turns": n_user, "replies": n_asst, "tool_calls": n_tool,
+             "venkat_turns": n_user, "venkat_midtask": n_mid, "replies": n_asst, "tool_calls": n_tool,
              "skills": sorted(set(skills)), "agents": sorted(set(agents)),
              "commands": sorted(set(commands)), "subagents": len(subs)}
     head = f"""# Claude Code session — {title or sid}
@@ -281,8 +315,8 @@ def render_claude(src, recent_minutes=30):
 - Source mtime: {iso(st.st_mtime)} · size {st.st_size:,} bytes
 - Started: {first_ts} · last record: {last_ts} · rendered: {now()} · open at render: {'possibly (modified in the last ' + str(recent_minutes) + ' min)' if age_min < recent_minutes else 'no'}
 - cwd: `{cwd}` · Claude Code {version}
-- **What this is:** Venkat's messages and Claude's replies, in order, each under an anchor that is the record's own uuid (cite as `<file>#<uuid>`). Slash commands and tool calls as name-only markers, with the skill name on Skill calls and the agent type and label on Agent calls; **tool inputs, tool results, system reminders and IDE notices omitted** (his ruling 2026-08-20). **Thinking kept whenever readable:** {n_think} readable block(s) found{' — Claude Code stores thinking as a signature without text' if n_think == 0 else ''}.
-- Counts: {n_user} Venkat turns · {n_asst} Claude replies · {n_cmd} commands · {n_tool} tool calls/results · skills used: {', '.join(usage['skills']) or 'none'} · agents used: {', '.join(usage['agents']) or 'none'}
+- **What this is:** Venkat's messages and Claude's replies, in order, each under an anchor that is the record's own uuid (cite as `<file>#<uuid>`). Messages he sent while Claude was mid-task are included, labeled "Venkat, mid-task"; messages from other sessions are labeled with the sending session's name, and finished background jobs are a marker. Slash commands and tool calls as name-only markers, with the skill name on Skill calls and the agent type and label on Agent calls; **tool inputs, tool results, system reminders and IDE notices omitted** (his ruling 2026-08-20). **Thinking kept whenever readable:** {n_think} readable block(s) found{' — Claude Code stores thinking as a signature without text' if n_think == 0 else ''}.
+- Counts: {n_user} Venkat turns ({n_mid} sent mid-task) · {n_asst} Claude replies · {n_cmd} commands · {n_tool} tool calls/results · skills used: {', '.join(usage['skills']) or 'none'} · agents used: {', '.join(usage['agents']) or 'none'}
 - Subagents this session spawned: {len(subs)}{' (listed at the end; their transcripts are not rendered — Venkat, 2026-09-10)' if subs else ''}
 - Usage: {json.dumps(usage, ensure_ascii=False)}
 """
