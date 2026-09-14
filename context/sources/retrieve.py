@@ -46,7 +46,8 @@ RUNS = os.path.join(INDEX_DIR, "runs.jsonl")
 DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
 ID_RE = re.compile(r"\b(A-LIVE-\d+|A-[A-Z]{3,5}-[A-Z]?\d+|S\d{2}|CAP-\d{3}|D-\d{3}|AD-\d{2}|F-\d{8}-\d{4}-\d+|POV-\d{3}|AS-\d{3}|OI-\d{3})\b")
 ROW_RE = re.compile(r"^\|\s*(\**)(\d{3}|D-\d{3}|AD-\d{2})\**\s*\|(.*)$")
-PATH_RE = re.compile(r"(?:~|/Users)[^\s`'\")\]]+")
+PATH_RE = re.compile(r"(?:~(?=/)|/Users)(?:[^\s`'\")\]]| (?![~/\s]))+")  # ~ only as ~/ (not "~13:10"); a single space is part of the path unless another path or more space follows ("Venkat Gullapalli"); pointer_state cuts the prose tail off (F-20260913-0502-4)
+RECORD_ID_LINE = {"seeds": re.compile(r"^- ID: \S+", re.M)}  # a file in this source counts only if it carries its own id line; the rest are about the records (garden-state.md, the SUMMARY files), not records
 MARKS = {
     "claimed": r"\bclaimed\b|\[claimed\]|vendor claim|vendor opinion|seller's test",
     "observed": r"\bobserved\b",
@@ -101,8 +102,17 @@ def marks_in(text):
     return out
 
 
-def eligible_sources(lab, records):
-    """Live and degraded sources with their files. External and unavailable sources are listed, never read."""
+def is_record(path, id_line):
+    """True when the file carries the id line its source requires (read from the first 3000 bytes)."""
+    try:
+        return bool(id_line.search(open(path, "rb").read(3000).decode("utf-8", "replace")))
+    except OSError:
+        return False
+
+
+def eligible_sources(lab, records, left_out=None):
+    """Live and degraded sources with their files. External and unavailable sources are listed, never read.
+    A source in RECORD_ID_LINE keeps only files that carry their id line; the others go to `left_out` when given."""
     out = []
     for r in records:
         if r.get("status") not in ("live", "degraded"):
@@ -113,6 +123,12 @@ def eligible_sources(lab, records):
         if not ext:
             for loc in locs:
                 files += check.files_for(lab, loc, check.split(r.get("pattern", "*")))
+        id_line = RECORD_ID_LINE.get(check.rid(r))
+        if id_line:
+            kept = [f for f in files if is_record(f, id_line)]
+            if left_out is not None:
+                left_out += sorted(set(files) - set(kept))
+            files = kept
         out.append((r, ext, sorted(set(files))))
     return out
 
@@ -193,7 +209,8 @@ def title_of(text, path):
 
 def build_index(lab, records):
     os.makedirs(INDEX_DIR, exist_ok=True)
-    srcs = eligible_sources(lab, records)
+    left_out = []
+    srcs = eligible_sources(lab, records, left_out)
     n_files, total_bytes, out = 0, 0, []
     for r, ext, files in srcs:
         for path in files:
@@ -260,10 +277,11 @@ def build_index(lab, records):
     eligible = sum(len(files) for _, _, files in srcs)
     stats = {"built": dt.datetime.now().strftime("%Y-%m-%d %H:%M"), "records": len(out), "files": n_files, "eligible_files": eligible,
              "sources": len(srcs), "source_bytes": total_bytes, "compact_bytes": os.path.getsize(COMPACT),
-             "compact_tokens_est": os.path.getsize(COMPACT) // 4}
+             "compact_tokens_est": os.path.getsize(COMPACT) // 4, "left_out_no_id_line": [rel(lab, p) for p in left_out]}
     json.dump(stats, open(os.path.join(INDEX_DIR, "stats.json"), "w"), indent=1)
     cov = "coverage complete" if n_files == eligible else f"COVERAGE GAP: {n_files} indexed of {eligible} eligible"
     print(f"OK index: {len(out)} records from {n_files} files across {len(srcs)} sources; {cov}; "
+          f"{len(left_out)} file(s) without an id line left out as not records; "
           f"compact index {stats['compact_bytes']} bytes (~{stats['compact_tokens_est']} tokens)")
     return 0 if n_files == eligible else 1
 
@@ -344,7 +362,9 @@ def candidates(lab, query, scope=None, top=40, scoped_out=None, expansions=None)
     out = [{"ref": r["ref"], "source": r["source"], "date": r["date"], "tier": r["tier"], "ceiling": r["ceiling"],
             "title": r["title"], "score": round(s, 1), "exact": e, "keywords": k, "semantic": round(sem, 1), "semantic_hits": sh}
            for s, r, e, k, sem, sh in scored[:top]]
-    reached_by_idea = sum(1 for c in out if c["semantic"] > c["score"] - c["semantic"])  # the idea statements outscored the query's own words
+    # reached by the idea alone: no exact term and no query keyword hit it; only the idea statements did.
+    # (The old rule, "the idea outscored the query's words", was true of nearly every candidate and always printed 60.)
+    reached_by_idea = sum(1 for c in out if not c["exact"] and not c["keywords"])
     compact, size = COMPACT, None
     if scope:
         compact = scoped_out or os.path.join(INDEX_DIR, "compact-scoped.txt")
@@ -379,12 +399,19 @@ def excerpt(text, terms, n=6):
 
 
 def pointer_state(lab, text):
-    """Paths named inside a record, and whether each resolves on this machine."""
-    out = []
-    for p in sorted(set(PATH_RE.findall(text)))[:12]:
-        full = os.path.expanduser(p)
-        out.append({"path": p, "resolves": os.path.exists(full)})
-    return out
+    """Paths named inside a record, and whether each resolves on this machine. A match runs to the end of the
+    line, so a folder with a space in its name ("Venkat Gullapalli") stays whole; it is then cut back at spaces to
+    the longest prefix that exists. If no prefix exists, the pointer is the part before the first space."""
+    out, seen = [], set()
+    for raw in PATH_RE.findall(text):
+        parts = raw.rstrip(" .,;:").split(" ")
+        pick = next((" ".join(parts[:k]).rstrip(".,;:") for k in range(len(parts), 0, -1)
+                     if os.path.exists(os.path.expanduser(" ".join(parts[:k]).rstrip(".,;:")))), None)
+        p = pick or parts[0].rstrip(".,;:")
+        if p and p not in seen:
+            seen.add(p)
+            out.append({"path": p, "resolves": pick is not None})
+    return sorted(out, key=lambda d: d["path"])[:12]
 
 
 def supersession(lab, rec, idx_by_ref):
@@ -502,13 +529,17 @@ def main():
     if cmd == "stats":
         print(stats_line()); return 0
     if cmd == "sources":
-        n = 0
-        for r in records:
-            if r.get("status") not in ("live", "degraded"):
-                continue
-            n += 1
-            print(f"{check.rid(r)} | {r.get('use')} | {r.get('tier')} | {r.get('kind')} | may inform: {r.get('may-inform')} | not alone: {r.get('not-alone')}")
-        print(f"sources: {n} readable; pick the ids that could hold evidence for the question, then run candidates --scope id,id")
+        n, outside = 0, []
+        for r, ext, _ in eligible_sources(lab, records):
+            mark = ""
+            if ext:
+                outside.append(check.rid(r))
+                mark = " | OUTSIDE THE LAB: listed, never read; leave it out of --scope"
+            else:
+                n += 1
+            print(f"{check.rid(r)} | {r.get('use')} | {r.get('tier')} | {r.get('kind')} | may inform: {r.get('may-inform')} | not alone: {r.get('not-alone')}{mark}")
+        print(f"sources: {n} readable, {len(outside)} outside the lab ({', '.join(outside) or 'none'}); "
+              f"pick the readable ids that could hold evidence for the question, then run candidates --scope id,id")
         return 0
     if cmd == "candidates":
         q = next((a for a in rest if not a.startswith("--") and rest[rest.index(a) - 1] not in ("--scope", "--top", "--out", "--scoped-out", "--expansions")), None) if rest else None

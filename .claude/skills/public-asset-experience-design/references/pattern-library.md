@@ -6,7 +6,9 @@
 > defined by its rules under the AI-Native Executive Instrument Design
 > Standard (same directory). Reference implementation for every v1
 > pattern: the built AS-006 instrument
-> (`assets/releases/AS-006/instrument/` — template, tokens, and
+> (archived 2026-09-10 to the warehouse, at
+> `~/Documents/_warehouse/engagement-os-archived-2026-09-10/assets/releases/AS-006/instrument/`;
+> the lab keeps only `assets/releases/AS-006/ARCHIVED--2026-09-10.md`; template, tokens, and
 > behavior), proven through cold review.
 
 Visual ground for all patterns: the site tokens (warm paper, ink,

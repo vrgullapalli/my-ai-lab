@@ -133,7 +133,7 @@ and after any restructuring. The script sits in the skill at
 path a live file mentions that does not exist; `dead-pointers-accepted.txt` records the ones
 reviewed and left on purpose (history, plans, other machines), each with its reason.
 
-**The lab root is locked.** Only ten things may live there: `CLAUDE.md`, `ROOT.md`,
+**The lab root is locked.** Only the things named here may live there (the list `ALLOWED` in the hook is the truth; it holds 15 names counting machinery): `CLAUDE.md`, `ROOT.md`,
 `TASTE.md`, `RULINGS-IN-FORCE.md`, `DONE.md`, `.claude/`, `context/`, `evidence/`,
 `work-os/`, `docs/` (added 2026-09-10 for `docs/about-me/`, the voice profile and
 interview). Machinery that must sit there is allowed too: `.git`, `.gitignore`, `.remember`, and
@@ -189,7 +189,7 @@ at the root.** The root holds routing and lab-wide records only.
 | anything superseded | `~/Documents/_warehouse/`, with a note saying what replaced it. **Never create an `_archive/` or `_backups/` inside the lab** |
 | scratch, temp, throwaway | the session scratchpad — **never** the lab |
 
-**Skills carry their own destination.** Each of the 26 skills declares a *Base directory*
+**Skills carry their own destination.** Each skill (30 on 2026-09-14; the skill-check line on the morning facts sheet gives the live count) declares a *Base directory*
 line at the top; its relative paths resolve from there, not from wherever you happen to
 be. A skill's data never moved — only its definition did.
 
@@ -199,7 +199,7 @@ truth.
 
 ## Capability is local, invocation is global
 
-All 26 skills and 9 agents live **once**, at the lab-root `.claude/` (consolidated
+All skills and agents (30 skills and 9 agents on 2026-09-14; the skill-check line on the facts sheet counts them) live **once**, at the lab-root `.claude/` (consolidated
 2026-09-07). They are therefore available in every session, from anywhere — which is the
 point. Their **data did not move**: each skill declares the domain it belongs to and
 writes back into it.
@@ -212,9 +212,12 @@ standing. Edit the copy at the root.
 
 - **`git` and `python3` now work** (checked 2026-09-09). Command Line Tools are installed —
   git 2.50.1, Python 3.9.6. This line used to say they were broken. It was out of date.
-- **No off-machine copy of anything.** 7 repos, 6 with no remote. Time Machine has no
-  destination set at all. This is still the largest risk in the lab. The one repo with a
-  remote, `telegraph-plus`, is 9 commits ahead of GitHub and has not been pushed.
+- **Off-machine copies are partial** (checked 2026-09-14). The lab root and `telegraph-plus`
+  push to private GitHub repos, and a snapshot tar goes to Dropbox; the facts sheet shows the
+  age of both every morning. Six repos still have no remote (`brand-os`, `engagement-os`,
+  `decision-foundry`, `worthy-tool-v2`, `upskill-advisor/telegraph`, and the archived
+  `telegraph-native-lab`), and Time Machine has no destination set. This line used to say
+  "no off-machine copy of anything"; that was true until 2026-09-10.
 - **Session capture is back** (2026-09-10). `.claude/agents/alfred/sensors/session-sync.py` renders
   every Claude Code and Codex session into `evidence/sessions/` (transcripts, `SYNC-LOG.md`, and
   `USAGE.jsonl`, which lists the skills and agents each session used). A SessionEnd hook renders

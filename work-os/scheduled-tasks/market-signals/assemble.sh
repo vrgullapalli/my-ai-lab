@@ -6,8 +6,9 @@ cd "$(dirname "$0")"
 S=../_shared
 ENV_ID="env_011CUK7ovEXytcue7Dpm4mu5"
 
-# pillar | cadence | routine name | title prefix | daily prefix | midweek prefix | favicon | cron UTC | model | uuid
-while IFS='|' read -r dir cad name prefix dprefix mprefix fav cron model uuid; do
+# pillar | cadence | routine name | title prefix | daily prefix | midweek prefix | favicon | cron UTC | model | uuid | trigger id
+# (trig is read as its own column so the uuid stays clean; before 2026-09-14 it landed inside uuid as "uuid|trig_...")
+while IFS='|' read -r dir cad name prefix dprefix mprefix fav cron model uuid trig; do
   [ -n "${dir:-}" ] || continue
   d="$dir/$cad"; mkdir -p "$d/build"
   case "$cad" in

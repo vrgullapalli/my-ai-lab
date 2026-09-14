@@ -7,3 +7,109 @@ work-os/brand-os/messaging/trust-is-the-product--POINTER.md :: engagement-os/ref
 work-os/brand-os/messaging/trust-is-the-product--POINTER.md :: writing-guide-copies--moved-2026-09-11/ | a warehouse folder, outside the lab on purpose
 work-os/brand-os/engagement-os/plans/agents/INVENTORY.md | dated Step 1 snapshot of 2026-09-08; lists what existed that day
 work-os/brand-os/engagement-os/plans/agents/writer/INVENTORY.md | dated Step 1 snapshot of 2026-09-08; lists what existed that day
+# --- Sweep of 2026-09-14 (follow-up F-20260910-1627-1). Whole files and folders first, then single mentions.
+work-os/brand-os/docs/career-advisor-reasoning--2026-09-10/ | 62 reasoning files copied word for word from the career-advisor snapshot on 2026-09-10 (brand-os DECISIONS 036: "the drop is evidence, not canon"); every path names that old workspace
+work-os/brand-os/engagement-os/references/corpus/chronicle/ | build chronicle of the buyer-signal-intelligence project, dated 2026-03-15 in its front matter; it names that project's files
+work-os/ai-job-search/ | a clone of github.com/MadsLorentzen/ai-job-search (its git remote); its changelog and docs describe that project's own example files, not lab paths
+work-os/brand-os/engagement-os/memory/concepts.md | ledger of coined labels; its purpose line says each entry carries a source pointer and a date, and the sources are the old chief-of-staff repo, now in the warehouse
+work-os/brand-os/engagement-os/PLAN.md | the rolling two-week plan of August 2026 (D-119, 2026-08-17; last weekly review 2026-08-23); it names the old repo as it stood then
+work-os/brand-os/DECISIONS.md | append-only decision log; each row names paths as they were on its date
+RULINGS-IN-FORCE.md | derived 2026-09-08 from the old decision log; it names old homes and what is gone on purpose
+work-os/brand-os/model/00-status.md | status record updated 2026-09-02; names the homes as they were that day
+work-os/brand-os/model/01-corpus-reading-plan.md | Stage 0 reading plan prepared 2026-08-31; names the map sources where they sat that day
+work-os/brand-os/model/06-domain-model-options.md | approved 2026-08-31 (CE-D13); cites the old my-os specs and the superseded positioning canon as its sources
+work-os/brand-os/model/decision-log.md | decision log; rows name the output folder and sources as they were on their date
+work-os/brand-os/engagement-os/editorial/LAYER-MAP.md | dated map of 2026-09-08; every line is a Known/Inferred/Unknown finding with its source
+work-os/brand-os/engagement-os/editorial/strategist--HYPOTHESIS-v0--test-before-adopting.md | written 2026-09-08 and kept only as a prediction to score
+work-os/brand-os/engagement-os/plans/agents/strategist/AGENT_SPEC.md | dated Step 4 output of 2026-09-08; names the ledger and log the agent would write ("if it exists")
+work-os/brand-os/engagement-os/plans/agents/strategist/ANSWERS.md | dated Step 2 output of 2026-09-08
+work-os/brand-os/engagement-os/plans/agents/strategist/RESEARCH.md | dated Step 3 output of 2026-09-08; names proposed builds and a Claude Code feature folder
+work-os/brand-os/engagement-os/plans/agents/writer/ANSWERS.md | dated Step 2 output of 2026-09-08
+work-os/brand-os/engagement-os/plans/agents/writer/RESEARCH.md | dated Step 3 output of 2026-09-08; the draft file names are proposed, not built
+work-os/brand-os/engagement-os/assets/opportunities/PVO-001/ai-native-evaluation.md | dated record of 2026-08-30; cites a rubric in a skill archived to the warehouse on 2026-09-10
+work-os/brand-os/engagement-os/assets/opportunities/PVO-004/corpus-match.md | dated record of 2026-08-30; names a state file the state schema defines
+work-os/brand-os/engagement-os/references/mia-kiraki/CONNECTIONS.md | dated 2026-09-11; names files in Mia Kiraki's own system, quoted from her posts
+work-os/brand-os/engagement-os/references/corpus/work-corpus-skill/SKILL.md | a copy of the work-corpus skill from the my-os project; its references name that project's sibling skills
+work-os/upskill-advisor/governance/bounded-agency-proposal.md | superseded 2026-09-02 (its own banner); names eval files in the superseded telegraph/ repo beside it
+CLAUDE.md :: _backups/ | the 2026-09-09 amendment names the folder that moved to the warehouse and must not be recreated
+CLAUDE.md :: who-i-am.md | the line says it is not written yet
+CLAUDE.md :: how-i-talk.md | the line says it is not written yet
+CLAUDE.md :: my-ai-lab/_archive/ | the "What left the lab, 2026-09-09" table; the old path is the point
+CLAUDE.md :: _audit/ | the "What left the lab, 2026-09-09" table; the old path is the point
+CLAUDE.md :: _templates/ | the "What left the lab, 2026-09-09" table; the old path is the point
+CLAUDE.md :: my-ai-lab/agents/ | the "What left the lab, 2026-09-09" table; the old path is the point
+CLAUDE.md :: my-ai-lab/os-factory/ | the "What left the lab, 2026-09-09" table; the old path is the point
+CLAUDE.md :: my-ai-lab/chief-of-staff/ | the "What left the lab, 2026-09-09" table; the old path is the point
+CLAUDE.md :: old-mac-documents/ | a warehouse folder; exists at ~/Documents/_warehouse/old-mac-documents/
+CLAUDE.md :: snapshot.sh | the same paragraph gives the full path, ~/Documents/_warehouse/_backups/snapshot.sh, which exists
+CLAUDE.md :: my-ai-lab-v2/ | the known-broken list names the old folder names on purpose
+CLAUDE.md :: My_AI_Lab/ | the known-broken list names the old folder names on purpose
+CLAUDE.md :: brand-identity/ | the known-broken list names the old folder names on purpose
+CLAUDE.md :: decision-products/ | the known-broken list names the old folder names on purpose
+TASTE.md :: traces/public-reasoning-simulation/2026-08-17-next-best-action-context/ | cites the dated record in the old chief-of-staff repo it was drawn from
+TASTE.md :: receipts/2026-08-11-1848 | cites the dated record in the old chief-of-staff repo it was drawn from
+TASTE.md :: reference/context-pack-v0.2.md | cites the old chief-of-staff file it was drawn from
+TASTE.md :: evidence/research/raw-voice/VOICE-EVIDENCE-PACK-v1.md | cites the old chief-of-staff file it was drawn from
+.claude/agents/alfred/DUTIES.md :: portfolio/NOW.md | the version-1 history line; retired with chief-of-staff/ on 2026-09-08
+.claude/agents/alfred/DUTIES.md :: portfolio/open-loops.md | the version-1 history line; retired with chief-of-staff/ on 2026-09-08
+.claude/agents/alfred/DUTIES.md :: traces/receipts/ | the version-1 history line; retired with chief-of-staff/ on 2026-09-08
+.claude/agents/alfred/DUTIES.md :: chief-of-staff/ | the version-1 history line; retired 2026-09-08
+.claude/agents/alfred/TODAY.md :: context/who-i-am.md | a to-do item to write it
+.claude/agents/alfred/TODAY.md :: how-i-talk.md | a to-do item to write it
+.claude/skills/seed-capture/SKILL.md :: chief-of-staff/.claude/skills/ | history note: the duplicate is gone
+.claude/skills/seed-capture/SKILL.md :: chief-of-staff/ | history note: the folder was retired
+.claude/skills/seed-capture/SKILL.md :: references/options--2026-09-10.md | named before the file was written (skill-check-accepted.txt line 47); not written yet
+.claude/skills/session-capture/SKILL.md :: chief-of-staff/tools/codex-session-sync.py | history line about the old sensor ("285 lines then, 458 now")
+.claude/skills/public-asset-development/SKILL.md :: engagement-os-archived-2026-09-10/ | a warehouse folder that exists; named as the worked example of the layout
+.claude/skills/public-asset-development/SKILL.md :: release.yaml | a file inside a release folder that the build updates
+.claude/skills/retrieval/SKILL.md :: picks.json | a file the skill writes at run time
+context/README.md :: who-i-am.md | the file says it does not exist yet
+context/README.md :: how-i-talk.md | the file says it does not exist yet
+context/how-i-work.md :: tasks/lessons.md | the rule says not to use it; the root lock refuses the folder
+context/how-i-work.md :: tasks/ | the rule says not to use it; the root lock refuses the folder
+context/how-i-work.md :: tasks/todo.md | the rule says not to use it; the root lock refuses the folder
+docs/about-me/how-i-work--observed.md :: evidence/sessions/claude/ad6b8e57-3fd4-494d-9db7-21a83e21ebf7.md#e4d3ae0e-15b4-446a-8925-051208cde8d6 | the transcript exists; the part after # is an anchor inside it
+docs/about-me/who-i-am--generated.md :: work-os/brand-os/model/HIS-WORDS.md | the line says Venkat has not written it yet
+docs/about-me/who-i-am--generated.md :: model/decision-log.md | generated text; shorthand for work-os/brand-os/model/decision-log.md, which exists
+docs/architecture/ARCHITECTURE-DECISIONS.md :: intent/STANDING.md | append-only log; shorthand for context/intent/STANDING.md, which exists
+docs/architecture/ARCHITECTURE-DECISIONS.md :: positioning/README.md | append-only log; shorthand for work-os/brand-os/positioning/README.md, which exists
+docs/architecture/CAPABILITY-DEFINITIONS.md :: context/assembly/CONTRACTS.md | context assembly "remains planned" (its status line); not built yet
+docs/architecture/CAPABILITY-DEFINITIONS.md :: CONTRACTS.md | context assembly "remains planned" (its status line); not built yet
+docs/architecture/CAPABILITY-DEFINITIONS.md :: context/assembly/runs/ | context assembly "remains planned" (its status line); not built yet
+work-os/brand-os/model/02-career-evolution-narrative.md :: rag/eval | a git branch name of an old codebase, not a path
+work-os/brand-os/model/02-career-evolution-narrative.md :: evals/stage0-gates | a git branch name of an old codebase, not a path
+work-os/brand-os/model/02-career-evolution-narrative.md :: governance/base | a git branch name of an old codebase, not a path
+work-os/brand-os/model/03-career-stage-map.md :: rag/eval | a git branch name of an old codebase, not a path
+work-os/brand-os/model/03-career-stage-map.md :: evals/stage0-gates | a git branch name of an old codebase, not a path
+work-os/brand-os/model/03-career-stage-map.md :: governance/base | a git branch name of an old codebase, not a path
+work-os/brand-os/model/08-subdomain-model.md :: Ele/ | an ingestion subtree in the old corpus, cited as evidence
+work-os/brand-os/model/11-linkedin-skills-crosswalk.md :: Skills.csv | the 2026-08-26 LinkedIn export, kept in the warehouse snapshot only
+work-os/brand-os/model/README.md :: 06/07 | two file numbers, not a path
+work-os/brand-os/model/REASONING-INDEX.md :: voice-vault/RESULTS--asked-more-than-once-and-top-30--2026-09-01.md | the row says "not in the drop"; it stayed in the warehouse snapshot
+work-os/brand-os/model/REASONING-INDEX.md :: voice-vault/work/ | the file says it was left in the warehouse snapshot only
+work-os/brand-os/model/REASONING-INDEX.md :: reference/transcripts/ | the file says it was left in the warehouse snapshot only
+work-os/brand-os/model/REASONING-INDEX.md :: files/ | the file says it was left in the warehouse snapshot only
+work-os/brand-os/model/REASONING-INDEX.md :: docs/operations/open-loops.md | relative to the drop folder named on its drop: line; exists there
+work-os/brand-os/model/REASONING-INDEX.md :: plans/global-context-update/handoff--os-factory-changeset--2026-08-26.md | relative to the drop folder named on its drop: line; exists there
+work-os/brand-os/model/SPOKES.md :: context/who-i-am.md | the row says the draft promotes to it later; not written yet
+work-os/brand-os/model/build_who_i_am.py :: work-os/brand-os/model/HIS-WORDS.md | generated text saying Venkat has not written it yet
+work-os/brand-os/visual/DESIGN-IDENTITY.md :: design-tokens.json | names the file in the old my-os project the tokens came from; the line says there is no live copy
+work-os/brand-os/positioning/README.md :: shift-framework/context-briefs/ | history: "was the original landing spot"
+work-os/brand-os/terminology/README.md :: voice/voice.md | the line says the old file is archived (2026-09-08)
+work-os/brand-os/voice/system/build_guide.py :: 00-trust-is-the-product/principles.md | relative to the guide folder the script generates; exists at voice/venkat-writing-guide/00-trust-is-the-product/principles.md
+work-os/brand-os/engagement-os/context/PROFILE.md :: context/POSITIONING.md | cites a file of the old chief-of-staff repo, where this profile was extracted from Blueprint v2.2
+work-os/brand-os/engagement-os/context/PROFILE.md :: portfolio/projects/deposit-refund.md | cites a file of the old chief-of-staff repo, where this profile was extracted from Blueprint v2.2
+work-os/brand-os/engagement-os/context/PROFILE.md :: DATA-STRATEGY.md | cites a file of the old chief-of-staff repo, where this profile was extracted from Blueprint v2.2
+work-os/brand-os/engagement-os/context/PROFILE.md :: evidence/seeds/cultivation-pass--2026-08-14.md | cites a dated record of the old chief-of-staff repo
+work-os/brand-os/engagement-os/docs/architecture.md :: postings.json | the line itself says only verdicts.jsonl exists
+work-os/brand-os/engagement-os/docs/state.md :: predictions.jsonl | a state file the schema defines; written at first run
+work-os/brand-os/engagement-os/docs/state.md :: log.jsonl | a state file the schema defines; written at first run
+work-os/brand-os/engagement-os/docs/rulings.md :: references/pattern-library.md | the ruling names where the file sat when ruled; it now lives at .claude/skills/public-asset-experience-design/references/pattern-library.md
+work-os/brand-os/engagement-os/editorial/README.md :: LEDGER.tsv | the row says "Created at the first publish, not before"
+work-os/brand-os/engagement-os/references/mia-kiraki/ADAPT-AND-EXTEND.md :: daily/outputs/ | the line says those folders are empty today; the dailies live only as private pages
+work-os/scheduled-tasks/market-signals/README.md :: build/full-prompt.md | one per routine folder, e.g. 05-trust-and-control/daily/build/full-prompt.md
+work-os/scheduled-tasks/market-signals/README.md :: build/routine-body.json | one per routine folder, e.g. 05-trust-and-control/daily/build/routine-body.json
+work-os/projects/telegraph-plus/CLAUDE.md :: out/ | an output folder the rule forbids publishing to; not created
+work-os/upskill-advisor/gates/gate-1.md :: evals/assertions.py | relative to the telegraph/ repo beside it; exists at telegraph/evals/assertions.py
+work-os/upskill-advisor/gates/gate-1.md :: evals/run_evals.py | relative to the telegraph/ repo beside it; exists at telegraph/evals/run_evals.py
+work-os/brand-os/audience/weekly/RUN-CONTRACT.md :: taxonomy-demand--DATE.json | DATE stands for the run date; the real file beside it is taxonomy-demand--2026-09-02.json

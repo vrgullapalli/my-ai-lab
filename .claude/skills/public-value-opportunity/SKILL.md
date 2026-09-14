@@ -15,7 +15,7 @@ description: >
 > (lab root: `/Users/venkatgullapalli/Documents/my-ai-lab/`). Consolidated to the lab-root
 > `.claude/skills/` on 2026-09-07 so it runs from anywhere; its data stayed put.
 
-PROJECT-SPECIFIC to AI Advisory Search. Never install globally, never
+PROJECT-SPECIFIC to this lab (`my-ai-lab`; the older project name it used to carry was retired in the 2026-09-10 rule audit). Never install globally, never
 generalize without explicit approval. This skill never publishes, sends,
 posts, or contacts anyone.
 

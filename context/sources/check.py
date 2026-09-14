@@ -364,10 +364,10 @@ def main():
     rows, total, newest = coverage(lab, records)
     disc = discovery(lab, records, accepted(lab)) if path == lab.register else []
     live = sum(1 for r in records if r.get("status") in ("live", "degraded"))
-    external = sum(1 for n, *_ in rows if n is None) if False else sum(1 for _, n, _, _ in rows if n is None)
+    outside = [i for i, n, _, _ in rows if n is None]  # named, not only counted: agents scoped to one and got zero records (F-20260913-0502-4)
     age = (dt.datetime.now() - dt.datetime.fromtimestamp(newest)).days if newest else "?"
     show = [f for f in disc if "[show at open]" in f]
-    summary = (f"sources: {len(records)} registered ({live} live, {external} outside the lab), {total} files covered, "
+    summary = (f"sources: {len(records)} registered ({live} live, {len(outside)} outside the lab{': ' + ', '.join(outside) if outside else ''}), {total} files covered, "
                f"newest change {age} day(s) ago; discovery: {len(show)} to review, {len(disc) - len(show)} recorded; "
                f"register findings: {len(bad)}")
     if "--summary" in flags:

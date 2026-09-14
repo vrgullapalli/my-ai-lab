@@ -190,7 +190,7 @@ The belief, in his words, 2026-09-11: "AI-native isn't about adding more AI to e
 - The test is what moved, not how much AI is in it. "If the underlying workflow, decisions, handoffs, and outputs are basically unchanged, it's still AI-assisted." Heavy AI use proves nothing. His picture for it is the deck versus the decision instrument: same job, a different thing built for it. (He dropped the whiteout example for this belief on 2026-09-11.)
 - It is the other half of Q1. Q1 says when: decide at the start, or the spot for reasoning is gone. Q2 says what: the system gets redesigned around the job, not the artifact. One belief, timing and result.
 
-**The belief, rewritten in his voice from the AI-assisted draft he kept (2026-09-11; skeleton lines are his from the interview and his 2025 comment; the rest is connective tissue; his approval pending):**
+**The belief, rewritten in his voice from the AI-assisted draft he kept (2026-09-11; skeleton lines are his from the interview and his 2025 comment; the rest is connective tissue. APPROVED by Venkat 2026-09-11 01:58, "the draft with my words is approved," and revised 01:59 at his word, "dont like the whiteout example. use the deck vs decision instrument"; the interview file's note at its Q2 says the same, and this line was brought level with it 2026-09-14):**
 
 > AI-assisted is not AI-native. I keep having to say that.
 >

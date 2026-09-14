@@ -18,6 +18,10 @@ time. So every number Alfred puts in front of Venkat about the lab comes from he
 
 Built 2026-09-10 at Venkat's word, when daily-brief, session-receipt and daily-review
 were rebuilt as Alfred's open and close routines. Python 3.9, standard library only.
+
+The tests point folders and files elsewhere with environment variables: ALFRED_STATE_DIR,
+ALFRED_RECEIPTS_DIR, ALFRED_AUDITS_DIR, ALFRED_GATES_FILE, ALFRED_UNLAZY_DIR, ALFRED_LOG_FILE,
+ALFRED_STANDING_FILE, ALFRED_MODEL_DIR, ALFRED_RETRIEVAL_INDEX, SESSIONS_DIR, CLAUDE_PROJECTS, CODEX_ROOT.
 """
 import datetime as dt
 import glob
@@ -32,7 +36,7 @@ ALFRED = os.path.join(LAB, ".claude", "agents", "alfred")
 STATE = os.environ.get("ALFRED_STATE_DIR") or os.path.join(ALFRED, "state")   # tests point this elsewhere
 SESSIONS = os.path.join(STATE, "sessions")
 UNRECEIPTED = os.path.join(STATE, "unreceipted")
-LOG = os.path.join(ALFRED, "LOG.md")
+LOG = os.environ.get("ALFRED_LOG_FILE") or os.path.join(ALFRED, "LOG.md")                  # tests point this elsewhere
 RECEIPTS = os.environ.get("ALFRED_RECEIPTS_DIR") or os.path.join(LAB, "evidence", "receipts")
 AUDITS = os.environ.get("ALFRED_AUDITS_DIR") or os.path.join(LAB, "evidence", "audits")   # follow-ups in audits count too (Venkat, 2026-09-11)
 GATES_FILE = os.environ.get("ALFRED_GATES_FILE") or os.path.join(LAB, "GATES.md")           # tests point these elsewhere
@@ -72,7 +76,9 @@ SEEDS = os.path.join(ENG, "seedbank")
 ARCHIE_INBOX = os.path.join(ENG, "agents", "archie", "inbox")
 EDITORIAL = os.path.join(ENG, "editorial", "pieces")
 OPEN_ITEMS = os.path.join(LAB, "work-os", "upskill-advisor", "records", "open-items.md")
-STANDING = os.path.join(LAB, "context", "intent", "STANDING.md")
+STANDING = os.environ.get("ALFRED_STANDING_FILE") or os.path.join(LAB, "context", "intent", "STANDING.md")
+MODEL = os.environ.get("ALFRED_MODEL_DIR") or os.path.join(LAB, "work-os", "brand-os", "model")       # the career model hub
+RETRIEVAL_INDEX = os.environ.get("ALFRED_RETRIEVAL_INDEX") or os.path.join(LAB, "context", "sources", "index", "retrieval-index.jsonl")
 SESSIONS_DIR = os.environ.get("SESSIONS_DIR") or os.path.join(LAB, "evidence", "sessions")
 CLAUDE_PROJECTS = os.environ.get("CLAUDE_PROJECTS") or os.path.expanduser("~/.claude/projects")
 CODEX_ROOT = os.environ.get("CODEX_ROOT") or os.path.expanduser("~/.codex")
@@ -80,6 +86,7 @@ CODEX_ROOT = os.environ.get("CODEX_ROOT") or os.path.expanduser("~/.codex")
 RECEIPT_NAME = re.compile(r"^(\d{4}-\d{2}-\d{2})-(\d{4})-.+\.md$")
 FOLLOWUP_OPEN = re.compile(r"^\s*- \[ \] (F-\d{8}-\d{4}-\d+)\b[:\s—-]*(.*)$")
 FOLLOWUP_DONE = re.compile(r"^\s*- \[x\] (F-\d{8}-\d{4}-\d+)\b", re.I)
+FOLLOWUP_CLOSED = re.compile(r"^\s*- (?:\[x\] )?(F-\d{8}-\d{4}-\d+)\b", re.I)   # under '## Closed': the line must start with the id
 FOLLOWUP_ID = re.compile(r"\bF-\d{8}-\d{4}-\d+\b")
 LOG_LINE = re.compile(r"^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}) \| ([A-Z0-9-]+) \|")
 SKIP_WALK = {".git", "node_modules", ".remember", "__pycache__", ".unlazy", ".venv"}
@@ -154,8 +161,10 @@ def audit_files():
 
 def open_loops():
     """Every follow-up written as '- [ ] F-...' in a receipt or an audit file and not yet
-    closed by a receipt ('- [x] F-...' or listed under '## Closed'). Audit findings that
-    never reach this list are invisible to the open routine (Venkat, 2026-09-11)."""
+    closed by a receipt ('- [x] F-...' anywhere, or a line under '## Closed' that starts with
+    '- F-...' or '- [x] F-...'). A follow-up id merely mentioned in a sentence under '## Closed'
+    does not count as closed (F-20260912-0117-4: "still open" prose used to close it). Audit
+    findings that never reach this list are invisible to the open routine (Venkat, 2026-09-11)."""
     sessions, _ = receipts()
     sources = [(n, os.path.join(RECEIPTS, n)) for n in sessions] + audit_files()
     opened, closed = {}, set()
@@ -168,8 +177,9 @@ def open_loops():
             m = FOLLOWUP_OPEN.match(line)
             if m and not in_closed:
                 opened.setdefault(m.group(1), (m.group(2).strip(), name))
-            if FOLLOWUP_DONE.match(line) or in_closed:
-                closed.update(FOLLOWUP_ID.findall(line))
+            m = FOLLOWUP_DONE.match(line) or (in_closed and FOLLOWUP_CLOSED.match(line))
+            if m:
+                closed.add(m.group(1))
     rows = []
     for fid, (text, name) in opened.items():
         if fid in closed:
@@ -210,6 +220,66 @@ def changed_since(since):
             except OSError:
                 pass
     return sorted(rows)
+
+
+def transcript_files(transcript_path):
+    """The session's own transcript plus the transcripts of the subagents it ran, which Claude Code
+    keeps one level down at <project>/<session id>/subagents/*.jsonl. Empty when nothing is on disk."""
+    if not transcript_path or not os.path.isfile(transcript_path):
+        return []
+    sid = os.path.basename(transcript_path)[:-6]
+    extra = glob.glob(os.path.join(os.path.dirname(transcript_path), sid, "**", "*.jsonl"), recursive=True)
+    return [transcript_path] + sorted(extra)
+
+
+def session_write_targets(transcript_path):
+    """Every lab file this session's transcript shows it touched, as paths relative to the lab.
+    Read from the tool calls: the file_path of Write, Edit, MultiEdit and NotebookEdit, the filePath
+    in their results, and any lab path named inside a Bash command. A Bash mention proves nothing on
+    its own, which is why the caller intersects this set with the files that really changed."""
+    tops = sorted(os.listdir(LAB)) if os.path.isdir(LAB) else []
+    rel_path = re.compile(r"(?<![\w/.\-])(?:" + "|".join(re.escape(t) for t in tops) + r")(?:/[\w.\-+@]+)*") if tops else None
+    abs_path = re.compile(re.escape(LAB) + r"/[\w.\-+@/]+")
+    targets = set()
+
+    def add(path):
+        if not isinstance(path, str) or not path:
+            return
+        p = os.path.normpath(path if os.path.isabs(path) else os.path.join(LAB, path))
+        if p.startswith(LAB + os.sep):
+            targets.add(os.path.relpath(p, LAB))
+
+    for tp in transcript_files(transcript_path):
+        for line in read(tp).split("\n"):
+            if '"tool_use"' not in line and '"toolUseResult"' not in line:
+                continue
+            try:
+                d = json.loads(line)
+            except ValueError:
+                continue
+            result = d.get("toolUseResult")
+            if isinstance(result, dict):
+                add(result.get("filePath"))
+            content = (d.get("message") or {}).get("content")
+            for block in content if isinstance(content, list) else []:
+                if not isinstance(block, dict) or block.get("type") != "tool_use":
+                    continue
+                inp = block.get("input") or {}
+                if not isinstance(inp, dict):
+                    continue
+                add(inp.get("file_path"))
+                add(inp.get("notebook_path"))
+                for edit in inp.get("edits") or []:
+                    if isinstance(edit, dict):
+                        add(edit.get("file_path"))
+                cmd = inp.get("command")
+                if isinstance(cmd, str):
+                    for m in abs_path.findall(cmd):
+                        add(m)
+                    if rel_path:
+                        for m in rel_path.findall(cmd):
+                            add(m)
+    return targets
 
 
 # ---------------------------------------------------------------- open
@@ -299,6 +369,67 @@ def sources_line():
         return r.stdout.strip() or "ALERT sources: no output"
     except Exception as exc:
         return f"ALERT sources: could not run ({type(exc).__name__})"
+
+
+def career_model_line():
+    """One line from the career model's two checks (F-20260914-0238-5): check_hub.py counts broken
+    spoke pointers and never-cite numbers in live text; build_who_i_am.py --check says whether the
+    generated 'who I am' file still matches the model. Their numbers, read from their last lines."""
+    hub = os.path.join(MODEL, "check_hub.py")
+    build = os.path.join(MODEL, "build_who_i_am.py")
+    if not os.path.isfile(hub) or not os.path.isfile(build):
+        return "career model check: scripts missing (work-os/brand-os/model/check_hub.py, build_who_i_am.py)"
+    bits = []
+    try:
+        r = subprocess.run([sys.executable, hub], capture_output=True, text=True, timeout=20, cwd=LAB)
+        m = re.search(r"spokes broken: (\d+)\s+never-cite hits in live text: (\d+)", r.stdout)
+        bits.append(f"spokes broken {m.group(1)}, never-cite hits {m.group(2)}" if m
+                    else "hub check printed no totals")
+    except subprocess.TimeoutExpired:
+        bits.append("hub check did not finish in 20 seconds")
+    except Exception as exc:
+        bits.append(f"hub check could not run ({type(exc).__name__})")
+    try:
+        r = subprocess.run([sys.executable, build, "--check"], capture_output=True, text=True, timeout=20, cwd=LAB)
+        last = (r.stdout.strip().split("\n") or [""])[-1]
+        if last.startswith("CHECK OK"):
+            bits.append("generated file matches the model")
+        elif "does not exist" in last:
+            bits.append("generated file missing")
+        elif last.startswith("CHECK FAIL"):
+            bits.append("generated file differs from the model")
+        else:
+            bits.append("build check printed no verdict")
+    except subprocess.TimeoutExpired:
+        bits.append("build check did not finish in 20 seconds")
+    except Exception as exc:
+        bits.append(f"build check could not run ({type(exc).__name__})")
+    return "career model check: " + ", ".join(bits)
+
+
+def notes_without_transcript():
+    """Session notes the SessionEnd hook closed (they carry an 'end') whose transcript is not on disk
+    (F-20260914-0239-2: session 4fb8ec54 changed files for a day and left no transcript anywhere)."""
+    count = 0
+    for p in glob.glob(os.path.join(SESSIONS, "*.json")):
+        d = json.loads(read(p) or "{}")
+        if "end" not in d:
+            continue
+        tp = d.get("transcript_path")
+        if not tp or not os.path.isfile(tp):
+            count += 1
+    return count
+
+
+def retrieval_index_line():
+    """How old the retrieval index is, and how many markdown files in the lab are newer than it
+    (F-20260913-0545-3, the facts half). Same walk and skip rules as the changed-files count."""
+    rel = os.path.relpath(RETRIEVAL_INDEX, LAB) if RETRIEVAL_INDEX.startswith(LAB) else RETRIEVAL_INDEX
+    if not os.path.isfile(RETRIEVAL_INDEX):
+        return f"retrieval index: none at {rel}"
+    built = dt.datetime.fromtimestamp(os.path.getmtime(RETRIEVAL_INDEX))
+    newer = [r for r in changed_since(built) if r.endswith(".md")]
+    return f"retrieval index: {age_days(built.timestamp())} days old; {len(newer)} markdown files in the lab are newer than it"
 
 
 def waiting_line():
@@ -427,10 +558,13 @@ def open_sheet():
         out.append("unlazy: a gates ledger is open at the lab root (GATES.md or .unlazy/)")
 
     out.extend(capture_lines())
+    out.append(f"sessions with a note but no transcript: {notes_without_transcript()}")
     out.append(skill_check_line())
     out.append(architecture_check_line())
     out.append(state_line())
     out.append(sources_line())
+    out.append(retrieval_index_line())
+    out.append(career_model_line())
     out.append(waiting_line())
 
     if lines and os.path.isfile(STANDING):
@@ -461,8 +595,19 @@ def close_sheet(session_id=None):
         return "No session-start note found, so 'what changed' cannot be measured for this session."
     since = dt.datetime.fromisoformat(mark["start"])
     out = [f"CLOSE FACTS — session {sid}, started {since.strftime('%Y-%m-%d %H:%M')} (measured by a script)"]
-    changed = changed_since(since)
-    out.append(f"files changed in the lab since the session started: {len(changed)}")
+    in_lab = changed_since(since)
+    # F-20260910-1627-3: other sessions run at the same time, so count only the files this session's own
+    # transcript shows it touched. With no transcript on disk, fall back to every file that changed, and say so.
+    transcript = mark.get("transcript_path") or os.path.join(CLAUDE_PROJECTS, "-" + LAB.strip("/").replace("/", "-"), sid + ".jsonl")
+    if transcript_files(transcript):
+        targets = session_write_targets(transcript)
+        changed = [r for r in in_lab if r in targets]
+        out.append(f"files changed by this session: {len(changed)} (read from its transcript; "
+                   f"{len(in_lab)} files changed in the lab by any session)")
+    else:
+        changed = in_lab
+        out.append(f"files changed by this session: {len(changed)} (no transcript found, so this counts "
+                   f"every file any session changed since the start)")
     groups = {}
     for rel in changed:
         key = "/".join(rel.split("/")[:3])

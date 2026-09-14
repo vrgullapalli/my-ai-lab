@@ -124,8 +124,9 @@ Pick the mode from what Venkat said. When in doubt, Scan — it writes nothing.
   Word overlap, no model, same answer every time. Finds repeats; misses paraphrases. Its top
   matches are the first candidates for `Conflicts with:` and `## Connections`.
 - `scripts/next-id.py --check` — the next free `A-LIVE` number, and any number on two seeds.
-- `references/options--2026-09-10.md` — ways to get more out of seed capture, with what each
-  needs from Venkat. Nothing in it is approved yet.
+- The options note of 2026-09-10 (ways to get more out of seed capture) no longer exists anywhere on
+  this machine (checked 2026-09-14, lab and warehouse). Its subject lives on as follow-up
+  F-20260912-0117-2. Nothing in it was approved.
 
 ## Seed file template
 

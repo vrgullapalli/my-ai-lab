@@ -3,7 +3,7 @@
 
 Builds a small lab in a temp folder, registers two sources, and plants one fault at a time:
 missing location, moved location, duplicate id, two sources claiming one location, one location nested
-inside another's, a folder whose only files sit under _archive, a location with nothing matching its pattern, a bad word, a replica with no canonical-at, an unavailable source that is
+inside another's, a folder whose only files sit under _archive, a location with nothing matching its pattern, an unreadable location, a bad word (standing, use), a replica with no canonical-at, an unavailable source that is
 reachable, an unregistered folder of markdown, an unregistered git repo. Each must be caught. The clean
 register must pass. Last, the real register must pass.
 
@@ -108,10 +108,23 @@ write_register(lab, good[0], record("notes", "notes", pattern="*.csv"))
 code, out = run(lab=lab)
 check("location with no matching file is caught", code == 1 and "notes: location holds no file matching *.csv: notes" in out, out)
 
-# 6. invalid records: a bad word, a missing use limit, a replica with no canonical-at, heading not equal to id
+# 5b. unreadable location: it exists, and this user cannot read it (F-20260912-0150-5)
+write_register(lab, *good)
+os.chmod(os.path.join(lab, "notes"), 0)
+code, out = run(lab=lab)
+os.chmod(os.path.join(lab, "notes"), 0o755)
+if os.geteuid() == 0:
+    print("skip unreadable location test: running as root, which can read anything")
+else:
+    check("unreadable location is caught", code == 1 and "notes: location unreadable: notes" in out, out)
+
+# 6. invalid records: a bad word (standing, use), a missing use limit, a replica with no canonical-at, heading not equal to id
 write_register(lab, good[0], record("notes", "notes", standing="copy"))
 code, out = run(lab=lab)
 check("bad standing word is caught", code == 1 and "notes: standing 'copy' is not an allowed word" in out, out)
+write_register(lab, good[0], record("notes", "notes", use="opinion"))
+code, out = run(lab=lab)
+check("bad use word is caught", code == 1 and "notes: use 'opinion' is not an allowed word" in out, out)
 write_register(lab, good[0], record("notes", "notes", **{"not-alone": None}))
 code, out = run(lab=lab)
 check("missing not-alone is caught", code == 1 and "notes: missing 'not-alone'" in out, out)
@@ -135,11 +148,11 @@ check("reachable unavailable source is a record-only note, not a failure",
       code == 0 and "[record only] far: unavailable source is reachable now: elsewhere" in out, out)
 shutil.rmtree(os.path.join(lab, "elsewhere"))
 
-# 8. external location: existence checked, files not counted; a missing one is caught
+# 8. external location: existence checked, files not counted, and the summary names it; a missing one is caught
 ext = tempfile.mkdtemp(prefix="sources-ext-")
 write_register(lab, *good, record("outside", ext))
 code, out = run("--report", lab=lab)
-check("external source is counted as outside the lab, not in files", code == 0 and "(3 live, 1 outside the lab), 3 files covered" in out and "external" in out, out)
+check("external source is named as outside the lab, not counted in files", code == 0 and "(3 live, 1 outside the lab: outside), 3 files covered" in out and "external" in out, out)
 shutil.rmtree(ext)
 code, out = run(lab=lab)
 check("missing external location is caught", code == 1 and f"outside: location missing: {ext}" in out, out)

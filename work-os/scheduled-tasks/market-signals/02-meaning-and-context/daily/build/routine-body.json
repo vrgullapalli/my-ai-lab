@@ -24,7 +24,7 @@
       "events": [
         {
           "data": {
-            "uuid": "5b6c23f9-b555-4153-9ba2-ae460689aad9|trig_01CHo1kMbWGdkCpCGzxEbbHf",
+            "uuid": "5b6c23f9-b555-4153-9ba2-ae460689aad9",
             "session_id": "",
             "type": "user",
             "parent_tool_use_id": null,

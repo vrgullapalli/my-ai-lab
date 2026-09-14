@@ -5,6 +5,8 @@ description: Draft, rewrite, or edit writing in Venkat's recognizable voice whil
 
 # Contextual Voice
 
+> **Base directory:** all relative paths in this skill resolve from `.claude/skills/contextual-voice/` (its own folder, where `voice-core.md` and `context-dials.md` live). Line added 2026-09-14 for the skill check.
+
 Preserve the user's way of thinking on the page, not merely surface traits. The result should sound like the same person making different kinds of moves for different audiences.
 
 ## Start with the writing job

@@ -3,6 +3,8 @@ name: book-to-skill
 description: "Converts books and documents (PDF, EPUB, DOCX, HTML, Markdown, plain text, RTF, MOBI/AZW with Calibre) into structured agent skills, extracting frameworks, mental models, principles, techniques, and anti-patterns. Use when the user wants to study a document through GitHub Copilot CLI, Amp, Claude Code, or Hermes Agent, apply an author's frameworks while working, or build a reusable knowledge base from a file."
 ---
 
+> **Base directory:** all relative paths in this skill resolve from `.claude/skills/book-to-skill/` (its own folder; `book_to_skill/` and `scripts/` are there). Line added 2026-09-14 for the skill check.
+
 <!--
 Cross-agent notes (informational; ignored by host agents):
   - Compatible skill roots: GitHub Copilot CLI (~/.copilot/skills, ~/.agents/skills,

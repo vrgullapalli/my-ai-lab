@@ -129,7 +129,7 @@ everywhere.)*
   "It's too early in the game to make absolute conclusions."
   → `receipts/2026-08-11-1848`
 - `[explicit]` 2026-08-11 · n=2 · **Jargon, even when accurate.** Asked twice
-  what a word meant. Full rule in `context/PROFILE.md → Reading level`.
+  what a word meant. Full rule in `context/how-i-work.md` ("Write at a 10th-grade reading level. Always.").
   → `receipts/2026-08-11-1848`
 
 ## Unresolved — looks like a clash, condition not found yet

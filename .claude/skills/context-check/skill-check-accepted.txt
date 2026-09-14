@@ -54,3 +54,7 @@
 # 2026-09-10 16:47, after the AS-006 and AS-002 packages were archived at Venkat's word.
 .claude/skills/public-asset-development/SKILL.md :: release.yaml | the manifest the build writes; no release package exists in the lab right now, so the bare name has nowhere to resolve
 .claude/agents/alfred/TODAY.md :: ai-native-asset-design | today's list names the archived skill as history (another session's line)
+.claude/skills/public-asset-development/SKILL.md :: engagement-os-archived-2026-09-10/ | names a warehouse folder outside the lab on purpose, as the worked example of an archived layout (reviewed 2026-09-14)
+.claude/skills/retrieval/SKILL.md :: ideas.json | a file the skill's script writes at run time, not a file that should exist in the lab (reviewed 2026-09-14)
+.claude/skills/retrieval/SKILL.md :: picks.json | a file the skill's script writes at run time, not a file that should exist in the lab (reviewed 2026-09-14)
+.claude/skills/book-to-skill/SKILL.md :: tools/scan_generated_skill.py | the upstream repo's scanner was never installed here, so step 9.5 cannot run; the gap is recorded rather than fetched (reviewed 2026-09-14, F-20260914-0125-2)

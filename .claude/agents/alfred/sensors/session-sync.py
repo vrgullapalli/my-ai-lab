@@ -44,9 +44,13 @@ DEST = os.environ.get("SESSIONS_DIR") or os.path.join(LAB, "evidence", "sessions
 CLAUDE_PROJECTS = os.environ.get("CLAUDE_PROJECTS") or os.path.expanduser("~/.claude/projects")
 CODEX_ROOT = os.environ.get("CODEX_ROOT") or os.path.expanduser("~/.codex")
 
-SECRET = re.compile(r"(sk-ant-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|"
-                    r"xox[baprs]-[A-Za-z0-9-]{10,}|Bearer\s+[A-Za-z0-9._-]{20,}|AKIA[0-9A-Z]{16}|"
-                    r"-----BEGIN [A-Z ]*PRIVATE KEY)")
+# Key shapes, each with a boundary in front so a word like "desk-" or "task-" can never start a
+# hit: Anthropic and OpenAI project keys (sk-ant-…, sk-proj-…, dashes and underscores allowed),
+# plain sk- keys, GitHub, Slack, Bearer tokens, AWS, Google (AIza + 35 chars, added 2026-09-14),
+# private key headers. Tests: tests/session_sync_tests.py.
+SECRET = re.compile(r"(?<![A-Za-z0-9_])(sk-(?:ant|proj)-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{20,}|"
+                    r"ghp_[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|Bearer\s+[A-Za-z0-9._-]{20,}|"
+                    r"AKIA[0-9A-Z]{16}|AIza[A-Za-z0-9_-]{35}|-----BEGIN [A-Z ]*PRIVATE KEY)")
 MASK = "[secret-like text removed]"
 STRIP_BLOCKS = re.compile(r"<(system-reminder|ide_opened_file|ide_selection)>.*?</\1>", re.S)
 SKIP_USER_PREFIX = ("<environment_context>", "<permissions", "# AGENTS.md", "<INSTRUCTIONS>",

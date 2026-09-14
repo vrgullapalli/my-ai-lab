@@ -111,15 +111,15 @@ Latest: AD-36 Retrieval live; AD-37 State v0.1 approved as designed.
 
 | File | Status line in file | Label |
 |---|---|---|
-| `AI-Lab-Product-Ecosystem-Roadmap-2026-09-13.md` (1,685 lines) | "Status: Current working roadmap" | Current working document, unruled |
-| `AI-Lab-Product-Ecosystem-Design-Doctrine-2026-09-14.md` (373 lines) | "status: proposed, 2026-09-14; revised the same day after his review … The boundary decisions in section 15 are his; the doctrine as a whole is not yet ruled" | Emerging; section 15 carries his four boundary rulings |
-| `Portfolio-as-the-Product-Operational-Model-Spec-v0.1.md` (1,383 lines) | "Version: 0.1. Status: Working product specification" | Emerging; the career-model handoff: "No ruling approves it" |
-| `Process Is the Product — Operational Specification.md` | no status line | Emerging |
-| `Context as the Product — Operational Specification.md` | no status line | Emerging |
-| `Trust Is the Product — Operational Specification.md` | no status line | Emerging |
-| `State as the Product — Operational Specification-v2.md` | no status line; the doctrine's section 15 says State is "a supporting operating layer, not a Product" | Emerging; title conflicts with the ruling |
-| `Experience as the Product — Operational Model & Specification.md` | no status line | Emerging; one of two |
-| `Experience as the Product — Integrated AI-Native Commercial Capability Specification (1).md` | no status line; "(1)" is a download marker | Emerging; one of two |
+| `2026-09-13--ai-lab-product-ecosystem-roadmap.md` (1,685 lines) | "Status: Current working roadmap" | Current working document, unruled |
+| `2026-09-14--ai-lab-product-ecosystem-design-doctrine.md` (373 lines) | "status: proposed, 2026-09-14; revised the same day after his review … The boundary decisions in section 15 are his; the doctrine as a whole is not yet ruled" | Emerging; section 15 carries his four boundary rulings |
+| `2026-09-13--portfolio-as-the-product-spec-v0-1.md` (1,383 lines) | "Version: 0.1. Status: Working product specification" | Emerging; the career-model handoff: "No ruling approves it" |
+| `2026-09-13--process-is-the-product-spec.md` | no status line | Emerging |
+| `2026-09-13--context-as-the-product-spec.md` | no status line | Emerging |
+| `2026-09-13--trust-is-the-product-spec.md` | no status line | Emerging |
+| `2026-09-13--state-as-the-product-spec-v2.md` | no status line; the doctrine's section 15 says State is "a supporting operating layer, not a Product" | Emerging; title conflicts with the ruling |
+| `2026-09-13--experience-as-the-product-spec.md` | no status line | Emerging; one of two |
+| `2026-09-13--experience-as-the-product-integrated-spec.md` | no status line; "(1)" is a download marker | Emerging; one of two |
 
 **What the roadmap and doctrine say Portfolio should use, verbatim.** Roadmap 2.5 "Near-term rule": "Do not build a new Portfolio platform. Use the existing Career Model, Seedbank, Content, Telegraph+, evidence, and future Learning as inputs." Spec section 12: "Portfolio is a connected view over durable things, not another master database." Doctrine section 6: "The canonical career model stays canonical; Portfolio reads it and never edits it from inference (AD-31)."
 
@@ -179,7 +179,7 @@ Latest: AD-36 Retrieval live; AD-37 State v0.1 approved as designed.
 1. **Telegraph+ unpushed count.** STATUS.md "7 commits are unpushed as of 2026-09-05"; TODAY.md "11 unpushed on 2026-09-13 05:35" beside his "done" of 09-10; `git rev-list origin/main..HEAD` today: 0. Three numbers, three dates.
 2. **Telegraph governance unruled** since 2026-09-07 (section 2).
 3. **Two Experience specs**, different bytes and heading counts, neither marked superseded; the doctrine says it was written "from the seven source specs in this folder" while eight non-roadmap specs sit there.
-4. **State titled as a Product** in `State as the Product — … v2.md` while doctrine section 15 (his review) makes it a supporting layer.
+4. **State titled as a Product** in `2026-09-13--state-as-the-product-spec-v2.md` while doctrine section 15 (his review) makes it a supporting layer.
 5. **Capability map self-description stale.** Line 34: "Seven live or degraded, one building, one planned"; front matter line 4: "Retrieval is building." The registry block below says retrieval live (AD-36). True split today: 7 live, 2 degraded, 1 planned.
 6. **Source count.** Map text "23 sources"; `check.py` "24 registered."
 7. **State ledger size.** Roadmap section 8 "current ledger: 317 lines"; `state.py check` "333 current lines" at 02:35 and "348" at 02:40 today.

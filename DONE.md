@@ -191,7 +191,7 @@ The system:
 - Fails safely when a model, connector, or source is unavailable.
 - Supports undo, recovery, and rollback where possible.
 
-Governance can't be bypassed by a prompt, agent, plugin, or connector.
+Governance covers what the hooks can see. The root lock (`.claude/hooks/root-lock.py`) refuses new files at the lab root written through Claude Code's own tools. It cannot see writes made by a plugin, a connector, another program, or a shell outside a session (found in the 2026-09-10 rule audit; corrected 2026-09-14).
 
 Plus one ADHD-specific guardrail:
 

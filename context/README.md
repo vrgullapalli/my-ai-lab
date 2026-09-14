@@ -1,7 +1,8 @@
 # context/
 
 The files that tell any session who Venkat is, how he sounds, and how he wants
-work done. Loaded every session.
+work done. Only `how-i-work.md` loads every session, through the import line in the lab's
+CLAUDE.md. The rest is read when a session opens it.
 
 | File | Holds |
 |---|---|

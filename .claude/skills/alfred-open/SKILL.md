@@ -56,7 +56,10 @@ for more than an hour. Lines that start with `ALERT` are the ones worth his atte
 2. **Duty pass — D1, D2, D3** as `.claude/agents/alfred/DUTIES.md` scripts them, reading
    `context/intent/STANDING.md` first. The facts sheet already holds most sensor results
    (repos, unpushed commits, snapshot and off-machine copy ages, log gap). D2's lab-wide loop
-   list is `facts.py loops`. D3's `work-os/scheduled-tasks/market-signals/verify.sh` runs at most once a day. D5 runs
+   list is `facts.py loops`. D3 cannot run `work-os/scheduled-tasks/market-signals/verify.sh` on its own: that script
+   needs a folder of fetched routine responses (one RemoteTrigger get per routine, saved as
+   JSON; see its usage line), and nothing fetches them. Until a fetch step exists, D3 reports
+   the date of the last verify run from the market-signals README and marks the 21 `Unknown`. D5 runs
    too when it is due (seven days after the last review line).
 
 3. **Pull today's cloud briefs into the lab.** Only a Claude session can read them. List

@@ -12,3 +12,23 @@ work-os/brand-os | the brand-os repo as a whole; its knowledge folders are regis
 work-os/projects/telegraph-plus | registered as a source; listed here so the repo check does not name it twice; Alfred, 2026-09-12
 claude.ai | the routines' own pages and artifact links, not a knowledge source; Alfred, 2026-09-12
 context/sources/index | retrieval's derived index and run log, rebuilt from the register by retrieve.py; git ignores it; Alfred, 2026-09-12
+prnewswire.com | a press-release wire cited in the signal briefs; the briefs are registered (routine-outputs), the wire is not a source; Alfred, 2026-09-14
+globenewswire.com | a press-release wire cited in the signal briefs; not a source; Alfred, 2026-09-14
+investing.com | market-news pages cited in the signal briefs; not a source; Alfred, 2026-09-14
+finance.yahoo.com | market-news pages cited in the signal briefs; not a source; Alfred, 2026-09-14
+sec.gov | filings cited in the signal briefs and dossiers; a public record, not registered now; Alfred, 2026-09-14
+mckinsey.com | consulting-firm reports cited in target dossiers and research (engagement-os); an outside page cited, not a source; Alfred, 2026-09-14
+deloitte.com | consulting-firm reports and surveys cited in dossiers and briefs; not a source; Alfred, 2026-09-14
+zs.com | consulting-firm reports cited in dossiers and briefs; not a source; Alfred, 2026-09-14
+reddit.com | forum threads cited in research and dossiers (engagement-os, brand-os docs); not a source; Alfred, 2026-09-14
+novartis.com | company job postings and press cited in dossiers and briefs; the dossiers are registered (targets), the company site is not; Alfred, 2026-09-14
+careers.astrazeneca.com | company job postings cited in dossiers; the dossiers are registered (targets), the job board is not; Alfred, 2026-09-14
+pharmexec.com | trade press cited in the signal briefs and dossiers; not a source; Alfred, 2026-09-14
+pharmaceuticalcommerce.com | trade press cited in the signal briefs and dossiers; not a source; Alfred, 2026-09-14
+biospace.com | trade press cited in the signal briefs and dossiers; not a source; Alfred, 2026-09-14
+ciodive.com | trade press cited in the signal briefs and dossiers; not a source; Alfred, 2026-09-14
+robotsatemyhomework.substack.com | another writer's newsletter (Maria-Cristina, "Robots Ate My Homework"), studied in engagement-os research; not his account, not a source; Alfred, 2026-09-14
+github.com | mostly the copied ai-job-search repo's upstream and tool docs in skills; his own repos are the lab's remotes, already covered by the register; not a source; Alfred, 2026-09-14
+code.claude.com | Claude Code docs cited in skills and research; tool docs, not a source; Alfred, 2026-09-14
+jobbank.dk | a Danish job board inside the copied work-os/ai-job-search repo; not a source (that repo is its own open discovery item); Alfred, 2026-09-14
+jobindex.dk | a Danish job board inside the copied work-os/ai-job-search repo; not a source (that repo is its own open discovery item); Alfred, 2026-09-14

@@ -1,6 +1,6 @@
 ---
 name: who-i-am
-what: Who Venkat is, generated from the career and expertise model. Loaded every session.
+what: Who Venkat is, generated from the career and expertise model. Not loaded automatically; a session reads it when it needs it (line corrected 2026-09-14; the 09-10 rule audit found nothing loads it).
 generated_by: work-os/brand-os/model/build_who_i_am.py
 rule: never hand-edit; change the model (entity JSONs + decision-log.md) and rerun; --check refuses drift
 sources:

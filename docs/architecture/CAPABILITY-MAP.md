@@ -111,7 +111,7 @@ The registry answers **what shared capabilities exist**. It does not register ev
 - consumers: alfred-open, the alfred agent (duty pass), implication-lens, hand tests, retrieval (planned, for weighting)
 - sensors: .claude/agents/alfred/sensors/facts.py (drivers changed since last open); per-driver proof lines named inside the file
 - defined-in: CAPABILITY-DEFINITIONS.md#drivers
-- proof: none written; live before the gate of 2026-09-12. A planted-fault proof is owed
+- proof: .claude/agents/alfred/sensors/tests/facts_tests.py, the test named "open: current drivers changed since the last open routine (planted fault)" (a fresh STANDING.md after the last OPEN log line puts the drivers line on the facts sheet; an older one takes it off). Written 2026-09-14 for F-20260912-0150-2
 - related: continuity, context-assembly
 - added: 2026-09-12
 - changed: 2026-09-12

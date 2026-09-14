@@ -10,6 +10,8 @@ case passes, so a script can check for that line.
 import datetime as dt
 import json
 import os
+import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -154,6 +156,116 @@ gates = os.path.join(tmp, "GATES.md"); open(gates, "w").write("# Gates\n")
 r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True,
                    env=dict(ENV, ALFRED_UNLAZY_DIR=os.path.join(tmp, "no-unlazy"), ALFRED_GATES_FILE=gates), timeout=60)
 check("open: GATES.md at the root reports an open ledger (planted fault)", "gates ledger is open" in r.stdout, r.stdout)
+
+
+# 10. F-20260912-0117-4: under '## Closed', only a line that starts with '- F-' or '- [x] F-' closes a follow-up
+with open(os.path.join(REC, "2026-09-10-1800-fifth-b2c3.md"), "w") as f:
+    f.write("---\nid: R-2026-09-10-1800-b2c3\ntype: receipt\nsession_id: t5\n---\n## Closed\n"
+            "- F-20260910-1230-1 — already closed; F-20260910-1200-2 is still open, the routine briefs were not pulled\n")
+rc, out = run("loops")
+check("loops: a follow-up only mentioned in a sentence under '## Closed' stays open (planted fault)",
+      "F-20260910-1200-2" in out, out[:300])
+with open(os.path.join(REC, "2026-09-10-1900-sixth-c3d4.md"), "w") as f:
+    f.write("---\nid: R-2026-09-10-1900-c3d4\ntype: receipt\nsession_id: t6\n---\n## Closed\n"
+            "- F-20260910-1200-2 — pulled, see the outputs folder\n")
+rc, out = run("loops")
+check("loops: a '- F-...' line under '## Closed' closes it", "F-20260910-1200-2" not in out, out[:300])
+
+# 11. F-20260912-0150-2: the drivers line appears only when STANDING.md changed after the last OPEN line in the log
+scratch_log = os.path.join(tmp, "LOG.md")
+open(scratch_log, "w").write("2026-09-10 08:00 | OPEN | ran | brief given | facts.py open\n")
+standing = os.path.join(tmp, "STANDING.md")
+open(standing, "w").write("# Standing\n")
+denv = dict(ENV, ALFRED_LOG_FILE=scratch_log, ALFRED_STANDING_FILE=standing)
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True, env=denv, timeout=90)
+check("open: current drivers changed since the last open routine (planted fault)",
+      "current drivers changed since the last open routine" in r.stdout, r.stdout[-400:])
+old_ts = dt.datetime(2026, 9, 9, 12, 0).timestamp()
+os.utime(standing, (old_ts, old_ts))
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True, env=denv, timeout=90)
+check("open: drivers older than the last open routine give no drivers line",
+      "current drivers changed since the last open routine" not in r.stdout, r.stdout[-400:])
+
+# 12. F-20260914-0238-5: the career model line, proven on a scratch mirror of the model folder with one spoke pointer broken
+LAB = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(HERE)))))
+mirror = os.path.join(tmp, "lab-mirror")
+model_src = os.path.join(LAB, "work-os", "brand-os", "model")
+model_dst = os.path.join(mirror, "work-os", "brand-os", "model")
+shutil.copytree(model_src, model_dst)
+spokes_text = open(os.path.join(model_dst, "SPOKES.md")).read()
+spoke_paths = re.findall(r"^\|[^|]*\|\s*`([^`]+)`", spokes_text, re.M)
+for rel in spoke_paths:                      # the mirror holds each spoke file at the same relative path
+    src = os.path.join(LAB, rel)
+    if os.path.isfile(src):
+        os.makedirs(os.path.dirname(os.path.join(mirror, rel)), exist_ok=True)
+        shutil.copy(src, os.path.join(mirror, rel))
+menv = dict(ENV, ALFRED_MODEL_DIR=model_dst)
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True, env=menv, timeout=90)
+m1 = re.search(r"^career model check: spokes broken (\d+), never-cite hits (\d+), (.+)$", r.stdout, re.M)
+check("open: carries the career model check line with plain words", bool(m1), r.stdout[-400:])
+first_spoke = next((p for p in spoke_paths if os.path.isfile(os.path.join(mirror, p))), None)
+open(os.path.join(model_dst, "SPOKES.md"), "w").write(spokes_text.replace("`" + first_spoke + "`", "`" + first_spoke + ".gone`", 1))
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True, env=menv, timeout=90)
+m2 = re.search(r"^career model check: spokes broken (\d+),", r.stdout, re.M)
+check("open: one broken spoke pointer raises the spokes-broken count by one (planted fault)",
+      bool(m1 and m2 and first_spoke) and int(m2.group(1)) == int(m1.group(1)) + 1,
+      f"{m1 and m1.group(1)} -> {m2 and m2.group(1)}, spoke {first_spoke}")
+
+# 13. F-20260914-0239-2: session notes that ended with no transcript on disk are counted
+rc, out = run("open")
+m = re.search(r"^sessions with a note but no transcript: (\d+)$", out, re.M)
+check("open: carries the notes-with-no-transcript line", bool(m), out[-400:])
+before = int(m.group(1)) if m else -1
+with open(os.path.join(STATE, "sessions", "test-lost.json"), "w") as f:
+    json.dump({"start": hour_ago, "end": hour_ago, "source": "startup",
+               "transcript_path": os.path.join(tmp, "never-written.jsonl")}, f)
+with open(os.path.join(STATE, "sessions", "test-kept.json"), "w") as f:      # a note whose transcript exists does not count
+    json.dump({"start": hour_ago, "end": hour_ago, "source": "startup", "transcript_path": FACTS}, f)
+rc, out = run("open")
+m = re.search(r"^sessions with a note but no transcript: (\d+)$", out, re.M)
+check("open: a note whose transcript is missing raises the count by exactly one (planted fault)",
+      bool(m) and int(m.group(1)) == before + 1, f"{before} -> {m and m.group(1)}")
+
+# 14. F-20260913-0545-3: the retrieval index line says how old the index is and how many markdown files are newer
+index = os.path.join(tmp, "retrieval-index.jsonl")
+open(index, "w").write("{}\n")
+ten_days = (dt.datetime.now() - dt.timedelta(days=10, hours=1)).timestamp()
+os.utime(index, (ten_days, ten_days))
+ienv = dict(ENV, ALFRED_RETRIEVAL_INDEX=index)
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True, env=ienv, timeout=90)
+m = re.search(r"^retrieval index: (\d+) days old; (\d+) markdown files in the lab are newer than it$", r.stdout, re.M)
+check("open: an index ten days old is reported as ten days old with newer markdown files counted (planted fault)",
+      bool(m) and m.group(1) == "10" and int(m.group(2)) > 0, r.stdout[-400:])
+os.utime(index, None)
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True, env=ienv, timeout=90)
+m = re.search(r"^retrieval index: (\d+) days old; (\d+) markdown", r.stdout, re.M)
+check("open: an index touched just now is zero days old", bool(m) and m.group(1) == "0", r.stdout[-400:])
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True,
+                   env=dict(ENV, ALFRED_RETRIEVAL_INDEX=os.path.join(tmp, "no-index.jsonl")), timeout=90)
+check("open: a missing index is said plainly", "retrieval index: none at" in r.stdout, r.stdout[-400:])
+
+# 15. F-20260910-1627-3: close counts only the files this session's own transcript touched
+tdir = os.path.join(tmp, "transcripts")
+os.makedirs(os.path.join(tdir, "test-own", "subagents"))
+def tool_use(name, inp):
+    return json.dumps({"type": "assistant", "message": {"content": [{"type": "tool_use", "name": name, "input": inp}]}}) + "\n"
+with open(os.path.join(tdir, "test-own.jsonl"), "w") as f:
+    f.write(tool_use("Edit", {"file_path": os.path.join(LAB, "CLAUDE.md"), "old_string": "a", "new_string": "b"}))
+    f.write(tool_use("Bash", {"command": "cat docs/no-such-file-ever.md | head"}))
+    f.write(json.dumps({"type": "user", "toolUseResult": {"filePath": os.path.join(LAB, "TASTE.md")}}) + "\n")
+with open(os.path.join(tdir, "test-own", "subagents", "agent-1.jsonl"), "w") as f:
+    f.write(tool_use("Write", {"file_path": os.path.join(LAB, "ROOT.md"), "content": "x"}))
+with open(os.path.join(STATE, "sessions", "test-own.json"), "w") as f:
+    json.dump({"start": "2000-01-01T00:00:00", "source": "startup", "transcript_path": os.path.join(tdir, "test-own.jsonl")}, f)
+rc, out = run("close", "test-own")
+m = re.search(r"^files changed by this session: (\d+) \(read from its transcript; (\d+) files changed in the lab by any session\)$", out, re.M)
+check("close: with a transcript, counts only the session's own files, subagent writes included (planted fault)",
+      bool(m) and m.group(1) == "3" and int(m.group(2)) > 3, out[:300])
+with open(os.path.join(STATE, "sessions", "test-lost2.json"), "w") as f:
+    json.dump({"start": "2000-01-01T00:00:00", "source": "startup", "transcript_path": os.path.join(tdir, "missing.jsonl")}, f)
+rc, out = run("close", "test-lost2")
+check("close: with no transcript, falls back to every changed file and says so",
+      "no transcript found" in out and "files changed by this session:" in out, out[:300])
 
 print(f"\n{'all passed' if not failures else str(failures) + ' failed'}  (scratch folder: {tmp})")
 if failures:

@@ -18,7 +18,7 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [ ] **Ping when the backfill is done** — asked 13:02. Waiting on session my-ai-lab-3e's completion message. (from 2026-09-10)
 - [ ] **Voice profile, the 60 from-the-record answers** — asked 13:03; they exist; his call on rewrite / deepen / leave. (from 2026-09-10)
 - [ ] **Rule audit** — four of six areas done; two helpers stopped at the 16:23 restart. Finish next session into `evidence/audits/2026-09-10-rule-audit/`. Receipt R-2026-09-10-1630-6921. (from 2026-09-10)
-- [ ] **Dead-pointer sweep** — 420 live mentions left. Part of the 12:31 ask, not finished. (from 2026-09-10)
+- [x] **Dead-pointer sweep** — done 03:09: 495 to 1 unreviewed; 106 accepted with reasons, 6 fixed. The one left needs his word (F-20260914-0321-7). (from 2026-09-10)
 - [ ] **Seed-capture integration options** — not written yet. Part of the 12:31 ask. (from 2026-09-10)
 - [ ] **Push telegraph-plus** — his word 16:33 on 09-10: "done". The sensor still disagrees: 11 unpushed on 2026-09-13 05:35, and the lab root is 8 ahead again. Same as "Start here" above. (from 2026-09-10)
 - [ ] **Thinking model written** to `docs/about-me/THINKING-MODEL-venkat-gullapalli.md` at his ask, 04:37. Done; his read pending. (from 2026-09-11)
@@ -32,5 +32,6 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [x] **Purple Cow turned into a lab skill** at his word 00:59: `.claude/skills/godin-purple-cow/` (12 chapters, glossary, patterns, cheatsheet; skill check clean). Uncommitted.
 - [ ] **Two more books sit in `work-os/assets/`** (This Is Marketing, Everything Is F*cked), added 00:58. His word on whether they get the same treatment.
 - [x] **One session owes a receipt** (60bd4f75, the one-minute session that added the three PDFs). Written late at 01:25: R-2026-09-14-0058-8c15.
-- [x] **Three current-state source briefs for the Portfolio architecture prompt** written at his /goal of 02:35, in `docs/research/assessments/` (seedbank; products, builds, open loops; market, opportunity, public proof). Uncommitted; his word to commit (F-20260914-0248-2). Receipt R-2026-09-14-0248-f8d1.
+- [x] **Three current-state source briefs for the Portfolio architecture prompt** written at his /goal of 02:35, in `docs/research/assessments/`. Committed 03:21 at his word. Receipt R-2026-09-14-0248-f8d1.
 - [ ] **Read the three briefs** and say if they are enough for Prompt 2 (F-20260914-0248-1).
+- [x] **38 follow-ups Alfred could do alone** cleared 02:55 to 03:12 at his word ("go plus the six"), 15-check gate ledger all met; receipt R-2026-09-14-0321-9e08. Twelve new follow-ups, six of them his calls (Q14 and Q37, snapshot, commit guard, render patch, the two briefs, the weekly instrument).
