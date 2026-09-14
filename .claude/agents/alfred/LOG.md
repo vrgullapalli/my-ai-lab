@@ -132,3 +132,6 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-14 02:45 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (chat-only ask became a saved file) | observed notes
 2026-09-14 02:45 | CLOSE | ran | 2026-09-14-0238-career-model-research-handoff-7d32.md; day review not due (today's is 2026-09-13 late, written 01:30; 2026-09-14 review waits for end of day) | facts.py close; state lines written
 2026-09-14 02:41 | CLOSE | ran | late: 2026-09-14-0239-combined-late-receipt-eight-sessions-edf9.md (eight sessions, 4fb8ec54 has no transcript) | facts.py close; state lines written
+2026-09-14 02:50 | D6 | ran | opened F-20260914-0248-1 (read the briefs: Venkat), -2 (commit them: Venkat), -3 (review the two whole-market daily briefs, due this week: Alfred); 0 closed | receipt R-2026-09-14-0248-f8d1
+2026-09-14 02:50 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (evidence before design, in two prompts) | observed notes
+2026-09-14 02:50 | CLOSE | ran | 2026-09-14-0248-three-portfolio-source-briefs-f8d1.md; day review not due (before 5 PM; 2026-09-13 review exists) | facts.py close

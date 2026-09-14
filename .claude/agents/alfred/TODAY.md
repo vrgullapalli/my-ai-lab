@@ -32,3 +32,5 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [x] **Purple Cow turned into a lab skill** at his word 00:59: `.claude/skills/godin-purple-cow/` (12 chapters, glossary, patterns, cheatsheet; skill check clean). Uncommitted.
 - [ ] **Two more books sit in `work-os/assets/`** (This Is Marketing, Everything Is F*cked), added 00:58. His word on whether they get the same treatment.
 - [x] **One session owes a receipt** (60bd4f75, the one-minute session that added the three PDFs). Written late at 01:25: R-2026-09-14-0058-8c15.
+- [x] **Three current-state source briefs for the Portfolio architecture prompt** written at his /goal of 02:35, in `docs/research/assessments/` (seedbank; products, builds, open loops; market, opportunity, public proof). Uncommitted; his word to commit (F-20260914-0248-2). Receipt R-2026-09-14-0248-f8d1.
+- [ ] **Read the three briefs** and say if they are enough for Prompt 2 (F-20260914-0248-1).
