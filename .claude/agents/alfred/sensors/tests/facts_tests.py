@@ -267,6 +267,35 @@ rc, out = run("close", "test-lost2")
 check("close: with no transcript, falls back to every changed file and says so",
       "no transcript found" in out and "files changed by this session:" in out, out[:300])
 
+
+# receipt coverage: sessions without a receipt this week, out of how many (2026-09-14)
+cov = os.path.join(tmp, "coverage-sessions")
+os.makedirs(cov)
+os.makedirs(STATE, exist_ok=True)
+covrec = os.path.join(tmp, "coverage-receipts")
+os.makedirs(covrec)
+_now = dt.datetime.now()
+_rows = [
+    {"id": "cov-a", "source": "claude", "started": (_now - dt.timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%S"), "venkat_turns": 3},
+    {"id": "cov-b", "source": "claude", "started": (_now - dt.timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%S"), "venkat_turns": 1},
+    {"id": "cov-old", "source": "claude", "started": (_now - dt.timedelta(days=30)).strftime("%Y-%m-%dT%H:%M:%S"), "venkat_turns": 5},
+    {"id": "cov-silent", "source": "claude", "started": (_now - dt.timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%S"), "venkat_turns": 0},
+    {"id": "cov-codex", "source": "codex", "started": (_now - dt.timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%S"), "venkat_turns": 2},
+]
+with open(os.path.join(cov, "USAGE.jsonl"), "w") as f:
+    f.write("\n".join(json.dumps(r) for r in _rows) + "\n")
+with open(os.path.join(covrec, "2026-09-14-0100-combined-late-x1x1.md"), "w") as f:
+    f.write("---\nid: R-2026-09-14-0100-x1x1\ntype: receipt\nsession_id: cov-a, cov-old\n---\n# r\n")
+_r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True,
+                    env=dict(ENV, SESSIONS_DIR=cov, ALFRED_RECEIPTS_DIR=covrec), timeout=120)
+check("open: counts this week's sessions without a receipt, combined receipts and old, silent, codex rows handled",
+      "sessions without a receipt this week: 1 of 2" in _r.stdout, _r.stdout[:400])
+os.remove(os.path.join(covrec, "2026-09-14-0100-combined-late-x1x1.md"))
+_r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True,
+                    env=dict(ENV, SESSIONS_DIR=cov, ALFRED_RECEIPTS_DIR=covrec), timeout=120)
+check("open: the coverage count moves when a receipt is removed (prove it can fail)",
+      "sessions without a receipt this week: 2 of 2" in _r.stdout, _r.stdout[:400])
+
 print(f"\n{'all passed' if not failures else str(failures) + ' failed'}  (scratch folder: {tmp})")
 if failures:
     sys.exit(1)

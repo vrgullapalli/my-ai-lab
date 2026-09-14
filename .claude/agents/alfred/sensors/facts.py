@@ -449,6 +449,45 @@ def waiting_line():
     return f"waiting on Venkat: {m.group(1) if m else '?'} items; oldest: {first[:120]}"
 
 
+
+def receipt_coverage_line(days=7):
+    """Sessions without a receipt this week, out of how many (Venkat, 2026-09-14 15:18: "a facts-sheet
+    line for sessions without a receipt"). A session counts when evidence/sessions/USAGE.jsonl shows a
+    Claude session in the lab, started within the last `days` days, with at least one turn from him.
+    It has a receipt when its id appears in the session_id line of any receipt; a combined late
+    receipt lists several ids on that line. A session still open counts as without one until it closes."""
+    usage = os.path.join(SESSIONS_DIR, "USAGE.jsonl")
+    since = now() - dt.timedelta(days=days)
+    counted = []
+    for line in read(usage).split("\n"):
+        if not line.strip():
+            continue
+        try:
+            r = json.loads(line)
+        except ValueError:
+            continue
+        started = str(r.get("started") or "")
+        if r.get("source") != "claude" or not started[:1].isdigit() or int(r.get("venkat_turns") or 0) < 1:
+            continue
+        if r.get("cwd") and not str(r["cwd"]).startswith(LAB):
+            continue
+        try:
+            when = dt.datetime.strptime(started[:19], "%Y-%m-%dT%H:%M:%S")
+        except ValueError:
+            continue
+        if when >= since:
+            counted.append(str(r.get("id")))
+    covered = set()
+    sessions, _ = receipts()
+    for n in sessions:
+        for sid in front_matter(read(os.path.join(RECEIPTS, n))).get("session_id", "").split(","):
+            if sid.strip():
+                covered.add(sid.strip())
+    missing = [sid for sid in counted if sid not in covered]
+    return (f"sessions without a receipt this week: {len(missing)} of {len(counted)} "
+            f"(Claude sessions in the lab with a turn from him, last {days} days; a session still open counts)")
+
+
 def open_sheet():
     t = now()
     today = t.strftime("%Y-%m-%d")
@@ -475,6 +514,8 @@ def open_sheet():
             d = json.loads(read(os.path.join(UNRECEIPTED, p)) or "{}")
             out.append(f"  ended {d.get('end', '?')}, {len(d.get('changed', []))} files changed"
                        f" — note: .claude/agents/alfred/state/unreceipted/{p}")
+
+    out.append(receipt_coverage_line())
 
     loops = open_loops()
     out.append(f"open follow-ups: {len(loops)}")
