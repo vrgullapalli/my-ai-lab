@@ -8,6 +8,11 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 
 - [x] **Career model current-state research handoff** for an external researcher, read-only, saved at his word to `docs/research/assessments/2026-09-14--career-model-current-state-research-handoff.md` (02:38). Done; handing it over is his (F-20260914-0238-2). (from 2026-09-14)
 
+- [x] **Ecosystem doctrine (Prompt 1)**: revised in place at his two `/goal`s (02:12 boundaries and wording, 02:20 exact four-criteria definition; State and Authority not tested alone). `docs/ecosystem/2026-09-14--ai-lab-product-ecosystem-design-doctrine.md`, 371 lines, committed at `ce6cf3b` by another session. Doctrine as a whole still proposed (F-20260914-0239-5). Receipt R-2026-09-14-1501-1086. (from 2026-09-14)
+- [x] **Portfolio architecture (Prompt 2)**: written at his first `/goal` (02:33) and revised in place at his six corrections (03:49); `docs/ecosystem/2026-09-14--ai-lab-portfolio-architecture.md`, 410 lines. Final two corrections at 11:46 (Experiment and Option split, sixteen categories; Expression a form of an Asset); Prompt 2 closed for good. Prompt 3 is next (F-20260914-1142-1). Receipts R-2026-09-14-1142-5af1, R-2026-09-14-1307-f084. (from 2026-09-14)
+
+- [x] **Registries, checks, and sensors baseline** at his `/goal` (13:23): `docs/documentation/CURRENT-REGISTRIES-CHECKS-SENSORS.md`, 297 lines, seventeen registries, twenty-two checks, an eight-way sensing grid, gaps. Three follow-ups opened (F-20260914-1347-1 to -3). Receipt R-2026-09-14-1347-4232. (from 2026-09-14)
+
 ## Carried forward
 
 - [ ] **Write the three context files** (`context/who-i-am.md`, `how-i-talk.md`, `how-i-work.md`). His: "yes, its on purpose. will get to that today." `how-i-work.md` was written and wired 09-11 at his word 23:37; the other two are not started. (from 2026-09-10)
@@ -35,3 +40,5 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [x] **Three current-state source briefs for the Portfolio architecture prompt** written at his /goal of 02:35, in `docs/research/assessments/`. Committed 03:21 at his word. Receipt R-2026-09-14-0248-f8d1.
 - [ ] **Read the three briefs** and say if they are enough for Prompt 2 (F-20260914-0248-1).
 - [x] **38 follow-ups Alfred could do alone** cleared 02:55 to 03:12 at his word ("go plus the six"), 15-check gate ledger all met; receipt R-2026-09-14-0321-9e08. Twelve new follow-ups, six of them his calls (Q14 and Q37, snapshot, commit guard, render patch, the two briefs, the weekly instrument).
+- [x] **Eight sessions' late receipt** written and committed 02:41 (R-2026-09-14-0239-edf9); pushed to GitHub at his word 02:45. The cloned job-search repo and the three PDFs are ignored, not deleted (F-20260914-0239-3).
+- [ ] **Footer ruling**: move it to the close routine as three lines, or keep it per reply only when a check found a number. All 79 footers are compiled at `evidence/audits/2026-09-14-implication-lens-footers/FOOTERS.md`, uncommitted (F-20260914-1507-1, -3).

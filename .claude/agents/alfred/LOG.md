@@ -139,3 +139,35 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-14 02:58 | D6 | ran | correction: receipt 3c1e says 3 commits unpushed; git counts 1 (origin/main..main) after another session's push; carried to the next receipt | git rev-list
 2026-09-14 03:21 | D6 | ran | 38 follow-ups closed with evidence in R-2026-09-14-0321-9e08; 12 opened (6 need Venkat); open count 117 to 130 because the counter now honors only '- F-' lines | facts.py loops
 2026-09-14 03:21 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (takes the larger option when the extra is fact fixes) | observed notes
+2026-09-14 03:24 | CLOSE | ran | 2026-09-14-0321-thirty-eight-follow-ups-cleared-9e08.md; commits ce6cf3b (lab root), 3f8945a (brand-os), 919df68 (engagement-os) at his word, no push; lab root 3 ahead of GitHub; the brand-os commit also carried a DECISIONS.md edit left by an earlier session; day review not due (before 5 PM; 2026-09-13 review exists) | facts.py close; state lines written
+2026-09-14 03:38 | CLOSE | ran | /session-receipt: no durable change since R-2026-09-14-0248-f8d1; transcript rendered (87 tool calls, 3 subagents); receipt has no decisions or corrections to anchor | facts.py close
+2026-09-14 03:37 | D6 | ran | seeds A-LIVE-332 to 334 written at his pick (all 3) and committed in engagement-os at his word | git log
+2026-09-14 11:42 | D6 | ran | four follow-ups opened (F-20260914-1142-1 to -4: Prompt 3, commit the revision, fill the outcomes tail, confirm the doctrine copy); none closed | receipt
+2026-09-14 11:42 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (accepts a mostly-right draft subject to numbered corrections; the two mistake kinds named) | observed notes
+2026-09-14 11:42 | CLOSE | ran | 2026-09-14-1142-portfolio-architecture-written-and-revised-5af1.md; one lab file written and revised (the Portfolio architecture, 410 lines), Prompt 2 closed; no commit, no push; day review not due (before 5 PM) | facts.py close; state lines written
+2026-09-14 13:07 | D6 | ran | one follow-up opened (F-20260914-1307-1, commit the twice-revised architecture); F-20260914-1142-1 stays the next action; none closed | receipt
+2026-09-14 13:07 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (reviews in passes, each a numbered goal; names the defect kind first; the fold mistake) | observed notes
+2026-09-14 13:07 | CLOSE | ran | 2026-09-14-1307-portfolio-architecture-final-two-corrections-f084.md; the architecture revised a second time (16 categories, Expression a form of an Asset), Prompt 2 closed for good; no commit, no push; day review not due (before 5 PM) | facts.py close; state lines written
+2026-09-14 13:47 | D6 | ran | three follow-ups opened (F-20260914-1347-1 career-model line has no ALERT or owner; -2 three source-discovery findings wait on him; -3 rulings files have no reader or status word); F-20260914-1142-1 stays the next action; none closed | receipt
+2026-09-14 13:47 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (a fourth /goal: an evidence baseline told to refuse inference, with labels and its own verification list; he names a next phase the lab does not) | observed notes
+2026-09-14 13:47 | CLOSE | ran | 2026-09-14-1347-registries-checks-sensors-baseline-4232.md; one lab file written (the registries, checks, and sensors baseline, 297 lines); no commit, no push; day review not due (before 5 PM) | facts.py close; state lines written
+2026-09-14 13:53 | D6 | ran | two seeds written at his pick ("both seed candidates"): A-LIVE-335 (a document about the registries is under their sensors), A-LIVE-336 (a sensor line with no ALERT threshold and no owner sits at show-at-open); seedbank session count 334 to 336 | seed-capture, Capture mode
+2026-09-14 15:01 | D6 | ran | none new; F-20260914-1142-1 (Prompt 3) stays the next action, F-20260914-1307-1 (commit) waits on his word | receipt
+2026-09-14 15:01 | D7 | ran | none | observed notes
+2026-09-14 15:01 | CLOSE | ran | no durable change since R-2026-09-14-1307-f084; transcript re-rendered (193 tool calls); only .DS_Store files, the hook state file, and the sync log changed since; day review not due (before 5 PM) | facts.py close
+2026-09-14 15:01 | CLOSE | ran | 2026-09-14-1501-two-seeds-written-transcript-captured-aa59.md; second receipt for the session (two seeds at his pick, transcript rendered); no commit, no push; day review not due (before 5 PM) | facts.py close; state lines written
+2026-09-14 15:01 | D6 | ran | no new commission; the design ruling stays F-20260914-0239-5 (waiting on Venkat) | alfred-close
+2026-09-14 15:01 | D7 | ran | 1 line appended (the re-issued goal with a growth horizon) | observed notes
+2026-09-14 15:01 | CLOSE | ran | 2026-09-14-1501-context-design-receipt-confirmed-c08e.md; confirms the late receipt for session 904ccc0a with anchors; no new files beyond the receipt; no commit, no push; day review not due (before 5 PM) | facts.py close; state lines written
+2026-09-14 15:03 | D6 | ran | closed F-20260913-0810-3; nothing new opened | receipt 0742
+2026-09-14 15:03 | D7 | ran | 1 observation line appended (seed scan needs the buyer frame and a so-what)
+2026-09-14 15:03 | CLOSE | ran | 2026-09-14-1503-session-closed-anchors-0742.md | facts.py close; state lines written
+2026-09-14 15:02 | D6 | ran | one opened (F-20260914-1501-1: close sensor misses Bash-scripted edits); none closed; F-20260914-1142-1 (Prompt 3) stays the next action | receipt 1086
+2026-09-14 15:02 | D7 | ran | one line appended: two goals eight minutes apart, exact wording supplied, first pass invented an exemption where the layer should have been out of scope | observed notes
+2026-09-14 15:02 | CLOSE | ran | 2026-09-14-1501-doctrine-revised-two-goals-1086.md | facts.py close
+2026-09-14 15:08 | D6 | ran | F-20260914-1307-1 and F-20260914-1142-2 closed by commit 4bd2040 at his word ("commit the architecture file"); nothing pushed, lab root 4 ahead | git log
+2026-09-14 15:08 | CLOSE | ran | 2026-09-14-1508-portfolio-architecture-committed-6156.md; one commit, one file, no push | git status
+2026-09-14 15:09 | D6 | ran | opened F-20260914-1507-1..4; closed F-20260914-0239-1, -2 (by ce6cf3b) | receipt b2a5
+2026-09-14 15:09 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (evidence before redesign) | observed notes
+2026-09-14 15:09 | CLOSE | ran | 2026-09-14-1507-late-receipts-pushed-footers-compiled-b2a5.md | facts.py close; state lines written
+2026-09-14 15:10 | D6 | ran | seeds A-LIVE-337 and A-LIVE-338 written at his pick ("both seed candidates are good to go"); concepts.md two entries | seed-capture
