@@ -35,16 +35,23 @@ def masked(text):
     return ss.MASK in ss.SECRET.sub(ss.MASK, text)
 
 
-# fake keys, right shape, wrong contents
-ANTHROPIC = "sk-ant-api03-AbCdEf-GhIjKl_MnOpQr-StUvWx_YzAbCd-EfGhIjKlMnOpQrStUvWxYzAbCdEfGh"
-GOOGLE = "AIzaSyA1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q"
+# fake keys, right shape, wrong contents. Each is joined from pieces at run time so the file's own
+# bytes never hold a scanner-shaped string (GitHub push protection stopped a push on 2026-09-14 over
+# the Slack-shaped fake; Venkat allowed it once and chose to fix forward. The values the test checks
+# are unchanged, so the sensor's pattern is tested exactly as before).
+def _j(*parts):
+    return "".join(parts)
+
+
+ANTHROPIC = _j("sk-ant-", "api03-AbCdEf-GhIjKl_MnOpQr-StUvWx_YzAbCd-EfGhIjKlMnOpQrStUvWxYzAbCdEfGh")
+GOOGLE = _j("AIza", "SyA1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q")
 OLD_KINDS = {
-    "plain sk- key": "sk-AbCdEfGhIjKlMnOpQrStUvWxYz0123",
-    "GitHub token": "ghp_AbCdEfGhIjKlMnOpQrStUvWxYz0123456789",
-    "Slack token": "xoxb-1234567890-abcdefghijklmnop",
-    "Bearer token": "Authorization: Bearer AbCdEfGhIjKlMnOpQrStUvWxYz.0123456789",
-    "AWS key id": "AKIAABCDEFGHIJKLMNOP",
-    "private key header": "-----BEGIN RSA PRIVATE KEY-----",
+    "plain sk- key": _j("sk-", "AbCdEfGhIjKlMnOpQrStUvWxYz0123"),
+    "GitHub token": _j("ghp_", "AbCdEfGhIjKlMnOpQrStUvWxYz0123456789"),
+    "Slack token": _j("xox", "b-1234567890-abcdefghijklmnop"),
+    "Bearer token": _j("Authorization: Bear", "er AbCdEfGhIjKlMnOpQrStUvWxYz.0123456789"),
+    "AWS key id": _j("AKIA", "ABCDEFGHIJKLMNOP"),
+    "private key header": _j("-----BEGIN ", "RSA PRIVATE KEY-----"),
 }
 PROSE = """The lab root became a repository on 2026-09-09, and the receipt for 2026-09-13-0602 names
 follow-up F-20260913-0602-2. The file lives at ~/Documents/my-ai-lab/work-os/scheduled-tasks/
