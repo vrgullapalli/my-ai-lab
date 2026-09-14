@@ -38,13 +38,24 @@ for more than an hour. Lines that start with `ALERT` are the ones worth his atte
 0. **Read State first** (State v0.1, 2026-09-13, AD-37). Before anything else, ask the ledger what is
    currently true, so the brief starts from the record and not from a re-read of folders:
    ```bash
-   python3 context/state/state.py package --scope ai-lab --consumer brief --fields active,changed,open,waiting,decided,carry_forward
+   python3 context/state/state.py package --scope ai-lab --consumer brief --fields active,changed,open,waiting,decided,carry_forward --since <the date of the last OPEN log line> --authority his-word,system,proposed --in-hand
    python3 context/state/state.py check
    ```
-   The package's `carry_forward` holds the newest "next session starts with"; `waiting` is the three
-   homes as one list with a source on each item; `active` says who holds what. Anything the check lists
-   as a conflict or stale goes into the brief's "at risk" lines; never fix a line, append a corrected one.
-   What the package cannot answer, the steps below still find; State is the index, the receipts are the record.
+   The two filters are the brief's (decided 2026-09-14 at the wiring, closing F-20260913-0844-1 and -2):
+   `--authority` leaves out derived lines, so seed-day noise never reaches the brief; `--in-hand` keeps
+   only work someone holds, so his to-do lines appear once, under waiting, never as work in progress.
+   What each brief section takes from the package (the wiring, AD-30):
+   - **Start here** comes from `carry_forward[0]`, the newest "next session starts with", and its `next`.
+   - **What changed** comes from `changed`, newest first, his-word before system.
+   - **Which ruling is current** comes from `decided`: any his-word decision changed since the last open,
+     with what it supersedes. Left out when none changed.
+   - **Who holds what** comes from `active` and `ownership`.
+   - **Waiting on you** comes from `waiting` (the count, the oldest, the three homes as one list).
+   - **At risk** takes the check's conflicts and stale lines first, then the facts sheet's `ALERT` lines.
+   The package cannot answer three things, and `facts.py` still does: cloud briefs pulled today, an open
+   gates ledger, and which threat in `STANDING.md` became true (the comparison of 2026-09-14 01:10,
+   F-20260914-0125-3). Read a folder only for what neither answers, and name it in the brief's last line.
+   Never fix a State line; append a corrected one at the close.
 
 1. **Catch sessions that ended without a receipt.** For each `ALERT sessions that changed
    files but wrote no receipt` line, run `alfred-close` in late mode with that note
@@ -89,8 +100,10 @@ for more than an hour. Lines that start with `ALERT` are the ones worth his atte
    quotes that line and gives the link. Nothing else about the list goes in the brief.
 
 6. **Prepare the first step of the one next action.** Pick it from, in order: an unlazy
-   ledger left open (`GATES.md`), the newest receipt's `Next session starts with`, a follow-up
-   that is slipping, a pending gate on the article in progress, the top of `TODAY.md`. Then
+   ledger left open (`GATES.md`), the package's `carry_forward[0]` (the newest "next session
+   starts with", which is the receipt's line read from State), a follow-up that is slipping
+   (the package's `stale` and the oldest `waiting`), a pending gate on the article in progress,
+   the top of `TODAY.md`. Then
    actually prepare it, inside what Alfred may do alone (`AUTHORITY.md`): open and read the
    file, draft the text, write the exact command. Never send, publish, push, or commit it.
 
@@ -102,12 +115,16 @@ for more than an hour. Lines that start with `ALERT` are the ones worth his atte
    **Start here:** <the one action> — <the prepared first step: a path, a draft, a command>
 
    **What changed:** up to three bullets, newest first
+   **Which ruling is current:** one line, only when a his-word decision changed since the last open
+   **Who holds what:** one line, only when work is in hand (a session or Alfred holds it)
    **Waiting on you:** the count and the oldest item, with the link to the page
-   **At risk:** up to three — a threat from STANDING.md that became true, or a follow-up
-     slipping, each with a 10-minute way to get it moving
+   **At risk:** up to three — a State conflict or stale line, a threat from STANDING.md that
+     became true, or a follow-up slipping, each with a 10-minute way to get it moving
    **You might be forgetting:** up to three
    **Already done for you:** late receipts written, briefs pulled, list rolled
+   From State: <n> of <m> items above; read from folders: <none, or the files>
    ```
+   The last line is the wiring's own measure: the day review counts it (alfred-close step 8).
 
    *"Urgency yes, dread no"* (`DONE.md` section 5). Never "this has been open for three
    weeks." Give the recovery step instead. Anything that cannot be verified is `Unknown`.

@@ -423,13 +423,26 @@ def cmd_from_receipt(argv):
             (written if o else refused).append(o["id"] if o else f"loop:{fid}: {why}")
     nxt = re.search(r"\*\*Next session starts with:\*\*\s*(.*)", text)
     if nxt and rid:
-        o = {"id": f"commitment:{rid}/next", "kind": "commitment", "what": nxt.group(1).strip()[:300], "status": "open", "scope": "ai-lab",
+        whole = nxt.group(1).strip()
+        what, _, step = whole.partition(" — first step:")
+        o = {"id": f"commitment:{rid}/next", "kind": "commitment", "what": what.strip()[:300], "status": "open", "scope": "ai-lab",
              "owner": "Alfred", "source": [rel], "authority": "system", "established": date, "changed": date}
+        if step.strip():
+            o["next"] = step.strip()[:300]
         if same(o):
             skipped += 1
         else:
             o, why = append(o, by, maps)
             (written if o else refused).append(o["id"] if o else f"commitment: {why}")
+            if o:
+                # one open "next session starts with" at a time: the newest governs, the older ones are carried into it (2026-09-14)
+                for old in list(cur0.values()):
+                    if old.get("kind") == "commitment" and old.get("status") == "open" and old["id"].endswith("/next") and old["id"] != o["id"]:
+                        k = {k2: v for k2, v in old.items() if not k2.startswith("_")}
+                        k.update({"status": "kept", "changed": date, "note": f"carried into {o['id']}", "source": list(dict.fromkeys(k.get("source", []) + [rel]))})
+                        w, _ = append(k, by, maps)
+                        if w:
+                            written.append(w["id"] + " (carried)")
     print(f"from-receipt {rel}: {len(written)} lines written, {skipped} already current" + (f"; {len(refused)} refused: {refused}" if refused else ""))
     return 0 if not refused else 1
 
@@ -625,7 +638,7 @@ def waiting_homes():
     for r in (waiting.today_items() + waiting.telegraph_items()):
         out.append({"id": r.get("id") or f"{r['kind']}:{re.sub(r'[^a-z0-9]+', '-', r['what'].lower())[:50]}", "what": r["what"], "owner": "Venkat",
                     "home": r["source"], "source": [r["source"]], "next": r.get("step", "")[:200], "authority": "system"})
-    OPENED.extend([TODAY_MD, os.path.join(LAB, "work-os/upskill-advisor/records/open-items.md")])
+    OPENED.extend([os.path.relpath(TODAY_MD, LAB), "work-os/upskill-advisor/records/open-items.md"])
     return out
 
 

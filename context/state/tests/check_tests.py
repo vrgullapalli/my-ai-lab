@@ -102,6 +102,14 @@ check("the waiting loop carries owner Venkat and the commitment leads carry_forw
       any(o["id"] == "loop:F-20260913-0900-1" and o["status"] == "waiting" for o in pk.get("open", [])) and pk.get("carry_forward", [{}])[0].get("id") == "commitment:R-2026-09-13-0900-abcd/next", out[:300])
 rc, out = run(p2, "from-receipt", rcpt, "--by", "alfred-close/test")
 check("from-receipt run twice writes nothing new (idempotent)", rc == 0 and "0 lines written, 4 already current" in out, out)
+check("the next-session line splits into what and the prepared first step", pk.get("carry_forward", [{}])[0].get("next") == "do it" and pk["carry_forward"][0].get("what") == "the next thing", out[:300])
+rcpt2 = os.path.join(tmp, "2026-09-13-1000-second-receipt-bcde.md")
+with open(rcpt2, "w") as f:
+    f.write("---\nid: R-2026-09-13-1000-bcde\ntype: receipt\ndate: 2026-09-13\n---\n# Session receipt\n\n**Next session starts with:** the newer thing — first step: start\n")
+rc, out = run(p2, "from-receipt", rcpt2, "--by", "alfred-close/test")
+rc2, out2 = run(p2, "package", "--fields", "carry_forward")
+cf = json.loads(out2).get("carry_forward", []) if rc2 == 0 else []
+check("a newer next-session line carries the older one: one open next at a time", rc == 0 and "2 lines written" in out and [o["id"] for o in cf] == ["commitment:R-2026-09-13-1000-bcde/next"], out + out2[:200])
 
 # the brief's two package filters (decided 2026-09-14 at the brief wiring) and carry_forward order
 p3 = ledger("brief-filters", good + [

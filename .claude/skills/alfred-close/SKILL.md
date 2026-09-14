@@ -139,6 +139,9 @@ and the receipt says so.
    - **Did the brief get him started?** Compare today's `OPEN` log line's next action with
      the receipts: started, or not. `DONE.md` calls "days I open the system but start
      nothing" the single truest measure.
+   - **Brief traced to State.** Copy the brief's last line, "From State: n of m items; read from
+     folders: ...". When folders were read for something the package could have held, name the
+     missing kind of line; that is a State gap, not a brief fault (the wiring, 2026-09-14).
    - **What worked, what didn't, what to change** — three each at most, each with a pointer
      to its evidence.
    - **Slipping** — each open follow-up past its moment, with a ten-minute way back in.
