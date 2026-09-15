@@ -1,7 +1,7 @@
 ---
 name: lab-operating-model
-what: How the AI Lab's capabilities, operating scopes, actors, connections and real working loops fit together in daily use and evolve over time.
-status: working canonical operating model, added 2026-09-13 at Venkat's word (AD-34)
+what: How the AI Lab's capabilities, operating scopes, actors, connections and real working loops fit together in daily use and evolve over time. Section 16 is the one canonical copy of Operational DNA, the design standard every important part resolves against.
+status: working canonical operating model, added 2026-09-13 at Venkat's word (AD-34); Operational DNA added as section 16 on 2026-09-15 at his word (AD-38)
 home: docs/architecture/
 read_with: CAPABILITY-MAP.md; CAPABILITY-DEFINITIONS.md; ARCHITECTURE-DECISIONS.md
 ---
@@ -270,3 +270,63 @@ Prefer shared capabilities, scoped use, deterministic facts/boundaries, AI inter
 The user experience should increasingly feel like:
 
 > **The system already understands enough of the situation to be useful and makes it obvious when it does not.**
+
+## 16. Operational DNA (the standard)
+
+Added 2026-09-15 at Venkat's word (AD-38), after two read-only audits on 2026-09-14 and 15 (`seed-capture`, then `context-check`) showed that these ten questions find responsibility, state, authority, trust, and proof problems that a component's own file does not show. **This section is the only copy.** A component refers to it and records its own answers; it never restates the standard.
+
+The one question, for every design: **what should this become now that AI exists?** Use AI where it changes the process or the outcome. Use a script where a script is better. Add nothing to satisfy the standard.
+
+The seven families in section 3 group capabilities. The ten properties below describe any one part: a capability, skill, agent, workflow, product, interface, sensor, or routine.
+
+### The ten properties
+
+1. **Job.** What useful change this makes, for whom, and what success looks like. Start from the job, not the existing mechanism.
+2. **Scope.** Where it applies and where it stops: actors, data, client and personal boundaries, permitted uses, exclusions. Technical access is not permission to use.
+3. **Process.** Trigger, the steps that matter, decisions, handoffs, the stopping rule, the failure path, and the next consumer.
+4. **State.** What persists, where it lives, and what changes it. Current stays distinct from history. History is never rewritten to look like the present.
+5. **Context.** The least it needs to do the job right, and what it must not receive: stale, prohibited, out-of-scope, or irrelevant material.
+6. **Evidence.** Whether what happened, and what supports it, can be traced: source, time, what ran, what changed, corrections, conflicts, proof of completion. Reuse the shared evidence record. No ledger per component. Scripts establish facts; AI says what they mean.
+7. **Trust.** What may be relied on, and how uncertainty changes behavior: narrow, verify, qualify, ask, escalate, refuse, or reopen. **No new vocabulary.** Use the governed markings the source or system already carries: a seed's attribution class, retrieval's authority tier, State's authority field, a brief's observed, inferred, and proposed labels. A marking that changes nothing is noise.
+8. **Authority and control.** Who or what may read, decide, write, communicate, accept a finding, or act; what needs a person; escalation, override, refusal, undo. Access is not authority. AI never widens its own. For a tool-using part, name the dangerous mix in one line: private data, untrusted input, and a write or run capability together.
+9. **Experience.** What a person must understand, decide, correct, or control: where things stand, what changed, what can be relied on, what needs their word, what happens next. Often the best experience is no interruption.
+10. **Evaluation and learning.** The smallest credible proof that it works and fails the right way: planted failures, known answers, regression cases, downstream outcomes, a person's corrections, observed use. Learning may change behavior, context, or implementation. It never silently changes authority, scope, canonical truth, or a rule. A failure produces learning, not more machinery.
+
+### Four states
+
+Each property gets exactly one of these, in the component's own file:
+
+- **OWN.** This component is responsible for it.
+- **INHERIT.** A shared capability or system already provides it; name which.
+- **NONE BY DESIGN.** It does not belong here; say why.
+- **GAP.** It is required and unresolved.
+
+INHERIT is usually the right answer. The standard governs the whole component, not each file inside it: a skill may own Process and Context and inherit Evidence, State, and Authority; a sensor may own only a narrow Process, Evidence, and Evaluation.
+
+**GAP rule.** A GAP is resolved, or accepted as a bounded limitation with scope and reason, or kept from touching consequential use. It is never left silent.
+
+### Findings: resolved is not accepted
+
+- **RESOLVED.** The mechanism that found the condition ran again and the condition is gone.
+- **ACCEPTED.** The condition is still there. An authorized person accepted it, with scope and reason recorded.
+
+A report never counts an accepted finding as resolved, and never folds it into a "zero findings" line.
+
+### Who may accept a finding
+
+- **Venkat accepts,** item by item or as a named set.
+- **Alfred may write the acceptance line** when Venkat's word names the finding or the set. The line records who, when, and under what word.
+- **Bulk acceptance,** many findings under one act, needs Venkat's explicit word naming the set and the count. Without that word, a bulk acceptance is recorded as bulk, reported as bulk, and stays unconfirmed. It is not treated as item-by-item review.
+- **The record is the existing accepted file beside the sensor** (`dead-pointers-accepted.txt`, `skill-check-accepted.txt`, `discovery-accepted.txt`), with one marker line above a group: `# accepted-by: <who> | item or bulk | <date> | <the word or record that authorized it>`. No new store.
+
+### Build and change
+
+A new material part: define the Job, resolve the ten, close or bound the gaps, build the simplest robust version, prove it, one review, record the limits and move on (section 13). A material change asks which properties it touches. Escalate when it changes the job, the scope, authority, trust or failure behavior, canonical state, or a person's decision rights. Routine edits stay local.
+
+### Anti-patterns
+
+AI bolted onto an unchanged workflow · a memory or state store per component · hidden authority · access treated as permission · inference presented as fact · warnings that change nothing · context dumping · state with no provenance · self-declared completion · tests weakened to pass · ten headings added to satisfy the template · a new layer, agent, store, or framework without a real job.
+
+### How a component records it
+
+A short block headed **Operational DNA** in its own definition file: ten lines, one per property, each with its state and one clause. It points here. It does not restate the standard. The first two, 2026-09-15: `.claude/skills/seed-capture/SKILL.md` and `.claude/skills/context-check/SKILL.md`.

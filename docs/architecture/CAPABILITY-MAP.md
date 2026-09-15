@@ -126,10 +126,10 @@ The registry answers **what shared capabilities exist**. It does not register ev
 - consumers: alfred-open, alfred-close, the alfred agent, unlazy, Venkat (the facts sheet)
 - sensors: .claude/agents/alfred/sensors/tests; .claude/hooks/tests; .claude/skills/prove-it-can-fail (the check that a check can fail)
 - defined-in: CAPABILITY-DEFINITIONS.md#measurement
-- proof: .claude/agents/alfred/sensors/tests/facts_tests.py and .claude/skills/context-check/tests/skill_check_tests.py; live before the gate of 2026-09-12
+- proof: .claude/agents/alfred/sensors/tests/facts_tests.py; .claude/skills/context-check/tests/skill_check_tests.py, dead_pointers_tests.py, and context_check_tests.py (planted faults, 2026-09-15, AD-38); .claude/skills/seed-capture/tests/seed_check_tests.py; live before the gate of 2026-09-12
 - related: authority, evidence-record, capability-architecture
 - added: 2026-09-12
-- changed: 2026-09-12
+- changed: 2026-09-15
 
 ### scheduled-routines
 - id: scheduled-routines

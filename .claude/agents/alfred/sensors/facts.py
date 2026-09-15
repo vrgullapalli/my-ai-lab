@@ -69,7 +69,29 @@ def ledger_open():
             return True
     return False
 SNAPSHOTS = os.path.expanduser("~/Documents/_warehouse/_backups/snapshots")
-OFFSITE = os.path.expanduser("~/Library/CloudStorage/Dropbox-Telisina/Venkat Gullapalli/my-ai-lab-backups")
+# The off-machine copy is found by stable id, never by a folder path written here (Organization Standard section 3;
+# AD-40, AD-42, the Dropbox snapshot pilot of 2026-09-15). The estate root is a location declared once; the id is
+# resolved to its live folder by the role map at every run, so a relocation in Dropbox cannot leave this line blind.
+OFFSITE_ROOT = os.environ.get("ALFRED_OFFSITE_ROOT") or os.path.expanduser("~/Library/CloudStorage/Dropbox-Telisina/Venkat Gullapalli")
+OFFSITE_ID = os.environ.get("ALFRED_OFFSITE_ID") or "my-ai-lab-snapshots"
+ROLE_MAP = os.path.join(LAB, ".claude", "skills", "context-check", "role-map.py")
+
+
+def offsite_dir():
+    """The live folder for the off-machine copy's id, or (None, why) when the role map cannot resolve it."""
+    if not os.path.isdir(OFFSITE_ROOT):
+        return None, f"estate root not present: {OFFSITE_ROOT}"
+    if not os.path.isfile(ROLE_MAP):
+        return None, "role-map.py missing"
+    try:
+        r = subprocess.run([sys.executable, ROLE_MAP, "resolve", OFFSITE_ID, OFFSITE_ROOT, "--max-depth", "1"],
+                           capture_output=True, text=True, timeout=60)
+    except subprocess.TimeoutExpired:
+        return None, "role map timed out"
+    msg = (r.stdout or r.stderr).strip()
+    if r.returncode != 0:
+        return None, msg
+    return msg, None
 TASKS = os.path.join(LAB, "work-os", "scheduled-tasks")
 ENG = os.path.join(LAB, "work-os", "brand-os", "engagement-os")
 SEEDS = os.path.join(ENG, "seedbank")
@@ -541,13 +563,16 @@ def open_sheet():
     else:
         out.append("ALERT last snapshot: none found")
     # driver 2 in context/intent/STANDING.md: the work survives losing a machine. A copy on this laptop does not count.
-    off = sorted([os.path.join(OFFSITE, f) for f in os.listdir(OFFSITE) if f.endswith(".tar.gz")],
-                 key=os.path.getmtime) if os.path.isdir(OFFSITE) else []
+    offsite, why = offsite_dir()
+    off = sorted([os.path.join(offsite, f) for f in os.listdir(offsite) if f.endswith(".tar.gz")],
+                 key=os.path.getmtime) if offsite else []
     if off:
         age = age_days(os.path.getmtime(off[-1]))
-        out.append(f"{'ALERT ' if age > 7 else ''}last off-machine copy (Dropbox): {os.path.basename(off[-1])} ({age} days old)")
+        out.append(f"{'ALERT ' if age > 7 else ''}last off-machine copy (Dropbox, id {OFFSITE_ID}): {os.path.basename(off[-1])} ({age} days old)")
+    elif offsite:
+        out.append(f"ALERT last off-machine copy: id {OFFSITE_ID} resolves to {offsite} but it holds no snapshot")
     else:
-        out.append("ALERT last off-machine copy: none found in Dropbox")
+        out.append(f"ALERT last off-machine copy: id {OFFSITE_ID} not resolved ({why})")
 
     lines = log_lines()
     if lines:

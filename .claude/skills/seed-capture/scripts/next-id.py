@@ -12,7 +12,8 @@ import os
 import re
 import sys
 
-SESSION = "/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/session"
+SESSION = os.path.join(os.environ["SEEDBANK"], "session") if os.environ.get("SEEDBANK") else "/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank/session"
+# SEEDBANK in the environment points the script at a test bank; the tests use it, nothing else does.
 PREFIX = "A-LIVE-"
 
 

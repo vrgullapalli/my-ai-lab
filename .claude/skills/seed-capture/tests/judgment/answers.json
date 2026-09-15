@@ -1,0 +1,8 @@
+{
+  "_about": "Expected verdicts for cases.md. Frozen 2026-09-15. Each 'kind' is one of the five the goal required. A confirmed miss is added as a new case here and in cases.md; nothing here is edited to make a run pass.",
+  "case-1": {"kind": "clear seed", "verdict": "seed", "why": "said three times, his, the sentence is the rule, asked for by name (put it on the front door)"},
+  "case-2": {"kind": "subtle seed", "verdict": "seed", "why": "a one-off with a name (the restored-from test), his, the sentence is the rule; three of four"},
+  "case-3": {"kind": "tempting non-seed", "verdict": "not-seed", "why": "system wording, not endorsed: 'ok, move on' is not adoption; fails his, fails repeated"},
+  "case-4": {"kind": "repeat", "verdict": "repeat", "why": "the wording already sits in the seedbank as A-LIVE-313; connect, do not write"},
+  "case-5": {"kind": "honest ambiguous", "verdict": "ask", "why": "a third person's words about him, one-off, not his; a near miss he can overrule; the honest verdict is to show it and ask"}
+}

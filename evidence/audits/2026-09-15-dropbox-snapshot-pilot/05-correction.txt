@@ -1,0 +1,26 @@
+Correction after the pilot, 2026-09-15 03:01 to 03:06 CDT, at Venkat's /goal (AD-41)
+
+Two inconsistencies the pilot exposed, and what changed:
+
+1. Self-pointing supersession. Both markers carried the same id, yet the old one said
+   "replaced-by: my-ai-lab-snapshots" and the new one "replaces: my-ai-lab-snapshots".
+   A relocation was written as a replacement. Fix: the standard now has two fields for two
+   events. "replaced-by" (a different thing took over; never the marker's own id) and
+   "moved-on: <date>" (the same thing left this location; the id resolves to its current
+   location through the map). The old marker now carries "moved-on: 2026-09-15" and no
+   "replaced-by". The new marker carries no "replaces". Marker edits only; no file moved.
+
+2. Area for lab snapshots. The standard had left "Machine copies, or Work / ai-lab" open.
+   Ruling: a derived view lives in the area and scope of what it was built from. Snapshots
+   are Work / ai-lab beside the lab. The canonical marker already said area: work; it now
+   agrees with the standard by rule, not by chance.
+
+Checks after the correction:
+- role-map re-scan of both folders, manifests verified: 2 markers, 1 id, 0 findings, exit 0.
+- No marker carries "replaces" or "replaced-by" (grep count 0 in both).
+- sha256 of all six files diffed against 01-baseline-before.txt: unchanged, 6 of 6.
+- files in canonical: 6; payload at the old location: 0.
+- role_map_tests.py: 14 cases pass, including self-replacement (fake replacement), a genuine
+  two-marker loop named as "loop loop-a -> loop-b -> loop-a", moved-on with no live marker,
+  and a marker carrying both fields.
+- architecture check 0 findings; dead-pointers, context-check, skill-check tests pass.

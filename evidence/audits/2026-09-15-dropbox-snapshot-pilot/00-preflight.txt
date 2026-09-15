@@ -1,0 +1,12 @@
+Dropbox snapshot-folder pilot, preflight, 2026-09-15 02:55 CDT
+goal: AD-40 (his word 02:51). Standard: docs/architecture/ORGANIZATION-STANDARD.md
+machine: Venkat’s MacBook Pro (Mac16,8), hostname Venkats-MacBook-Pro.local
+iMac mount: NONE. /Volumes holds only "Macintosh HD -> /". mount shows no smb/afp/nfs/webdav.
+  Deviation from the goal's "mounted iMac Dropbox": the two folders are reached through this
+  MacBook's Dropbox client (File Provider) at
+  /Users/venkatgullapalli/Library/CloudStorage/Dropbox-Telisina/Venkat Gullapalli
+  which syncs the same Dropbox account the iMac's client syncs. A path is a current location, not an identity.
+dropbox client: running (pid 3240)
+writability: my-ai-lab writable; my-ai-lab-backups writable (test -w)
+expected files: 6 (find -type f, .DS_Store excluded): confirmed 6
+canonical lab: ~/Documents/my-ai-lab on this MacBook, HEAD 243e14e. Not touched by this pilot.

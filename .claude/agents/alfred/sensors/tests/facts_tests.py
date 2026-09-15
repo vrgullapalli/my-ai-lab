@@ -53,6 +53,28 @@ check("open: carries the architecture check line", "architecture check: " in out
 check("open: carries the source register line", "sources: " in out and "registered" in out, out)
 check("open: carries the State line from state.py check", "state: " in out and "current lines" in out, out)
 
+# off-machine copy by stable id (Organization Standard, AD-40, AD-42): a planted estate whose live marker
+# carries the id puts the newest tar on the sheet; the same estate with the marker gone raises an ALERT that
+# names the id, so a relocation the map cannot resolve is never read as a healthy copy.
+estate = os.path.join(tmp, "estate")
+live = os.path.join(estate, "some-folder-name")
+os.makedirs(live)
+with open(os.path.join(live, "ROLE.md"), "w") as fh:
+    fh.write("# planted\n- id: planted-snapshots\n- role: derived\n- area: work\n- scope: ai-lab\n- as-of: 2026-09-15\n- declared-by: venkat\n")
+for name in ("my-ai-lab--2026-09-01--0100.tar.gz", "my-ai-lab--2026-09-14--0100.tar.gz"):
+    with open(os.path.join(live, name), "w") as fh:
+        fh.write("x")
+_t = (dt.datetime.now() - dt.timedelta(days=1)).timestamp()
+os.utime(os.path.join(live, "my-ai-lab--2026-09-14--0100.tar.gz"), (_t, _t))
+oenv = dict(ENV, ALFRED_OFFSITE_ROOT=estate, ALFRED_OFFSITE_ID="planted-snapshots")
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True, env=oenv, timeout=90)
+check("open: off-machine copy found by id through the role map, not by a path",
+      "last off-machine copy (Dropbox, id planted-snapshots): my-ai-lab--2026-09-14--0100.tar.gz (1 days old)" in r.stdout, r.stdout)
+os.remove(os.path.join(live, "ROLE.md"))
+r = subprocess.run([sys.executable, FACTS, "open"], capture_output=True, text=True, env=oenv, timeout=90)
+check("open: planted fault, marker gone: ALERT names the unresolved id",
+      "ALERT last off-machine copy: id planted-snapshots not resolved" in r.stdout, r.stdout)
+
 # capture with an empty sessions folder: the sheet says no run is logged, and does not crash
 empty = os.path.join(tmp, "no-sessions")
 os.makedirs(empty)

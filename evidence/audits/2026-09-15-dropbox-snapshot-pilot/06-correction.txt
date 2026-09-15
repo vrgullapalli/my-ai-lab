@@ -1,0 +1,29 @@
+Second correction, 2026-09-15 03:12 to 03:20 CDT, at Venkat's word (AD-42)
+
+His ruling replaced the single "moved-on" field Alfred chose under AD-41 (05-correction.txt):
+
+- replaces / replaced-by: one logical thing supersedes a different logical thing. Never the
+  marker's own id.
+- relocated-from / relocated-to / relocated-on: the same stable id moves to a new location.
+  Old tombstone: relocated-to and relocated-on. Live marker: relocated-from. The values are
+  folder names at the time of the move; identity stays the id and the map resolves it.
+- Lab snapshots belong in Work / ai-lab, role derived. Machine copies is for whole-machine,
+  device, app, disk-image, or system-level copies, not lab-generated snapshots.
+
+Marker edits, in place, no file moved:
+- my-ai-lab/ROLE.md: "moved-on: 2026-09-15" became "relocated-to: my-ai-lab-backups" and
+  "relocated-on: 2026-09-15".
+- my-ai-lab-backups/ROLE.md: added "relocated-from: my-ai-lab".
+- MANIFEST.txt untouched (sha256 prefix fedaca8ee9c080cf).
+
+Checks after:
+- role-map re-scan, manifests verified: 2 markers, 1 id, 0 findings, exit 0; the map shows
+  "live, relocated from my-ai-lab" and "relocated to my-ai-lab-backups on 2026-09-15".
+- No "replaces" or "replaced-by" field in either marker (count 0, both).
+- sha256 of all six files against 01-baseline-before.txt: unchanged, 6 of 6. Canonical 6 files,
+  old location 0 payload.
+- role_map_tests.py: 16 cases pass. Genuine supersession still uses replaces / replaced-by
+  (cases 4, 5, 11, 12); relocation is checked both ways (13, 14, 15) and a relocation loop is
+  named (16: "relocation loop for id 'ring': ring-a -> ring-b -> ring-a").
+- architecture check 0 findings; dead-pointers, context-check, skill-check tests pass.
+- The word "moved-on" no longer appears in the standard, the checker, or the tests.

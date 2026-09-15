@@ -1,0 +1,6 @@
+ROLE MAP for /Users/venkatgullapalli/Library/CloudStorage/Dropbox-Telisina/Venkat Gullapalli
+
+- my-ai-lab-snapshots | derived | work/ai-lab | live | my-ai-lab-backups | as-of 2026-09-15 | venkat
+- my-ai-lab-snapshots | historical | work/ai-lab | superseded -> my-ai-lab-snapshots | my-ai-lab | as-of 2026-09-15 | venkat
+
+

@@ -1,0 +1,16 @@
+[1] declare the canonical home
+[2] revalidate my-ai-lab/my-ai-lab--2026-09-08--0622.tar.gz against baseline
+[3] copy -p
+[4] verify the copy
+[5] remove the source (copy verified)
+[2] revalidate my-ai-lab/my-ai-lab--2026-09-08--0622.sha256 against baseline
+[3] copy -p
+[4] verify the copy
+[5] remove the source (copy verified)
+[2] revalidate my-ai-lab/my-ai-lab--2026-09-08--0622.manifest.txt against baseline
+[3] copy -p
+[4] verify the copy
+[5] remove the source (copy verified)
+[6] tombstone at the old location
+[7] manifest beside the canonical marker
+DONE

@@ -22,7 +22,8 @@ import os
 import re
 import sys
 
-SEEDBANK = "/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank"
+SEEDBANK = os.environ.get("SEEDBANK") or "/Users/venkatgullapalli/Documents/my-ai-lab/work-os/brand-os/engagement-os/seedbank"
+# SEEDBANK in the environment points the script at a test bank; the tests use it, nothing else does.
 FOLDERS = ("session", "written", "spoken")
 STOP = set("""a an and are as at be been but by can do does for from had has have he her his
 how i if in into is it its it's just may me more most my no not of on or our out so than

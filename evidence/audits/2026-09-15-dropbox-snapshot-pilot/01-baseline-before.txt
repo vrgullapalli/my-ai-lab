@@ -1,0 +1,8 @@
+sha256 of all six files, read before any change (2026-09-15 ~02:55 CDT), relative to the Dropbox root
+7975c7f5a88954fabd73f2a5fd42b351b1db629838707d26ab89d1fed19c6871  my-ai-lab/my-ai-lab--2026-09-08--0622.tar.gz
+7ae4ea369fbf728492acbab9120ece7ad306eb1ef614e20a968da456a5f136bc  my-ai-lab/my-ai-lab--2026-09-08--0622.sha256
+9cd7809a555fa41c63f94c70cc75961dff389629ccd5d99cfaf291f5aa4a3345  my-ai-lab/my-ai-lab--2026-09-08--0622.manifest.txt
+c041b50f13b18d427421d1d9a582ad3459a5f57f29d2fe896cd5006f2b12d862  my-ai-lab-backups/my-ai-lab--2026-09-10--1239.tar.gz
+2a9cf306ae89393c4c0510e873e9b9ef79f0be1f41f1cc6ac429e394cc2c0db3  my-ai-lab-backups/my-ai-lab--2026-09-10--1239.sha256
+498c2818ff353152e5a6dde6a9ca33beca00fc0a774b8d82f43c6df790ff9f91  my-ai-lab-backups/my-ai-lab--2026-09-10--1239.manifest.txt
+declared tar hashes (the .sha256 files) match the measured tar hashes: yes, both.
