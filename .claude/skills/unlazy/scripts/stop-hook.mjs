@@ -77,7 +77,7 @@ const sessionId = payload.session_id || payload.sessionId || "anonymous";
 const target = resolveTarget({ root, scope: scopeArg, sessionId });
 
 if (target.ambiguous) {
-  allow("unlazy: " + target.ambiguous.length + " pipelines under " + UNLAZY_DIR +
+  allow("unlazy: " + target.ambiguous.length + (target.ambiguous.length === 1 ? " pipeline" : " pipelines") + " under " + UNLAZY_DIR +
     "/ (" + target.ambiguous.join(", ") + ") and none bound to this session; not blocking.");
 }
 if (target.error && !target.ambiguous) allow("unlazy: " + safeHostText(target.error) + "; not blocking.");

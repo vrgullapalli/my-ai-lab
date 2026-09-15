@@ -649,18 +649,28 @@ export function resolveTarget(options = {}) {
     return targetFromDiscovery("scope", wanted, scopeDiscovery(root, wanted));
   }
 
+  // Lab edit (2026-09-15): a caller that names a session (the Stop hook) only ever
+  // gets a pipeline bound to that session. Upstream handed a lone pipeline to every
+  // session, so a session that opened no ledger was blocked by another session's
+  // gates. A caller with no session (the gate-check CLI) still resolves a lone
+  // pipeline, so --status, --bind, and --log keep working without --scope.
+  if (scopes.length && sessionId) {
+    const owned = scopes.filter((scope) => {
+      try {
+        return readStableRegularFile(join(scopeRoot(root, scope), "session"), {
+          root, maxBytes: 4096, label: "session binding",
+        }).trim() === String(sessionId).trim();
+      } catch { return false; }
+    });
+    if (owned.length === 1) return targetFromDiscovery("scope", owned[0], scopeDiscovery(root, owned[0]));
+    return {
+      mode: "none", scope: null, files: [], ambiguous: scopes,
+      error: scopes.length + " pipeline(s) present (" + scopes.join(", ") +
+        ") and none bound to this session; pass --scope <id> or set UNLAZY_SCOPE. Refusing to guess.",
+    };
+  }
   if (scopes.length === 1) return targetFromDiscovery("scope", scopes[0], scopeDiscovery(root, scopes[0]));
   if (scopes.length > 1) {
-    if (sessionId) {
-      const owned = scopes.filter((scope) => {
-        try {
-          return readStableRegularFile(join(scopeRoot(root, scope), "session"), {
-            root, maxBytes: 4096, label: "session binding",
-          }).trim() === String(sessionId).trim();
-        } catch { return false; }
-      });
-      if (owned.length === 1) return targetFromDiscovery("scope", owned[0], scopeDiscovery(root, owned[0]));
-    }
     return {
       mode: "none", scope: null, files: [], ambiguous: scopes,
       error: scopes.length + " pipelines present (" + scopes.join(", ") +

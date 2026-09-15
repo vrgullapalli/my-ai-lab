@@ -56,6 +56,19 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/venkatgullapalli/Documents/my-ai-lab/.claude/hooks/unlazy-bind.py",
+            "timeout": 10,
+            "statusMessage": "Binding any new unlazy scope to this session"
+          }
+        ]
+      }
     ]
   }
 }

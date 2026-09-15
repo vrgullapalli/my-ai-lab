@@ -515,6 +515,48 @@ test("hook: session binding resolves the scope among several", async () => {
   } finally { s.cleanup(); }
 });
 
+test("hook: one pipeline never bound does not block an unrelated session", async () => {
+  const s = sandbox();
+  try {
+    // Lab case, 2026-09-15: another session opened .unlazy/context-check-repair/
+    // and never bound it. A session that opened no ledger must still stop.
+    s.write(".unlazy/api/gates/leaf-1.md", "# Gates\n\n" + gate("G1", "a", null, null));
+    const r = await run(STOP_HOOK, [], { cwd: s.dir, stdin: JSON.stringify({ cwd: s.dir, session_id: "sess-other" }) });
+    assertLacks(r.out, '"decision":"block"', "hook");
+    assertHas(r.out, "none bound to this session");
+    assert(r.code === 0, "hook should exit 0");
+  } finally { s.cleanup(); }
+});
+
+test("hook: one pipeline bound to another session does not block this one", async () => {
+  const s = sandbox();
+  try {
+    s.write(".unlazy/api/gates/leaf-1.md", "# Gates\n\n" + gate("G1", "a", null, null));
+    const bind = await run(GATE_CHECK, ["--scope", "api", "--bind", "sess-owner"], { cwd: s.dir });
+    assertHas(bind.out, "bound session sess-owner to scope api");
+    const other = await run(STOP_HOOK, [], { cwd: s.dir, stdin: JSON.stringify({ cwd: s.dir, session_id: "sess-other" }) });
+    assertLacks(other.out, '"decision":"block"', "unrelated session");
+    // Explicit --scope still wins over the binding.
+    const pinned = await run(STOP_HOOK, ["--scope", "api"], { cwd: s.dir, stdin: JSON.stringify({ cwd: s.dir, session_id: "sess-other" }) });
+    assertHas(pinned.out, '"decision":"block"');
+    assertHas(pinned.out, "[scope api]");
+  } finally { s.cleanup(); }
+});
+
+test("hook: one pipeline bound to this session still blocks it", async () => {
+  const s = sandbox();
+  try {
+    s.write(".unlazy/api/gates/leaf-1.md", "# Gates\n\n" + gate("G1", "a", null, null));
+    await run(GATE_CHECK, ["--scope", "api", "--bind", "sess-owner"], { cwd: s.dir });
+    const owner = await run(STOP_HOOK, [], { cwd: s.dir, stdin: JSON.stringify({ cwd: s.dir, session_id: "sess-owner" }) });
+    assertHas(owner.out, '"decision":"block"');
+    assertHas(owner.out, "[scope api]");
+    // The older payload key still identifies the same session.
+    const legacyKey = await run(STOP_HOOK, [], { cwd: s.dir, stdin: JSON.stringify({ cwd: s.dir, sessionId: "sess-owner" }) });
+    assertHas(legacyKey.out, '"decision":"block"');
+  } finally { s.cleanup(); }
+});
+
 test("hook: each pipeline keeps its own loop-guard counter", async () => {
   const s = sandbox();
   try {
