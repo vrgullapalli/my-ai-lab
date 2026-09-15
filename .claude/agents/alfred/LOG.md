@@ -193,3 +193,17 @@ Never rewrite or delete a line. On collision: stop and surface it.
 2026-09-14 15:24 | D6 | ran | opened F-20260914-1524-1..5 (sync off and copy back: Venkat; retire iCloud copy after match: Alfred at his word; prove whole after move: Alfred; snapshot to Dropbox: Venkat, gate refused it here; facts-sheet sync line: his call); closed none | receipt 9efc
 2026-09-14 15:24 | D7 | ran | one observed line appended: he checks a pasted claim against this machine, then commits in one word | how-i-work--observed.md
 2026-09-14 15:24 | CLOSE | ran | 2026-09-14-1524-lab-leaves-icloud-step-one-9efc.md | facts.py close
+2026-09-14 15:29 | D6 | ran | his word: committed close records (lab 154a4a7) and seed A-LIVE-342 (engagement-os a67c782); facts.py and its tests left loose, another session's open edit | git log
+2026-09-14 15:31 | D6 | ran | F-20260914-1507-3 closed (0ea9313), F-20260914-1507-4 closed (facts line live, tests pass, committed) | his word
+2026-09-15 02:33 | D6 | ran | opened F-20260915-0231-1 (his ruling on the review), -2 (unlazy stop hook binds scopeless sessions to the only named scope; hook change, his word), -3 (thirteen small skill fixes, after his ruling); closed none | receipt 9e80
+2026-09-15 02:33 | D7 | ran | one observed line appended: he stopped the first command of his own /goal run and asked "status?" before saying "go" | how-i-work--observed.md
+2026-09-15 02:33 | CLOSE | ran | 2026-09-15-0231-skill-architecture-review-9e80.md | facts.py close
+2026-09-15 02:31 | D6 | ran | two goals met: Operational DNA canonical (AD-38, section 16) with seed-capture and context-check repaired, 14 gates; seed-capture repaired against v2 with a blind judgment run 5 of 5, 10 gates. Ledgers filed. Nothing committed; his word needed | his word (the goals of 00:26 and 02:13)
+2026-09-15 02:31 | D7 | ran | one line appended to docs/about-me/how-i-work--observed.md (standards built by audit rounds) | alfred-close
+2026-09-15 02:31 | CLOSE | ran | 2026-09-15-0231-operational-dna-canonical-two-skills-repaired-1fc3.md | facts.py close
+2026-09-15 02:35 | D6 | ran | three seeds written on his pick ("all seed candidates are good"): A-LIVE-343 (scope guard cage, second occurrence of A-LIVE-200), A-LIVE-344 (skill reach not count), A-LIVE-345 (two voice rulebooks drift) | seed-check OK, boundary OK
+2026-09-15 02:33 | D6 | ran | goal of 02:14 done: context-check and its two helpers fail loudly on a wrong root, a helper crash is an ALERT, 12 of 12 gates met, three test files green; his wording fix of 02:31 applied to the response-owner block | gate-check
+2026-09-15 02:33 | D7 | ran | 1 observation line appended (response-owner wording, 02:31) | how-i-work--observed.md
+2026-09-15 02:33 | CLOSE | ran | 2026-09-15-0233-context-check-fails-loudly-0c2f.md | facts.py close
+2026-09-15 02:36 | D6 | ran | his pick "all seed candidates are good": A-LIVE-346 to 350 written to seedbank/session/, seed check and write boundary OK; ids 343 to 345 had been taken by another session, next-id caught it | his word
+2026-09-15 02:42 | D6 | ran | his pick 'all 3 seeds are good': A-LIVE-351, 352, 353 written to seedbank/session/, seed-check and boundary OK; receipt 0c2f listed them as candidates | seed-capture

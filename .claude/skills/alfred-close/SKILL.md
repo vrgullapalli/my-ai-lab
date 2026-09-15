@@ -57,16 +57,24 @@ and the receipt says so.
 
 3. **Seeds — every close.** Run `seed-capture` in **Scan** mode over the session (Venkat,
    2026-09-10: "have seed capture be triggered when session-reciept is run or triggered").
+   The triage is substantive specialist work, and no capture specialist exists yet, so Alfred
+   does it here as the **explicit exception** (2026-09-15, his word in the goal of 02:13; the
+   skill's "Who does the judgment" section is the record).
    For each candidate run `python3 .claude/skills/seed-capture/scripts/find-similar.py
    "<the claim>"`; a match of 0.45 or more is probably a repeat, a lower one is a candidate
    connection or conflict. Show at most five, numbered. **Write seeds only on his pick** ("1
-   and 3"), or when a moment was marked "this is a seed" during the session — writing stays
-   governed by D-137. **Language: capture only what was actually settled, corrected,
-   adopted, or explicitly marked worth keeping** in the session (Venkat, 2026-09-12 02:26:
-   "Stop the automatic candidate-capture step"). No open wording question, and no creative
-   candidates at close. Nothing to capture is the normal answer; say nothing about wording
-   then. (The wording lenses were removed 2026-09-12 02:32, his word: "remove the lenses.
-   they are poorly applied.")
+   and 3"), or when a moment was marked "this is a seed" during the session (his word,
+   2026-09-10, above). A candidate he does not pick is shown and then dropped; nothing
+   persists it. **Language: capture only what was actually settled, corrected, adopted, or
+   explicitly marked worth keeping** in the session (Venkat, 2026-09-12 02:26: "Stop the
+   automatic candidate-capture step"). Since 2026-09-15 (AD-38) this routine writes that
+   language itself, one entry each, to `work-os/brand-os/engagement-os/memory/concepts.md`,
+   the concepts mechanism that began as session-receipt step 10; `seed-capture` no longer
+   writes there. Wording the system introduced is recorded only when he endorsed it, marked
+   endorsed with whose words they were. No open wording question, and no creative candidates
+   at close. Nothing to capture is the normal answer; say nothing about wording then. (The
+   wording lenses were removed 2026-09-12 02:32, his word: "remove the lenses. they are
+   poorly applied.")
 
 4. **Duty seven — observations.** As `DUTIES.md` D7 says: anything learned about how Venkat
    works is appended, one line each, to `docs/about-me/how-i-work--observed.md`. Never to

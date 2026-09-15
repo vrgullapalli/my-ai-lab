@@ -4,6 +4,7 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 
 ## Start here (from the 01:20 brief)
 
+- [x] **Repair context-check against Operational DNA v2** (his goal, 02:14). Done 02:33: wrong root and helper crash fail loudly, 12 of 12 gates, three test files green, his wording on who responds applied. Receipt R-2026-09-15-0233-0c2f. Waits on his word to commit. (from 2026-09-15)
 - [ ] **Wire the morning brief to the State package** (AD-30). First step done at 01:10: the open routine's step 0 ran and its six fields were compared with the brief; the comparison is in this session's receipt. Next: decide the two filters the receipt names (F-20260913-0844-1, -2). (from 2026-09-13)
 
 - [x] **Career model current-state research handoff** for an external researcher, read-only, saved at his word to `docs/research/assessments/2026-09-14--career-model-current-state-research-handoff.md` (02:38). Done; handing it over is his (F-20260914-0238-2). (from 2026-09-14)
@@ -46,3 +47,7 @@ Venkat's list. Alfred keeps it. One line per item. Done items stay, marked done.
 - [ ] **Footer ruling**: move it to the close routine as three lines, or keep it per reply only when a check found a number. All 79 footers are compiled at `evidence/audits/2026-09-14-implication-lens-footers/FOOTERS.md`, uncommitted (F-20260914-1507-1, -3).
 - [x] **Receipt for the signal-scan session's tail** (09-12 01:20 to 02:35), written today at his `/session-receipt`: three seeds on his pick, the wording-capture rule, the lenses removed and archived. Receipt R-2026-09-14-1512-a2a6. Three follow-ups need his word: the footer question, the eight ARCHIE topics made with the removed lens, and whether to file the LinkedIn draft.
 - [x] **Three answers at 15:15**: the reply footer stays ("no"), the eight ARCHIE topics made with the removed lens are dropped, and the LinkedIn draft is dropped. Neither was ever a file. Four follow-ups closed. Receipt R-2026-09-14-1516-3a8f.
+- [x] **Skill architecture review** at his /goal of 00:29, run at his "go" 02:16: 30 skills against Operational DNA. Full review at `evidence/audits/2026-09-15-skill-architecture-review/REVIEW.md`, uncommitted. Receipt R-2026-09-15-0231-9e80.
+- [ ] **Rule on the review**: merge contextual-voice into my-voice, and whether to build the long-form article run skill (F-20260915-0231-1).
+- [ ] **The unlazy stop hook caught this session on another session's ledger.** A session with no scope gets bound to the only named scope on disk. Hook change, needs his word (F-20260915-0231-2).
+- [x] **Operational DNA made canonical and applied** (his goals 00:26 and 02:13 on 2026-09-15): section 16 of the operating model, AD-38, seed-capture to one job with deterministic tests and a five-case blind judgment set (5 of 5), context-check labelled, scoped, and tested, the 2026-09-14 bulk acceptances marked bulk and unconfirmed. Uncommitted. His word needed on the 995 bulk acceptances and on committing. Receipt R-2026-09-15-0231-1fc3. (from 2026-09-15)

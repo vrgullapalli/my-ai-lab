@@ -2,12 +2,14 @@
 #   <file relative to lab>            (the whole file)
 #   <file relative to lab> :: <token> | <reason>
 # Counted, not listed. Started 2026-09-10; nothing reviewed yet.
+# accepted-by: Alfred | item | 2026-09-12 | five mentions reviewed one by one during the writing-guide move to the warehouse (commit b6c41ad); Venkat's word on the move, not on each line
 work-os/brand-os/engagement-os/references/writing-guide--POINTER.md :: writing-guide/ | a note about the folder that moved to the warehouse 2026-09-11; naming it is the point
 work-os/brand-os/messaging/trust-is-the-product--POINTER.md :: engagement-os/references/writing-guide/ | names where it used to point, moved to the warehouse 2026-09-11
 work-os/brand-os/messaging/trust-is-the-product--POINTER.md :: writing-guide-copies--moved-2026-09-11/ | a warehouse folder, outside the lab on purpose
 work-os/brand-os/engagement-os/plans/agents/INVENTORY.md | dated Step 1 snapshot of 2026-09-08; lists what existed that day
 work-os/brand-os/engagement-os/plans/agents/writer/INVENTORY.md | dated Step 1 snapshot of 2026-09-08; lists what existed that day
 # --- Sweep of 2026-09-14 (follow-up F-20260910-1627-1). Whole files and folders first, then single mentions.
+# accepted-by: Alfred | bulk | 2026-09-14 | follow-up F-20260910-1627-1 (authority: system), closed by Alfred alone; 106 lines covering about 1,036 mentions; NOT item-by-item human review; unconfirmed until Venkat's word names the set (LAB-OPERATING-MODEL.md section 16)
 work-os/brand-os/docs/career-advisor-reasoning--2026-09-10/ | 62 reasoning files copied word for word from the career-advisor snapshot on 2026-09-10 (brand-os DECISIONS 036: "the drop is evidence, not canon"); every path names that old workspace
 work-os/brand-os/engagement-os/references/corpus/chronicle/ | build chronicle of the buyer-signal-intelligence project, dated 2026-03-15 in its front matter; it names that project's files
 work-os/ai-job-search/ | a clone of github.com/MadsLorentzen/ai-job-search (its git remote); its changelog and docs describe that project's own example files, not lab paths

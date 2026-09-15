@@ -6,7 +6,8 @@ Run:  python3 .claude/skills/context-check/tests/skill_check_tests.py
 
 Builds a throwaway lab in a temp folder, so it never reads or writes the real one. The
 seven stale pointers found by hand in the 2026-09-10 skills audit are planted here in the
-same shapes they had, so the check is proven against the failures that motivated it.
+same shapes they had, so the check is proven against the failures that motivated it. Case 8
+(2026-09-15) plants a wrong root: an empty folder must exit 2 with an ALERT line, never "0 problems".
 Prints SKILL CHECK TESTS PASSED only when every case passes.
 """
 import os
@@ -31,16 +32,17 @@ def write(path, text):
         f.write(text)
 
 
-def run(lab, accepted=None):
+def run(lab, accepted=None, *args):
     env = dict(os.environ, LAB_ROOT=lab, CLAUDE_PLUGINS=os.path.join(lab, "no-plugins"),
                CLAUDE_USER_SKILLS=os.path.join(lab, "no-user-skills"),
                SKILL_CHECK_ACCEPTED=accepted or os.path.join(lab, "no-accepted.txt"))
-    r = subprocess.run([sys.executable, SCRIPT], capture_output=True, text=True, env=env, timeout=60)
+    r = subprocess.run([sys.executable, SCRIPT, *args], capture_output=True, text=True, env=env, timeout=60)
     return r.returncode, r.stdout
 
 
 def make_lab():
     lab = tempfile.mkdtemp(prefix="skill-check-tests-")
+    write(os.path.join(lab, "CLAUDE.md"), "# planted lab front door\n")  # what makes a folder a lab root
     # a domain with real files, the way engagement-os has them
     for p in ("work-os/eng/targets/index/companies.json", "work-os/eng/assets/briefs/README.md",
               "work-os/eng/seedbank/session/A-001.md", "work-os/brand-os/visual/DESIGN-IDENTITY.md",
@@ -146,6 +148,17 @@ check("accepted: the unreviewed token still is", "DEAD PATH: other/gone.md" in o
 lab = make_lab()
 rc, out = run(lab)
 check("clean again: passes after the broken cases", rc == 0, out)
+
+# 8. a wrong or empty root fails visibly instead of reporting "0 problems" (second pass, 2026-09-15).
+#    The facts sheet prints this script's --summary line, so the line must start with ALERT.
+empty = tempfile.mkdtemp(prefix="skill-check-empty-")
+rc, out = run(empty, None, "--summary")
+check("empty root: exits 2 and the summary line starts with ALERT", rc == 2 and out.startswith("ALERT skill check: NOT A LAB ROOT"), out)
+check("empty root: no clean line", "0 problems" not in out and "checked" not in out, out)
+notlab = tempfile.mkdtemp(prefix="skill-check-notlab-")
+write(os.path.join(notlab, ".claude/skills/x/SKILL.md"), "---\nname: x\n---\n# x\nReads `nowhere.md`.\n")
+rc, out = run(notlab)
+check("files but no CLAUDE.md: exits 2 with NOT A LAB ROOT, nothing checked", rc == 2 and "NOT A LAB ROOT" in out and "DEAD PATH" not in out, out)
 
 print()
 if failures:

@@ -282,7 +282,18 @@ def check_file(path, skills, agents, exact, whole, retired=frozenset()):
     return rel, findings, accepted_hits
 
 
+def lab_root_check():
+    """A wrong or empty root fails visibly instead of reporting a clean lab (planted failure,
+    2026-09-15). A lab root holds the front door, CLAUDE.md, and the .claude/ folder. The line
+    starts with ALERT so the facts sheet, which prints this script's one line, shows it."""
+    if os.path.isfile(os.path.join(LAB, "CLAUDE.md")) and os.path.isdir(os.path.join(LAB, ".claude")):
+        return
+    print(f"ALERT skill check: NOT A LAB ROOT: {LAB} has no CLAUDE.md or no .claude/ folder; nothing was measured")
+    sys.exit(2)
+
+
 def main():
+    lab_root_check()
     skills, agents = known_skills(), known_agents()
     retired = retired_skills() - skills      # a name still served by a plugin is not retired
     exact, whole = load_accepted()
